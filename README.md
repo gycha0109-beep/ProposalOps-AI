@@ -57,7 +57,7 @@ Proposal QA
 - [ ] PDF/PPT 전처리 파이프라인
 - [ ] Dify Knowledge Base 적재
 - [x] RFP Analyzer Prompt
-- [ ] Retrieval Planner Prompt
+- [x] Retrieval Planner Prompt
 - [ ] Proposal Strategist Prompt
 - [ ] Pagination Prompt
 - [ ] Slide Draft Prompt
@@ -101,6 +101,14 @@ ProposalOps-AI/
 - 재사용 허용 수준
 
 상세 필드는 `data/taxonomy/proposal-taxonomy.yaml`을 기준으로 합니다.
+
+## 현재 데모 데이터
+
+- synthetic 과거 제안서: 3종 (교육 / 홍보 / 영상)
+- Proposal Assets: 6개
+- synthetic 테스트 RFP: 1종
+- Retrieval Gold Cases: 6개
+- RFP Extraction Cases: 8개
 
 ## 포트폴리오에서 증명할 것
 
