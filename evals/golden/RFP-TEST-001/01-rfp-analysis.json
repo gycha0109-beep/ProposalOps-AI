@@ -1,0 +1,175 @@
+{
+  "rfp_id": "RFP-TEST-001",
+  "project": {
+    "name": "청년 정책 디지털 홍보 콘텐츠 제작",
+    "client_type": "public_institution",
+    "purpose": [
+      "청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다."
+    ],
+    "target_audience": [
+      "만 19~34세 청년층"
+    ],
+    "duration": "계약일로부터 6개월",
+    "budget": "unknown"
+  },
+  "scope": [
+    {
+      "id": "S-001",
+      "text": "청년 정책 홍보 전략 수립"
+    },
+    {
+      "id": "S-002",
+      "text": "월별 SNS 콘텐츠 기획"
+    },
+    {
+      "id": "S-003",
+      "text": "세로형 숏폼 영상 20편 제작"
+    },
+    {
+      "id": "S-004",
+      "text": "카드형 정보 콘텐츠 30건 제작"
+    },
+    {
+      "id": "S-005",
+      "text": "참여형 온라인 캠페인 2회 운영"
+    },
+    {
+      "id": "S-006",
+      "text": "월간 성과 리포트 및 최종 결과 보고서 제출"
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "D-001",
+      "name": "세로형 숏폼 영상",
+      "quantity": "20편",
+      "frequency": "unknown"
+    },
+    {
+      "id": "D-002",
+      "name": "카드형 정보 콘텐츠",
+      "quantity": "30건",
+      "frequency": "unknown"
+    },
+    {
+      "id": "D-003",
+      "name": "참여형 온라인 캠페인",
+      "quantity": "2회",
+      "frequency": "unknown"
+    },
+    {
+      "id": "D-004",
+      "name": "월간 성과 리포트",
+      "quantity": "unknown",
+      "frequency": "월간"
+    },
+    {
+      "id": "D-005",
+      "name": "최종 결과 보고서",
+      "quantity": "1식",
+      "frequency": "최종"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R-001",
+      "type": "business_understanding",
+      "requirement": "정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-002",
+      "type": "strategy",
+      "requirement": "청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-003",
+      "type": "content",
+      "requirement": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-004",
+      "type": "strategy",
+      "requirement": "단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-005",
+      "type": "operation",
+      "requirement": "6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-006",
+      "type": "kpi",
+      "requirement": "도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다.",
+      "mandatory": true
+    },
+    {
+      "id": "R-007",
+      "type": "risk",
+      "requirement": "저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.",
+      "mandatory": true
+    }
+  ],
+  "evaluation": [
+    {
+      "name": "사업 이해도",
+      "score": 15
+    },
+    {
+      "name": "전략 적합성",
+      "score": 25
+    },
+    {
+      "name": "콘텐츠 기획력",
+      "score": 25
+    },
+    {
+      "name": "수행 체계",
+      "score": 15
+    },
+    {
+      "name": "성과 관리",
+      "score": 10
+    },
+    {
+      "name": "리스크 관리",
+      "score": 10
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C-001",
+      "type": "compliance",
+      "text": "각 전략은 해당 RFP 요구사항과 연결되어야 한다."
+    },
+    {
+      "id": "C-002",
+      "type": "compliance",
+      "text": "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다."
+    },
+    {
+      "id": "C-003",
+      "type": "compliance",
+      "text": "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다."
+    }
+  ],
+  "submission_rules": [],
+  "open_questions": [
+    {
+      "topic": "사업 예산",
+      "reason": "테스트 RFP에 예산이 명시되어 있지 않다."
+    }
+  ],
+  "coverage_summary": {
+    "has_purpose": true,
+    "has_scope": true,
+    "has_deliverables": true,
+    "has_evaluation": true,
+    "has_schedule": true,
+    "has_budget": false
+  }
+}
