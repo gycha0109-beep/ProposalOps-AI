@@ -1,0 +1,19 @@
+{
+  "version": "0.1",
+  "retriever": "local_char_ngram_tfidf_baseline",
+  "dataset_version": "0.2",
+  "asset_count": 6,
+  "case_count": 6,
+  "metrics": {
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0,
+    "hit_at_5": 1.0,
+    "mrr": 1.0
+  },
+  "limitations": [
+    "synthetic demo dataset",
+    "small corpus",
+    "lexical baseline only",
+    "not a Dify Knowledge retrieval result"
+  ]
+}
