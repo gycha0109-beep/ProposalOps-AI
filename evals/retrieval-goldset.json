@@ -1,0 +1,30 @@
+{
+  "version": "0.1",
+  "dataset": "retrieval-goldset",
+  "description": "Proposal Asset retrieval 품질 검증용 synthetic gold set",
+  "cases": [
+    {
+      "id": "RET-001",
+      "query": "청년층 참여를 유도할 수 있는 단계형 콘텐츠 전략",
+      "expected_asset_ids": ["PA-EDU-003-P017"],
+      "required_concepts": ["청년", "참여", "단계", "퍼널"]
+    },
+    {
+      "id": "RET-002",
+      "query": "숏폼에서 상호작용을 거쳐 실제 행동으로 연결하는 전략",
+      "expected_asset_ids": ["PA-EDU-003-P017"],
+      "required_concepts": ["숏폼", "상호작용", "참여"]
+    },
+    {
+      "id": "RET-003",
+      "query": "청년 대상 디지털 교육 콘텐츠의 참여 전환 구조",
+      "expected_asset_ids": ["PA-EDU-003-P017"],
+      "required_concepts": ["청년", "교육", "참여 전환"]
+    }
+  ],
+  "metrics": {
+    "primary": "hit_at_5",
+    "target": 0.9,
+    "note": "target은 목표값이며 아직 측정 결과가 아니다."
+  }
+}
