@@ -1,0 +1,61 @@
+{
+  "version": "0.1",
+  "dataset": "rfp-extraction-cases",
+  "source": "data/raw/rfps/RFP-TEST-001.md",
+  "cases": [
+    {
+      "id": "EXT-001",
+      "assertion": "사업 기간을 6개월로 추출해야 한다.",
+      "expected": "계약일로부터 6개월"
+    },
+    {
+      "id": "EXT-002",
+      "assertion": "주요 대상에서 만 19~34세 청년층을 추출해야 한다.",
+      "expected": "만 19~34세 청년층"
+    },
+    {
+      "id": "EXT-003",
+      "assertion": "숏폼 영상 20편을 필수 산출물로 추출해야 한다.",
+      "expected": {
+        "name_contains": "숏폼",
+        "quantity": "20편"
+      }
+    },
+    {
+      "id": "EXT-004",
+      "assertion": "카드형 정보 콘텐츠 30건을 필수 산출물로 추출해야 한다.",
+      "expected": {
+        "name_contains": "카드",
+        "quantity": "30건"
+      }
+    },
+    {
+      "id": "EXT-005",
+      "assertion": "온라인 캠페인 2회를 필수 산출물/과업으로 추출해야 한다.",
+      "expected": {
+        "name_contains": "캠페인",
+        "quantity": "2회"
+      }
+    },
+    {
+      "id": "EXT-006",
+      "assertion": "평가 배점의 합은 100이어야 한다.",
+      "expected": 100
+    },
+    {
+      "id": "EXT-007",
+      "assertion": "예산은 문서에 없으므로 임의 추정하면 안 된다.",
+      "expected": "unknown"
+    },
+    {
+      "id": "EXT-008",
+      "assertion": "저작권, 초상권, 개인정보, 정책 정보 오류 검수 요구를 risk/compliance 계열 요구사항으로 보존해야 한다.",
+      "expected_terms": [
+        "저작권",
+        "초상권",
+        "개인정보",
+        "정책 정보 오류"
+      ]
+    }
+  ]
+}
