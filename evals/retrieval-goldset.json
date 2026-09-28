@@ -1,30 +1,89 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "dataset": "retrieval-goldset",
-  "description": "Proposal Asset retrieval 품질 검증용 synthetic gold set",
+  "description": "Proposal Asset retrieval 품질 검증용 synthetic gold set. 서로 다른 카테고리의 경쟁 자산을 포함한다.",
   "cases": [
     {
       "id": "RET-001",
       "query": "청년층 참여를 유도할 수 있는 단계형 콘텐츠 전략",
-      "expected_asset_ids": ["PA-EDU-003-P017"],
-      "required_concepts": ["청년", "참여", "단계", "퍼널"]
+      "expected_asset_ids": [
+        "PA-EDU-003-P017"
+      ],
+      "required_concepts": [
+        "청년",
+        "참여",
+        "단계",
+        "퍼널"
+      ]
     },
     {
       "id": "RET-002",
-      "query": "숏폼에서 상호작용을 거쳐 실제 행동으로 연결하는 전략",
-      "expected_asset_ids": ["PA-EDU-003-P017"],
-      "required_concepts": ["숏폼", "상호작용", "참여"]
+      "query": "SNS에서 발견 이후 반응과 공유로 확산시키는 전략",
+      "expected_asset_ids": [
+        "PA-PR-002-P013"
+      ],
+      "required_concepts": [
+        "SNS",
+        "반응",
+        "공유"
+      ]
     },
     {
       "id": "RET-003",
-      "query": "청년 대상 디지털 교육 콘텐츠의 참여 전환 구조",
-      "expected_asset_ids": ["PA-EDU-003-P017"],
-      "required_concepts": ["청년", "교육", "참여 전환"]
+      "query": "정책 내용을 이용자 상황 질문에서 시작해서 행동으로 연결하는 메시지 구조",
+      "expected_asset_ids": [
+        "PA-PR-002-P012"
+      ],
+      "required_concepts": [
+        "상황 질문",
+        "혜택",
+        "행동"
+      ]
+    },
+    {
+      "id": "RET-004",
+      "query": "30초 숏폼에서 초반 훅과 핵심 정보, CTA를 배치하는 포맷",
+      "expected_asset_ids": [
+        "PA-VIDEO-004-P021"
+      ],
+      "required_concepts": [
+        "30초",
+        "Hook",
+        "CTA"
+      ]
+    },
+    {
+      "id": "RET-005",
+      "query": "영상 게시 전에 정책 수치와 자격 조건 오류를 방지하는 검수 프로세스",
+      "expected_asset_ids": [
+        "PA-VIDEO-004-P022"
+      ],
+      "required_concepts": [
+        "검수",
+        "정책 정보",
+        "게시"
+      ]
+    },
+    {
+      "id": "RET-006",
+      "query": "참여 결과를 다시 콘텐츠로 만들어 신규 도달을 만드는 반복 구조",
+      "expected_asset_ids": [
+        "PA-EDU-003-P018"
+      ],
+      "required_concepts": [
+        "참여 결과",
+        "후속 콘텐츠",
+        "도달"
+      ]
     }
   ],
   "metrics": {
     "primary": "hit_at_5",
     "target": 0.9,
+    "secondary": [
+      "mrr",
+      "wrong_category_rate"
+    ],
     "note": "target은 목표값이며 아직 측정 결과가 아니다."
   }
 }
