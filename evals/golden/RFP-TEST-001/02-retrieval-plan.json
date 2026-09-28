@@ -1,0 +1,154 @@
+{
+  "rfp_id": "RFP-TEST-001",
+  "plans": [
+    {
+      "requirement_id": "R-002",
+      "intent": "strategy",
+      "search_queries": [
+        "청년층 참여형 콘텐츠 전략",
+        "청년 정책 SNS 확산 전략"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ],
+        "page_type": [
+          "strategy",
+          "content_plan"
+        ]
+      },
+      "must_find": [
+        "청년",
+        "전략"
+      ],
+      "nice_to_have": [
+        "SNS",
+        "참여"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 3
+    },
+    {
+      "requirement_id": "R-003",
+      "intent": "content",
+      "search_queries": [
+        "30초 정책 숏폼 영상 포맷",
+        "정책 메시지를 행동으로 연결하는 콘텐츠 구조"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ],
+        "page_type": [
+          "content_plan"
+        ]
+      },
+      "must_find": [
+        "숏폼",
+        "콘텐츠"
+      ],
+      "nice_to_have": [
+        "CTA",
+        "메시지"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 3
+    },
+    {
+      "requirement_id": "R-004",
+      "intent": "strategy",
+      "search_queries": [
+        "참여 전환 단계형 콘텐츠 퍼널",
+        "SNS 발견 반응 공유 구조"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ],
+        "page_type": [
+          "strategy",
+          "channel_plan"
+        ]
+      },
+      "must_find": [
+        "참여"
+      ],
+      "nice_to_have": [
+        "퍼널",
+        "공유"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 3
+    },
+    {
+      "requirement_id": "R-005",
+      "intent": "operation",
+      "search_queries": [
+        "공공기관 영상 제작 검수 프로세스",
+        "정책 정보 게시 전 재검수"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ],
+        "page_type": [
+          "operation_plan"
+        ]
+      },
+      "must_find": [
+        "검수"
+      ],
+      "nice_to_have": [
+        "정책 정보",
+        "게시"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 2
+    },
+    {
+      "requirement_id": "R-006",
+      "intent": "kpi",
+      "search_queries": [
+        "도달 반응 참여 전환 KPI",
+        "숏폼 완주 CTA 성과 측정"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ]
+      },
+      "must_find": [
+        "KPI"
+      ],
+      "nice_to_have": [
+        "도달",
+        "참여",
+        "완주"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 3
+    },
+    {
+      "requirement_id": "R-007",
+      "intent": "risk",
+      "search_queries": [
+        "정책 정보 오류 검수 프로세스",
+        "공공기관 콘텐츠 게시 전 검수"
+      ],
+      "filters": {
+        "client_type": [
+          "public_institution"
+        ]
+      },
+      "must_find": [
+        "검수",
+        "오류"
+      ],
+      "nice_to_have": [
+        "정책 정보"
+      ],
+      "exclude": [],
+      "desired_evidence_count": 2
+    }
+  ]
+}
