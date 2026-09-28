@@ -1,0 +1,60 @@
+{
+  "asset_id": "PA-EDU-003-P017",
+  "proposal_id": "PROP-EDU-003",
+  "category": "education",
+  "client_type": "public_institution",
+  "project_type": "청년 대상 디지털 교육 콘텐츠",
+  "page": 17,
+  "page_type": "strategy",
+  "section": "추진 전략",
+  "title": "참여형 콘텐츠 퍼널",
+  "objective": [
+    "청년층의 자발적 콘텐츠 참여 유도",
+    "일회성 시청을 후속 행동으로 전환"
+  ],
+  "target_audience": [
+    "20~30대 청년층"
+  ],
+  "deliverables": [
+    "숏폼 콘텐츠",
+    "참여형 퀴즈",
+    "SNS 확산 콘텐츠"
+  ],
+  "strategies": [
+    "Short-form → Quiz → Participation의 3단계 참여 퍼널",
+    "시청 이후 즉시 수행 가능한 마이크로 액션 배치"
+  ],
+  "differentiators": [
+    "정보 전달에서 끝나지 않고 참여 행동까지 설계"
+  ],
+  "channels": [
+    "Instagram",
+    "YouTube Shorts"
+  ],
+  "kpis": [
+    "콘텐츠 도달",
+    "참여 전환",
+    "후속 행동"
+  ],
+  "reusable_patterns": [
+    "인지 → 상호작용 → 참여로 이어지는 단계형 퍼널",
+    "각 콘텐츠에 단일 행동 목표를 배치하는 구성"
+  ],
+  "company_facts": [],
+  "raw_text": "청년층의 자발적인 콘텐츠 참여를 유도하기 위해 Short-form → Quiz → Participation 3단계 참여 Funnel을 적용한다.",
+  "normalized_text": "청년층 대상 디지털 교육 콘텐츠에서 숏폼으로 초기 접점을 만들고 퀴즈형 상호작용을 거쳐 실제 참여 행동으로 연결하는 3단계 퍼널 전략.",
+  "source": {
+    "file_name": "demo_education_proposal_03.pdf",
+    "page": 17,
+    "source_type": "synthetic_demo"
+  },
+  "reuse_level": "concept_only",
+  "sensitivity": "public_demo",
+  "tags": [
+    "청년",
+    "교육",
+    "숏폼",
+    "참여",
+    "퍼널"
+  ]
+}
