@@ -1,0 +1,188 @@
+version: "0.1"
+name: proposal_asset_taxonomy
+language: ko
+
+enums:
+  proposal_category:
+    - public_relations
+    - education
+    - video
+    - digital_campaign
+    - event
+    - research
+    - mixed
+
+  client_type:
+    - central_government
+    - local_government
+    - public_institution
+    - education_institution
+    - nonprofit
+    - private_company
+    - unknown
+
+  page_type:
+    - cover
+    - executive_summary
+    - project_understanding
+    - problem_definition
+    - objective
+    - target_analysis
+    - strategy
+    - concept
+    - content_plan
+    - channel_plan
+    - operation_plan
+    - schedule
+    - organization
+    - risk_management
+    - kpi
+    - performance_measurement
+    - portfolio_reference
+    - budget
+    - appendix
+    - other
+
+  evidence_type:
+    - rfp_fact
+    - company_fact
+    - reference_pattern
+    - reusable_strategy
+    - reusable_copy
+    - ai_recommendation
+
+  reuse_level:
+    - prohibited
+    - fact_only
+    - concept_only
+    - pattern_allowed
+    - copy_allowed
+
+schema:
+  proposal_asset:
+    required:
+      - asset_id
+      - proposal_id
+      - source
+      - category
+      - page
+      - page_type
+      - title
+      - raw_text
+      - reuse_level
+
+    fields:
+      asset_id:
+        type: string
+        description: "검색 단위의 고유 ID. 예: PA-PR-001-P013"
+
+      proposal_id:
+        type: string
+        description: "원본 제안서 ID"
+
+      category:
+        enum_ref: proposal_category
+
+      client_type:
+        enum_ref: client_type
+
+      project_type:
+        type: string
+        description: "사업의 구체적 유형"
+
+      page:
+        type: integer
+
+      page_type:
+        enum_ref: page_type
+
+      section:
+        type: string
+
+      title:
+        type: string
+
+      objective:
+        type: array[string]
+
+      target_audience:
+        type: array[string]
+
+      deliverables:
+        type: array[string]
+
+      strategies:
+        type: array[string]
+
+      differentiators:
+        type: array[string]
+
+      channels:
+        type: array[string]
+
+      kpis:
+        type: array[string]
+
+      reusable_patterns:
+        type: array[string]
+        description: "다른 제안에서 재활용 가능한 사고/구성 패턴"
+
+      company_facts:
+        type: array[object]
+        object_fields:
+          claim: string
+          evidence_text: string
+          evidence_type:
+            enum_ref: evidence_type
+
+      raw_text:
+        type: string
+
+      normalized_text:
+        type: string
+
+      source:
+        type: object
+        object_fields:
+          file_name: string
+          page: integer
+          source_type: string
+
+      reuse_level:
+        enum_ref: reuse_level
+
+      sensitivity:
+        type: string
+        allowed:
+          - public_demo
+          - internal
+          - confidential
+
+      tags:
+        type: array[string]
+
+retrieval:
+  searchable_fields:
+    - title
+    - objective
+    - target_audience
+    - deliverables
+    - strategies
+    - differentiators
+    - channels
+    - kpis
+    - reusable_patterns
+    - normalized_text
+
+  filterable_fields:
+    - category
+    - client_type
+    - project_type
+    - page_type
+    - reuse_level
+    - sensitivity
+
+  provenance_required:
+    - proposal_id
+    - source.file_name
+    - source.page
