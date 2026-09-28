@@ -56,7 +56,7 @@ Proposal QA
 - [x] Retrieval Gold Set 초안
 - [ ] PDF/PPT 전처리 파이프라인
 - [ ] Dify Knowledge Base 적재
-- [ ] RFP Analyzer Prompt
+- [x] RFP Analyzer Prompt
 - [ ] Retrieval Planner Prompt
 - [ ] Proposal Strategist Prompt
 - [ ] Pagination Prompt
