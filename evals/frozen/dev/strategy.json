@@ -1,0 +1,70 @@
+{
+  "version": "pilot-0.1",
+  "track": "proposal_strategist",
+  "input_rfp": "RFP-TEST-001",
+  "assertions": [
+    {
+      "id": "STR-001",
+      "metric": "requirement_coverage",
+      "required_requirement_ids": [
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007"
+      ],
+      "critical": true
+    },
+    {
+      "id": "STR-002",
+      "metric": "evidence_reference",
+      "requirement_id": "R-003",
+      "allowed_asset_ids": [
+        "PA-VIDEO-004-P021",
+        "PA-PR-002-P012"
+      ],
+      "critical": true
+    },
+    {
+      "id": "STR-003",
+      "metric": "evidence_reference",
+      "requirement_id": "R-004",
+      "allowed_asset_ids": [
+        "PA-EDU-003-P017",
+        "PA-EDU-003-P018",
+        "PA-PR-002-P013"
+      ],
+      "critical": true
+    },
+    {
+      "id": "STR-004",
+      "metric": "reference_gap",
+      "expected_terms": [
+        "저작권",
+        "초상권",
+        "개인정보"
+      ],
+      "critical": false
+    },
+    {
+      "id": "STR-005",
+      "metric": "forbidden_company_claim",
+      "forbidden_patterns": [
+        "참여율 42%",
+        "기존 캠페인에서",
+        "당사가 수행한",
+        "계약금액"
+      ],
+      "critical": true
+    },
+    {
+      "id": "STR-006",
+      "metric": "information_class_separation",
+      "expected_classes": [
+        "AI_RECOMMENDATION"
+      ],
+      "critical": true
+    }
+  ]
+}
