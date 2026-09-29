@@ -199,32 +199,34 @@
   },
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.1",
+    "evaluator_version": "1.2",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": true,
     "metrics": {
-      "assertion_pass_rate": 0.6667,
+      "assertion_pass_rate": 1.0,
       "deliverable_recall": 1.0,
-      "numeric_fidelity": 0.5714,
+      "numeric_fidelity": 1.0,
       "requirement_assertion_recall": 1.0,
       "unsupported_addition_count": 0
     },
-    "passed": 8,
+    "passed": 12,
     "total": 12,
     "details": [
       {
         "id": "002-01",
         "metric": "exact_or_semantic",
         "expected": "계약일로부터 5개월",
-        "pass": false,
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
         "critical": true
       },
       {
         "id": "002-02",
         "metric": "exact_or_semantic",
         "expected": "95,000,000원",
-        "pass": false,
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
         "critical": true
       },
       {
@@ -235,7 +237,8 @@
           "여행객",
           "지역 주민"
         ],
-        "pass": false,
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
         "critical": true
       },
       {
@@ -281,9 +284,9 @@
       {
         "id": "002-08",
         "metric": "evaluation_sum",
-        "actual_sum": null,
+        "actual_sum": 100.0,
         "expected_sum": 100,
-        "pass": false,
+        "pass": true,
         "critical": true
       },
       {

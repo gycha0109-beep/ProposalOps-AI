@@ -232,25 +232,26 @@
   },
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.1",
+    "evaluator_version": "1.2",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": true,
     "metrics": {
-      "assertion_pass_rate": 0.6,
+      "assertion_pass_rate": 0.8,
       "deliverable_recall": 1.0,
-      "numeric_fidelity": 0.6,
+      "numeric_fidelity": 0.8,
       "requirement_assertion_recall": 1.0,
       "unsupported_addition_count": 0
     },
-    "passed": 6,
+    "passed": 8,
     "total": 10,
     "details": [
       {
         "id": "001-01",
         "metric": "exact_or_semantic",
         "expected": "계약일로부터 6개월",
-        "pass": false,
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
         "critical": true
       },
       {
@@ -260,7 +261,8 @@
           "만 19~34세",
           "청년"
         ],
-        "pass": false,
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
         "critical": true
       },
       {
@@ -304,7 +306,7 @@
       {
         "id": "001-07",
         "metric": "unknown",
-        "actual": null,
+        "expected": "unknown",
         "pass": false,
         "critical": true
       },

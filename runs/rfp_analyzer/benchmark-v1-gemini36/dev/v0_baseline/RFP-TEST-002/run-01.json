@@ -52,7 +52,7 @@
   "parsed_output": null,
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.1",
+    "evaluator_version": "1.2",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": false,
@@ -70,6 +70,7 @@
         "id": "002-01",
         "metric": "exact_or_semantic",
         "expected": "계약일로부터 5개월",
+        "evaluated_source": "raw_output_fallback",
         "pass": true,
         "critical": true
       },
@@ -77,6 +78,7 @@
         "id": "002-02",
         "metric": "exact_or_semantic",
         "expected": "95,000,000원",
+        "evaluated_source": "raw_output_fallback",
         "pass": true,
         "critical": true
       },
@@ -88,6 +90,7 @@
           "여행객",
           "지역 주민"
         ],
+        "evaluated_source": "raw_output_fallback",
         "pass": true,
         "critical": true
       },

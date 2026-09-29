@@ -173,7 +173,7 @@
   },
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.1",
+    "evaluator_version": "1.2",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": true,
@@ -191,6 +191,7 @@
         "id": "002-01",
         "metric": "exact_or_semantic",
         "expected": "계약일로부터 5개월",
+        "evaluated_source": "project.duration",
         "pass": true,
         "critical": true
       },
@@ -198,6 +199,7 @@
         "id": "002-02",
         "metric": "exact_or_semantic",
         "expected": "95,000,000원",
+        "evaluated_source": "project.budget",
         "pass": true,
         "critical": true
       },
@@ -209,6 +211,7 @@
           "여행객",
           "지역 주민"
         ],
+        "evaluated_source": "project.target_audience",
         "pass": true,
         "critical": true
       },
@@ -255,7 +258,7 @@
       {
         "id": "002-08",
         "metric": "evaluation_sum",
-        "actual_sum": 100,
+        "actual_sum": 100.0,
         "expected_sum": 100,
         "pass": true,
         "critical": true

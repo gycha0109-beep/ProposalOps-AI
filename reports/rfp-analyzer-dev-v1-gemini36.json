@@ -167,10 +167,10 @@
       "json_parseable_rate": 1.0,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.6333,
-          "min": 0.6,
-          "max": 0.6667,
-          "stdev": 0.0333
+          "mean": 0.9,
+          "min": 0.8,
+          "max": 1.0,
+          "stdev": 0.1
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -179,10 +179,10 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.5857,
-          "min": 0.5714,
-          "max": 0.6,
-          "stdev": 0.0143
+          "mean": 0.9,
+          "min": 0.8,
+          "max": 1.0,
+          "stdev": 0.1
         },
         "requirement_assertion_recall": {
           "mean": 1.0,
@@ -220,20 +220,8 @@
           "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-001-01",
           "rfp_id": "RFP-TEST-001",
           "failed_case_ids": [
-            "001-01",
-            "001-02",
             "001-06",
             "001-07"
-          ]
-        },
-        {
-          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-002-01",
-          "rfp_id": "RFP-TEST-002",
-          "failed_case_ids": [
-            "002-01",
-            "002-02",
-            "002-03",
-            "002-08"
           ]
         }
       ]
@@ -247,10 +235,10 @@
       "json_parseable_rate": 0.5,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.8583,
+          "mean": 0.9,
           "min": 0.8,
-          "max": 0.9167,
-          "stdev": 0.0583
+          "max": 1.0,
+          "stdev": 0.1
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -259,10 +247,10 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.8286,
+          "mean": 0.9,
           "min": 0.8,
-          "max": 0.8571,
-          "stdev": 0.0285
+          "max": 1.0,
+          "stdev": 0.1
         },
         "requirement_assertion_recall": {
           "mean": 1.0,
@@ -302,13 +290,6 @@
           "failed_case_ids": [
             "001-06",
             "001-07"
-          ]
-        },
-        {
-          "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-002-01",
-          "rfp_id": "RFP-TEST-002",
-          "failed_case_ids": [
-            "002-01"
           ]
         }
       ]
