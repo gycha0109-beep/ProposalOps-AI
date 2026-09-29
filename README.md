@@ -134,12 +134,14 @@ hard-negative를 넣기 전에는 Hit@1이 100%였기 때문에 benchmark가 지
 ProposalOps-AI/
 ├─ .github/workflows/
 │  ├─ benchmark-validation.yml
-│  └─ rfp-analyzer-live.yml
+│  ├─ rfp-analyzer-live.yml
+│  └─ proposal-qa-live.yml
 ├─ docs/
 │  ├─ architecture.md
 │  ├─ evaluation-methodology.md
 │  ├─ prompt-engineering-case-study.md
-│  └─ retrieval-baseline.md
+│  ├─ retrieval-baseline.md
+│  └─ proposal-qa-benchmark-runner.md
 ├─ data/
 │  ├─ raw/
 │  ├─ processed/
@@ -206,7 +208,10 @@ ProposalOps-AI/
 - [x] v4 prompt + dev acceptance criteria 사전 고정
 - [ ] v4 dev 유효 출력 확보 (`NOT_EVALUATED`: provider 503/429)
 - [ ] v4 candidate freeze 후 RFP-TEST-003 holdout 실행
-- [ ] Strategist / QA prompt benchmark 실행
+- [x] Proposal QA neutral input fixture / evaluator / batch runner / aggregator / holdout gate 구축
+- [x] Proposal QA dev acceptance criteria 사전 고정
+- [ ] Proposal QA dev live 비교 실행 (4 Gemini calls)
+- [ ] Strategist prompt benchmark 실행
 - [ ] Dify Knowledge 실제 Retrieval Test
 - [ ] 최종 RFP → 전략 → 목차 → 장표 초안 통합 Workflow
 
