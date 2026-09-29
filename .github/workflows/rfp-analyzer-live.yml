@@ -26,6 +26,10 @@ on:
         required: true
         default: false
         type: boolean
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/rfp-dev-trigger"
 
 permissions:
   contents: write
@@ -39,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
+      BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
+      BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '3' }}
+      BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -51,7 +59,7 @@ jobs:
       - name: Protect holdout
         shell: bash
         run: |
-          if [[ "${{ inputs.split }}" == "holdout" && "${{ inputs.confirm_holdout }}" != "true" ]]; then
+          if [[ "$BENCH_SPLIT" == "holdout" && "$BENCH_CONFIRM_HOLDOUT" != "true" ]]; then
             echo "Holdout is protected. Re-run with confirm_holdout=true only after prompt freeze."
             exit 1
           fi
@@ -67,31 +75,31 @@ jobs:
       - name: Validate benchmark plan
         run: |
           python scripts/run_rfp_benchmark.py \
-            --split "${{ inputs.split }}" \
-            --versions "${{ inputs.versions }}" \
-            --repetitions "${{ inputs.repetitions }}" \
+            --split "$BENCH_SPLIT" \
+            --versions "$BENCH_VERSIONS" \
+            --repetitions "$BENCH_REPETITIONS" \
             --plan-only
 
       - name: Run benchmark
         shell: bash
         run: |
           EXTRA_ARGS=""
-          if [[ "${{ inputs.split }}" == "holdout" ]]; then
+          if [[ "$BENCH_SPLIT" == "holdout" ]]; then
             EXTRA_ARGS="--confirm-holdout"
           fi
           python scripts/run_rfp_benchmark.py \
-            --split "${{ inputs.split }}" \
-            --versions "${{ inputs.versions }}" \
-            --repetitions "${{ inputs.repetitions }}" \
+            --split "$BENCH_SPLIT" \
+            --versions "$BENCH_VERSIONS" \
+            --repetitions "$BENCH_REPETITIONS" \
             $EXTRA_ARGS
 
       - name: Aggregate results
         run: |
           mkdir -p reports
           python scripts/aggregate_rfp_runs.py \
-            --root "runs/rfp_analyzer/benchmark-v1/${{ inputs.split }}" \
-            --json-out "reports/rfp-analyzer-${{ inputs.split }}-v1.json" \
-            --md-out "reports/rfp-analyzer-${{ inputs.split }}-v1.md"
+            --root "runs/rfp_analyzer/benchmark-v1/$BENCH_SPLIT" \
+            --json-out "reports/rfp-analyzer-$BENCH_SPLIT-v1.json" \
+            --md-out "reports/rfp-analyzer-$BENCH_SPLIT-v1.md"
           python scripts/generate_prompt_diff.py \
             --from-version v0_baseline \
             --to-version v3_final \
@@ -107,5 +115,5 @@ jobs:
             echo "No benchmark changes to commit."
             exit 0
           fi
-          git commit -m "benchmark: record RFP analyzer ${{ inputs.split }} runs"
+          git commit -m "benchmark: record RFP analyzer $BENCH_SPLIT runs"
           git push
