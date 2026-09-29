@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "issues": [
+    {
+      "error_type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "page_id": "PAGE-006",
+      "reason": "페이지의 '공식 확인 채널 및 담당자를 통해 정보를 재확인한다'는 구체적 운영 방식은 EV-R-205-01과 EV-R-205-02의 근거가 직접 지원하지 않는다. 해당 evidence는 게시 전 변경정보 확인과 변경 시 상태 갱신, 변경 가능 항목의 재확인만 지원한다.",
+      "suggested_action": "공식 확인 채널 및 담당자 지정 내용을 AI_RECOMMENDATION 또는 착수 후 협의사항으로 분류하고, 현재 evidence로 뒷받침되는 '게시 전 운영정보 재확인' 수준으로 문구를 수정한다."
+    }
+  ],
+  "summary": "대부분의 RFP 요구사항과 산출물은 페이지에 반영되어 있으나, PAGE-006에서 evidence가 직접 지원하지 않는 '공식 확인 채널 및 담당자' 주장을 해당 reference와 연결하고 있어 수정이 필요하다."
+}
