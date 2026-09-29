@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "split": "holdout",
+  "track": "retrieval",
+  "cases": [
+    {
+      "id": "RET-H01",
+      "query": "학생이 출처 근거 의도를 확인하도록 세 질문을 반복하는 교육",
+      "expected_asset_ids": [
+        "PA-EDU-009-P009"
+      ]
+    },
+    {
+      "id": "RET-H02",
+      "query": "두 콘텐츠를 비교해 출처와 근거 차이를 찾는 미디어 수업",
+      "expected_asset_ids": [
+        "PA-EDU-009-P010"
+      ]
+    },
+    {
+      "id": "RET-H03",
+      "query": "개인 판단 뒤 소그룹 토론으로 판단 기준을 수정하는 피드백",
+      "expected_asset_ids": [
+        "PA-EDU-009-P011"
+      ]
+    },
+    {
+      "id": "RET-H04",
+      "query": "인물 경험을 따라 지역과 장소를 보여주는 인터뷰 다큐 서사",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P014"
+      ]
+    },
+    {
+      "id": "RET-H05",
+      "query": "인터뷰 질문을 사실 경험 변화 의미 순서로 깊게 만드는 구조",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P015"
+      ]
+    },
+    {
+      "id": "RET-H06",
+      "query": "인터뷰 발화와 현장 장면을 B-roll로 연결하는 방식",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P016"
+      ]
+    },
+    {
+      "id": "RET-H07",
+      "query": "촬영 전 출연 범위 사용 채널 기간을 확인하는 초상권 동의",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P017"
+      ]
+    },
+    {
+      "id": "RET-H08",
+      "query": "문화시설 관심 주제에서 맞춤 프로그램과 실제 방문으로 연결",
+      "expected_asset_ids": [
+        "PA-CAMP-010-P021"
+      ]
+    },
+    {
+      "id": "RET-H09",
+      "query": "휴관 매진 일정 변경 시 게시물 상태까지 갱신하는 운영",
+      "expected_asset_ids": [
+        "PA-CAMP-010-P023"
+      ]
+    },
+    {
+      "id": "RET-H10",
+      "query": "행사 안내 체험 결과 확인 후속 정보 탐색의 방문 동선",
+      "expected_asset_ids": [
+        "PA-EVENT-004-P013"
+      ]
+    },
+    {
+      "id": "RET-H11",
+      "query": "체험시간과 동시 수용인원 기준으로 대기열을 분산하는 운영",
+      "expected_asset_ids": [
+        "PA-EVENT-004-P014"
+      ]
+    },
+    {
+      "id": "RET-H12",
+      "query": "행사에서 안전 촬영동의 개인정보 수집 범위를 체크리스트로 관리",
+      "expected_asset_ids": [
+        "PA-EVENT-004-P015"
+      ]
+    }
+  ]
+}
