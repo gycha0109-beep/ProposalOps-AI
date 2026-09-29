@@ -177,7 +177,7 @@ def main() -> None:
     parser.add_argument("--split", choices=("dev", "holdout"), default="dev")
     parser.add_argument("--versions", default="all")
     parser.add_argument("--repetitions", type=int)
-    parser.add_argument("--output-root", default="runs/rfp_analyzer/benchmark-v1")
+    parser.add_argument("--output-root")
     parser.add_argument("--plan-only", action="store_true")
     parser.add_argument("--confirm-holdout", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
@@ -228,7 +228,8 @@ def main() -> None:
         raise SystemExit(str(exc)) from exc
 
     commit = git_commit()
-    root = Path(args.output_root)
+    run_namespace = config.get("run_namespace", f'benchmark-{config["benchmark_version"]}')
+    root = Path(args.output_root or f"runs/rfp_analyzer/{run_namespace}")
     delay = float(config["parameters"].get("request_delay_seconds", 0))
 
     completed = 0
