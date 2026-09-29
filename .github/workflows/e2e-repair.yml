@@ -1,0 +1,70 @@
+name: E2E Proposal Repair
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/e2e-repair-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: e2e-proposal-repair
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Require OpenAI API key
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "Repository secret OPENAI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Run targeted repair and re-QA
+        shell: bash
+        run: |
+          set +e
+          python scripts/run_e2e_repair.py
+          EXIT_CODE=$?
+          echo "repair_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Commit repair evidence
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/e2e-demo/RFP-TEST-002
+          if git diff --cached --quiet; then
+            echo "No repair changes to commit."
+            exit 0
+          fi
+          git commit -m "demo: record targeted repair and re-QA"
+          git pull --rebase origin main
+          git push
+
+      - name: Fail if repaired package still fails QA
+        if: always()
+        shell: bash
+        run: |
+          if [[ "${repair_exit_code:-0}" != "0" ]]; then
+            echo "Repair evidence was preserved but re-QA did not pass."
+            exit "$repair_exit_code"
+          fi
