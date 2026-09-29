@@ -227,6 +227,26 @@ ProposalOps-AI/
 └─ scripts/
 ```
 
+## Dify Knowledge Phase 1
+
+Dify 연결 전 준비는 완료됐습니다.
+
+- production corpus: **51** normal Proposal Assets
+- fair benchmark corpus: **63** = 51 normal + 12 hard negatives
+- native metadata fields: **14**
+- frozen retrieval queries: **48**
+- upload/retrieval workflow plan: **CI PASS**
+
+Files:
+
+- `exports/dify/knowledge-v1/`
+- `exports/dify/benchmark-v1/`
+- `scripts/upload_dify_knowledge.py`
+- `scripts/evaluate_dify_retrieval.py`
+- `docs/dify-knowledge-phase1.md`
+
+실제 Dify 호출에는 repository secrets `DIFY_API_KEY`, `DIFY_DATASET_ID`, `DIFY_BENCHMARK_DATASET_ID`가 필요합니다.
+
 ## Remaining Work
 
 완료:
@@ -244,9 +264,15 @@ ProposalOps-AI/
 - [x] final E2E QA PASS
 - [x] GitHub Actions reproducibility / candidate-state validation
 - [x] vendor-neutral agent workflow blueprint
+- [x] Dify production Knowledge export — 51 normal Proposal Assets
+- [x] Dify fair retrieval benchmark export — 51 normal + 12 hard negatives = 63
+- [x] Dify create-by-text uploader + native metadata sync
+- [x] Dify retrieval benchmark runner — frozen 48 queries
+- [x] Dify Phase 1 CI / plan workflow 검증
 
 남음:
 
+- [ ] Dify production/benchmark dataset 실제 업로드
 - [ ] 실제 Dify Knowledge retrieval 비교
 - [ ] Dify 또는 Antigravity 실제 node wiring
 - [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
