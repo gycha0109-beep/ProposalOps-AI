@@ -10,6 +10,7 @@ from lib.openai_responses import call_openai_responses, get_openai_api_key
 
 ROOT = Path("runs/e2e-demo/RFP-TEST-002")
 PACKAGE = ROOT / "final-package.json"
+REPAIRED_PACKAGE = ROOT / "final-package-repaired.json"
 
 
 def load(path):
@@ -80,7 +81,18 @@ def call(api_key, model, instructions, payload, max_output_tokens):
 
 
 def main():
+    cycle = 1
     package = load(PACKAGE)
+    if REPAIRED_PACKAGE.exists():
+        latest = load(REPAIRED_PACKAGE)
+        if latest.get("status") == "PASS":
+            print("Latest repaired package already passed QA.")
+            return
+        package = latest
+        cycle = len(package.get("repair_history", [])) + 1
+        if cycle < 2:
+            cycle = 2
+
     issues = package.get("qa", {}).get("issues", [])
     if not issues:
         print("No QA issues; repair not required.")
@@ -135,6 +147,9 @@ Return JSON only:
 Rules:
 - Keep the same page_id.
 - Preserve evidence IDs only when the evidence directly supports the wording.
+- For REFERENCE_PATTERN, every factual or operational clause in the same block must be directly entailed by the cited evidence.
+- Never broaden a supported phrase. Example: evidence for "게시 전 확인" does not support "제작 시점과 게시 전 확인".
+- If only part of a sentence is supported, split the unsupported part into AI_RECOMMENDATION with empty evidence_ids, or remove it.
 - If a detail is not directly supported, remove it or classify it as AI_RECOMMENDATION/client confirmation.
 - The repaired visual must not present an unverified detail as an established process.
 """
@@ -223,7 +238,8 @@ If there is no real issue, return PASS with an empty issues array.
     repaired_package["visuals"] = merged_visuals
     repaired_package["qa"] = qa
     repaired_package["status"] = qa.get("status", "UNKNOWN")
-    repaired_package["repair"] = {
+    current_repair = {
+        "cycle": cycle,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "repair_output": repair,
         "validation": repair_validation,
@@ -232,15 +248,24 @@ If there is no real issue, return PASS with an empty issues array.
             "qa_recheck": qa_meta,
         },
     }
+    history = list(package.get("repair_history", []))
+    if package.get("repair") and not history:
+        previous = json.loads(json.dumps(package["repair"], ensure_ascii=False))
+        previous.setdefault("cycle", 1)
+        history.append(previous)
+    repaired_package["repair_history"] = history + [current_repair]
+    repaired_package["repair"] = current_repair
 
-    save(ROOT / "repair.json", repair)
-    save(ROOT / "slides-repaired.json", merged_slides)
-    save(ROOT / "visuals-repaired.json", merged_visuals)
-    save(ROOT / "qa-recheck.json", qa)
+    suffix = "" if cycle == 1 else f"-cycle-{cycle}"
+    save(ROOT / f"repair{suffix}.json", repair)
+    save(ROOT / f"slides-repaired{suffix}.json", merged_slides)
+    save(ROOT / f"visuals-repaired{suffix}.json", merged_visuals)
+    save(ROOT / f"qa-recheck{suffix}.json", qa)
     save(ROOT / "final-package-repaired.json", repaired_package)
 
     print(json.dumps({
         "status": repaired_package["status"],
+        "repair_cycle": cycle,
         "repaired_pages": sorted(affected),
         "qa_issue_count": len(qa.get("issues", [])),
         "qa_issues": qa.get("issues", []),
