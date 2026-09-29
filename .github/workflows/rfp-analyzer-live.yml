@@ -115,6 +115,21 @@ jobs:
             echo "No completed model runs to aggregate."
           fi
 
+      - name: Check v4 dev acceptance
+        if: env.BENCH_SPLIT == 'dev'
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_rfp_acceptance.py \
+            --report reports/rfp-analyzer-dev-v1-gemini36.json \
+            --acceptance evals/acceptance/rfp-analyzer-v4-dev.json \
+            --version v4_compact_grounded \
+            > reports/rfp-analyzer-v4-acceptance.json
+          ACCEPTANCE_EXIT=$?
+          cat reports/rfp-analyzer-v4-acceptance.json
+          echo "acceptance_exit_code=$ACCEPTANCE_EXIT" >> "$GITHUB_ENV"
+          exit 0
+
       - name: Commit raw evidence and report
         shell: bash
         run: |
@@ -128,10 +143,14 @@ jobs:
             git push
           fi
 
-      - name: Fail workflow if benchmark failed
+      - name: Fail workflow if benchmark or acceptance failed
         shell: bash
         run: |
           if [[ "${benchmark_exit_code:-0}" != "0" ]]; then
             echo "Benchmark stopped after preserving completed/failed evidence."
             exit "$benchmark_exit_code"
+          fi
+          if [[ "${acceptance_exit_code:-0}" != "0" ]]; then
+            echo "v4 did not satisfy frozen dev acceptance criteria."
+            exit "$acceptance_exit_code"
           fi
