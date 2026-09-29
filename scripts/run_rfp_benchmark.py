@@ -128,7 +128,7 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
     )
 
     raw_output = response["output_text"]
-    evaluation = evaluate_rfp(raw_output, gold)
+    evaluation = evaluate_rfp(raw_output, gold, rfp_text)
     parsed = parse_json_output(raw_output)
 
     return {
