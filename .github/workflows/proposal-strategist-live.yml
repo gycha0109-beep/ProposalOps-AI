@@ -142,6 +142,7 @@ jobs:
             echo "No Strategist benchmark changes to commit."
           else
             git commit -m "benchmark: record Proposal Strategist $BENCH_SPLIT runs"
+            git pull --rebase origin main
             git push
           fi
 
