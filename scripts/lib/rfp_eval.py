@@ -5,6 +5,15 @@ import re
 from typing import Any
 
 
+CANONICAL_TOP_LEVEL_KEYS = {
+    "project",
+    "scope",
+    "deliverables",
+    "requirements",
+    "evaluation",
+    "constraints",
+}
+
 UNKNOWN_TERMS = (
     "unknown",
     "미기재",
@@ -261,6 +270,10 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
 def evaluate_rfp(raw_text: str, gold: dict, source_text: str | None = None) -> dict:
     parsed = parse_json_output(raw_text)
     grounding = _grounding_metrics(parsed, source_text)
+    canonical_schema_valid = (
+        parsed is not None
+        and set(parsed.keys()) == CANONICAL_TOP_LEVEL_KEYS
+    )
 
     details = []
     category_results: dict[str, list[bool]] = {
@@ -314,7 +327,7 @@ def evaluate_rfp(raw_text: str, gold: dict, source_text: str | None = None) -> d
 
     return {
         "track": "rfp_analyzer",
-        "evaluator_version": "1.4",
+        "evaluator_version": "1.5",
         "gold_version": gold.get("version"),
         "split": gold.get("split"),
         "json_parseable": parsed is not None,
@@ -327,8 +340,14 @@ def evaluate_rfp(raw_text: str, gold: dict, source_text: str | None = None) -> d
             "unsupported_addition_count": unsupported_hits,
             "source_quote_coverage": grounding["source_quote_coverage"],
             "source_quote_validity": grounding["source_quote_validity"],
+            "canonical_schema_valid": 1.0 if canonical_schema_valid else 0.0,
         },
         "grounding": grounding,
+        "schema_contract": {
+            "canonical_top_level_keys": sorted(CANONICAL_TOP_LEVEL_KEYS),
+            "actual_top_level_keys": sorted(parsed.keys()) if parsed is not None else [],
+            "valid": canonical_schema_valid,
+        },
         "passed": passed,
         "total": total,
         "details": details,
