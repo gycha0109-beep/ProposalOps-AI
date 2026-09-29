@@ -1,0 +1,91 @@
+{
+  "version": "pilot-0.1",
+  "track": "rfp_analyzer",
+  "source": "data/raw/rfps/RFP-TEST-001.md",
+  "cases": [
+    {
+      "id": "RFP-001",
+      "metric": "exact_or_semantic",
+      "path": "project.duration",
+      "expected": "계약일로부터 6개월",
+      "critical": true
+    },
+    {
+      "id": "RFP-002",
+      "metric": "contains",
+      "path": "project.target_audience",
+      "expected_terms": [
+        "만 19~34세",
+        "청년"
+      ],
+      "critical": true
+    },
+    {
+      "id": "RFP-003",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "숏폼",
+        "quantity": "20편"
+      },
+      "critical": true
+    },
+    {
+      "id": "RFP-004",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "카드",
+        "quantity": "30건"
+      },
+      "critical": true
+    },
+    {
+      "id": "RFP-005",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "캠페인",
+        "quantity": "2회"
+      },
+      "critical": true
+    },
+    {
+      "id": "RFP-006",
+      "metric": "evaluation_sum",
+      "expected": 100,
+      "critical": true
+    },
+    {
+      "id": "RFP-007",
+      "metric": "unknown",
+      "path": "project.budget",
+      "expected": "unknown",
+      "critical": true
+    },
+    {
+      "id": "RFP-008",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "저작권",
+        "초상권",
+        "개인정보",
+        "정책 정보 오류"
+      ],
+      "critical": true
+    },
+    {
+      "id": "RFP-009",
+      "metric": "requirement_present",
+      "expected_term": "6개월간의 제작·검수·게시·보고 운영 체계",
+      "critical": true
+    },
+    {
+      "id": "RFP-010",
+      "metric": "unsupported_addition",
+      "forbidden_terms": [
+        "기존 수행 실적",
+        "참여율 향상",
+        "계약금액"
+      ],
+      "critical": true
+    }
+  ]
+}
