@@ -1,0 +1,175 @@
+{
+  "version": "1.0",
+  "split": "dev",
+  "track": "retrieval",
+  "cases": [
+    {
+      "id": "RET-D01",
+      "query": "청년층을 숏폼에서 퀴즈와 실제 참여로 연결하는 단계형 전략",
+      "expected_asset_ids": [
+        "PA-EDU-003-P017"
+      ]
+    },
+    {
+      "id": "RET-D02",
+      "query": "참여 결과를 후속 콘텐츠로 재활용해 다시 도달을 만드는 구조",
+      "expected_asset_ids": [
+        "PA-EDU-003-P018"
+      ]
+    },
+    {
+      "id": "RET-D03",
+      "query": "정책 내용을 상황 질문에서 혜택과 다음 행동으로 연결하는 메시지",
+      "expected_asset_ids": [
+        "PA-PR-002-P012"
+      ]
+    },
+    {
+      "id": "RET-D04",
+      "query": "SNS 발견 이후 반응과 공유로 확산시키는 구조",
+      "expected_asset_ids": [
+        "PA-PR-002-P013"
+      ]
+    },
+    {
+      "id": "RET-D05",
+      "query": "30초 영상에서 훅 핵심 정보 CTA를 나누는 포맷",
+      "expected_asset_ids": [
+        "PA-VIDEO-004-P021"
+      ]
+    },
+    {
+      "id": "RET-D06",
+      "query": "게시 전 정책 수치 기간 자격조건을 다시 확인하는 검수",
+      "expected_asset_ids": [
+        "PA-VIDEO-004-P022"
+      ]
+    },
+    {
+      "id": "RET-D07",
+      "query": "중장년 디지털 교육에서 기기 조작과 용어 이해 장벽 분석",
+      "expected_asset_ids": [
+        "PA-EDU-006-P010"
+      ]
+    },
+    {
+      "id": "RET-D08",
+      "query": "설명 시범 따라하기 확인 순서의 마이크로러닝",
+      "expected_asset_ids": [
+        "PA-EDU-006-P011"
+      ]
+    },
+    {
+      "id": "RET-D09",
+      "query": "앱 설치 본인인증 같은 생활 과업 중심 교육 콘텐츠",
+      "expected_asset_ids": [
+        "PA-EDU-006-P012"
+      ]
+    },
+    {
+      "id": "RET-D10",
+      "query": "강사 설명과 1대1 보조 지원을 분리하는 현장 운영",
+      "expected_asset_ids": [
+        "PA-EDU-006-P013"
+      ]
+    },
+    {
+      "id": "RET-D11",
+      "query": "출석이 아니라 과업 완료와 자립 수행을 보는 교육 KPI",
+      "expected_asset_ids": [
+        "PA-EDU-006-P014"
+      ]
+    },
+    {
+      "id": "RET-D12",
+      "query": "여행객을 맛집 휴식 체험 사진 촬영 동기로 나누는 타깃 분석",
+      "expected_asset_ids": [
+        "PA-PR-007-P015"
+      ]
+    },
+    {
+      "id": "RET-D13",
+      "query": "관광 콘텐츠를 발견 저장 방문으로 이어지게 하는 전략",
+      "expected_asset_ids": [
+        "PA-PR-007-P016"
+      ]
+    },
+    {
+      "id": "RET-D14",
+      "query": "관광지를 단일 장소가 아니라 반나절 하루 코스로 묶는 콘텐츠",
+      "expected_asset_ids": [
+        "PA-PR-007-P017"
+      ]
+    },
+    {
+      "id": "RET-D15",
+      "query": "공식 계정과 지역 크리에이터의 역할을 분리하는 협업",
+      "expected_asset_ids": [
+        "PA-PR-007-P018"
+      ]
+    },
+    {
+      "id": "RET-D16",
+      "query": "관광 홍보에서 저장 지도 클릭 상세 탐색을 측정하는 KPI",
+      "expected_asset_ids": [
+        "PA-PR-007-P019"
+      ]
+    },
+    {
+      "id": "RET-D17",
+      "query": "소상공인 지원정책을 내가 대상인지 질문에서 시작하는 메시지",
+      "expected_asset_ids": [
+        "PA-PR-011-P010"
+      ]
+    },
+    {
+      "id": "RET-D18",
+      "query": "지원정책 신청 절차를 준비 확인 제출 결과로 단계화한 카드",
+      "expected_asset_ids": [
+        "PA-PR-011-P011"
+      ]
+    },
+    {
+      "id": "RET-D19",
+      "query": "지원금액 접수기간 자격조건 변경을 게시 전 확인하는 운영",
+      "expected_asset_ids": [
+        "PA-PR-011-P012"
+      ]
+    },
+    {
+      "id": "RET-D20",
+      "query": "공공서비스 안내영상을 문제 화면 행동 순서로 구성",
+      "expected_asset_ids": [
+        "PA-VIDEO-008-P007"
+      ]
+    },
+    {
+      "id": "RET-D21",
+      "query": "60초 튜토리얼에서 목적 절차 완료 화면을 보여주는 포맷",
+      "expected_asset_ids": [
+        "PA-VIDEO-008-P008"
+      ]
+    },
+    {
+      "id": "RET-D22",
+      "query": "서비스 UI가 바뀔 때 촬영본과 자막 명칭을 재검수하는 프로세스",
+      "expected_asset_ids": [
+        "PA-VIDEO-008-P009"
+      ]
+    },
+    {
+      "id": "RET-D23",
+      "query": "환경 실천을 하루 한 행동으로 쪼개 반복 참여시키는 챌린지",
+      "expected_asset_ids": [
+        "PA-CAMP-005-P008"
+      ]
+    },
+    {
+      "id": "RET-D24",
+      "query": "환경 캠페인에서 최초 참여 재참여 연속 참여를 측정",
+      "expected_asset_ids": [
+        "PA-CAMP-005-P011"
+      ]
+    }
+  ]
+}
