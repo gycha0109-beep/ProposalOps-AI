@@ -1,14 +1,15 @@
 {
   "benchmark_version": "1.0",
   "track": "rfp_analyzer",
-  "provider": "openai",
-  "model": "gpt-6-sol",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
   "parameters": {
-    "reasoning_effort": "medium",
-    "max_output_tokens": 6000
+    "thinking_level": "medium",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 4
   },
   "repetitions": {
-    "dev": 3,
+    "dev": 2,
     "holdout": 1
   },
   "versions": {
