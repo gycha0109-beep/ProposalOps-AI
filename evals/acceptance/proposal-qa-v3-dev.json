@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "track": "proposal_qa",
+  "candidate": "v3_final",
+  "split": "dev",
+  "frozen_before_candidate_run": true,
+  "criteria": {
+    "run_count": {
+      "min": 1
+    },
+    "json_parseable_rate": {
+      "min": 1
+    },
+    "result_coverage": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "critical_error_detection_recall": {
+      "mean_min": 0.9,
+      "min_min": 0.9
+    },
+    "warning_detection_recall": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "false_positive_rate": {
+      "mean_max": 0,
+      "max_max": 0
+    },
+    "error_type_accuracy": {
+      "mean_min": 0.8,
+      "min_min": 0.8
+    },
+    "severity_accuracy": {
+      "mean_min": 0.9,
+      "min_min": 0.9
+    }
+  },
+  "blocking_rules": [
+    "Missing any dev result fails acceptance.",
+    "Any clean-case false positive fails acceptance.",
+    "Critical error recall below 90% fails acceptance."
+  ],
+  "decision_rule": "If v3 fails, do not open holdout. Diagnose dev failures and create a new candidate without modifying holdout."
+}
