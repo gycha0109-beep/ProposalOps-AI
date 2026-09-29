@@ -1,13 +1,7 @@
-RFP Analyzer GPT-5.6 Luna controlled dev benchmark
-
-benchmark: v1
+RFP GPT-5.6 Luna rerun after push-race fix
 provider: openai
 model: gpt-5.6-luna
-reasoning_effort: low
-run_namespace: benchmark-v1-gpt56luna
-split: dev
 versions: all
-repetitions: 1
 expected_calls: 10
-holdout: locked
-triggered: 2026-09-29T15:36+09:00
+run_namespace: benchmark-v1-gpt56luna
+triggered: 2026-09-29T15:42+09:00
