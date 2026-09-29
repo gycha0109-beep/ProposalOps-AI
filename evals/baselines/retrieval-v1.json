@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "type": "retrieval_baseline",
+  "retriever": "local_char_ngram_tfidf",
+  "github_actions_run_id": 36506671960,
+  "corpus": {
+    "assets": 63,
+    "hard_negatives": 12
+  },
+  "dev": {
+    "cases": 32,
+    "hit_at_1": 0.9062,
+    "hit_at_3": 1,
+    "hit_at_5": 1,
+    "mrr": 0.9531
+  },
+  "holdout": {
+    "cases": 16,
+    "hit_at_1": 0.9375,
+    "hit_at_3": 1,
+    "hit_at_5": 1,
+    "mrr": 0.9688
+  },
+  "top1_misses": [
+    {
+      "case_id": "RET-D06",
+      "rank": 2,
+      "wrong_top1": "PA-DIST-P011",
+      "expected": "PA-VIDEO-004-P022"
+    },
+    {
+      "case_id": "RET-D25",
+      "rank": 2,
+      "wrong_top1": "PA-EDU-003-P017",
+      "expected": "PA-EDU-006-P011"
+    },
+    {
+      "case_id": "RET-D30",
+      "rank": 2,
+      "wrong_top1": "PA-DIST-P011",
+      "expected": "PA-VIDEO-012-P017"
+    },
+    {
+      "case_id": "RET-H15",
+      "rank": 2,
+      "wrong_top1": "PA-EVENT-004-P012",
+      "expected": "PA-EVENT-004-P013"
+    }
+  ],
+  "limitations": [
+    "Synthetic benchmark",
+    "Lexical baseline only",
+    "Not Dify Knowledge retrieval",
+    "Not a frontier embedding/reranker result"
+  ]
+}
