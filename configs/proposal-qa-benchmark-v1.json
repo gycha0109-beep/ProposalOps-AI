@@ -19,7 +19,8 @@
     "v0_baseline": "prompts/proposal_qa/v0_baseline.md",
     "v1_rules": "prompts/proposal_qa/v1_rules.md",
     "v2_evidence": "prompts/proposal_qa/v2_evidence.md",
-    "v3_final": "prompts/proposal_qa/v3_final.md"
+    "v3_final": "prompts/proposal_qa/v3_final.md",
+    "v4_compact_taxonomy": "prompts/proposal_qa/v4_compact_taxonomy.md"
   },
   "splits": {
     "dev": "evals/frozen/v1/dev/qa.json",
