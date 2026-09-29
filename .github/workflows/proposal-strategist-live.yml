@@ -37,11 +37,11 @@ jobs:
   benchmark:
     runs-on: ubuntu-latest
     env:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
       BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
       BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
-      BENCH_RUN_NAMESPACE: benchmark-v1-gemini36
+      BENCH_RUN_NAMESPACE: benchmark-v1-gpt56luna
     steps:
       - uses: actions/checkout@v7
         with:
@@ -64,11 +64,11 @@ jobs:
               --require-holdout
           fi
 
-      - name: Require Gemini API key
+      - name: Require OpenAI API key
         shell: bash
         run: |
-          if [[ -z "$GEMINI_API_KEY" ]]; then
-            echo "Repository secret GEMINI_API_KEY is not configured."
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "Repository secret OPENAI_API_KEY is not configured."
             exit 1
           fi
 
@@ -100,8 +100,8 @@ jobs:
             mkdir -p reports
             python scripts/aggregate_strategy_runs.py \
               --root "runs/proposal_strategist/$BENCH_RUN_NAMESPACE/$BENCH_SPLIT" \
-              --json-out "reports/proposal-strategist-$BENCH_SPLIT-v1-gemini36.json" \
-              --md-out "reports/proposal-strategist-$BENCH_SPLIT-v1-gemini36.md"
+              --json-out "reports/proposal-strategist-$BENCH_SPLIT-v1-gpt56luna.json" \
+              --md-out "reports/proposal-strategist-$BENCH_SPLIT-v1-gpt56luna.md"
           else
             echo "No completed Strategist runs to aggregate."
           fi
@@ -112,7 +112,7 @@ jobs:
         run: |
           set +e
           python scripts/check_benchmark_acceptance.py \
-            --report reports/proposal-strategist-dev-v1-gemini36.json \
+            --report reports/proposal-strategist-dev-v1-gpt56luna.json \
             --acceptance evals/acceptance/proposal-strategist-v3-dev.json \
             --version v3_final \
             > reports/proposal-strategist-v3-acceptance.json
