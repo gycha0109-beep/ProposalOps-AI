@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "track": "proposal_qa",
-  "candidate": "v3_final",
+  "candidate": "v4_compact_taxonomy",
   "split": "dev",
   "frozen_before_candidate_run": true,
   "criteria": {
@@ -41,5 +41,5 @@
     "Any clean-case false positive fails acceptance.",
     "Critical error recall below 90% fails acceptance."
   ],
-  "decision_rule": "If v3 fails, do not open holdout. Diagnose dev failures and create a new candidate without modifying holdout."
+  "decision_rule": "If v4 fails, diagnose dev failures and create a new candidate without modifying holdout."
 }
