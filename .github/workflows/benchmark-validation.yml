@@ -79,6 +79,9 @@ jobs:
           fi
           echo "Candidate freeze correctly blocked."
 
+      - name: Self-test Proposal QA evaluator and neutral inputs
+        run: python scripts/selftest_qa_eval.py
+
       - name: Validate Proposal QA dev batch plan
         run: |
           python scripts/run_qa_benchmark.py \
