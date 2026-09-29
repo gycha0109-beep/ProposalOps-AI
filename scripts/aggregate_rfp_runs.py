@@ -16,6 +16,7 @@ METRICS = (
     "unsupported_addition_count",
     "source_quote_coverage",
     "source_quote_validity",
+    "canonical_schema_valid",
 )
 
 
@@ -117,8 +118,8 @@ def render_markdown(result: dict) -> str:
         "",
         "## Version comparison",
         "",
-        "| Version | Runs | JSON | Truncated | Assertion | Deliverable | Numeric | Requirement | Quote coverage | Quote validity | Unsupported |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| Version | Runs | JSON | Schema | Truncated | Assertion | Deliverable | Numeric | Requirement | Quote coverage | Quote validity | Unsupported |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
 
     def fmt_metric(data):
@@ -135,6 +136,7 @@ def render_markdown(result: dict) -> str:
                 version,
                 str(data["run_count"]),
                 f'{data["json_parseable_rate"]:.2%}',
+                fmt_metric(data["metrics"]["canonical_schema_valid"]),
                 f'{data["output_truncated_rate"]:.2%}',
                 fmt_metric(data["metrics"]["assertion_pass_rate"]),
                 fmt_metric(data["metrics"]["deliverable_recall"]),
