@@ -219,7 +219,11 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
                 return ok, detail
 
         if "budget" in case["path"]:
-            has_budget_context = (\n                "예산" in raw_text\n                or "사업비" in raw_text\n                or "budget" in raw_blob\n            )
+            has_budget_context = (
+                "예산" in raw_text
+                or "사업비" in raw_text
+                or "budget" in raw_blob
+            )
             has_unknown_marker = any(term in raw_blob for term in UNKNOWN_TERMS)
             ok = has_budget_context and has_unknown_marker
         else:
@@ -299,12 +303,22 @@ def evaluate_rfp(raw_text: str, gold: dict, source_text: str | None = None) -> d
             return None
         return round(sum(values) / len(values), 4)
 
+    output_truncated = (
+        parsed is None
+        and (
+            raw_text.lstrip().startswith("```json")
+            or raw_text.count("{") > raw_text.count("}")
+            or raw_text.count("[") > raw_text.count("]")
+        )
+    )
+
     return {
         "track": "rfp_analyzer",
         "evaluator_version": "1.4",
         "gold_version": gold.get("version"),
         "split": gold.get("split"),
         "json_parseable": parsed is not None,
+        "output_truncated": output_truncated,
         "metrics": {
             "assertion_pass_rate": round(passed / total, 4) if total else 0.0,
             "deliverable_recall": rate("deliverable"),
