@@ -1,0 +1,121 @@
+name: Dify Knowledge Phase 1
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: "Operation"
+        required: true
+        default: "plan"
+        type: choice
+        options:
+          - plan
+          - upload-production
+          - upload-benchmark
+          - retrieve-benchmark
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/dify-knowledge-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dify-knowledge-phase1
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      DIFY_API_KEY: ${{ secrets.DIFY_API_KEY }}
+      DIFY_DATASET_ID: ${{ secrets.DIFY_DATASET_ID }}
+      DIFY_BENCHMARK_DATASET_ID: ${{ secrets.DIFY_BENCHMARK_DATASET_ID }}
+      DIFY_API_BASE: ${{ secrets.DIFY_API_BASE }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Resolve operation
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            OP="${{ inputs.operation }}"
+          else
+            OP="$(awk -F': *' '/^operation:/ {print $2; exit}' .benchmark/dify-knowledge-trigger)"
+          fi
+          if [[ -z "$OP" ]]; then OP="plan"; fi
+          echo "DIFY_OPERATION=$OP" >> "$GITHUB_ENV"
+          echo "operation=$OP"
+
+      - name: Validate exports
+        run: |
+          python scripts/validate_dify_export.py             --root exports/dify/knowledge-v1             --expected-count 51
+          python scripts/validate_dify_export.py             --root exports/dify/benchmark-v1             --expected-count 63             --allow-distractors
+
+      - name: Plan only
+        if: env.DIFY_OPERATION == 'plan'
+        run: |
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --plan-only
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --plan-only
+          python scripts/evaluate_dify_retrieval.py --plan-only
+
+      - name: Require Dify API key
+        if: env.DIFY_OPERATION != 'plan'
+        shell: bash
+        run: |
+          if [[ -z "$DIFY_API_KEY" ]]; then
+            echo "Repository secret DIFY_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Upload production knowledge
+        if: env.DIFY_OPERATION == 'upload-production'
+        shell: bash
+        run: |
+          if [[ -z "$DIFY_DATASET_ID" ]]; then
+            echo "Repository secret DIFY_DATASET_ID is not configured."
+            exit 1
+          fi
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --metadata-schema exports/dify/knowledge-v1/metadata-schema.json             --dataset-id "$DIFY_DATASET_ID"             --state-out runs/dify/knowledge-v1/upload-state.json
+
+      - name: Upload benchmark knowledge
+        if: env.DIFY_OPERATION == 'upload-benchmark'
+        shell: bash
+        run: |
+          if [[ -z "$DIFY_BENCHMARK_DATASET_ID" ]]; then
+            echo "Repository secret DIFY_BENCHMARK_DATASET_ID is not configured."
+            exit 1
+          fi
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --metadata-schema exports/dify/benchmark-v1/metadata-schema.json             --dataset-id "$DIFY_BENCHMARK_DATASET_ID"             --state-out runs/dify/benchmark-v1/upload-state.json
+
+      - name: Run Dify retrieval benchmark
+        if: env.DIFY_OPERATION == 'retrieve-benchmark'
+        shell: bash
+        run: |
+          if [[ -z "$DIFY_BENCHMARK_DATASET_ID" ]]; then
+            echo "Repository secret DIFY_BENCHMARK_DATASET_ID is not configured."
+            exit 1
+          fi
+          python scripts/evaluate_dify_retrieval.py             --dataset-id "$DIFY_BENCHMARK_DATASET_ID"             --out reports/dify-retrieval-v1.json
+
+      - name: Commit live evidence
+        if: env.DIFY_OPERATION != 'plan'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/dify reports/dify-retrieval-v1.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No Dify evidence changes to commit."
+            exit 0
+          fi
+          git commit -m "dify: record $DIFY_OPERATION evidence"
+          git pull --rebase origin main
+          git push
