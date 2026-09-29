@@ -61,6 +61,24 @@ jobs:
           fi
           echo "Holdout gate correctly locked."
 
+      - name: Verify candidate cannot freeze without acceptance
+        shell: bash
+        run: |
+          cp evals/frozen/v1/rfp-analyzer-candidate.json /tmp/rfp-candidate.json
+          set +e
+          python scripts/freeze_rfp_candidate.py \
+            --acceptance reports/rfp-analyzer-v4-acceptance.json \
+            --state /tmp/rfp-candidate.json \
+            --prompt prompts/rfp_analyzer/v4_compact_grounded.md \
+            --candidate v4_compact_grounded
+          EXIT_CODE=$?
+          set -e
+          if [[ "$EXIT_CODE" == "0" ]]; then
+            echo "Candidate freeze unexpectedly succeeded."
+            exit 1
+          fi
+          echo "Candidate freeze correctly blocked."
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
