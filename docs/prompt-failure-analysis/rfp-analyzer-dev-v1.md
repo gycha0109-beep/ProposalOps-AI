@@ -66,3 +66,19 @@ Design implication: submission rules, open questions, coverage summary, interpre
 - `runs/rfp_analyzer/benchmark-v1-gemini36/dev/v2_grounded/`
 - `runs/rfp_analyzer/benchmark-v1-gemini36/dev/v3_final/`
 - `reports/rfp-analyzer-dev-v1-gemini36.json`
+
+## v4 execution status
+
+`v4_compact_grounded`의 prompt와 acceptance criteria는 dev 실행 전에 고정했다.
+
+그러나 유효한 v4 모델 출력은 확보하지 못했다.
+
+- first attempt: RFP-001 / RFP-002 모두 Gemini 503
+- bounded retry attempt: provider quota exhausted (429) / availability error
+- final provider RetryInfo window attempt: RFP-001 503 after bounded retry, RFP-002 429
+
+따라서 v4 status는 `NOT_EVALUATED`다. 품질 실패로 간주하지 않으며 holdout은 열지 않았다.
+
+Evidence:
+- `reports/rfp-analyzer-v4-acceptance.json`
+- `runs/rfp_analyzer/benchmark-v1-gemini36/dev/_failures/`
