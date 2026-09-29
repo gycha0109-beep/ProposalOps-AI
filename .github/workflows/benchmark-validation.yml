@@ -79,6 +79,37 @@ jobs:
           fi
           echo "Candidate freeze correctly blocked."
 
+      - name: Validate Proposal QA dev batch plan
+        run: |
+          python scripts/run_qa_benchmark.py \
+            --split dev \
+            --versions all \
+            --plan-only > /tmp/qa-dev-plan.json
+          cat /tmp/qa-dev-plan.json
+
+      - name: Validate Proposal QA holdout batch plan
+        run: |
+          python scripts/run_qa_benchmark.py \
+            --split holdout \
+            --versions all \
+            --plan-only > /tmp/qa-holdout-plan.json
+          cat /tmp/qa-holdout-plan.json
+
+      - name: Verify Proposal QA holdout gate is locked
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_holdout_gate.py \
+            --state evals/frozen/v1/proposal-qa-candidate.json \
+            --require-holdout
+          EXIT_CODE=$?
+          set -e
+          if [[ "$EXIT_CODE" == "0" ]]; then
+            echo "Proposal QA holdout gate unexpectedly open."
+            exit 1
+          fi
+          echo "Proposal QA holdout gate correctly locked."
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
