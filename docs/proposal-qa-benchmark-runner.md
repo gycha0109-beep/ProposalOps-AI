@@ -23,7 +23,7 @@ dev에서는 case마다 모델을 따로 호출하지 않습니다.
 ×
 4 prompt versions
 =
-4 Gemini calls
+4 GPT-5.6 Luna calls
 ```
 
 각 prompt version은 dev 14건을 한 batch로 받아 14개 결과를 JSON 배열로 반환합니다.
@@ -41,7 +41,7 @@ dev에서는 case마다 모델을 따로 호출하지 않습니다.
 
 ## Acceptance candidate
 
-현재 사전 고정 candidate는 `v3_final`입니다.
+최종 frozen candidate는 `v4_compact_taxonomy`입니다.
 
 Dev acceptance:
 - JSON 100%
@@ -60,11 +60,11 @@ Dev acceptance:
 
 ## Live execution status
 
-Runner/workflow는 준비됐지만 아직 Gemini live QA run은 수행하지 않았습니다.
+Runner/workflow는 준비됐지만 아직 GPT-5.6 Luna live QA run은 수행하지 않았습니다.
 
 - workflow: `.github/workflows/proposal-qa-live.yml`
 - runner: `scripts/run_qa_benchmark.py`
 - aggregator: `scripts/aggregate_qa_runs.py`
 - evaluator: `scripts/lib/qa_eval.py`
 
-현재 free-tier quota를 RFP Analyzer 실험에서 소진했기 때문에 QA live 호출은 보류합니다.
+Dev 및 holdout live benchmark가 완료됐습니다.
