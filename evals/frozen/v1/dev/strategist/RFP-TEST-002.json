@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "split": "dev",
+  "track": "proposal_strategist",
+  "input_rfp": "RFP-TEST-002",
+  "required_requirement_ids": [
+    "R-201",
+    "R-202",
+    "R-203",
+    "R-204",
+    "R-205",
+    "R-206"
+  ],
+  "evidence_expectations": [
+    {
+      "requirement_id": "R-201",
+      "allowed_asset_ids": [
+        "PA-PR-007-P015",
+        "PA-CAMP-010-P020"
+      ]
+    },
+    {
+      "requirement_id": "R-202",
+      "allowed_asset_ids": [
+        "PA-PR-007-P016",
+        "PA-PR-007-P017",
+        "PA-CAMP-010-P021",
+        "PA-CAMP-010-P022"
+      ]
+    },
+    {
+      "requirement_id": "R-203",
+      "allowed_asset_ids": [
+        "PA-VIDEO-004-P021",
+        "PA-VIDEO-008-P008"
+      ]
+    },
+    {
+      "requirement_id": "R-204",
+      "allowed_asset_ids": [
+        "PA-PR-007-P018"
+      ]
+    },
+    {
+      "requirement_id": "R-205",
+      "allowed_asset_ids": [
+        "PA-CAMP-010-P023",
+        "PA-PR-011-P012"
+      ]
+    },
+    {
+      "requirement_id": "R-206",
+      "allowed_asset_ids": [
+        "PA-PR-007-P019",
+        "PA-CAMP-010-P024"
+      ]
+    }
+  ],
+  "forbidden_claims": [
+    "방문객 100만 달성",
+    "관광객 30% 증가",
+    "기존 캠페인 ROI",
+    "수상 실적"
+  ],
+  "required_information_classes": [
+    "AI_RECOMMENDATION"
+  ],
+  "scoring": [
+    "requirement_coverage",
+    "evidence_citation_coverage",
+    "evidence_validity",
+    "unsupported_company_claims",
+    "unsupported_quantitative_claims"
+  ]
+}
