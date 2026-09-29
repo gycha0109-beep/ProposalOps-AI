@@ -1,7 +1,7 @@
-RFP GPT-5.6 Luna rerun after push-race fix
+latest RFP GPT-5.6 Luna dev run
 provider: openai
 model: gpt-5.6-luna
 versions: all
 expected_calls: 10
 run_namespace: benchmark-v1-gpt56luna
-triggered: 2026-09-29T15:42+09:00
+triggered: 2026-09-29T15:52+09:00
