@@ -108,7 +108,7 @@ jobs:
             echo "No completed QA model runs to aggregate."
           fi
 
-      - name: Check v3 dev acceptance
+      - name: Check v4 dev acceptance
         if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0'
         shell: bash
         run: |
@@ -116,23 +116,23 @@ jobs:
           python scripts/check_benchmark_acceptance.py \
             --report reports/proposal-qa-dev-v1-gpt56luna.json \
             --acceptance evals/acceptance/proposal-qa-v3-dev.json \
-            --version v3_final \
-            > reports/proposal-qa-v3-acceptance.json
+            --version v4_compact_taxonomy \
+            > reports/proposal-qa-v4-acceptance.json
           ACCEPTANCE_EXIT=$?
-          cat reports/proposal-qa-v3-acceptance.json
+          cat reports/proposal-qa-v4-acceptance.json
           echo "acceptance_exit_code=$ACCEPTANCE_EXIT" >> "$GITHUB_ENV"
           exit 0
 
-      - name: Freeze accepted QA candidate
+      - name: Freeze accepted QA v4 candidate
         if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0' && env.acceptance_exit_code == '0'
         run: |
           python scripts/freeze_benchmark_candidate.py \
             --track proposal_qa \
             --benchmark-version 1.0 \
-            --acceptance reports/proposal-qa-v3-acceptance.json \
+            --acceptance reports/proposal-qa-v4-acceptance.json \
             --state evals/frozen/v1/proposal-qa-candidate.json \
-            --prompt prompts/proposal_qa/v3_final.md \
-            --candidate v3_final
+            --prompt prompts/proposal_qa/v4_compact_taxonomy.md \
+            --candidate v4_compact_taxonomy
 
       - name: Commit raw evidence and reports
         shell: bash
@@ -144,6 +144,7 @@ jobs:
             echo "No QA benchmark changes to commit."
           else
             git commit -m "benchmark: record Proposal QA $BENCH_SPLIT runs"
+            git pull --rebase origin main
             git push
           fi
 
