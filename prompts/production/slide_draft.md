@@ -1,6 +1,13 @@
 # Production Draft — Slide Draft Generator
 
-Status: **INTEGRATION DRAFT**
+Status: **DEMO VALIDATED — NOT FROZEN**
+
+
+## Validation status
+
+RFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.
+
+이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.
 
 입력:
 1. 승인된 Pagination page 1개
