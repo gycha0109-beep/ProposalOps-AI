@@ -1,0 +1,160 @@
+name: Proposal QA Live Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      split:
+        description: "Benchmark split"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - holdout
+      versions:
+        description: "all or comma-separated prompt versions"
+        required: true
+        default: "all"
+        type: string
+      confirm_holdout:
+        description: "Required only when split=holdout"
+        required: true
+        default: false
+        type: boolean
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/proposal-qa-dev-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: proposal-qa-live-benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
+      BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
+      BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
+      BENCH_RUN_NAMESPACE: benchmark-v1-gemini36
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Protect holdout
+        shell: bash
+        run: |
+          if [[ "$BENCH_SPLIT" == "holdout" ]]; then
+            if [[ "$BENCH_CONFIRM_HOLDOUT" != "true" ]]; then
+              echo "Holdout is protected. confirm_holdout=true is required."
+              exit 1
+            fi
+            python scripts/check_holdout_gate.py \
+              --state evals/frozen/v1/proposal-qa-candidate.json \
+              --require-holdout
+          fi
+
+      - name: Require Gemini API key
+        shell: bash
+        run: |
+          if [[ -z "$GEMINI_API_KEY" ]]; then
+            echo "Repository secret GEMINI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Validate benchmark plan
+        run: |
+          python scripts/run_qa_benchmark.py \
+            --split "$BENCH_SPLIT" \
+            --versions "$BENCH_VERSIONS" \
+            --plan-only
+
+      - name: Run benchmark
+        shell: bash
+        run: |
+          EXTRA_ARGS=""
+          if [[ "$BENCH_SPLIT" == "holdout" ]]; then
+            EXTRA_ARGS="--confirm-holdout"
+          fi
+          set +e
+          python scripts/run_qa_benchmark.py \
+            --split "$BENCH_SPLIT" \
+            --versions "$BENCH_VERSIONS" \
+            $EXTRA_ARGS
+          EXIT_CODE=$?
+          echo "benchmark_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Aggregate available results
+        shell: bash
+        run: |
+          if find "runs/proposal_qa/$BENCH_RUN_NAMESPACE/$BENCH_SPLIT" -name "run-*.json" -print -quit 2>/dev/null | grep -q .; then
+            mkdir -p reports
+            python scripts/aggregate_qa_runs.py \
+              --root "runs/proposal_qa/$BENCH_RUN_NAMESPACE/$BENCH_SPLIT" \
+              --json-out "reports/proposal-qa-$BENCH_SPLIT-v1-gemini36.json" \
+              --md-out "reports/proposal-qa-$BENCH_SPLIT-v1-gemini36.md"
+          else
+            echo "No completed QA model runs to aggregate."
+          fi
+
+      - name: Check v3 dev acceptance
+        if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0'
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_benchmark_acceptance.py \
+            --report reports/proposal-qa-dev-v1-gemini36.json \
+            --acceptance evals/acceptance/proposal-qa-v3-dev.json \
+            --version v3_final \
+            > reports/proposal-qa-v3-acceptance.json
+          ACCEPTANCE_EXIT=$?
+          cat reports/proposal-qa-v3-acceptance.json
+          echo "acceptance_exit_code=$ACCEPTANCE_EXIT" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Freeze accepted QA candidate
+        if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0' && env.acceptance_exit_code == '0'
+        run: |
+          python scripts/freeze_benchmark_candidate.py \
+            --track proposal_qa \
+            --benchmark-version 1.0 \
+            --acceptance reports/proposal-qa-v3-acceptance.json \
+            --state evals/frozen/v1/proposal-qa-candidate.json \
+            --prompt prompts/proposal_qa/v3_final.md \
+            --candidate v3_final
+
+      - name: Commit raw evidence and reports
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "runs/proposal_qa/$BENCH_RUN_NAMESPACE" reports evals/frozen/v1/proposal-qa-candidate.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No QA benchmark changes to commit."
+          else
+            git commit -m "benchmark: record Proposal QA $BENCH_SPLIT runs"
+            git push
+          fi
+
+      - name: Fail workflow if benchmark or acceptance failed
+        shell: bash
+        run: |
+          if [[ "${benchmark_exit_code:-0}" != "0" ]]; then
+            echo "QA benchmark incomplete; evidence was preserved."
+            exit "$benchmark_exit_code"
+          fi
+          if [[ "${acceptance_exit_code:-0}" != "0" ]]; then
+            echo "QA candidate did not satisfy frozen dev acceptance."
+            exit "$acceptance_exit_code"
+          fi
