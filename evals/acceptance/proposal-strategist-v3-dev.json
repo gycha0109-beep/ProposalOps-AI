@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "track": "proposal_strategist",
-  "candidate": "v3_final",
+  "candidate": "v4_explicit_classes",
   "split": "dev",
   "frozen_before_candidate_run": true,
   "criteria": {
@@ -50,5 +50,5 @@
     "Any unsupported quantitative claim fails acceptance.",
     "Any invalid evidence reference fails acceptance."
   ],
-  "decision_rule": "If v3 fails, diagnose on dev and create a new candidate. Holdout remains locked."
+  "decision_rule": "If v4 fails, diagnose on dev and create a new candidate. Holdout remains locked."
 }
