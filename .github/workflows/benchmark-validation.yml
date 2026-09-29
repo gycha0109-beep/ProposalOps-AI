@@ -1,0 +1,36 @@
+name: Benchmark Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Compile evaluator scripts
+        run: python -m compileall -q scripts
+
+      - name: Verify frozen benchmark inventory
+        run: python scripts/benchmark_inventory.py --assert-v1
+
+      - name: Run retrieval baseline on dev split
+        run: |
+          python scripts/evaluate_retrieval.py             --gold evals/frozen/v1/dev/retrieval.json             --out retrieval-dev.json
+          cat retrieval-dev.json
+
+      - name: Run retrieval baseline on holdout split
+        run: |
+          python scripts/evaluate_retrieval.py             --gold evals/frozen/v1/holdout/retrieval.json             --out retrieval-holdout.json
+          cat retrieval-holdout.json
