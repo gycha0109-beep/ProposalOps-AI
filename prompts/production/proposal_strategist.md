@@ -1,5 +1,12 @@
 # Production — Proposal Strategist
 
-Production candidate: `../proposal_strategist/v3_final.md`
+Status: **NOT FROZEN**
 
-실험 결과를 통해 final variant가 확정되기 전까지 이 파일은 production alias 문서 역할을 한다.
+현재 production prompt를 확정하지 않았습니다.
+
+- Candidate under evaluation: `../proposal_strategist/v3_final.md`
+- Frozen dev benchmark: RFP-TEST-001 / RFP-TEST-002
+- Dev live benchmark: not run
+- Holdout: locked
+
+`v3_final`이 frozen dev acceptance를 통과하고 candidate state가 frozen 되기 전에는 holdout 또는 production alias로 승격하지 않습니다.
