@@ -106,6 +106,44 @@ jobs:
           python scripts/validate_candidate_state.py \
             --state evals/frozen/v1/proposal-strategist-candidate.json
 
+      - name: Validate committed Dify production export
+        run: |
+          python scripts/validate_dify_export.py \
+            --root exports/dify/knowledge-v1 \
+            --expected-count 51
+
+      - name: Validate committed Dify benchmark export
+        run: |
+          python scripts/validate_dify_export.py \
+            --root exports/dify/benchmark-v1 \
+            --expected-count 63 \
+            --allow-distractors
+
+      - name: Regenerate Dify exports in scratch space
+        run: |
+          python scripts/export_dify_knowledge.py \
+            --out /tmp/dify-production
+          python scripts/validate_dify_export.py \
+            --root /tmp/dify-production \
+            --expected-count 51
+          python scripts/export_dify_knowledge.py \
+            --out /tmp/dify-benchmark \
+            --include-distractors
+          python scripts/validate_dify_export.py \
+            --root /tmp/dify-benchmark \
+            --expected-count 63 \
+            --allow-distractors
+
+      - name: Validate Dify live operation plans
+        run: |
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/knowledge-v1/documents.jsonl \
+            --plan-only
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/benchmark-v1/documents.jsonl \
+            --plan-only
+          python scripts/evaluate_dify_retrieval.py --plan-only
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
