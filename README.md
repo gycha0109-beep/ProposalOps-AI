@@ -74,7 +74,7 @@ Benchmark v1은 현재 **frozen** 상태입니다. 같은 v1 gold file은 결과
 - holdout RFP: `RFP-TEST-003`
 - benchmark manifest: `evals/frozen/v1/manifest.json`
 
-아직 frontier-model prompt variants의 비교 run은 수행하지 않았으므로 **Prompt Engineering 개선율은 현재 주장하지 않습니다.**
+아직 frontier-model prompt variants의 **live 비교 run**은 수행하지 않았으므로 Prompt Engineering 개선율은 현재 주장하지 않습니다. RFP Analyzer용 실행·기록·평가·집계 인프라는 완료됐습니다.
 
 ## Frozen Benchmark v1
 
@@ -117,7 +117,7 @@ hard-negative를 넣기 전에는 Hit@1이 100%였기 때문에 benchmark가 지
 ```text
 ProposalOps-AI/
 ├─ .github/workflows/
-│  └─ benchmark-validation.yml
+│  ├─ benchmark-validation.yml\n│  └─ rfp-analyzer-live.yml
 ├─ docs/
 │  ├─ architecture.md
 │  ├─ evaluation-methodology.md
@@ -180,7 +180,7 @@ ProposalOps-AI/
 - [x] dev / holdout 분리 및 v1 freeze
 - [x] hard-negative retrieval 난이도 검증
 - [x] GitHub Actions reproducibility check
-- [ ] 동일 frontier model / 동일 parameters에서 v0~v3 raw run 저장
+- [x] RFP Analyzer benchmark runner / raw recorder / aggregator / prompt diff 구축\n- [x] holdout 실행 보호 및 CI dry validation\n- [ ] 동일 frontier model / 동일 parameters에서 RFP Analyzer v0~v3 live raw run 저장
 - [ ] RFP Analyzer / Strategist / QA evaluator 실행
 - [ ] Prompt Engineering Before / After 결과 확정
 - [ ] Dify Knowledge 실제 Retrieval Test
