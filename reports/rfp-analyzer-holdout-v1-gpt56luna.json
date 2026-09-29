@@ -1,0 +1,93 @@
+{
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 0,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 1,
+  "versions": {
+    "v4_compact_grounded": {
+      "run_count": 1,
+      "rfp_ids": [
+        "RFP-TEST-003"
+      ],
+      "json_parseable_rate": 1.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_assertion_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 1126,
+          "mean": 1126
+        },
+        "output_tokens": {
+          "total": 1708,
+          "mean": 1708
+        },
+        "total_tokens": {
+          "total": 2834,
+          "mean": 2834
+        },
+        "reasoning_tokens": {
+          "total": 57,
+          "mean": 57
+        }
+      },
+      "failed_assertions": []
+    }
+  }
+}
