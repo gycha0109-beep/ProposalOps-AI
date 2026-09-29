@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": "string"
+    },
+    {
+      "name": "proposal_id",
+      "type": "string"
+    },
+    {
+      "name": "category",
+      "type": "string"
+    },
+    {
+      "name": "client_type",
+      "type": "string"
+    },
+    {
+      "name": "project_type",
+      "type": "string"
+    },
+    {
+      "name": "page",
+      "type": "number"
+    },
+    {
+      "name": "page_type",
+      "type": "string"
+    },
+    {
+      "name": "section",
+      "type": "string"
+    },
+    {
+      "name": "reuse_level",
+      "type": "string"
+    },
+    {
+      "name": "sensitivity",
+      "type": "string"
+    },
+    {
+      "name": "source_file",
+      "type": "string"
+    },
+    {
+      "name": "source_page",
+      "type": "number"
+    },
+    {
+      "name": "source_type",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "string"
+    }
+  ]
+}
