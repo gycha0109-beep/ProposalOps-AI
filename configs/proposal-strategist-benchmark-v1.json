@@ -1,14 +1,13 @@
 {
   "benchmark_version": "1.0",
   "track": "proposal_strategist",
-  "provider": "gemini",
-  "model": "gemini-3.6-flash",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
   "parameters": {
-    "thinking_level": "medium",
+    "reasoning_effort": "low",
     "max_output_tokens": 8000,
-    "request_delay_seconds": 20,
-    "max_503_retries": 1,
-    "retry_delay_seconds": 15
+    "max_retries": 2,
+    "retry_delay_seconds": 5
   },
   "inputs_file": "evals/strategist/inputs-v1.json",
   "versions": {
@@ -38,5 +37,5 @@
       }
     ]
   },
-  "run_namespace": "benchmark-v1-gemini36"
+  "run_namespace": "benchmark-v1-gpt56luna"
 }
