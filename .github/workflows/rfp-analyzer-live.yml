@@ -154,6 +154,7 @@ jobs:
             echo "No benchmark changes to commit."
           else
             git commit -m "benchmark: record GPT-5.6 Luna RFP analyzer $BENCH_SPLIT runs"
+            git pull --rebase origin main
             git push
           fi
 
