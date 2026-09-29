@@ -40,7 +40,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python scripts/run_e2e_repair.py
+          python scripts/run_e2e_chain_repair.py
           EXIT_CODE=$?
           echo "repair_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
           exit 0
