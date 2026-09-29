@@ -1,0 +1,169 @@
+version: "1.0"
+status: integration_blueprint
+importable_dify_dsl: false
+description: >
+  ProposalOps AI의 논리 workflow 명세. Dify/Antigravity 등 agent platform에서
+  같은 stage contract를 재현하기 위한 blueprint이며 특정 제품의 export DSL을 가장하지 않는다.
+
+model_policy:
+  benchmark_model: gemini-3.6-flash
+  production_model: configurable
+  rule: "같은 benchmark 비교에서는 model/parameters를 고정하고 prompt만 변경한다."
+
+knowledge_base:
+  document_unit: proposal_asset
+  required_metadata:
+    - asset_id
+    - proposal_id
+    - category
+    - client_type
+    - page_type
+    - source_page
+    - reuse_level
+    - sensitivity
+  prohibited_behavior:
+    - "whole PDF를 무구조 상태로 단순 업로드하고 provenance 없이 재사용"
+    - "company_facts가 없는 reference pattern을 회사 실적으로 표현"
+
+state:
+  - rfp_raw
+  - rfp_analysis
+  - retrieval_plans
+  - retrieved_assets
+  - evidence_packs
+  - proposal_strategy
+  - human_review_status
+  - pagination
+  - coverage_validation
+  - slide_drafts
+  - visual_prompts
+  - qa_result
+  - final_package
+
+nodes:
+  - id: start
+    type: input
+    outputs: [rfp_raw]
+
+  - id: document_extract
+    type: document_extractor
+    inputs: [rfp_raw]
+    outputs: [rfp_text]
+
+  - id: rfp_analyzer
+    type: llm
+    prompt: prompts/production/rfp_analyzer.md
+    inputs: [rfp_text]
+    outputs: [rfp_analysis]
+    gate: "production prompt must be frozen before client-facing use"
+
+  - id: retrieval_planner
+    type: llm
+    prompt: prompts/production/retrieval_planner.md
+    inputs: [rfp_analysis]
+    outputs: [retrieval_plans]
+
+  - id: knowledge_retrieval
+    type: knowledge_search
+    foreach: retrieval_plans
+    inputs: [retrieval_plans]
+    outputs: [retrieved_assets]
+
+  - id: evidence_builder
+    type: llm
+    prompt: prompts/production/evidence_builder.md
+    inputs: [rfp_analysis, retrieval_plans, retrieved_assets]
+    outputs: [evidence_packs]
+
+  - id: proposal_strategist
+    type: llm
+    prompt: prompts/production/proposal_strategist.md
+    inputs: [rfp_analysis, evidence_packs]
+    outputs: [proposal_strategy]
+    gate: "production prompt must be frozen before client-facing use"
+
+  - id: human_strategy_review
+    type: human_input
+    inputs: [proposal_strategy, evidence_packs]
+    outputs: [human_review_status]
+    branches:
+      approve: pagination_planner
+      revise: proposal_strategist
+
+  - id: pagination_planner
+    type: llm
+    prompt: prompts/production/pagination.md
+    inputs: [rfp_analysis, proposal_strategy, evidence_packs]
+    outputs: [pagination]
+
+  - id: coverage_validator
+    type: llm_or_rule_validator
+    prompt: prompts/production/coverage_validator.md
+    inputs: [rfp_analysis, proposal_strategy, evidence_packs, pagination]
+    outputs: [coverage_validation]
+    branches:
+      PASS: slide_draft_loop
+      FAIL: targeted_repair
+
+  - id: slide_draft_loop
+    type: iteration
+    foreach: pagination.pages
+    child:
+      type: llm
+      prompt: prompts/production/slide_draft.md
+    outputs: [slide_drafts]
+
+  - id: visual_prompt_loop
+    type: iteration
+    foreach: slide_drafts
+    child:
+      type: llm
+      prompt: prompts/production/visual_prompt.md
+    outputs: [visual_prompts]
+
+  - id: proposal_qa
+    type: llm
+    prompt: prompts/production/proposal_qa.md
+    inputs:
+      - rfp_analysis
+      - evidence_packs
+      - proposal_strategy
+      - pagination
+      - slide_drafts
+      - visual_prompts
+    outputs: [qa_result]
+    branches:
+      PASS: final_output
+      FAIL: targeted_repair
+
+  - id: targeted_repair
+    type: llm
+    prompt: prompts/production/targeted_repair.md
+    inputs: [qa_result]
+    outputs: [repaired_stage_output]
+    routing:
+      strategy: proposal_strategist
+      pagination: coverage_validator
+      slide: proposal_qa
+      visual: proposal_qa
+
+  - id: final_output
+    type: output
+    inputs:
+      - rfp_analysis
+      - evidence_packs
+      - proposal_strategy
+      - pagination
+      - slide_drafts
+      - visual_prompts
+      - qa_result
+
+provenance_chain:
+  example: "R-004 -> EV-R004-01 -> PA-EDU-003-P017 -> ST-02 -> PAGE-007 -> slide body claim"
+
+block_conditions:
+  - missing_mandatory_requirement
+  - unsupported_company_achievement
+  - unsupported_quantitative_claim
+  - invalid_evidence_id
+  - cross_proposal_fact_merge
