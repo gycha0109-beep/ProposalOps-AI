@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "status": "frozen",
+  "frozen_date": "2026-09-29",
+  "dataset_freeze_commit": "37e5d471687cb945b2f3400396f75beeec3fe348",
+  "description": "Synthetic benchmark frozen before frontier-model prompt comparison runs.",
+  "inventory": {
+    "synthetic_proposals": 12,
+    "retrieval_assets_total": 63,
+    "normal_proposal_assets": 51,
+    "hard_negative_assets": 12,
+    "rfps": 3,
+    "retrieval_queries": 48,
+    "qa_cases": 20
+  },
+  "split": {
+    "dev": {
+      "rfps": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "retrieval_queries": 32,
+      "qa_cases": 14
+    },
+    "holdout": {
+      "rfps": [
+        "RFP-TEST-003"
+      ],
+      "retrieval_queries": 16,
+      "qa_cases": 6
+    }
+  },
+  "integrity_rules": [
+    "Do not edit frozen v1 gold files in place.",
+    "Corrections require a new benchmark version.",
+    "Prompt variants may be tuned on dev only.",
+    "Holdout is reserved for final comparison reporting.",
+    "Raw failed runs are retained.",
+    "Synthetic benchmark results must not be represented as client production results."
+  ]
+}
