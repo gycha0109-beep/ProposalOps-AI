@@ -106,7 +106,7 @@ def render_markdown(result: dict) -> str:
         "",
         f'- benchmark: {result["benchmark_version"]}',
         f'- model: {result["model"]}',
-        f'- reasoning effort: {result["parameters"]["reasoning_effort"]}',
+        f'- thinking level: {result["parameters"].get("thinking_level", result["parameters"].get("reasoning_effort", "-"))}',
         f'- runs: **{result["run_count"]}**',
         "",
         "## Version comparison",
