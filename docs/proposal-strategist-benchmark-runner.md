@@ -25,7 +25,7 @@ dev 2개 RFP를 prompt version당 한 batch로 처리합니다.
 ×
 4 prompt versions
 =
-4 Gemini calls
+4 GPT-5.6 Luna calls
 ```
 
 ## Metrics
@@ -42,7 +42,7 @@ dev 2개 RFP를 prompt version당 한 batch로 처리합니다.
 
 ## Dev acceptance
 
-현재 사전 고정 candidate는 `v3_final`입니다.
+v3는 grounding을 통과했지만 information-class separation이 50%여서 v4 candidate로 교정했습니다.
 
 - JSON = 100%
 - result coverage = 100%
@@ -64,7 +64,7 @@ dev 2개 RFP를 prompt version당 한 batch로 처리합니다.
 
 Runner/evaluator/aggregator/workflow와 CI plan validation까지 완료됐습니다.
 
-아직 Strategist live Gemini run은 수행하지 않았습니다.
+아직 Strategist live GPT-5.6 Luna run은 수행하지 않았습니다.
 
 - runner: `scripts/run_strategy_benchmark.py`
 - evaluator: `scripts/lib/strategy_eval.py`
