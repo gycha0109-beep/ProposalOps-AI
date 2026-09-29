@@ -1,13 +1,13 @@
 {
   "track": "proposal_strategist",
   "benchmark_version": "1.0",
-  "candidate": "v3_final",
-  "prompt_file": "prompts/proposal_strategist/v3_final.md",
+  "candidate": "v4_explicit_classes",
+  "prompt_file": "prompts/proposal_strategist/v4_explicit_classes.md",
   "status": "not_frozen",
-  "acceptance_report": "reports/proposal-strategist-v3-acceptance.json",
+  "acceptance_report": "reports/proposal-strategist-v4-acceptance.json",
   "acceptance_required": true,
   "holdout_allowed": false,
   "candidate_commit": null,
   "frozen_at": null,
-  "note": "Holdout remains locked until a Strategist candidate passes frozen dev acceptance."
+  "note": "v3 passed grounding but missed explicit AI_RECOMMENDATION separation on one dev RFP; v4 makes information classes explicit."
 }
