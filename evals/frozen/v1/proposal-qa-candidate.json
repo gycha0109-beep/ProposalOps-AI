@@ -3,11 +3,12 @@
   "benchmark_version": "1.0",
   "candidate": "v4_compact_taxonomy",
   "prompt_file": "prompts/proposal_qa/v4_compact_taxonomy.md",
-  "status": "not_frozen",
+  "prompt_sha256": "cd412635485cab53ad269eba178bf672ae00990845e624f5a44f2fb0d6afab75",
+  "status": "frozen",
   "acceptance_report": "reports/proposal-qa-v4-acceptance.json",
   "acceptance_required": true,
-  "holdout_allowed": false,
-  "candidate_commit": null,
-  "frozen_at": null,
-  "note": "QA v3 detected errors but failed taxonomy type accuracy; v4 restores explicit taxonomy. Holdout remains locked."
+  "holdout_allowed": true,
+  "candidate_commit": "9dc99f53ba0fa6588cb2e03a647922b7f3a8c54f",
+  "frozen_at": "2026-09-29T06:44:10.500228+00:00",
+  "note": "Frozen only after dev acceptance passed. Do not modify prompt before holdout."
 }

@@ -1,0 +1,357 @@
+{
+  "run_id": "proposal_qa-1.0-dev-v1_rules-01",
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v1_rules",
+  "prompt_file": "prompts/proposal_qa/v1_rules.md",
+  "prompt_sha256": "6ff2346e145bff9e2991b4b9b92fbfd34a7012b517b15fde04600aa19e45d81b",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "case_ids": [
+      "QA-001",
+      "QA-002",
+      "QA-003",
+      "QA-004",
+      "QA-005",
+      "QA-006",
+      "QA-007",
+      "QA-008",
+      "QA-009",
+      "QA-010",
+      "QA-011",
+      "QA-014",
+      "QA-016",
+      "QA-018"
+    ],
+    "inputs_file": "evals/qa-injected-errors/inputs-v1.json",
+    "cases_file": "evals/qa-injected-errors/cases.json",
+    "split_file": "evals/frozen/v1/dev/qa.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:43:44.864267+00:00",
+    "git_commit": "9dc99f53ba0fa6588cb2e03a647922b7f3a8c54f",
+    "provider": "openai",
+    "provider_response_id": "resp_0131dd570425f352016abb5e19450087d29fce30d2ebefb03f",
+    "latency_seconds": 7.6672,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 6187,
+      "input_tokens_details": {
+        "cache_write_tokens": 6184,
+        "cached_tokens": 0
+      },
+      "output_tokens": 881,
+      "output_tokens_details": {
+        "reasoning_tokens": 112
+      },
+      "total_tokens": 7068
+    }
+  },
+  "raw_output": "{\"results\":[{\"case_id\":\"QA-001\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"회사 실적 42% 향상 주장을 뒷받침하는 회사 사실이나 근거가 없습니다.\"},{\"case_id\":\"QA-002\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"해당 기관 유사 사업을 3년 연속 수행했다는 회사 사실의 근거가 없습니다.\"},{\"case_id\":\"QA-003\",\"detected\":true,\"predicted_type\":\"INVALID_REFERENCE\",\"severity\":\"BLOCK\",\"reason\":\"본문의 EV-R003-999가 evidence_catalog에 존재하지 않는 잘못된 근거 ID입니다.\"},{\"case_id\":\"QA-004\",\"detected\":true,\"predicted_type\":\"MISSING_REQUIREMENT\",\"severity\":\"BLOCK\",\"reason\":\"covered_requirement_ids에서 저작권·초상권·개인정보·정책 정보 오류 검수 절차인 R-007이 누락되었습니다.\"},{\"case_id\":\"QA-005\",\"detected\":true,\"predicted_type\":\"CROSS_PROPOSAL_MERGE\",\"severity\":\"BLOCK\",\"reason\":\"근거는 PROP-PR-002의 SNS 확산 패턴만 지원하며 30초 영상 제작 성과를 뒷받침하지 않습니다.\"},{\"case_id\":\"QA-006\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"도달률 85%가 기존 평균 성과라는 회사 실적 근거가 없습니다.\"},{\"case_id\":\"QA-007\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"근거는 정책 정보 사실 검수만 지원하고 개인정보 처리 프로세스는 지원하지 않습니다.\"},{\"case_id\":\"QA-008\",\"detected\":true,\"predicted_type\":\"MISSING_REQUIREMENT\",\"severity\":\"BLOCK\",\"reason\":\"6개월간 제작·검수·게시·보고 운영 체계인 R-005가 누락되었습니다.\"},{\"case_id\":\"QA-009\",\"detected\":false,\"predicted_type\":\"CLEAN\",\"severity\":\"NONE\",\"reason\":\"제공된 맥락에서 검출 가능한 QA 이슈가 없습니다.\"},{\"case_id\":\"QA-010\",\"detected\":false,\"predicted_type\":\"CLEAN\",\"severity\":\"NONE\",\"reason\":\"근거가 지원하는 숏폼 포맷 패턴을 참고 패턴으로 사용한다고 명시해 범위를 벗어난 주장이 없습니다.\"},{\"case_id\":\"QA-011\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"1억 2천만원 규모 캠페인 운영 실적을 뒷받침하는 회사 사실이나 증거가 없습니다.\"},{\"case_id\":\"QA-014\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"전담 운영인력 12명을 즉시 투입할 수 있다는 회사 역량 주장의 근거가 없습니다.\"},{\"case_id\":\"QA-016\",\"detected\":true,\"predicted_type\":\"STRATEGY_PAGE_MISMATCH\",\"severity\":\"BLOCK\",\"reason\":\"현장 안전관리·긴급대응 페이지의 메시지가 크리에이터 확산 전략으로 작성되어 페이지 목표와 불일치합니다.\"},{\"case_id\":\"QA-018\",\"detected\":false,\"predicted_type\":\"CLEAN\",\"severity\":\"NONE\",\"reason\":\"대기열 분산 패턴을 참고해 행사 동선에 맞게 재설계한다고 명시되어 근거 범위를 준수합니다.\"}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "case_id": "QA-001",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "회사 실적 42% 향상 주장을 뒷받침하는 회사 사실이나 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-002",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "해당 기관 유사 사업을 3년 연속 수행했다는 회사 사실의 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-003",
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "severity": "BLOCK",
+        "reason": "본문의 EV-R003-999가 evidence_catalog에 존재하지 않는 잘못된 근거 ID입니다."
+      },
+      {
+        "case_id": "QA-004",
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "severity": "BLOCK",
+        "reason": "covered_requirement_ids에서 저작권·초상권·개인정보·정책 정보 오류 검수 절차인 R-007이 누락되었습니다."
+      },
+      {
+        "case_id": "QA-005",
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_MERGE",
+        "severity": "BLOCK",
+        "reason": "근거는 PROP-PR-002의 SNS 확산 패턴만 지원하며 30초 영상 제작 성과를 뒷받침하지 않습니다."
+      },
+      {
+        "case_id": "QA-006",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "도달률 85%가 기존 평균 성과라는 회사 실적 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-007",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "근거는 정책 정보 사실 검수만 지원하고 개인정보 처리 프로세스는 지원하지 않습니다."
+      },
+      {
+        "case_id": "QA-008",
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "severity": "BLOCK",
+        "reason": "6개월간 제작·검수·게시·보고 운영 체계인 R-005가 누락되었습니다."
+      },
+      {
+        "case_id": "QA-009",
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "severity": "NONE",
+        "reason": "제공된 맥락에서 검출 가능한 QA 이슈가 없습니다."
+      },
+      {
+        "case_id": "QA-010",
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "severity": "NONE",
+        "reason": "근거가 지원하는 숏폼 포맷 패턴을 참고 패턴으로 사용한다고 명시해 범위를 벗어난 주장이 없습니다."
+      },
+      {
+        "case_id": "QA-011",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "1억 2천만원 규모 캠페인 운영 실적을 뒷받침하는 회사 사실이나 증거가 없습니다."
+      },
+      {
+        "case_id": "QA-014",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "전담 운영인력 12명을 즉시 투입할 수 있다는 회사 역량 주장의 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-016",
+        "detected": true,
+        "predicted_type": "STRATEGY_PAGE_MISMATCH",
+        "severity": "BLOCK",
+        "reason": "현장 안전관리·긴급대응 페이지의 메시지가 크리에이터 확산 전략으로 작성되어 페이지 목표와 불일치합니다."
+      },
+      {
+        "case_id": "QA-018",
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "severity": "NONE",
+        "reason": "대기열 분산 패턴을 참고해 행사 동선에 맞게 재설계한다고 명시되어 근거 범위를 준수합니다."
+      }
+    ]
+  },
+  "json_parseable": true,
+  "evaluation": {
+    "track": "proposal_qa",
+    "evaluator_version": "1.1",
+    "split": "dev",
+    "case_count": 14,
+    "result_count": 14,
+    "metrics": {
+      "result_coverage": 1.0,
+      "critical_error_detection_recall": 1.0,
+      "warning_detection_recall": 1.0,
+      "all_error_detection_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "error_type_accuracy": 0.9091,
+      "severity_accuracy": 0.9091
+    },
+    "counts": {
+      "block_total": 10,
+      "block_detected": 10,
+      "warn_total": 1,
+      "warn_detected": 1,
+      "clean_total": 3,
+      "false_positive_count": 0
+    },
+    "missing_result_case_ids": [],
+    "unexpected_result_case_ids": [],
+    "details": [
+      {
+        "case_id": "QA-001",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "회사 실적 42% 향상 주장을 뒷받침하는 회사 사실이나 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-002",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "해당 기관 유사 사업을 3년 연속 수행했다는 회사 사실의 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-003",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "본문의 EV-R003-999가 evidence_catalog에 존재하지 않는 잘못된 근거 ID입니다."
+      },
+      {
+        "case_id": "QA-004",
+        "expected_type": "MISSING_REQUIREMENT",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "covered_requirement_ids에서 저작권·초상권·개인정보·정책 정보 오류 검수 절차인 R-007이 누락되었습니다."
+      },
+      {
+        "case_id": "QA-005",
+        "expected_type": "CROSS_PROPOSAL_MERGE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_MERGE",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "근거는 PROP-PR-002의 SNS 확산 패턴만 지원하며 30초 영상 제작 성과를 뒷받침하지 않습니다."
+      },
+      {
+        "case_id": "QA-006",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "도달률 85%가 기존 평균 성과라는 회사 실적 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-007",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "근거는 정책 정보 사실 검수만 지원하고 개인정보 처리 프로세스는 지원하지 않습니다."
+      },
+      {
+        "case_id": "QA-008",
+        "expected_type": "MISSING_REQUIREMENT",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "6개월간 제작·검수·게시·보고 운영 체계인 R-005가 누락되었습니다."
+      },
+      {
+        "case_id": "QA-009",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "predicted_severity": "NONE",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": "제공된 맥락에서 검출 가능한 QA 이슈가 없습니다."
+      },
+      {
+        "case_id": "QA-010",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "predicted_severity": "NONE",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": "근거가 지원하는 숏폼 포맷 패턴을 참고 패턴으로 사용한다고 명시해 범위를 벗어난 주장이 없습니다."
+      },
+      {
+        "case_id": "QA-011",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "1억 2천만원 규모 캠페인 운영 실적을 뒷받침하는 회사 사실이나 증거가 없습니다."
+      },
+      {
+        "case_id": "QA-014",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "전담 운영인력 12명을 즉시 투입할 수 있다는 회사 역량 주장의 근거가 없습니다."
+      },
+      {
+        "case_id": "QA-016",
+        "expected_type": "STRATEGY_PAGE_MISMATCH",
+        "expected_severity": "WARN",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "STRATEGY_PAGE_MISMATCH",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": false,
+        "reason": "현장 안전관리·긴급대응 페이지의 메시지가 크리에이터 확산 전략으로 작성되어 페이지 목표와 불일치합니다."
+      },
+      {
+        "case_id": "QA-018",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "predicted_severity": "NONE",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": "대기열 분산 패턴을 참고해 행사 동선에 맞게 재설계한다고 명시되어 근거 범위를 준수합니다."
+      }
+    ]
+  }
+}

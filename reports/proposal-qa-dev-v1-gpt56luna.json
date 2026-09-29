@@ -1,0 +1,375 @@
+{
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 5,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.1818,
+          "min": 0.1818,
+          "max": 0.1818,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 6152,
+          "mean": 6152
+        },
+        "output_tokens": {
+          "total": 1332,
+          "mean": 1332
+        },
+        "total_tokens": {
+          "total": 7484,
+          "mean": 7484
+        },
+        "reasoning_tokens": {
+          "total": 207,
+          "mean": 207
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-dev-v0_baseline-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v1_rules": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.9091,
+          "min": 0.9091,
+          "max": 0.9091,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 0.9091,
+          "min": 0.9091,
+          "max": 0.9091,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 6187,
+          "mean": 6187
+        },
+        "output_tokens": {
+          "total": 881,
+          "mean": 881
+        },
+        "total_tokens": {
+          "total": 7068,
+          "mean": 7068
+        },
+        "reasoning_tokens": {
+          "total": 112,
+          "mean": 112
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-dev-v1_rules-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v2_evidence": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 0.9091,
+          "min": 0.9091,
+          "max": 0.9091,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 6205,
+          "mean": 6205
+        },
+        "output_tokens": {
+          "total": 1019,
+          "mean": 1019
+        },
+        "total_tokens": {
+          "total": 7224,
+          "mean": 7224
+        },
+        "reasoning_tokens": {
+          "total": 196,
+          "mean": 196
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-dev-v2_evidence-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v3_final": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 6297,
+          "mean": 6297
+        },
+        "output_tokens": {
+          "total": 1304,
+          "mean": 1304
+        },
+        "total_tokens": {
+          "total": 7601,
+          "mean": 7601
+        },
+        "reasoning_tokens": {
+          "total": 262,
+          "mean": 262
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-dev-v3_final-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v4_compact_taxonomy": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 6410,
+          "mean": 6410
+        },
+        "output_tokens": {
+          "total": 893,
+          "mean": 893
+        },
+        "total_tokens": {
+          "total": 7303,
+          "mean": 7303
+        },
+        "reasoning_tokens": {
+          "total": 151,
+          "mean": 151
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-dev-v4_compact_taxonomy-01",
+          "case_ids": []
+        }
+      ]
+    }
+  }
+}
