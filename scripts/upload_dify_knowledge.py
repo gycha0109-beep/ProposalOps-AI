@@ -182,6 +182,7 @@ def main():
     parser.add_argument("--delay-seconds", type=float, default=7.0)
     parser.add_argument("--max-documents", type=int)
     parser.add_argument("--skip-native-metadata", action="store_true")
+    parser.add_argument("--require-native-metadata", action="store_true")
     parser.add_argument("--plan-only", action="store_true")
     parser.add_argument("--state-out", default="runs/dify/knowledge-v1/upload-state.json")
     args = parser.parse_args()
@@ -219,12 +220,19 @@ def main():
     by_name = {item.get("name"): item for item in existing if item.get("name")}
 
     metadata_fields = {}
-    if not args.skip_native_metadata:
-        metadata_fields = ensure_metadata_fields(
-            client,
-            args.dataset_id,
-            load_schema(args.metadata_schema),
-        )
+    native_metadata_enabled = not args.skip_native_metadata
+    if native_metadata_enabled:
+        try:
+            metadata_fields = ensure_metadata_fields(
+                client,
+                args.dataset_id,
+                load_schema(args.metadata_schema),
+            )
+        except DifyError as exc:
+            if args.require_native_metadata:
+                raise
+            native_metadata_enabled = False
+            print(f"WARNING: native Dify metadata unavailable; continuing with embedded provenance only: {exc}")
 
     uploaded = []
     skipped = []
@@ -249,8 +257,14 @@ def main():
             failures.append({"asset_id": doc["asset_id"], "error": str(exc)})
             print(f"[{index}/{len(docs)}] FAILED {doc['asset_id']}: {exc}")
 
-    if not args.skip_native_metadata and uploaded:
-        sync_metadata(client, args.dataset_id, uploaded, metadata_fields)
+    if native_metadata_enabled and metadata_fields and uploaded:
+        try:
+            sync_metadata(client, args.dataset_id, uploaded, metadata_fields)
+        except DifyError as exc:
+            if args.require_native_metadata:
+                raise
+            native_metadata_enabled = False
+            print(f"WARNING: native metadata sync failed; documents remain usable via embedded provenance: {exc}")
 
     state = {
         "dataset_id": args.dataset_id,
@@ -260,6 +274,7 @@ def main():
         "created_documents": len(uploaded) - len(skipped),
         "skipped_existing": len(skipped),
         "failure_count": len(failures),
+        "native_metadata_enabled": native_metadata_enabled,
         "documents": [
             {
                 "asset_id": doc["asset_id"],
