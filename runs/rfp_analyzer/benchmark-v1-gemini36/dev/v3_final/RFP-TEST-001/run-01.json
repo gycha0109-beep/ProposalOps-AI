@@ -52,18 +52,27 @@
   "parsed_output": null,
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.2",
+    "evaluator_version": "1.4",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": false,
+    "output_truncated": true,
     "metrics": {
-      "assertion_pass_rate": 0.8,
+      "assertion_pass_rate": 0.9,
       "deliverable_recall": 1.0,
       "numeric_fidelity": 0.8,
       "requirement_assertion_recall": 1.0,
-      "unsupported_addition_count": 0
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null
     },
-    "passed": 8,
+    "grounding": {
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "groundable_item_count": 0,
+      "source_quote_count": 0
+    },
+    "passed": 9,
     "total": 10,
     "details": [
       {
@@ -126,7 +135,7 @@
         "id": "001-07",
         "metric": "unknown",
         "expected": "unknown",
-        "pass": false,
+        "pass": true,
         "critical": true
       },
       {

@@ -199,16 +199,25 @@
   },
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.2",
+    "evaluator_version": "1.4",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": true,
+    "output_truncated": false,
     "metrics": {
       "assertion_pass_rate": 1.0,
       "deliverable_recall": 1.0,
       "numeric_fidelity": 1.0,
       "requirement_assertion_recall": 1.0,
-      "unsupported_addition_count": 0
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 1.0,
+      "source_quote_validity": 1.0
+    },
+    "grounding": {
+      "source_quote_coverage": 1.0,
+      "source_quote_validity": 1.0,
+      "groundable_item_count": 27,
+      "source_quote_count": 27
     },
     "passed": 12,
     "total": 12,

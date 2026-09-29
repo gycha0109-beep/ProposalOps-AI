@@ -52,16 +52,25 @@
   "parsed_output": null,
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.2",
+    "evaluator_version": "1.4",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": false,
+    "output_truncated": false,
     "metrics": {
       "assertion_pass_rate": 0.8333,
       "deliverable_recall": 1.0,
       "numeric_fidelity": 0.8571,
       "requirement_assertion_recall": 0.6667,
-      "unsupported_addition_count": 0
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null
+    },
+    "grounding": {
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "groundable_item_count": 0,
+      "source_quote_count": 0
     },
     "passed": 10,
     "total": 12,
