@@ -199,7 +199,7 @@
   },
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.4",
+    "evaluator_version": "1.5",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": true,
@@ -211,13 +211,36 @@
       "requirement_assertion_recall": 1.0,
       "unsupported_addition_count": 0,
       "source_quote_coverage": 1.0,
-      "source_quote_validity": 1.0
+      "source_quote_validity": 1.0,
+      "canonical_schema_valid": 0.0
     },
     "grounding": {
       "source_quote_coverage": 1.0,
       "source_quote_validity": 1.0,
       "groundable_item_count": 27,
       "source_quote_count": 27
+    },
+    "schema_contract": {
+      "canonical_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "project",
+        "requirements",
+        "scope"
+      ],
+      "actual_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "interpretation_note",
+        "overview",
+        "requirements",
+        "rfp_id",
+        "scope",
+        "title"
+      ],
+      "valid": false
     },
     "passed": 12,
     "total": 12,

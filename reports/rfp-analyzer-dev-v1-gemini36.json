@@ -57,7 +57,13 @@
           "max": 0.0,
           "stdev": 0.0
         },
-        "source_quote_validity": null
+        "source_quote_validity": null,
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
       },
       "usage": {
         "input_tokens": {
@@ -144,7 +150,13 @@
           "max": 0.0,
           "stdev": 0.0
         },
-        "source_quote_validity": null
+        "source_quote_validity": null,
+        "canonical_schema_valid": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
       },
       "usage": {
         "input_tokens": {
@@ -223,6 +235,12 @@
           "mean": 1.0,
           "min": 1.0,
           "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
           "stdev": 0.0
         }
       },
@@ -303,6 +321,12 @@
           "mean": 1.0,
           "min": 1.0,
           "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
           "stdev": 0.0
         }
       },

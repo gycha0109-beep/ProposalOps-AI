@@ -52,7 +52,7 @@
   "parsed_output": null,
   "evaluation": {
     "track": "rfp_analyzer",
-    "evaluator_version": "1.4",
+    "evaluator_version": "1.5",
     "gold_version": "1.0",
     "split": "dev",
     "json_parseable": false,
@@ -64,13 +64,26 @@
       "requirement_assertion_recall": 0.6667,
       "unsupported_addition_count": 0,
       "source_quote_coverage": 0.0,
-      "source_quote_validity": null
+      "source_quote_validity": null,
+      "canonical_schema_valid": 0.0
     },
     "grounding": {
       "source_quote_coverage": 0.0,
       "source_quote_validity": null,
       "groundable_item_count": 0,
       "source_quote_count": 0
+    },
+    "schema_contract": {
+      "canonical_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "project",
+        "requirements",
+        "scope"
+      ],
+      "actual_top_level_keys": [],
+      "valid": false
     },
     "passed": 10,
     "total": 12,
