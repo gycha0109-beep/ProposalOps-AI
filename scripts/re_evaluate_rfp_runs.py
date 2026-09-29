@@ -24,7 +24,9 @@ def main() -> None:
         record = json.loads(path.read_text(encoding="utf-8"))
         gold_path = Path(record["input"]["gold_file"])
         gold = json.loads(gold_path.read_text(encoding="utf-8"))
-        record["evaluation"] = evaluate_rfp(record["raw_output"], gold)
+        source_path = Path(record["input"]["source_file"])
+        source_text = source_path.read_text(encoding="utf-8")
+        record["evaluation"] = evaluate_rfp(record["raw_output"], gold, source_text)
         path.write_text(
             json.dumps(record, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
