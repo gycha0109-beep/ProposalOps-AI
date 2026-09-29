@@ -1,0 +1,8 @@
+RFP Analyzer dev live benchmark trigger
+
+benchmark: v1
+split: dev
+versions: all
+repetitions: 3
+expected calls: 24
+created: 2026-09-29
