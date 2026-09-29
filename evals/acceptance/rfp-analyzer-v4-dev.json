@@ -41,6 +41,10 @@
     "unsupported_addition_count": {
       "mean_max": 0,
       "max_max": 0
+    },
+    "canonical_schema_valid": {
+      "mean_min": 1,
+      "min_min": 1
     }
   },
   "blocking_rules": [
@@ -48,7 +52,8 @@
     "Any output truncation fails acceptance.",
     "Any mandatory requirement omission fails acceptance.",
     "Any unsupported addition fails acceptance.",
-    "Any invalid source quote fails acceptance."
+    "Any invalid source quote fails acceptance.",
+    "Any canonical top-level schema contract violation fails acceptance."
   ],
   "decision_rule": "If v4 fails, do not open holdout. Keep the best dev candidate or redesign on dev only."
 }
