@@ -2,140 +2,128 @@
 
 ## Purpose
 
-동일 모델·동일 파라미터·동일 RFP에서 prompt version만 바꿔 결과 차이를 측정합니다.
+동일 모델·동일 파라미터·동일 frozen RFP에서 prompt version만 바꿔 결과 차이를 측정합니다.
 
-현재 benchmark config:
+Config:
 
 `configs/rfp-analyzer-benchmark-v1.json`
 
 ## Fixed model condition
 
-현재 live benchmark 조건:
-
 - provider: OpenAI Responses API
 - model: `gpt-5.6-luna`
 - reasoning effort: `low`
-- max output tokens: `6000`
+- max output tokens: 6000
 - sampling parameters: 별도 지정하지 않음
-- request delay: 4초
+- secret: `OPENAI_API_KEY`
 
-GPT-5.6 Luna는 현재 GA Flash 모델이며 `low / medium / high` thinking level을 지원합니다.
+## Frozen split
 
-## Dev matrix
+Dev:
 
-무료 RPD를 소모하지 않도록 현재 dev 반복 횟수를 2회로 고정합니다.
+- RFP-TEST-001
+- RFP-TEST-002
 
-```text
-2 RFP
-× 4 prompt versions
-× 2 repeats
-= 16 live model calls
-```
+Holdout:
 
-실행:
+- RFP-TEST-003
 
-```bash
-OPENAI_API_KEY=... python scripts/run_rfp_benchmark.py \
-  --split dev \
-  --versions all \
-  --repetitions 2
-```
+holdout은 candidate가 dev acceptance를 통과해 prompt SHA와 candidate commit이 frozen된 뒤에만 실행 가능합니다.
 
-API 호출 없이 실행 계획만 검증:
+State:
 
-```bash
-python scripts/run_rfp_benchmark.py \
-  --split dev \
-  --versions all \
-  --repetitions 2 \
-  --plan-only
-```
+`evals/frozen/v1/rfp-analyzer-candidate.json`
 
-## Prompt isolation
+## Prompt variants
 
-실험 설명은 모델 입력에 포함하지 않습니다.
+- v0_baseline
+- v1_structured
+- v2_grounded
+- v3_final
+- v4_compact_grounded
 
-각 prompt 파일에서 `## Prompt` 또는 `## Role` 이후의 실행 본문만 Gemini system instruction으로 전달합니다.
+실험 설명은 모델 입력에 포함하지 않습니다. `## Prompt` 이후 executable body만 전달합니다.
 
-따라서 "v2는 grounding을 추가했다" 같은 메타 설명은 모델이 보지 않습니다.
+## Dev result
 
-## v0 evaluation
+`reports/rfp-analyzer-dev-v1-gpt56luna.json`
 
-v0는 자유형 응답을 허용합니다.
+| Version | Assertion | Numeric | Requirement | JSON | Schema | Quote grounding |
+|---|---:|---:|---:|---:|---:|---:|
+| v0 | 80.83% | 82.86% | 75% | 0% | 0% | 0% |
+| v1 | 90.83% | 92.85% | 100% | 100% | 100% | 0% |
+| v2 | 90.83% | 92.85% | 100% | 100% | 0% | 100% |
+| v3 | 90.83% | 82.86% | 100% | 100% | 0% | 100% |
+| **v4** | **100%** | **100%** | **100%** | **100%** | **100%** | **100%** |
 
-별도의 LLM normalizer를 두지 않습니다. 두 번째 모델이 누락 내용을 보완해 benchmark를 오염시킬 수 있기 때문입니다.
+v4 failed assertion: 0.
 
-Evaluator는 JSON이면 구조적으로 평가하고, 자유형이면 raw text에서 직접 검증 가능한 assertion만 평가합니다.
+## Holdout result
+
+`reports/rfp-analyzer-holdout-v1-gpt56luna.json`
+
+Frozen v4 / RFP-TEST-003:
+
+- assertion pass: 100%
+- deliverable recall: 100%
+- numeric fidelity: 100%
+- requirement recall: 100%
+- source quote coverage: 100%
+- source quote validity: 100%
+- canonical schema validity: 100%
+- unsupported additions: 0
+
+holdout 결과를 본 뒤 v4 prompt를 수정하지 않습니다.
+
+## Evaluator
+
+`scripts/lib/rfp_eval.py`
+
+Evaluator 1.5는 다음을 측정합니다.
+
+- assertion pass
+- deliverable recall
+- numeric fidelity
+- requirement recall
+- unsupported additions
+- source quote coverage
+- source quote validity
+- canonical schema validity
+- JSON parseability
+- output truncation
+
+v0처럼 자유형 출력인 경우 별도의 LLM normalizer를 사용하지 않습니다.
 
 ## Raw evidence
 
-각 live call에는 다음을 저장합니다.
+각 call은 다음을 저장합니다.
 
-- prompt version / SHA-256
-- Gemini model version
-- thinking level
-- max output tokens
-- RFP source / gold path
-- token usage / thoughts token count
+- prompt file / SHA-256
+- model / reasoning effort
+- RFP source / frozen gold
+- response ID
+- token usage
 - raw output
-- parsed JSON when available
+- parsed output
 - evaluator result
 - git commit
 
-위치:
+Root:
 
-`runs/rfp_analyzer/benchmark-v1/`
+`runs/rfp_analyzer/benchmark-v1-gpt56luna/`
 
-## Failure policy
+## Production promotion
 
-Gemini 429/503에 자동 재시도하지 않습니다. 무료 RPD를 불필요하게 소모할 수 있기 때문입니다.
+Dev acceptance:
 
-오류가 발생하면:
-1. 실패 정보를 `_failures/`에 기록
-2. 즉시 실행 중단
-3. 완료된 raw run과 실패 evidence를 Git에 보존
+`reports/rfp-analyzer-v4-acceptance.json`
 
-하도록 구성했습니다.
+Frozen state:
 
-## Holdout protection
+`evals/frozen/v1/rfp-analyzer-candidate.json`
 
-holdout은 기본 실행이 거부됩니다.
+Production:
 
-```bash
-python scripts/run_rfp_benchmark.py \
-  --split holdout \
-  --versions all \
-  --repetitions 1 \
-  --confirm-holdout
-```
+`prompts/production/rfp_analyzer.md`
 
-holdout 결과를 본 뒤 같은 benchmark v1에 맞춰 prompt를 다시 튜닝하지 않습니다.
-
-## Aggregation
-
-```bash
-python scripts/aggregate_rfp_runs.py \
-  --root runs/rfp_analyzer/benchmark-v1/dev \
-  --json-out reports/rfp-analyzer-dev-v1.json \
-  --md-out reports/rfp-analyzer-dev-v1.md
-```
-
-집계 지표:
-- JSON parseable rate
-- assertion pass rate
-- deliverable recall
-- numeric fidelity
-- requirement assertion recall
-- unsupported addition count
-- repeated-run standard deviation
-- input / output / reasoning token usage
-
-## GitHub Actions
-
-`.github/workflows/rfp-analyzer-live.yml`
-
-필요 Repository Secret:
-
-`OPENAI_API_KEY`
-
-workflow 완료 시 raw run과 report를 Git에 커밋합니다.
+Status: **FROZEN**
