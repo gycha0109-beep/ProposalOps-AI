@@ -2,12 +2,13 @@ RFP Analyzer dev live benchmark trigger
 
 benchmark: v1
 provider: gemini
-model: gemini-3.7-flash
-run_namespace: benchmark-v1-gemini37
+model: gemini-3.6-flash
+run_namespace: benchmark-v1-gemini36
 split: dev
 versions: all
 repetitions: 1
-expected calls: 8
-max_503_retries_per_call: 1
-retry_delay_seconds: 12
-triggered: 2026-09-29T10:42+09:00
+expected_calls: 8
+request_delay_seconds: 15
+max_503_retries_per_call: 0
+continue_on_provider_error: true
+triggered: 2026-09-29T10:48+09:00
