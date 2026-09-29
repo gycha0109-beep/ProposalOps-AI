@@ -59,8 +59,47 @@ def _normalize_semantic_text(value: Any) -> str:
     return re.sub(r"[\\s·ㆍ→$\\\\()\[\]{}:;,./_-]+", "", text)
 
 
+def _is_missing(value: Any) -> bool:
+    return value is None or value == "" or value == [] or value == {}
+
+
 def _contains_all(blob: str, terms: list[str]) -> bool:
     return all(term.lower() in blob for term in terms)
+
+
+def _value_or_raw(parsed: dict | None, path: str, raw_text: str) -> Any:
+    if parsed is not None:
+        value = _get_path(parsed, path)
+        if not _is_missing(value):
+            return value
+    return raw_text
+
+
+def _parse_number(value: Any) -> float | None:
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        cleaned = value.replace(",", "").strip()
+        if re.fullmatch(r"-?\d+(?:\.\d+)?", cleaned):
+            return float(cleaned)
+    return None
+
+
+def _evaluation_scores(parsed: dict) -> list[float]:
+    items = parsed.get("evaluation", [])
+    if not isinstance(items, list):
+        return []
+    scores = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        for key in ("score", "points", "weight", "배점"):
+            if key in item:
+                number = _parse_number(item.get(key))
+                if number is not None:
+                    scores.append(number)
+                break
+    return scores
 
 
 def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool, dict]:
@@ -70,23 +109,27 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
 
     if metric == "exact_or_semantic":
         expected = _normalize_semantic_text(case["expected"])
-        if parsed is not None:
-            value = _get_path(parsed, case["path"])
-            actual = _normalize_semantic_text(value)
-        else:
-            actual = _normalize_semantic_text(raw_text)
+        actual_source = _value_or_raw(parsed, case["path"], raw_text)
+        actual = _normalize_semantic_text(actual_source)
         ok = expected in actual
         detail["expected"] = case["expected"]
+        detail["evaluated_source"] = (
+            case["path"]
+            if parsed is not None and not _is_missing(_get_path(parsed, case["path"]))
+            else "raw_output_fallback"
+        )
         return ok, detail
 
     if metric == "contains":
         terms = case["expected_terms"]
-        if parsed is not None:
-            value = _get_path(parsed, case["path"])
-            ok = _contains_all(_blob(value), terms)
-        else:
-            ok = _contains_all(raw_blob, terms)
+        actual_source = _value_or_raw(parsed, case["path"], raw_text)
+        ok = _contains_all(_blob(actual_source), terms)
         detail["expected_terms"] = terms
+        detail["evaluated_source"] = (
+            case["path"]
+            if parsed is not None and not _is_missing(_get_path(parsed, case["path"]))
+            else "raw_output_fallback"
+        )
         return ok, detail
 
     if metric == "deliverable":
@@ -107,13 +150,8 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
             detail["reason"] = "unstructured output cannot be safely summed"
             return False, detail
 
-        scores = [
-            item.get("score")
-            for item in parsed.get("evaluation", [])
-            if isinstance(item, dict)
-        ]
-        numeric_scores = [score for score in scores if isinstance(score, (int, float))]
-        ok = bool(numeric_scores) and sum(numeric_scores) == case["expected"]
+        numeric_scores = _evaluation_scores(parsed)
+        ok = bool(numeric_scores) and sum(numeric_scores) == float(case["expected"])
         detail["actual_sum"] = sum(numeric_scores) if numeric_scores else None
         detail["expected_sum"] = case["expected"]
         return ok, detail
@@ -121,9 +159,10 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
     if metric == "unknown":
         if parsed is not None:
             value = _get_path(parsed, case["path"])
-            ok = value == case["expected"]
-            detail["actual"] = value
-            return ok, detail
+            if not _is_missing(value):
+                ok = str(value).lower() == str(case["expected"]).lower()
+                detail["actual"] = value
+                return ok, detail
 
         if "budget" in case["path"]:
             has_budget_context = "예산" in raw_text or "사업비" in raw_text
@@ -207,7 +246,7 @@ def evaluate_rfp(raw_text: str, gold: dict) -> dict:
 
     return {
         "track": "rfp_analyzer",
-        "evaluator_version": "1.1",
+        "evaluator_version": "1.2",
         "gold_version": gold.get("version"),
         "split": gold.get("split"),
         "json_parseable": parsed is not None,
