@@ -1,0 +1,8 @@
+RFP-TEST-002 targeted repair
+
+provider: openai
+model: gpt-5.6-luna
+target: PAGE-006
+calls: repair + re-QA
+expected_calls: 2
+triggered: 2026-09-29T17:34+09:00
