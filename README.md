@@ -245,7 +245,7 @@ Files:
 - `scripts/evaluate_dify_retrieval.py`
 - `docs/dify-knowledge-phase1.md`
 
-실제 Dify 호출에는 repository secrets `DIFY_API_KEY`, `DIFY_DATASET_ID`, `DIFY_BENCHMARK_DATASET_ID`가 필요합니다.
+실제 Dify 호출에는 repository secret `DIFY_API_KEY`만 필수입니다. Production/benchmark dataset은 workflow가 자동 생성하며, `DIFY_DATASET_ID` / `DIFY_BENCHMARK_DATASET_ID`는 기존 dataset을 쓸 때만 선택적으로 override합니다.
 
 ## Remaining Work
 
