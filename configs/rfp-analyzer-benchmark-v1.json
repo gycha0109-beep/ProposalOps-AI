@@ -6,9 +6,9 @@
   "parameters": {
     "thinking_level": "medium",
     "max_output_tokens": 6000,
-    "request_delay_seconds": 15,
-    "max_503_retries": 0,
-    "retry_delay_seconds": 0
+    "request_delay_seconds": 20,
+    "max_503_retries": 1,
+    "retry_delay_seconds": 15
   },
   "repetitions": {
     "dev": 1,
