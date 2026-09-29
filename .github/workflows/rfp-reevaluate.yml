@@ -33,12 +33,19 @@ jobs:
             --json-out reports/rfp-analyzer-dev-v1-gemini36.json \
             --md-out reports/rfp-analyzer-dev-v1-gemini36.md
 
+      - name: Build failure taxonomy
+        run: |
+          python scripts/analyze_rfp_failures.py \
+            --root runs/rfp_analyzer/benchmark-v1-gemini36/dev \
+            --json-out reports/rfp-analyzer-failure-taxonomy.json \
+            --md-out reports/rfp-analyzer-failure-taxonomy.md
+
       - name: Commit re-evaluated evidence
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add runs/rfp_analyzer/benchmark-v1-gemini36 reports/rfp-analyzer-dev-v1-gemini36.*
+          git add runs/rfp_analyzer/benchmark-v1-gemini36 reports/rfp-analyzer-dev-v1-gemini36.* reports/rfp-analyzer-failure-taxonomy.*
           if git diff --cached --quiet; then
             echo "No re-evaluation changes."
             exit 0
