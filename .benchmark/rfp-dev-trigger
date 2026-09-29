@@ -5,6 +5,8 @@ provider: gemini
 model: gemini-3.8-flash
 split: dev
 versions: all
-repetitions: 2
-expected calls: 16
-triggered: 2026-09-29T10:30+09:00
+repetitions: 1
+expected calls: 8
+max_503_retries_per_call: 1
+retry_delay_seconds: 12
+triggered: 2026-09-29T10:35+09:00
