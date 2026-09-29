@@ -1,6 +1,7 @@
-Proposal QA frozen candidate holdout
+latest Proposal QA frozen candidate holdout
+provider: openai
 model: gpt-5.6-luna
 candidate: v4_compact_taxonomy
 split: holdout
 expected_calls: 1
-triggered: 2026-09-29T15:47+09:00
+triggered: 2026-09-29T15:52+09:00
