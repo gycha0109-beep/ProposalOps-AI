@@ -1,0 +1,276 @@
+{
+  "run_id": "proposal_strategist-1.0-holdout-v4_explicit_classes-01",
+  "track": "proposal_strategist",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "prompt_version": "v4_explicit_classes",
+  "prompt_file": "prompts/proposal_strategist/v4_explicit_classes.md",
+  "prompt_sha256": "080aef29a852fa4d963d8d8c4f27daedb511fc17903b0529ad6a3864c7044fdb",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 8000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T08:19:16.885127+00:00",
+    "git_commit": "0ad10f5df65e346a88644196e14df20f9aa37ae2",
+    "provider": "openai",
+    "provider_response_id": "resp_067d6aac4bb4ace7016abb7478585487d0bd40d38dcc83a0d7",
+    "latency_seconds": 13.1886,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 2959,
+      "input_tokens_details": {
+        "cache_write_tokens": 2956,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1524,
+      "output_tokens_details": {
+        "reasoning_tokens": 69
+      },
+      "total_tokens": 4483
+    }
+  },
+  "json_parseable": true,
+  "raw_output": "{\n  \"results\": [\n    {\n      \"rfp_id\": \"RFP-TEST-003\",\n      \"strategy\": {\n        \"proposal_thesis\": \"정책을 설명하는 행사가 아니라 시민이 직접 체험하고 결과를 확인한 뒤 후속 정책정보까지 탐색하도록 설계하는 참여형 정책 여정으로 운영한다. 현장에서는 동선·수용량·안전·동의 절차를 표준화하고, 온라인에서는 숏폼과 참여자 후기를 연결해 행사 전·중·후 확산과 성과 측정을 일관되게 관리한다.\",\n        \"concept\": \"정책을 만나고, 체험하고, 확인하고, 이어가는 시민 정책 플레이그라운드\",\n        \"strategy_pillars\": [\n          {\n            \"pillar\": \"경험 전환형 체험 동선\",\n            \"description\": \"입장 안내에서 정책 이해, 6종 체험, 결과 확인, 후속 정책정보 탐색으로 이어지는 Orient → Experience → Reflect → Next 구조를 적용한다. 각 부스의 결과가 다음 정보 탐색으로 연결되도록 QR 또는 안내 콘텐츠를 배치한다.\",\n            \"requirement_ids\": [\n              \"R-301\"\n            ],\n            \"classification\": \"REFERENCE_PATTERN\",\n            \"evidence_ids\": [\n              \"EV-R-301-01\"\n            ]\n          },\n          {\n            \"pillar\": \"수용량 기반 혼잡 분산 운영\",\n            \"description\": \"부스별 체험시간과 동시 수용인원을 사전 산정해 대기열을 분리하고, 혼잡 시간에는 대기 중 시청·퀴즈·정책 카드 등 대체 콘텐츠를 제공한다. 현장 운영 인력은 입장·동선 안내, 부스 진행, 대기열 관리, 결과 안내 역할로 구분하고 비상 연락체계를 운영한다.\",\n            \"requirement_ids\": [\n              \"R-302\"\n            ],\n            \"classification\": \"REFERENCE_PATTERN\",\n            \"evidence_ids\": [\n              \"EV-R-302-01\"\n            ]\n          },\n          {\n            \"pillar\": \"공식 콘텐츠와 시민 후기의 단계적 확산\",\n            \"description\": \"행사 전에는 체험 예고와 정책 질문을 숏폼으로 발행하고, 행사 중에는 참여 장면과 반응을 기록하며, 행사 후에는 참여자 후기형 콘텐츠를 제작한다. 공식 계정은 행동 예시와 주제를 제공하고, 시민 콘텐츠는 실천·인증·타인 발견 구조로 확산되도록 설계한다. 전체 퍼널은 발견 → 반응 → 공유로 운영한다.\",\n            \"requirement_ids\": [\n              \"R-303\"\n            ],\n            \"classification\": \"REFERENCE_PATTERN\",\n            \"evidence_ids\": [\n              \"EV-R-303-01\",\n              \"EV-R-303-02\",\n              \"EV-R-303-03\"\n            ]\n          },\n          {\n            \"pillar\": \"안전·개인정보·촬영동의 통합 통제\",\n            \"description\": \"행사 전 안전점검, 현장 사고 예방, 긴급상황 보고와 대응 절차를 체크리스트로 표준화한다. 이벤트 참여정보는 목적에 필요한 최소 범위만 수집하고, 촬영 전에는 출연 범위·사용 채널·사용 기간을 안내해 동의 상태를 기록한다.\",\n            \"requirement_ids\": [\n              \"R-304\",\n              \"R-305\"\n            ],\n            \"classification\": \"REFERENCE_PATTERN\",\n            \"evidence_ids\": [\n              \"EV-R-304-01\",\n              \"EV-R-305-01\",\n              \"EV-R-305-02\"\n            ]\n          },\n          {\n            \"pillar\": \"체험 이후 행동까지 측정하는 성과관리\",\n            \"description\": \"단순 방문자 수를 넘어 방문자 수, 핵심 체험 완료, 후속 정책정보 조회, 만족도 응답을 단계별로 측정한다. 현장 체크·QR 조회·콘텐츠 반응 데이터를 결과보고서에 연결해 방문에서 체험 완료와 후속 탐색으로 이어지는 전환 흐름을 제시한다.\",\n            \"requirement_ids\": [\n              \"R-306\"\n            ],\n            \"classification\": \"REFERENCE_PATTERN\",\n            \"evidence_ids\": [\n              \"EV-R-306-01\"\n            ]\n          }\n        ],\n        \"information_classes\": {\n          \"RFP_FACT\": [\n            \"사업은 계약일로부터 4개월 동안 정책 체험행사 2회와 체험 부스 6종을 운영해야 한다.\",\n            \"숏폼 영상 10편과 참여자 후기형 디지털 콘텐츠 12건을 제작해야 한다.\",\n            \"방문자 수, 핵심 체험 완료, 후속 정책정보 조회, 만족도 응답을 포함한 성과지표가 요구된다.\"\n          ],\n          \"REFERENCE_FACT\": [],\n          \"REFERENCE_PATTERN\": [\n            \"입장·체험·결과 확인·후속 정보 탐색의 Orient → Experience → Reflect → Next 동선.\",\n            \"체험시간과 수용인원에 따른 대기열 분리 및 대기 중 대체 콘텐츠.\",\n            \"공식 안내와 참여자 콘텐츠의 역할 분리, 실천·인증·타인 발견 구조.\",\n            \"발견 → 반응 → 공유의 디지털 확산 구조.\",\n            \"안전·촬영동의·정보수집 체크리스트와 촬영 전 사용 범위 확인.\",\n            \"방문 → 체험완료 → 후속조회 단계의 KPI 측정.\"\n          ],\n          \"AI_RECOMMENDATION\": [\n            \"6종 체험 부스를 하나의 정책 여정으로 연결하고 각 체험 결과를 후속 정책정보 탐색으로 전환한다.\",\n            \"행사 전·중·후 콘텐츠를 연계해 숏폼 10편과 후기형 콘텐츠 12건을 단일 확산 퍼널로 운영한다.\",\n            \"현장 역할 분담, 비상 연락체계, 최소수집 및 촬영동의 기록을 운영 매뉴얼에 통합한다.\"\n          ]\n        },\n        \"reference_gaps\": [\n          \"행사 장소, 예상 방문객 규모, 부스별 체험시간과 수용인원은 제공되지 않아 구체적인 인력 수와 대기시간 목표는 실행계획 단계에서 산정해야 한다.\",\n          \"긴급상황의 세부 유형, 의료·시설 협력체계, 개인정보 처리 시스템은 제공되지 않아 발주처 및 장소 운영주체 확인이 필요하다.\",\n          \"숏폼 및 후기 콘텐츠의 게시 채널, 광고 집행 여부, 정책정보 연계 URL은 제공되지 않아 콘텐츠 배포계획 확정 전 확인이 필요하다.\"\n        ]\n      }\n    }\n  ]\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "rfp_id": "RFP-TEST-003",
+        "strategy": {
+          "proposal_thesis": "정책을 설명하는 행사가 아니라 시민이 직접 체험하고 결과를 확인한 뒤 후속 정책정보까지 탐색하도록 설계하는 참여형 정책 여정으로 운영한다. 현장에서는 동선·수용량·안전·동의 절차를 표준화하고, 온라인에서는 숏폼과 참여자 후기를 연결해 행사 전·중·후 확산과 성과 측정을 일관되게 관리한다.",
+          "concept": "정책을 만나고, 체험하고, 확인하고, 이어가는 시민 정책 플레이그라운드",
+          "strategy_pillars": [
+            {
+              "pillar": "경험 전환형 체험 동선",
+              "description": "입장 안내에서 정책 이해, 6종 체험, 결과 확인, 후속 정책정보 탐색으로 이어지는 Orient → Experience → Reflect → Next 구조를 적용한다. 각 부스의 결과가 다음 정보 탐색으로 연결되도록 QR 또는 안내 콘텐츠를 배치한다.",
+              "requirement_ids": [
+                "R-301"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-301-01"
+              ]
+            },
+            {
+              "pillar": "수용량 기반 혼잡 분산 운영",
+              "description": "부스별 체험시간과 동시 수용인원을 사전 산정해 대기열을 분리하고, 혼잡 시간에는 대기 중 시청·퀴즈·정책 카드 등 대체 콘텐츠를 제공한다. 현장 운영 인력은 입장·동선 안내, 부스 진행, 대기열 관리, 결과 안내 역할로 구분하고 비상 연락체계를 운영한다.",
+              "requirement_ids": [
+                "R-302"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-302-01"
+              ]
+            },
+            {
+              "pillar": "공식 콘텐츠와 시민 후기의 단계적 확산",
+              "description": "행사 전에는 체험 예고와 정책 질문을 숏폼으로 발행하고, 행사 중에는 참여 장면과 반응을 기록하며, 행사 후에는 참여자 후기형 콘텐츠를 제작한다. 공식 계정은 행동 예시와 주제를 제공하고, 시민 콘텐츠는 실천·인증·타인 발견 구조로 확산되도록 설계한다. 전체 퍼널은 발견 → 반응 → 공유로 운영한다.",
+              "requirement_ids": [
+                "R-303"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-303-01",
+                "EV-R-303-02",
+                "EV-R-303-03"
+              ]
+            },
+            {
+              "pillar": "안전·개인정보·촬영동의 통합 통제",
+              "description": "행사 전 안전점검, 현장 사고 예방, 긴급상황 보고와 대응 절차를 체크리스트로 표준화한다. 이벤트 참여정보는 목적에 필요한 최소 범위만 수집하고, 촬영 전에는 출연 범위·사용 채널·사용 기간을 안내해 동의 상태를 기록한다.",
+              "requirement_ids": [
+                "R-304",
+                "R-305"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-304-01",
+                "EV-R-305-01",
+                "EV-R-305-02"
+              ]
+            },
+            {
+              "pillar": "체험 이후 행동까지 측정하는 성과관리",
+              "description": "단순 방문자 수를 넘어 방문자 수, 핵심 체험 완료, 후속 정책정보 조회, 만족도 응답을 단계별로 측정한다. 현장 체크·QR 조회·콘텐츠 반응 데이터를 결과보고서에 연결해 방문에서 체험 완료와 후속 탐색으로 이어지는 전환 흐름을 제시한다.",
+              "requirement_ids": [
+                "R-306"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-306-01"
+              ]
+            }
+          ],
+          "information_classes": {
+            "RFP_FACT": [
+              "사업은 계약일로부터 4개월 동안 정책 체험행사 2회와 체험 부스 6종을 운영해야 한다.",
+              "숏폼 영상 10편과 참여자 후기형 디지털 콘텐츠 12건을 제작해야 한다.",
+              "방문자 수, 핵심 체험 완료, 후속 정책정보 조회, 만족도 응답을 포함한 성과지표가 요구된다."
+            ],
+            "REFERENCE_FACT": [],
+            "REFERENCE_PATTERN": [
+              "입장·체험·결과 확인·후속 정보 탐색의 Orient → Experience → Reflect → Next 동선.",
+              "체험시간과 수용인원에 따른 대기열 분리 및 대기 중 대체 콘텐츠.",
+              "공식 안내와 참여자 콘텐츠의 역할 분리, 실천·인증·타인 발견 구조.",
+              "발견 → 반응 → 공유의 디지털 확산 구조.",
+              "안전·촬영동의·정보수집 체크리스트와 촬영 전 사용 범위 확인.",
+              "방문 → 체험완료 → 후속조회 단계의 KPI 측정."
+            ],
+            "AI_RECOMMENDATION": [
+              "6종 체험 부스를 하나의 정책 여정으로 연결하고 각 체험 결과를 후속 정책정보 탐색으로 전환한다.",
+              "행사 전·중·후 콘텐츠를 연계해 숏폼 10편과 후기형 콘텐츠 12건을 단일 확산 퍼널로 운영한다.",
+              "현장 역할 분담, 비상 연락체계, 최소수집 및 촬영동의 기록을 운영 매뉴얼에 통합한다."
+            ]
+          },
+          "reference_gaps": [
+            "행사 장소, 예상 방문객 규모, 부스별 체험시간과 수용인원은 제공되지 않아 구체적인 인력 수와 대기시간 목표는 실행계획 단계에서 산정해야 한다.",
+            "긴급상황의 세부 유형, 의료·시설 협력체계, 개인정보 처리 시스템은 제공되지 않아 발주처 및 장소 운영주체 확인이 필요하다.",
+            "숏폼 및 후기 콘텐츠의 게시 채널, 광고 집행 여부, 정책정보 연계 URL은 제공되지 않아 콘텐츠 배포계획 확정 전 확인이 필요하다."
+          ]
+        }
+      }
+    ]
+  },
+  "evaluation": {
+    "metrics": {
+      "requirement_coverage": 1.0,
+      "evidence_citation_coverage": 1.0,
+      "evidence_validity": 1.0,
+      "unsupported_company_claim_count": 0.0,
+      "unsupported_quantitative_claim_count": 0.0,
+      "information_class_separation": 1.0,
+      "invalid_evidence_reference_count": 0.0,
+      "result_coverage": 1.0
+    },
+    "per_rfp": [
+      {
+        "rfp_id": "RFP-TEST-003",
+        "found": true,
+        "evaluation": {
+          "metrics": {
+            "requirement_coverage": 1.0,
+            "evidence_citation_coverage": 1.0,
+            "evidence_validity": 1.0,
+            "unsupported_company_claim_count": 0,
+            "unsupported_quantitative_claim_count": 0,
+            "information_class_separation": 1.0,
+            "invalid_evidence_reference_count": 0
+          },
+          "covered_requirement_ids": [
+            "R-301",
+            "R-302",
+            "R-303",
+            "R-304",
+            "R-305",
+            "R-306"
+          ],
+          "missing_requirement_ids": [],
+          "forbidden_claim_hits": [],
+          "invalid_evidence_refs": [],
+          "evidence_details": [
+            {
+              "requirement_id": "R-301",
+              "cited_ids": [
+                "EV-R-301-01"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P013"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P013"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-302",
+              "cited_ids": [
+                "EV-R-302-01"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P014"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P014"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-303",
+              "cited_ids": [
+                "EV-R-303-01",
+                "EV-R-303-02",
+                "EV-R-303-03"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-005-P009",
+                "PA-CAMP-005-P010",
+                "PA-PR-002-P013"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-005-P009",
+                "PA-CAMP-005-P010",
+                "PA-PR-002-P013"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-304",
+              "cited_ids": [
+                "EV-R-304-01",
+                "EV-R-305-01",
+                "EV-R-305-02"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P015",
+                "PA-VIDEO-012-P017"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P015"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-305",
+              "cited_ids": [
+                "EV-R-304-01",
+                "EV-R-305-01",
+                "EV-R-305-02"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P015",
+                "PA-VIDEO-012-P017"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P015",
+                "PA-VIDEO-012-P017"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-306",
+              "cited_ids": [
+                "EV-R-306-01"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P016"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P016"
+              ],
+              "citation_present": true,
+              "valid": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

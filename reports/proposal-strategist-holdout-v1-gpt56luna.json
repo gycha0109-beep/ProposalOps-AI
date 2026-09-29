@@ -1,0 +1,87 @@
+{
+  "track": "proposal_strategist",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 8000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 1,
+  "versions": {
+    "v4_explicit_classes": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_citation_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_company_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_quantitative_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "information_class_separation": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "invalid_evidence_reference_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2959,
+          "mean": 2959
+        },
+        "output_tokens": {
+          "total": 1524,
+          "mean": 1524
+        },
+        "total_tokens": {
+          "total": 4483,
+          "mean": 4483
+        },
+        "reasoning_tokens": {
+          "total": 69,
+          "mean": 69
+        }
+      }
+    }
+  }
+}
