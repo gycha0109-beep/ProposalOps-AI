@@ -19,18 +19,43 @@ jobs:
         with:
           python-version: "3.14"
 
-      - name: Compile evaluator scripts
+      - name: Compile benchmark scripts
         run: python -m compileall -q scripts
 
       - name: Verify frozen benchmark inventory
         run: python scripts/benchmark_inventory.py --assert-v1
 
+      - name: Validate prompt variants
+        run: python scripts/generate_prompt_diff.py --check
+
+      - name: Validate RFP dev execution matrix
+        run: |
+          python scripts/run_rfp_benchmark.py \
+            --split dev \
+            --versions all \
+            --repetitions 1 \
+            --plan-only > /tmp/rfp-dev-plan.json
+          cat /tmp/rfp-dev-plan.json
+
+      - name: Validate protected holdout matrix
+        run: |
+          python scripts/run_rfp_benchmark.py \
+            --split holdout \
+            --versions all \
+            --repetitions 1 \
+            --plan-only > /tmp/rfp-holdout-plan.json
+          cat /tmp/rfp-holdout-plan.json
+
       - name: Run retrieval baseline on dev split
         run: |
-          python scripts/evaluate_retrieval.py             --gold evals/frozen/v1/dev/retrieval.json             --out retrieval-dev.json
+          python scripts/evaluate_retrieval.py \
+            --gold evals/frozen/v1/dev/retrieval.json \
+            --out retrieval-dev.json
           cat retrieval-dev.json
 
       - name: Run retrieval baseline on holdout split
         run: |
-          python scripts/evaluate_retrieval.py             --gold evals/frozen/v1/holdout/retrieval.json             --out retrieval-holdout.json
+          python scripts/evaluate_retrieval.py \
+            --gold evals/frozen/v1/holdout/retrieval.json \
+            --out retrieval-holdout.json
           cat retrieval-holdout.json
