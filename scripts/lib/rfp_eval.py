@@ -207,6 +207,7 @@ def evaluate_rfp(raw_text: str, gold: dict) -> dict:
 
     return {
         "track": "rfp_analyzer",
+        "evaluator_version": "1.1",
         "gold_version": gold.get("version"),
         "split": gold.get("split"),
         "json_parseable": parsed is not None,
