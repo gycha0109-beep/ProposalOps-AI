@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "split": "holdout",
+  "track": "rfp_analyzer",
+  "source": "data/raw/rfps/RFP-TEST-003.md",
+  "cases": [
+    {
+      "id": "003-01",
+      "metric": "exact_or_semantic",
+      "path": "project.duration",
+      "expected": "계약일로부터 4개월",
+      "critical": true
+    },
+    {
+      "id": "003-02",
+      "metric": "unknown",
+      "path": "project.budget",
+      "expected": "unknown",
+      "critical": true
+    },
+    {
+      "id": "003-03",
+      "metric": "contains",
+      "path": "project.target_audience",
+      "expected_terms": [
+        "일반 시민",
+        "가족"
+      ],
+      "critical": true
+    },
+    {
+      "id": "003-04",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "체험행사",
+        "quantity": "2회"
+      },
+      "critical": true
+    },
+    {
+      "id": "003-05",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "체험 부스",
+        "quantity": "6종"
+      },
+      "critical": true
+    },
+    {
+      "id": "003-06",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "숏폼",
+        "quantity": "10편"
+      },
+      "critical": true
+    },
+    {
+      "id": "003-07",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "후기",
+        "quantity": "12건"
+      },
+      "critical": true
+    },
+    {
+      "id": "003-08",
+      "metric": "evaluation_sum",
+      "expected": 100,
+      "critical": true
+    },
+    {
+      "id": "003-09",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "대기열",
+        "혼잡"
+      ],
+      "critical": true
+    },
+    {
+      "id": "003-10",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "개인정보",
+        "촬영",
+        "동의"
+      ],
+      "critical": true
+    },
+    {
+      "id": "003-11",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "방문자 수",
+        "체험 완료",
+        "정책정보 조회",
+        "만족도"
+      ],
+      "critical": true
+    },
+    {
+      "id": "003-12",
+      "metric": "unsupported_addition",
+      "forbidden_terms": [
+        "과거 참여자 5만",
+        "만족도 98%",
+        "기존 행사 실적"
+      ],
+      "critical": true
+    }
+  ]
+}
