@@ -1,0 +1,30 @@
+{
+  "benchmark_version": "1.0",
+  "track": "proposal_qa",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 7000,
+    "request_delay_seconds": 20,
+    "max_503_retries": 1,
+    "retry_delay_seconds": 15
+  },
+  "repetitions": {
+    "dev": 1,
+    "holdout": 1
+  },
+  "cases_file": "evals/qa-injected-errors/cases.json",
+  "inputs_file": "evals/qa-injected-errors/inputs-v1.json",
+  "versions": {
+    "v0_baseline": "prompts/proposal_qa/v0_baseline.md",
+    "v1_rules": "prompts/proposal_qa/v1_rules.md",
+    "v2_evidence": "prompts/proposal_qa/v2_evidence.md",
+    "v3_final": "prompts/proposal_qa/v3_final.md"
+  },
+  "splits": {
+    "dev": "evals/frozen/v1/dev/qa.json",
+    "holdout": "evals/frozen/v1/holdout/qa.json"
+  },
+  "run_namespace": "benchmark-v1-gemini36"
+}
