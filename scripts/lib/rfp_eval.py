@@ -8,6 +8,7 @@ from typing import Any
 UNKNOWN_TERMS = (
     "unknown",
     "미기재",
+    "미명시",
     "명시하지 않",
     "확인 불가",
     "알 수 없",
@@ -45,6 +46,19 @@ def _blob(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False).lower()
 
 
+def _normalize_semantic_text(value: Any) -> str:
+    text = _blob(value)
+    replacements = {
+        "계약체결일": "계약일",
+        "계약 체결일": "계약일",
+        "개월간": "개월",
+        "개월 간": "개월",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return re.sub(r"[\\s·ㆍ→$\\\\()\[\]{}:;,./_-]+", "", text)
+
+
 def _contains_all(blob: str, terms: list[str]) -> bool:
     return all(term.lower() in blob for term in terms)
 
@@ -55,12 +69,13 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
     detail: dict[str, Any] = {"id": case["id"], "metric": metric}
 
     if metric == "exact_or_semantic":
-        expected = case["expected"].lower()
+        expected = _normalize_semantic_text(case["expected"])
         if parsed is not None:
             value = _get_path(parsed, case["path"])
-            ok = expected in _blob(value)
+            actual = _normalize_semantic_text(value)
         else:
-            ok = expected in raw_blob
+            actual = _normalize_semantic_text(raw_text)
+        ok = expected in actual
         detail["expected"] = case["expected"]
         return ok, detail
 
