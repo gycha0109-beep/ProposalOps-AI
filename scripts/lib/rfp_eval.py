@@ -85,10 +85,15 @@ def _parse_number(value: Any) -> float | None:
     return None
 
 
-def _evaluation_scores(parsed: dict) -> list[float]:
-    items = parsed.get("evaluation", [])
+def _evaluation_items(parsed: dict) -> list:
+    items = parsed.get("evaluation")
     if not isinstance(items, list):
-        return []
+        items = parsed.get("evaluations", [])
+    return items if isinstance(items, list) else []
+
+
+def _evaluation_scores(parsed: dict) -> list[float]:
+    items = _evaluation_items(parsed)
     scores = []
     for item in items:
         if not isinstance(item, dict):
@@ -100,6 +105,55 @@ def _evaluation_scores(parsed: dict) -> list[float]:
                     scores.append(number)
                 break
     return scores
+
+
+def _grounding_metrics(parsed: dict | None, source_text: str | None) -> dict:
+    if parsed is None:
+        return {
+            "source_quote_coverage": 0.0,
+            "source_quote_validity": None,
+            "groundable_item_count": 0,
+            "source_quote_count": 0,
+        }
+
+    items = []
+    for key in ("scope", "deliverables", "requirements", "evaluation", "evaluations", "constraints"):
+        values = parsed.get(key, [])
+        if isinstance(values, list):
+            items.extend(values)
+
+    if not items:
+        return {
+            "source_quote_coverage": 0.0,
+            "source_quote_validity": None,
+            "groundable_item_count": 0,
+            "source_quote_count": 0,
+        }
+
+    quote_count = 0
+    valid_count = 0
+    source_normalized = re.sub(r"\s+", " ", source_text or "").strip().lower()
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        quote = item.get("source_quote")
+        if not isinstance(quote, str) or not quote.strip():
+            continue
+        quote_count += 1
+        quote_normalized = re.sub(r"\s+", " ", quote).strip().lower()
+        if source_text is not None and quote_normalized in source_normalized:
+            valid_count += 1
+
+    coverage = quote_count / len(items)
+    validity = (valid_count / quote_count) if quote_count else None
+
+    return {
+        "source_quote_coverage": round(coverage, 4),
+        "source_quote_validity": round(validity, 4) if validity is not None else None,
+        "groundable_item_count": len(items),
+        "source_quote_count": quote_count,
+    }
 
 
 def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool, dict]:
@@ -200,8 +254,9 @@ def _evaluate_case(case: dict, raw_text: str, parsed: dict | None) -> tuple[bool
     return False, detail
 
 
-def evaluate_rfp(raw_text: str, gold: dict) -> dict:
+def evaluate_rfp(raw_text: str, gold: dict, source_text: str | None = None) -> dict:
     parsed = parse_json_output(raw_text)
+    grounding = _grounding_metrics(parsed, source_text)
 
     details = []
     category_results: dict[str, list[bool]] = {
@@ -246,7 +301,7 @@ def evaluate_rfp(raw_text: str, gold: dict) -> dict:
 
     return {
         "track": "rfp_analyzer",
-        "evaluator_version": "1.2",
+        "evaluator_version": "1.3",
         "gold_version": gold.get("version"),
         "split": gold.get("split"),
         "json_parseable": parsed is not None,
@@ -256,7 +311,10 @@ def evaluate_rfp(raw_text: str, gold: dict) -> dict:
             "numeric_fidelity": rate("numeric"),
             "requirement_assertion_recall": rate("requirement"),
             "unsupported_addition_count": unsupported_hits,
+            "source_quote_coverage": grounding["source_quote_coverage"],
+            "source_quote_validity": grounding["source_quote_validity"],
         },
+        "grounding": grounding,
         "passed": passed,
         "total": total,
         "details": details,
