@@ -21,12 +21,18 @@ class DifyError(RuntimeError):
 
 
 class DifyClient:
-    def __init__(self, api_base: str, api_key: str, timeout: int = 120):
+    def __init__(self, api_base: str, api_key: str, timeout: int = 120, min_interval_seconds: float = 0.0):
         self.api_base = api_base.rstrip("/")
         self.api_key = api_key
         self.timeout = timeout
+        self.min_interval_seconds = min_interval_seconds
+        self._last_request_at = 0.0
 
     def request(self, method: str, path: str, payload: dict | None = None):
+        if self.min_interval_seconds > 0 and self._last_request_at:
+            elapsed = time.monotonic() - self._last_request_at
+            if elapsed < self.min_interval_seconds:
+                time.sleep(self.min_interval_seconds - elapsed)
         body = None
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -45,6 +51,7 @@ class DifyClient:
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as response:
                 raw = response.read().decode("utf-8")
+                self._last_request_at = time.monotonic()
                 return json.loads(raw) if raw else {}
         except urllib.error.HTTPError as exc:
             raw = exc.read().decode("utf-8", errors="replace")
@@ -203,7 +210,11 @@ def main():
     if not args.api_key:
         raise SystemExit("DIFY_API_KEY or --api-key is required.")
 
-    client = DifyClient(args.api_base, args.api_key)
+    client = DifyClient(
+        args.api_base,
+        args.api_key,
+        min_interval_seconds=args.delay_seconds,
+    )
     existing = list_all_documents(client, args.dataset_id)
     by_name = {item.get("name"): item for item in existing if item.get("name")}
 
@@ -237,8 +248,6 @@ def main():
         except DifyError as exc:
             failures.append({"asset_id": doc["asset_id"], "error": str(exc)})
             print(f"[{index}/{len(docs)}] FAILED {doc['asset_id']}: {exc}")
-        if index < len(docs):
-            time.sleep(args.delay_seconds)
 
     if not args.skip_native_metadata and uploaded:
         sync_metadata(client, args.dataset_id, uploaded, metadata_fields)
