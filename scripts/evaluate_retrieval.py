@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""Small, dependency-free lexical retrieval baseline for ProposalOps AI.
-
-This is NOT the Dify retrieval result. It exists to make dataset regressions
-visible before the assets are uploaded to the actual knowledge base.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -17,20 +11,21 @@ from pathlib import Path
 
 TEXT_FIELDS = ("title", "project_type", "section", "normalized_text")
 LIST_FIELDS = (
-    "objective",
-    "target_audience",
-    "deliverables",
-    "strategies",
-    "differentiators",
-    "channels",
-    "kpis",
-    "reusable_patterns",
-    "tags",
+    "objective", "target_audience", "deliverables", "strategies",
+    "differentiators", "channels", "kpis", "reusable_patterns", "tags",
 )
 
 
-def load_jsonl(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load_assets(path: Path) -> list[dict]:
+    files = [path] if path.is_file() else sorted(path.rglob("*.jsonl"))
+    assets = []
+    for file in files:
+        assets.extend(
+            json.loads(line)
+            for line in file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        )
+    return assets
 
 
 def flatten_asset(asset: dict) -> str:
@@ -43,109 +38,87 @@ def flatten_asset(asset: dict) -> str:
 def tokens(text: str) -> list[str]:
     normalized = re.sub(r"\s+", " ", text.lower().strip())
     compact = re.sub(r"\s", "", normalized)
-    result: list[str] = []
-
+    result = []
     for n in (2, 3):
-        result.extend(compact[i : i + n] for i in range(max(0, len(compact) - n + 1)))
-
+        result.extend(compact[i:i+n] for i in range(max(0, len(compact) - n + 1)))
     result.extend(re.findall(r"[a-z0-9]+|[가-힣]+", normalized))
     return result
 
 
-def build_vector(counter: collections.Counter, df: collections.Counter, n_docs: int) -> dict[str, float]:
-    vector: dict[str, float] = {}
+def vector(counter, df, n_docs):
+    out = {}
     for term, tf in counter.items():
         idf = math.log((n_docs + 1) / (df.get(term, 0) + 1)) + 1
-        vector[term] = (1 + math.log(tf)) * idf
-    return vector
+        out[term] = (1 + math.log(tf)) * idf
+    return out
 
 
-def cosine(query_vector: dict[str, float], doc_vector: dict[str, float]) -> float:
-    dot = sum(value * doc_vector.get(term, 0.0) for term, value in query_vector.items())
-    q_norm = math.sqrt(sum(value * value for value in query_vector.values()))
-    d_norm = math.sqrt(sum(value * value for value in doc_vector.values()))
-    return dot / (q_norm * d_norm) if q_norm and d_norm else 0.0
+def cosine(a, b):
+    dot = sum(v * b.get(k, 0.0) for k, v in a.items())
+    an = math.sqrt(sum(v*v for v in a.values()))
+    bn = math.sqrt(sum(v*v for v in b.values()))
+    return dot / (an * bn) if an and bn else 0.0
 
 
-def evaluate(assets: list[dict], gold: dict) -> dict:
-    doc_counters = [collections.Counter(tokens(flatten_asset(asset))) for asset in assets]
-    df: collections.Counter = collections.Counter()
-    for counter in doc_counters:
-        df.update(counter.keys())
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--assets", default="data/processed/proposals")
+    ap.add_argument("--gold", default="evals/frozen/v1/dev/retrieval.json")
+    ap.add_argument("--out")
+    args = ap.parse_args()
 
-    doc_vectors = [build_vector(counter, df, len(assets)) for counter in doc_counters]
+    assets = load_assets(Path(args.assets))
+    gold = json.loads(Path(args.gold).read_text(encoding="utf-8"))
 
-    ranks: list[int | None] = []
-    case_results: list[dict] = []
+    counters = [collections.Counter(tokens(flatten_asset(a))) for a in assets]
+    df = collections.Counter()
+    for c in counters:
+        df.update(c.keys())
+    vectors = [vector(c, df, len(assets)) for c in counters]
 
+    ranks = []
+    cases = []
     for case in gold["cases"]:
-        q_counter = collections.Counter(tokens(case["query"]))
-        q_vector = build_vector(q_counter, df, len(assets))
-
+        q = vector(collections.Counter(tokens(case["query"])), df, len(assets))
         scored = sorted(
-            (
-                (cosine(q_vector, doc_vector), asset["asset_id"])
-                for asset, doc_vector in zip(assets, doc_vectors)
-            ),
+            ((cosine(q, dv), asset["asset_id"]) for asset, dv in zip(assets, vectors)),
             reverse=True,
         )
-
         expected = set(case["expected_asset_ids"])
-        rank = next((index + 1 for index, (_, asset_id) in enumerate(scored) if asset_id in expected), None)
+        rank = next((i + 1 for i, (_, aid) in enumerate(scored) if aid in expected), None)
         ranks.append(rank)
-
-        case_results.append(
-            {
-                "id": case["id"],
-                "expected_asset_ids": case["expected_asset_ids"],
-                "rank": rank,
-                "top_results": [
-                    {"asset_id": asset_id, "score": round(score, 6)}
-                    for score, asset_id in scored[:5]
-                ],
-            }
-        )
+        cases.append({
+            "id": case["id"],
+            "rank": rank,
+            "expected_asset_ids": case["expected_asset_ids"],
+            "top_results": [
+                {"asset_id": aid, "score": round(score, 6)}
+                for score, aid in scored[:5]
+            ],
+        })
 
     total = len(ranks)
-
-    def hit_at(k: int) -> float:
-        return sum(rank is not None and rank <= k for rank in ranks) / total
-
-    mrr = sum((1 / rank) if rank else 0 for rank in ranks) / total
-
-    return {
+    hit = lambda k: sum(r is not None and r <= k for r in ranks) / total
+    result = {
         "retriever": "local_char_ngram_tfidf_baseline",
-        "dataset_version": gold.get("version"),
+        "split": gold.get("split"),
         "asset_count": len(assets),
         "case_count": total,
         "metrics": {
-            "hit_at_1": round(hit_at(1), 4),
-            "hit_at_3": round(hit_at(3), 4),
-            "hit_at_5": round(hit_at(5), 4),
-            "mrr": round(mrr, 4),
+            "hit_at_1": round(hit(1), 4),
+            "hit_at_3": round(hit(3), 4),
+            "hit_at_5": round(hit(5), 4),
+            "mrr": round(sum((1/r) if r else 0 for r in ranks) / total, 4),
         },
-        "cases": case_results,
+        "cases": cases,
         "limitations": [
-            "synthetic demo dataset",
-            "small corpus",
+            "synthetic benchmark",
             "lexical baseline only",
-            "not a Dify Knowledge retrieval result",
+            "not a Dify retrieval result",
         ],
     }
 
-
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--assets", default="data/processed/proposals/proposal-assets.jsonl")
-    parser.add_argument("--gold", default="evals/retrieval-goldset.json")
-    parser.add_argument("--out", default=None)
-    args = parser.parse_args()
-
-    assets = load_jsonl(Path(args.assets))
-    gold = json.loads(Path(args.gold).read_text(encoding="utf-8"))
-    result = evaluate(assets, gold)
     rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
-
     if args.out:
         Path(args.out).write_text(rendered, encoding="utf-8")
     else:
