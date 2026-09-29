@@ -1,0 +1,27 @@
+{
+  "version": "pilot-0.1",
+  "status": "pilot_dev_only",
+  "frozen_on": "2026-09-29",
+  "rules": {
+    "historical_claim": false,
+    "prompt_variants_are_experimental": true,
+    "modify_in_place": false,
+    "corrections_require_new_dataset_version": true,
+    "holdout_results_required_for_final_portfolio": true
+  },
+  "tracks": {
+    "rfp_analyzer": {
+      "dev": "evals/frozen/dev/rfp-analysis.json",
+      "holdout": null
+    },
+    "proposal_strategist": {
+      "dev": "evals/frozen/dev/strategy.json",
+      "holdout": null
+    },
+    "proposal_qa": {
+      "dev": "evals/frozen/dev/qa.json",
+      "holdout": null
+    }
+  },
+  "note": "현재 pilot은 구조 검증용이다. 최종 포트폴리오 개선 수치는 별도 holdout 추가 후 보고한다."
+}
