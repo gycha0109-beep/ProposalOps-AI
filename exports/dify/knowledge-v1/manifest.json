@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "format": "dify_create_by_text_manifest",
+  "document_count": 51,
+  "source_files": [
+    "data/processed/proposals/proposal-assets.jsonl",
+    "data/processed/proposals/benchmark/PROP-CAMP-005.jsonl",
+    "data/processed/proposals/benchmark/PROP-CAMP-010.jsonl",
+    "data/processed/proposals/benchmark/PROP-EDU-006.jsonl",
+    "data/processed/proposals/benchmark/PROP-EDU-009.jsonl",
+    "data/processed/proposals/benchmark/PROP-EVENT-004.jsonl",
+    "data/processed/proposals/benchmark/PROP-PR-007.jsonl",
+    "data/processed/proposals/benchmark/PROP-PR-011.jsonl",
+    "data/processed/proposals/benchmark/PROP-VIDEO-008.jsonl",
+    "data/processed/proposals/benchmark/PROP-VIDEO-012.jsonl"
+  ],
+  "excluded_sources": [
+    "data/processed/proposals/distractors/"
+  ],
+  "one_asset_per_document": true,
+  "document_name_rule": "{asset_id}__{title}",
+  "categories": {
+    "digital_campaign": 10,
+    "education": 12,
+    "event": 5,
+    "public_relations": 12,
+    "video": 12
+  },
+  "reuse_levels": {
+    "concept_only": 3,
+    "pattern_allowed": 48
+  },
+  "sensitivities": {
+    "public_demo": 51
+  },
+  "native_metadata_optional": true,
+  "provenance_embedded_in_text": true,
+  "note": "Regenerate with scripts/export_dify_knowledge.py to populate text_sha256."
+}
