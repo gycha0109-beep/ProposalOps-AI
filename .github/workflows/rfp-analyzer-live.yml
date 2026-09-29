@@ -19,7 +19,7 @@ on:
       repetitions:
         description: "Repeated runs per RFP/version"
         required: true
-        default: "2"
+        default: "1"
         type: string
       confirm_holdout:
         description: "Required only when split=holdout"
@@ -45,7 +45,7 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
       BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
-      BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '2' }}
+      BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '1' }}
       BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
     steps:
       - uses: actions/checkout@v7
