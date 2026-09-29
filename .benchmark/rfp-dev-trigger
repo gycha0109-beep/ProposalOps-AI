@@ -1,8 +1,10 @@
 RFP Analyzer dev live benchmark trigger
 
 benchmark: v1
+provider: gemini
+model: gemini-3.8-flash
 split: dev
 versions: all
-repetitions: 3
-expected calls: 24
-created: 2026-09-29
+repetitions: 2
+expected calls: 16
+triggered: 2026-09-29
