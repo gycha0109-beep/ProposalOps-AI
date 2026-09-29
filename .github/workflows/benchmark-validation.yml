@@ -113,6 +113,40 @@ jobs:
           fi
           echo "Proposal QA holdout gate correctly locked."
 
+      - name: Self-test Proposal Strategist neutral inputs
+        run: python scripts/selftest_strategy_inputs.py
+
+      - name: Validate Proposal Strategist dev batch plan
+        run: |
+          python scripts/run_strategy_benchmark.py \
+            --split dev \
+            --versions all \
+            --plan-only > /tmp/strategist-dev-plan.json
+          cat /tmp/strategist-dev-plan.json
+
+      - name: Validate Proposal Strategist holdout batch plan
+        run: |
+          python scripts/run_strategy_benchmark.py \
+            --split holdout \
+            --versions all \
+            --plan-only > /tmp/strategist-holdout-plan.json
+          cat /tmp/strategist-holdout-plan.json
+
+      - name: Verify Proposal Strategist holdout gate is locked
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_holdout_gate.py \
+            --state evals/frozen/v1/proposal-strategist-candidate.json \
+            --require-holdout
+          EXIT_CODE=$?
+          set -e
+          if [[ "$EXIT_CODE" == "0" ]]; then
+            echo "Proposal Strategist holdout gate unexpectedly open."
+            exit 1
+          fi
+          echo "Proposal Strategist holdout gate correctly locked."
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
