@@ -60,9 +60,12 @@ jobs:
       - name: Protect holdout
         shell: bash
         run: |
-          if [[ "$BENCH_SPLIT" == "holdout" && "$BENCH_CONFIRM_HOLDOUT" != "true" ]]; then
-            echo "Holdout is protected. Re-run with confirm_holdout=true only after prompt freeze."
-            exit 1
+          if [[ "$BENCH_SPLIT" == "holdout" ]]; then
+            if [[ "$BENCH_CONFIRM_HOLDOUT" != "true" ]]; then
+              echo "Holdout is protected. confirm_holdout=true is required."
+              exit 1
+            fi
+            python scripts/check_holdout_gate.py               --state evals/frozen/v1/rfp-analyzer-candidate.json               --require-holdout
           fi
 
       - name: Require Gemini API key
