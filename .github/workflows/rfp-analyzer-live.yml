@@ -44,7 +44,7 @@ jobs:
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
-      BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
+      BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'v4_compact_grounded' }}
       BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '1' }}
       BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
       BENCH_RUN_NAMESPACE: benchmark-v1-gemini36
@@ -109,8 +109,8 @@ jobs:
               --md-out "reports/rfp-analyzer-$BENCH_SPLIT-v1-gemini36.md"
             python scripts/generate_prompt_diff.py \
               --from-version v0_baseline \
-              --to-version v3_final \
-              --out reports/rfp-analyzer-v0-v3.diff
+              --to-version v4_compact_grounded \
+              --out reports/rfp-analyzer-v0-v4.diff
           else
             echo "No completed model runs to aggregate."
           fi
