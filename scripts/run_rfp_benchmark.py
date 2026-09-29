@@ -234,14 +234,16 @@ def main() -> None:
 
     completed = 0
     failed = 0
+    attempted = 0
     for index, item in enumerate(plan):
         path = output_path(root, item)
         if path.exists() and not args.overwrite:
             print(f"SKIP existing: {path}")
             continue
 
-        if completed > 0 and delay > 0:
+        if attempted > 0 and delay > 0:
             time.sleep(delay)
+        attempted += 1
 
         print(
             f'RUN {index + 1}/{len(plan)} '
@@ -290,7 +292,7 @@ def main() -> None:
             f'unsupported={metrics["unsupported_addition_count"]}'
         )
 
-    print(f"completed={completed} failed={failed} planned={len(plan)}")
+    print(f"completed={completed} failed={failed} attempted={attempted} planned={len(plan)}")
     if failed:
         raise SystemExit(2)
 
