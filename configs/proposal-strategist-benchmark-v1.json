@@ -14,7 +14,8 @@
     "v0_baseline": "prompts/proposal_strategist/v0_baseline.md",
     "v1_reference": "prompts/proposal_strategist/v1_reference.md",
     "v2_evidence": "prompts/proposal_strategist/v2_evidence.md",
-    "v3_final": "prompts/proposal_strategist/v3_final.md"
+    "v3_final": "prompts/proposal_strategist/v3_final.md",
+    "v4_explicit_classes": "prompts/proposal_strategist/v4_explicit_classes.md"
   },
   "cases": {
     "dev": [
