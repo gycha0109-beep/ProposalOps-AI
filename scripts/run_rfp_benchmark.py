@@ -10,10 +10,10 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from lib.gemini_generate_content import (
+from lib.openai_responses import (
     ProviderError,
-    call_gemini_generate_content,
-    get_gemini_api_key,
+    call_openai_responses,
+    get_openai_api_key,
 )
 from lib.rfp_eval import evaluate_rfp, parse_json_output
 
@@ -113,18 +113,18 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
     model = config["model"]
     parameters = config["parameters"]
 
-    response = call_gemini_generate_content(
+    response = call_openai_responses(
         api_key=api_key,
         model=model,
-        thinking_level=parameters["thinking_level"],
+        reasoning_effort=parameters["reasoning_effort"],
         max_output_tokens=parameters["max_output_tokens"],
-        system_instruction=instructions,
+        instructions=instructions,
         input_text=(
             f'RFP ID: {item["rfp_id"]}\n\n'
             f'{rfp_text}'
         ),
-        max_503_retries=int(parameters.get("max_503_retries", 1)),
-        retry_delay_seconds=int(parameters.get("retry_delay_seconds", 12)),
+        max_retries=int(parameters.get("max_retries", 2)),
+        retry_delay_seconds=int(parameters.get("retry_delay_seconds", 5)),
     )
 
     raw_output = response["output_text"]
@@ -145,11 +145,11 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
         "prompt_sha256": hashlib.sha256(prompt_content.encode("utf-8")).hexdigest(),
         "model": response["model"],
         "parameters": {
-            "thinking_level": parameters["thinking_level"],
+            "reasoning_effort": parameters["reasoning_effort"],
             "max_output_tokens": parameters["max_output_tokens"],
             "request_delay_seconds": parameters.get("request_delay_seconds", 0),
-            "max_503_retries": parameters.get("max_503_retries", 1),
-            "retry_delay_seconds": parameters.get("retry_delay_seconds", 12),
+            "max_retries": parameters.get("max_retries", 2),
+            "retry_delay_seconds": parameters.get("retry_delay_seconds", 5),
         },
         "input": {
             "rfp_id": item["rfp_id"],
@@ -219,11 +219,11 @@ def main() -> None:
         )
         return
 
-    if config["provider"] != "gemini":
+    if config["provider"] != "openai":
         raise SystemExit(f'Unsupported provider: {config["provider"]}')
 
     try:
-        api_key = get_gemini_api_key()
+        api_key = get_openai_api_key()
     except ProviderError as exc:
         raise SystemExit(str(exc)) from exc
 
