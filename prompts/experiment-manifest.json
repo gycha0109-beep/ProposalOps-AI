@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "created_for": "controlled prompt engineering comparison",
+  "historical_versions": false,
+  "tracks": {
+    "rfp_analyzer": [
+      {
+        "version": "v0_baseline",
+        "intervention": "generic task instruction"
+      },
+      {
+        "version": "v1_structured",
+        "intervention": "JSON structure + requirement IDs"
+      },
+      {
+        "version": "v2_grounded",
+        "intervention": "source quotes + numeric fidelity"
+      },
+      {
+        "version": "v3_final",
+        "intervention": "fail-closed unknown policy + full grounding"
+      }
+    ],
+    "proposal_strategist": [
+      {
+        "version": "v0_baseline",
+        "intervention": "generic strategy generation"
+      },
+      {
+        "version": "v1_reference",
+        "intervention": "separate RFP and retrieved references"
+      },
+      {
+        "version": "v2_evidence",
+        "intervention": "evidence binding + requirement binding"
+      },
+      {
+        "version": "v3_final",
+        "intervention": "fact/pattern/recommendation separation + unsupported claim blocking"
+      }
+    ],
+    "proposal_qa": [
+      {
+        "version": "v0_baseline",
+        "intervention": "generic review"
+      },
+      {
+        "version": "v1_rules",
+        "intervention": "error taxonomy + severity"
+      },
+      {
+        "version": "v2_evidence",
+        "intervention": "evidence-aware validation"
+      },
+      {
+        "version": "v3_final",
+        "intervention": "critical fail-closed rules + false-positive control"
+      }
+    ]
+  },
+  "reporting_rule": "Do not claim improvement until the same frozen benchmark has been run for all variants."
+}
