@@ -40,9 +40,16 @@ jobs:
         run: python scripts/run_e2e_demo.py --plan-only
 
       - name: Run E2E demo
-        run: python scripts/run_e2e_demo.py --overwrite
+        shell: bash
+        run: |
+          set +e
+          python scripts/run_e2e_demo.py --overwrite
+          EXIT_CODE=$?
+          echo "demo_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
+          exit 0
 
       - name: Commit demo evidence
+        if: always()
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -55,3 +62,12 @@ jobs:
           git commit -m "demo: record RFP-TEST-002 E2E package"
           git pull --rebase origin main
           git push
+
+      - name: Fail if final QA failed
+        if: always()
+        shell: bash
+        run: |
+          if [[ "${demo_exit_code:-0}" != "0" ]]; then
+            echo "E2E package was preserved but final QA did not pass."
+            exit "$demo_exit_code"
+          fi
