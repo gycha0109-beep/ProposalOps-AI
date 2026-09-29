@@ -1,0 +1,829 @@
+{
+  "version": "1.0",
+  "status": "materialized_from_frozen_strategist_gold_before_live_runs",
+  "note": "Neutral strategist inputs contain only RFP file references and evidence packs. Forbidden claims and scoring expectations are excluded.",
+  "inputs": [
+    {
+      "rfp_id": "RFP-TEST-001",
+      "rfp_file": "data/raw/rfps/RFP-TEST-001.md",
+      "evidence_packs": [
+        {
+          "requirement_id": "R-001",
+          "status": "NO_REFERENCE_FOUND",
+          "evidence": []
+        },
+        {
+          "requirement_id": "R-002",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-002-01",
+              "asset_id": "PA-PR-002-P013",
+              "proposal_id": "PROP-PR-002",
+              "title": "Discover React Share",
+              "supported_point": "숏폼과 피드로 발견을 만들고 댓글·투표 등 가벼운 반응을 거쳐 공유 가능한 후속 콘텐츠로 확장하는 SNS 확산 전략.",
+              "reusable_patterns": [
+                "발견 → 반응 → 공유의 3단계 확산 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_02.md",
+                "page": 13,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-002-02",
+              "asset_id": "PA-EDU-003-P017",
+              "proposal_id": "PROP-EDU-003",
+              "title": "참여형 콘텐츠 퍼널",
+              "supported_point": "청년층 대상 디지털 교육 콘텐츠에서 숏폼으로 초기 접점을 만들고 퀴즈형 상호작용을 거쳐 실제 참여 행동으로 연결하는 3단계 퍼널 전략.",
+              "reusable_patterns": [
+                "인지 → 상호작용 → 참여로 이어지는 단계형 퍼널",
+                "각 콘텐츠에 단일 행동 목표 배치"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_education_proposal_03.md",
+                "page": 17,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-003",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-003-01",
+              "asset_id": "PA-VIDEO-004-P021",
+              "proposal_id": "PROP-VIDEO-004",
+              "title": "30초 정보형 숏폼 포맷",
+              "supported_point": "30초 숏폼을 첫 3초 훅, 17초 핵심 정보, 마지막 10초 단일 행동 유도로 구성하는 정보형 영상 포맷.",
+              "reusable_patterns": [
+                "Hook → Core → Action 영상 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_04.md",
+                "page": 21,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-003-02",
+              "asset_id": "PA-PR-002-P012",
+              "proposal_id": "PROP-PR-002",
+              "title": "상황 질문 기반 정책 메시지",
+              "supported_point": "정책 문구를 반복하지 않고 이용자의 실제 상황을 질문으로 제시한 뒤 핵심 혜택과 다음 행동을 연결하는 메시지 패턴.",
+              "reusable_patterns": [
+                "상황 질문 → 혜택 → 행동의 3단 메시지 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_02.md",
+                "page": 12,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-004",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-004-01",
+              "asset_id": "PA-EDU-003-P017",
+              "proposal_id": "PROP-EDU-003",
+              "title": "참여형 콘텐츠 퍼널",
+              "supported_point": "청년층 대상 디지털 교육 콘텐츠에서 숏폼으로 초기 접점을 만들고 퀴즈형 상호작용을 거쳐 실제 참여 행동으로 연결하는 3단계 퍼널 전략.",
+              "reusable_patterns": [
+                "인지 → 상호작용 → 참여로 이어지는 단계형 퍼널",
+                "각 콘텐츠에 단일 행동 목표 배치"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_education_proposal_03.md",
+                "page": 17,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-004-02",
+              "asset_id": "PA-EDU-003-P018",
+              "proposal_id": "PROP-EDU-003",
+              "title": "참여 반응 기반 콘텐츠 루프",
+              "supported_point": "참여 결과와 이용자 반응을 후속 콘텐츠로 재가공해 반복 가능한 확산 루프를 만드는 운영 패턴.",
+              "reusable_patterns": [
+                "참여 결과 → 후속 콘텐츠 → 신규 도달의 순환 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_education_proposal_03.md",
+                "page": 18,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-004-03",
+              "asset_id": "PA-CAMP-005-P008",
+              "proposal_id": "PROP-CAMP-005",
+              "title": "하루 한 행동 챌린지",
+              "supported_point": "큰 목표를 하루에 한 번 수행 가능한 작은 행동으로 쪼개 반복 참여를 유도한다.",
+              "reusable_patterns": [
+                "Awareness → Micro Action → Repeat"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_05.md",
+                "page": 8,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-004-04",
+              "asset_id": "PA-CAMP-005-P009",
+              "proposal_id": "PROP-CAMP-005",
+              "title": "인증형 UGC 구조",
+              "supported_point": "참여자가 자신의 실천을 사진·짧은 문장으로 인증하고 다른 사람의 실천을 발견하도록 설계한다.",
+              "reusable_patterns": [
+                "실천 → 인증 → 타인 발견"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_05.md",
+                "page": 9,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-005",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-005-01",
+              "asset_id": "PA-VIDEO-004-P022",
+              "proposal_id": "PROP-VIDEO-004",
+              "title": "정책 정보 이중 검수 프로세스",
+              "supported_point": "공공기관 영상 제작에서 기획 단계와 최종 게시 직전에 정책 정보의 수치·기간·자격 조건을 이중 검수하는 운영 프로세스.",
+              "reusable_patterns": [
+                "변경 가능성이 있는 수치·기간·자격 조건을 게시 직전 재검수"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_04.md",
+                "page": 22,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-005-02",
+              "asset_id": "PA-PR-011-P012",
+              "proposal_id": "PROP-PR-011",
+              "title": "정책 변경 반영 운영",
+              "supported_point": "접수기간, 지원금액, 자격 조건처럼 변경 가능성이 있는 항목을 게시 전 별도 확인한다.",
+              "reusable_patterns": [
+                "변경 정보 재검수",
+                "버전 표시"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_11.md",
+                "page": 12,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-006",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-006-01",
+              "asset_id": "PA-PR-007-P019",
+              "proposal_id": "PROP-PR-007",
+              "title": "저장과 방문 의도 KPI",
+              "supported_point": "노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.",
+              "reusable_patterns": [
+                "노출 → 저장 → 상세탐색 단계 KPI"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 19,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-006-02",
+              "asset_id": "PA-VIDEO-004-P021",
+              "proposal_id": "PROP-VIDEO-004",
+              "title": "30초 정보형 숏폼 포맷",
+              "supported_point": "30초 숏폼을 첫 3초 훅, 17초 핵심 정보, 마지막 10초 단일 행동 유도로 구성하는 정보형 영상 포맷.",
+              "reusable_patterns": [
+                "Hook → Core → Action 영상 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_04.md",
+                "page": 21,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-006-03",
+              "asset_id": "PA-EDU-006-P014",
+              "proposal_id": "PROP-EDU-006",
+              "title": "학습 완료와 자립 수행 KPI",
+              "supported_point": "출석만 보지 않고 과업 완료율과 도움 없이 수행 가능한 비율을 함께 확인한다.",
+              "reusable_patterns": [
+                "출석 → 완료 → 자립 수행의 단계형 KPI"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_education_proposal_06.md",
+                "page": 14,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-007",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-007-01",
+              "asset_id": "PA-VIDEO-004-P022",
+              "proposal_id": "PROP-VIDEO-004",
+              "title": "정책 정보 이중 검수 프로세스",
+              "supported_point": "공공기관 영상 제작에서 기획 단계와 최종 게시 직전에 정책 정보의 수치·기간·자격 조건을 이중 검수하는 운영 프로세스.",
+              "reusable_patterns": [
+                "변경 가능성이 있는 수치·기간·자격 조건을 게시 직전 재검수"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_04.md",
+                "page": 22,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-007-02",
+              "asset_id": "PA-VIDEO-012-P017",
+              "proposal_id": "PROP-VIDEO-012",
+              "title": "초상권·사용동의 체크",
+              "supported_point": "촬영 전 출연 범위, 사용 채널, 사용 기간을 확인하고 동의 상태를 기록한다.",
+              "reusable_patterns": [
+                "촬영 전 사용 범위 확인"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_12.md",
+                "page": 17,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-007-03",
+              "asset_id": "PA-EVENT-004-P015",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "안전·개인정보 체크",
+              "supported_point": "현장 안전사고, 사진 촬영 동의, 이벤트 참여 정보 수집 범위를 사전에 구분해 체크리스트로 관리한다.",
+              "reusable_patterns": [
+                "안전·촬영동의·정보수집 체크리스트"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 15,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rfp_id": "RFP-TEST-002",
+      "rfp_file": "data/raw/rfps/RFP-TEST-002.md",
+      "evidence_packs": [
+        {
+          "requirement_id": "R-201",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-201-01",
+              "asset_id": "PA-PR-007-P015",
+              "proposal_id": "PROP-PR-007",
+              "title": "여행 동기 세분화",
+              "supported_point": "맛집, 휴식, 체험, 사진 촬영 등 방문 동기를 분리해 콘텐츠 탐색 맥락을 구분한다.",
+              "reusable_patterns": [
+                "동기 기반 세그먼트"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 15,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-201-02",
+              "asset_id": "PA-CAMP-010-P020",
+              "proposal_id": "PROP-CAMP-010",
+              "title": "방문 맥락 세분화",
+              "supported_point": "가족 나들이, 혼자 관람, 데이트, 체험 참여처럼 방문 맥락을 구분해 메시지와 추천 콘텐츠를 달리한다.",
+              "reusable_patterns": [
+                "방문 상황 기반 세그먼트"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_10.md",
+                "page": 20,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-202",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-202-01",
+              "asset_id": "PA-PR-007-P016",
+              "proposal_id": "PROP-PR-007",
+              "title": "발견에서 저장까지",
+              "supported_point": "짧은 발견 콘텐츠 이후 지도형 정보와 저장 가능한 코스 콘텐츠로 연결한다.",
+              "reusable_patterns": [
+                "Discover → Save → Visit 구조",
+                "콘텐츠 역할 분리"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 16,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-202-02",
+              "asset_id": "PA-PR-007-P017",
+              "proposal_id": "PROP-PR-007",
+              "title": "코스 묶음 콘텐츠",
+              "supported_point": "단일 장소 소개보다 반나절·하루 동선으로 장소를 묶어 실제 방문 계획에 활용하게 한다.",
+              "reusable_patterns": [
+                "장소 → 코스 단위 재구성"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 17,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-202-03",
+              "asset_id": "PA-CAMP-010-P021",
+              "proposal_id": "PROP-CAMP-010",
+              "title": "취향에서 방문으로",
+              "supported_point": "관심 주제 선택에서 시작해 맞춤 프로그램과 실제 방문 정보를 연결한다.",
+              "reusable_patterns": [
+                "Taste → Match → Visit"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_10.md",
+                "page": 21,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-202-04",
+              "asset_id": "PA-CAMP-010-P022",
+              "proposal_id": "PROP-CAMP-010",
+              "title": "주말 추천 카드",
+              "supported_point": "이번 주말 이용 가능한 프로그램을 대상·시간·소요시간 기준으로 압축해 보여준다.",
+              "reusable_patterns": [
+                "선택에 필요한 정보만 요약"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_10.md",
+                "page": 22,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-203",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-203-01",
+              "asset_id": "PA-VIDEO-004-P021",
+              "proposal_id": "PROP-VIDEO-004",
+              "title": "30초 정보형 숏폼 포맷",
+              "supported_point": "30초 숏폼을 첫 3초 훅, 17초 핵심 정보, 마지막 10초 단일 행동 유도로 구성하는 정보형 영상 포맷.",
+              "reusable_patterns": [
+                "Hook → Core → Action 영상 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_04.md",
+                "page": 21,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-203-02",
+              "asset_id": "PA-VIDEO-008-P008",
+              "proposal_id": "PROP-VIDEO-008",
+              "title": "60초 튜토리얼 구성",
+              "supported_point": "첫 5초에 목적을 알리고 핵심 절차를 3단계 이내로 압축한 뒤 완료 화면으로 마무리한다.",
+              "reusable_patterns": [
+                "Goal 5초 → Steps → Completion"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_08.md",
+                "page": 8,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-204",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-204-01",
+              "asset_id": "PA-PR-007-P018",
+              "proposal_id": "PROP-PR-007",
+              "title": "크리에이터 증폭 구조",
+              "supported_point": "공식 계정의 정보형 콘텐츠와 지역 크리에이터의 체험형 콘텐츠 역할을 분리한다.",
+              "reusable_patterns": [
+                "공식 정보와 체험 후기의 채널 역할 분리"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 18,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-205",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-205-01",
+              "asset_id": "PA-CAMP-010-P023",
+              "proposal_id": "PROP-CAMP-010",
+              "title": "프로그램 변경 대응",
+              "supported_point": "휴관, 매진, 일정 변경을 게시 전 확인하고 변경 시 기존 게시물의 상태를 함께 갱신한다.",
+              "reusable_patterns": [
+                "운영정보 변경 모니터링",
+                "게시물 상태 갱신"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_10.md",
+                "page": 23,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-205-02",
+              "asset_id": "PA-PR-011-P012",
+              "proposal_id": "PROP-PR-011",
+              "title": "정책 변경 반영 운영",
+              "supported_point": "접수기간, 지원금액, 자격 조건처럼 변경 가능성이 있는 항목을 게시 전 별도 확인한다.",
+              "reusable_patterns": [
+                "변경 정보 재검수",
+                "버전 표시"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_11.md",
+                "page": 12,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-206",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-206-01",
+              "asset_id": "PA-PR-007-P019",
+              "proposal_id": "PROP-PR-007",
+              "title": "저장과 방문 의도 KPI",
+              "supported_point": "노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.",
+              "reusable_patterns": [
+                "노출 → 저장 → 상세탐색 단계 KPI"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_07.md",
+                "page": 19,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-206-02",
+              "asset_id": "PA-CAMP-010-P024",
+              "proposal_id": "PROP-CAMP-010",
+              "title": "탐색에서 예약까지 KPI",
+              "supported_point": "콘텐츠 도달, 프로그램 상세조회, 일정 저장, 예약 페이지 이동을 단계별로 측정한다.",
+              "reusable_patterns": [
+                "도달 → 상세조회 → 저장 → 예약 이동"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_10.md",
+                "page": 24,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rfp_id": "RFP-TEST-003",
+      "rfp_file": "data/raw/rfps/RFP-TEST-003.md",
+      "evidence_packs": [
+        {
+          "requirement_id": "R-301",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-301-01",
+              "asset_id": "PA-EVENT-004-P013",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "입장-체험-회고 동선",
+              "supported_point": "행사 경험을 안내, 핵심 체험, 결과 확인, 후속 정보 탐색의 순서로 설계한다.",
+              "reusable_patterns": [
+                "Orient → Experience → Reflect → Next"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 13,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-302",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-302-01",
+              "asset_id": "PA-EVENT-004-P014",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "혼잡 분산 운영",
+              "supported_point": "체험 소요시간과 동시 수용 인원을 기준으로 대기열을 분리하고 혼잡 시간에는 대체 콘텐츠를 제공한다.",
+              "reusable_patterns": [
+                "수용량 기준 대기열 분리",
+                "대기 중 대체 콘텐츠"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 14,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-303",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-303-01",
+              "asset_id": "PA-CAMP-005-P009",
+              "proposal_id": "PROP-CAMP-005",
+              "title": "인증형 UGC 구조",
+              "supported_point": "참여자가 자신의 실천을 사진·짧은 문장으로 인증하고 다른 사람의 실천을 발견하도록 설계한다.",
+              "reusable_patterns": [
+                "실천 → 인증 → 타인 발견"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_05.md",
+                "page": 9,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-303-02",
+              "asset_id": "PA-CAMP-005-P010",
+              "proposal_id": "PROP-CAMP-005",
+              "title": "공식 콘텐츠와 참여 콘텐츠 연결",
+              "supported_point": "공식 계정은 행동 예시와 주간 주제를 제공하고 참여자 콘텐츠는 사례 확산 역할을 맡는다.",
+              "reusable_patterns": [
+                "공식 안내와 UGC 확산 역할 분리"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_campaign_proposal_05.md",
+                "page": 10,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-303-03",
+              "asset_id": "PA-PR-002-P013",
+              "proposal_id": "PROP-PR-002",
+              "title": "Discover React Share",
+              "supported_point": "숏폼과 피드로 발견을 만들고 댓글·투표 등 가벼운 반응을 거쳐 공유 가능한 후속 콘텐츠로 확장하는 SNS 확산 전략.",
+              "reusable_patterns": [
+                "발견 → 반응 → 공유의 3단계 확산 구조"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_pr_proposal_02.md",
+                "page": 13,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-304",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-304-01",
+              "asset_id": "PA-EVENT-004-P015",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "안전·개인정보 체크",
+              "supported_point": "현장 안전사고, 사진 촬영 동의, 이벤트 참여 정보 수집 범위를 사전에 구분해 체크리스트로 관리한다.",
+              "reusable_patterns": [
+                "안전·촬영동의·정보수집 체크리스트"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 15,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-305",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-305-01",
+              "asset_id": "PA-EVENT-004-P015",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "안전·개인정보 체크",
+              "supported_point": "현장 안전사고, 사진 촬영 동의, 이벤트 참여 정보 수집 범위를 사전에 구분해 체크리스트로 관리한다.",
+              "reusable_patterns": [
+                "안전·촬영동의·정보수집 체크리스트"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 15,
+                "source_type": "synthetic_demo"
+              }
+            },
+            {
+              "evidence_id": "EV-R-305-02",
+              "asset_id": "PA-VIDEO-012-P017",
+              "proposal_id": "PROP-VIDEO-012",
+              "title": "초상권·사용동의 체크",
+              "supported_point": "촬영 전 출연 범위, 사용 채널, 사용 기간을 확인하고 동의 상태를 기록한다.",
+              "reusable_patterns": [
+                "촬영 전 사용 범위 확인"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_video_proposal_12.md",
+                "page": 17,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        },
+        {
+          "requirement_id": "R-306",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "evidence_id": "EV-R-306-01",
+              "asset_id": "PA-EVENT-004-P016",
+              "proposal_id": "PROP-EVENT-004",
+              "title": "체험 완료 KPI",
+              "supported_point": "방문자 수뿐 아니라 핵심 체험 완료, 후속 정보 조회, 만족도 응답을 함께 측정한다.",
+              "reusable_patterns": [
+                "방문 → 체험완료 → 후속조회"
+              ],
+              "company_facts": [],
+              "support_level": "direct",
+              "allowed_use": "REFERENCE_PATTERN",
+              "source": {
+                "file_name": "demo_event_proposal_04.md",
+                "page": 16,
+                "source_type": "synthetic_demo"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
