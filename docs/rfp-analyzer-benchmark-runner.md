@@ -12,14 +12,14 @@
 
 현재 live benchmark 조건:
 
-- provider: Gemini Developer API / GenerateContent
-- model: `gemini-3.8-flash`
-- thinking level: `medium`
+- provider: OpenAI Responses API
+- model: `gpt-5.6-luna`
+- reasoning effort: `low`
 - max output tokens: `6000`
 - sampling parameters: 별도 지정하지 않음
 - request delay: 4초
 
-Gemini 3.8 Flash는 현재 GA Flash 모델이며 `low / medium / high` thinking level을 지원합니다.
+GPT-5.6 Luna는 현재 GA Flash 모델이며 `low / medium / high` thinking level을 지원합니다.
 
 ## Dev matrix
 
@@ -35,7 +35,7 @@ Gemini 3.8 Flash는 현재 GA Flash 모델이며 `low / medium / high` thinking 
 실행:
 
 ```bash
-GEMINI_API_KEY=... python scripts/run_rfp_benchmark.py \
+OPENAI_API_KEY=... python scripts/run_rfp_benchmark.py \
   --split dev \
   --versions all \
   --repetitions 2
@@ -136,6 +136,6 @@ python scripts/aggregate_rfp_runs.py \
 
 필요 Repository Secret:
 
-`GEMINI_API_KEY`
+`OPENAI_API_KEY`
 
 workflow 완료 시 raw run과 report를 Git에 커밋합니다.
