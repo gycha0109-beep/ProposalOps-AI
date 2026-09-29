@@ -1,101 +1,156 @@
 # 3-Minute Portfolio Demo Guide
 
-목표: **"RFP를 넣으면 과거 제안서 근거를 추적하면서 전략·페이지·장표 초안까지 만들고, QA가 근거 없는 주장을 차단한다"**를 3분 안에 보여줍니다.
+목표: **“RFP를 분석하고 과거 제안서 근거를 연결해 전략·페이지·장표·시각화 초안을 만든 뒤, QA가 근거 범위를 초과한 주장까지 찾아 affected provenance chain만 수정한다.”**를 3분 안에 보여줍니다.
 
-## 0:00–0:30 — RFP
+> 모든 데이터는 synthetic/demo입니다.
 
-입력: synthetic RFP 1개.
+## 0:00–0:30 — Prompt Engineering Before / After
 
-보여줄 것:
+먼저 RFP Analyzer 비교표를 보여줍니다.
 
-- 사업 기간/대상/산출물
-- requirement IDs
-- 숫자 보존
-- 누락 값은 unknown
-- 원문 source quote
+`reports/rfp-analyzer-dev-v1-gpt56luna.json`
 
-실제 benchmark가 있는 영역만 수치를 말합니다.
+핵심:
 
-## 0:30–1:00 — Reference Retrieval
+| Version | Assertion | Numeric | Requirement | Schema | Grounding |
+|---|---:|---:|---:|---:|---:|
+| v0 | 80.83% | 82.86% | 75% | 0% | 0% |
+| v1 | 90.83% | 92.85% | 100% | 100% | 0% |
+| v2 | 90.83% | 92.85% | 100% | 0% | 100% |
+| v4 | **100%** | **100%** | **100%** | **100%** | **100%** |
 
-requirement 하나를 선택합니다.
+설명:
+
+- v1: 구조화로 requirement/schema 안정성 개선
+- v2: grounding을 얻었지만 schema drift 발생
+- v3: 규칙 추가만으로 문제를 해결하지 못함
+- v4: fixed schema + compact grounding + explicit unknown으로 통합
+
+holdout도 별도 실행했다는 것을 보여줍니다.
+
+`reports/rfp-analyzer-holdout-v1-gpt56luna.json`
+
+## 0:30–1:00 — Requirement → Evidence → Strategy
+
+RFP-TEST-002에서 하나의 requirement를 선택합니다.
 
 예:
 
 ```text
-R-003 숏폼 영상 기획
-→ PA-VIDEO-004-P021
-→ 30초 Hook → Core → Action
+R-205 운영정보 검수
+→ EV-R-205-01 / EV-R-205-02
+→ PA-CAMP-010-P023 / PA-PR-011-P012
+→ ST-05
 ```
 
-여기서 핵심은 "비슷한 제안서를 찾았다"가 아니라 **어느 자산의 어느 패턴을 왜 쓰는지** 보여주는 것입니다.
+보여줄 파일:
 
-## 1:00–1:30 — Evidence-bound Strategy
+- `evals/strategist/inputs-v1.json`
+- `runs/proposal_strategist/benchmark-v1-gpt56luna/dev/v4_explicit_classes/run-01.json`
 
-화면에서 다음 연결을 보여줍니다.
+핵심 메시지:
 
-```text
-Requirement
-→ Evidence
-→ Strategy
-```
+> 비슷한 문서를 통째로 복사하는 것이 아니라 requirement별 evidence와 재사용 범위를 연결합니다.
 
-회사 실적 근거가 없으면 과거 성과처럼 표현하지 않고 AI_RECOMMENDATION 또는 reference gap으로 남깁니다.
+## 1:00–1:30 — Strategy → Pagination → Slide → Visual
 
-## 1:30–2:00 — Pagination
+최종 E2E package:
 
-Strategy를 실제 페이지 구조로 변환합니다.
+`runs/e2e-demo/RFP-TEST-002/final-package-repaired.json`
 
-보여줄 필드:
+결과:
+
+- 8 pages
+- 8 slide drafts
+- 8 visual specifications
+- R-201~R-206 모두 COVERED
+
+페이지 하나에서 다음을 보여줍니다.
 
 - page_goal
 - key_message
 - requirement IDs
 - strategy IDs
 - evidence IDs
-- fact_risk
+- body block claim_type
+- visual specification
 
-Coverage Validator가 누락 requirement를 차단하는 장면을 보여주면 좋습니다.
+## 1:30–2:10 — Final QA가 실제 의미 범위 초과를 BLOCK
 
-## 2:00–2:30 — Slide + Visual Prompt
+초기 QA:
 
-페이지 한 장을 선택해:
+`runs/e2e-demo/RFP-TEST-002/qa.json`
 
-- headline
-- body blocks
-- claim type
-- evidence IDs
-- visual type
-- image/diagram prompt
+실제 BLOCK:
 
-를 보여줍니다.
+`PAGE-006`의 “공식 확인 채널 및 담당자” 표현은 연결 evidence가 직접 지원하지 않았습니다.
 
-실제 숫자가 없으면 data chart를 만들지 않는 guardrail을 강조합니다.
+이후 repair cycle 2에서는 더 깊은 문제도 탐지했습니다.
 
-## 2:30–3:00 — QA / Repair
+`runs/e2e-demo/RFP-TEST-002/qa-recheck-cycle-2.json`
 
-의도적으로 근거 없는 문장을 넣습니다.
+- ST-05/PAGE-006에 `제작 시점 확인` 표현 잔존
+- ST-06/PAGE-008에 evidence가 없는 `시청` KPI 단계
+- evidence가 없는 분석 축 추가
 
-예:
+이 장면에서 강조할 것:
+
+> QA는 evidence ID가 존재하는지만 검사한 것이 아니라, 해당 evidence가 **문장의 의미까지 실제로 지원하는지** 다시 검사했습니다.
+
+## 2:10–2:45 — Provenance-chain Targeted Repair
+
+Cycle 3:
+
+`runs/e2e-demo/RFP-TEST-002/repair-cycle-3.json`
+
+수정 범위:
 
 ```text
-"기존 청년 캠페인에서 참여율을 42% 향상했습니다."
+ST-05 / ST-06
+→ PAGE-006 / PAGE-008
+→ Slide
+→ Visual
 ```
 
-company_facts에 근거가 없으므로 Proposal QA가 BLOCK해야 합니다.
+나머지 6개 page chain은 다시 생성하지 않았습니다.
 
-그 다음 전체 제안서를 다시 만들지 않고 해당 slide만 Targeted Repair하는 흐름을 보여줍니다.
+수정 예:
+
+```text
+도달 → 시청 → 상세조회 → 저장 → ...
+↓
+도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동
+```
+
+근거가 지원하지 않는 `시청` 단계를 제거했습니다.
+
+## 2:45–3:00 — Final PASS
+
+최종 QA:
+
+`runs/e2e-demo/RFP-TEST-002/qa-recheck-cycle-3.json`
+
+```json
+{
+  "status": "PASS",
+  "issues": []
+}
+```
+
+마지막으로 세 benchmark track이 모두 dev + holdout까지 끝났음을 보여줍니다.
+
+- RFP Analyzer v4: frozen / holdout PASS
+- Proposal Strategist v4: frozen / holdout PASS
+- Proposal QA v4: frozen / holdout PASS
 
 ## 데모에서 말하면 안 되는 것
 
-- synthetic 결과를 실제 고객 성과처럼 표현
-- 아직 실행하지 않은 Strategist/QA benchmark 수치
-- v4가 검증됐다고 표현
-- logical workflow spec을 Dify import 파일이라고 표현
+- synthetic benchmark를 실제 고객 성과처럼 표현
+- 이 결과로 실제 제안 수주율이 개선됐다고 주장
+- lexical retrieval baseline을 Dify/embedding retrieval 성능이라고 표현
+- `dify/workflow-spec.yaml`을 import 가능한 공식 Dify DSL이라고 표현
+- Pagination/Slide/Visual prompt가 별도 frozen benchmark까지 통과했다고 표현
 
-## 데모 완료 조건
+## 데모 핵심 한 문장
 
-- provenance chain을 한 번 이상 화면에 노출
-- 하나 이상의 hallucination BLOCK 사례 노출
-- raw benchmark/report 링크 제시
-- synthetic/demo 데이터임을 명시
+> “생성 모델에게 제안서를 한 번에 맡긴 것이 아니라, RFP requirement와 과거 제안서 evidence를 ID로 연결하고 final QA가 의미 범위 초과까지 검증한 뒤 affected provenance chain만 재생성하는 구조로 만들었습니다.”
