@@ -194,6 +194,8 @@ Logical agent blueprint:
 
 - Wishket 요구사항 ↔ 저장소 증거: `docs/wishket-evidence-map.md`
 - 3분 데모 가이드: `docs/demo-guide.md`
+- 통합 benchmark scorecard: `reports/benchmark-scorecard.md`
+- E2E 최종 8페이지 package 요약: `reports/e2e-demo-final-package.md`
 - E2E 결과/repair story: `reports/e2e-demo-summary.md`
 - RFP failure analysis: `docs/prompt-failure-analysis/rfp-analyzer-dev-v1.md`
 - RFP benchmark guide: `docs/rfp-analyzer-benchmark-runner.md`
