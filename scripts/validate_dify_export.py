@@ -29,6 +29,8 @@ REQUIRED_METADATA = {
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="exports/dify/knowledge-v1")
+    parser.add_argument("--expected-count", type=int, default=51)
+    parser.add_argument("--allow-distractors", action="store_true")
     args = parser.parse_args()
 
     root = Path(args.root)
@@ -41,10 +43,10 @@ def main():
     schema = json.loads((root / "metadata-schema.json").read_text(encoding="utf-8"))
 
     errors = []
-    if len(docs) != 51:
-        errors.append(f"document_count={len(docs)} expected=51")
-    if manifest.get("document_count") != 51:
-        errors.append("manifest document_count must be 51")
+    if len(docs) != args.expected_count:
+        errors.append(f"document_count={len(docs)} expected={args.expected_count}")
+    if manifest.get("document_count") != args.expected_count:
+        errors.append(f"manifest document_count must be {args.expected_count}")
 
     ids = [doc.get("asset_id") for doc in docs]
     if len(ids) != len(set(ids)):
@@ -54,7 +56,7 @@ def main():
         asset_id = doc.get("asset_id")
         if not asset_id or not asset_id.startswith("PA-"):
             errors.append(f"invalid asset_id: {asset_id}")
-        if asset_id and asset_id.startswith("PA-DIST-"):
+        if asset_id and asset_id.startswith("PA-DIST-") and not args.allow_distractors:
             errors.append(f"distractor leaked into export: {asset_id}")
         if not doc.get("name", "").startswith(asset_id or ""):
             errors.append(f"document name does not preserve asset_id: {asset_id}")
