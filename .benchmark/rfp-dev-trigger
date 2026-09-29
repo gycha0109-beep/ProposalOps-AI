@@ -1,17 +1,14 @@
-RFP Analyzer dev live benchmark trigger
+RFP Analyzer v4 dev candidate trigger
 
 benchmark: v1
 provider: gemini
 model: gemini-3.6-flash
 run_namespace: benchmark-v1-gemini36
 split: dev
-versions: all
+versions: v4_compact_grounded
 repetitions: 1
-expected_new_calls: 1
+expected_new_calls: 2
 request_delay_seconds: 15
-max_503_retries_per_call: 0
-continue_on_provider_error: true
-persist_raw_runs: true
-rerun: 3
-target_missing: v2_grounded/RFP-TEST-002
-triggered: 2026-09-29T11:01+09:00
+holdout: locked
+acceptance: evals/acceptance/rfp-analyzer-v4-dev.json
+triggered: 2026-09-29T13:20+09:00
