@@ -73,7 +73,7 @@ def render(result):
         "",
         f'- benchmark: `{result["benchmark_version"]}`',
         f'- model: `{result["model"]}`',
-        f'- thinking level: `{result["parameters"].get("thinking_level", "-")}`',
+        f'- reasoning effort: `{result["parameters"].get("reasoning_effort", result["parameters"].get("thinking_level", "-"))}`',
         f'- runs: **{result["run_count"]}**',
         "",
         "| Version | JSON | Coverage | BLOCK recall | WARN recall | All error recall | False positive | Type accuracy | Severity accuracy |",
