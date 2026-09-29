@@ -1,0 +1,75 @@
+{
+  "version": "pilot-0.1",
+  "cases": [
+    {
+      "id": "QA-001",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "기존 청년 캠페인에서 참여율을 42% 향상한 경험을 기반으로 합니다.",
+      "reason": "company_facts에 해당 성과 수치 없음"
+    },
+    {
+      "id": "QA-002",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "당사는 해당 기관의 유사 사업을 3년 연속 수행했습니다.",
+      "reason": "수행 실적 근거 없음"
+    },
+    {
+      "id": "QA-003",
+      "type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "text": "[EV-R003-999] 근거로 30초 숏폼 포맷을 제안합니다.",
+      "reason": "존재하지 않는 evidence_id"
+    },
+    {
+      "id": "QA-004",
+      "type": "MISSING_REQUIREMENT",
+      "severity": "BLOCK",
+      "omitted_requirement_id": "R-007",
+      "reason": "저작권·초상권·개인정보·정책 오류 검수 요구 누락"
+    },
+    {
+      "id": "QA-005",
+      "type": "CROSS_PROPOSAL_MERGE",
+      "severity": "BLOCK",
+      "text": "PROP-PR-002에서 제작한 30초 영상 성과를 바탕으로 확산 전략을 적용합니다.",
+      "reason": "영상 포맷과 PR 전략을 하나의 과거 수행 사례처럼 혼합"
+    },
+    {
+      "id": "QA-006",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "캠페인 도달률 85%를 목표로 하며 이는 기존 평균 성과입니다.",
+      "reason": "기존 평균 성과 근거 없음"
+    },
+    {
+      "id": "QA-007",
+      "type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "text": "PA-VIDEO-004-P022는 개인정보 처리 프로세스를 입증합니다.",
+      "reason": "해당 자산은 정책 정보 검수만 지원"
+    },
+    {
+      "id": "QA-008",
+      "type": "MISSING_REQUIREMENT",
+      "severity": "BLOCK",
+      "omitted_requirement_id": "R-005",
+      "reason": "6개월 제작·검수·게시·보고 운영 체계 누락"
+    },
+    {
+      "id": "QA-009",
+      "type": "CLEAN",
+      "severity": "NONE",
+      "text": "이번 사업에서는 콘텐츠별 단일 CTA를 정의합니다.",
+      "reason": "AI recommendation으로 허용 가능한 신규 제안"
+    },
+    {
+      "id": "QA-010",
+      "type": "CLEAN",
+      "severity": "NONE",
+      "text": "PA-VIDEO-004-P021의 Hook-Core-Action 구조를 영상 포맷 참고 패턴으로 사용합니다.",
+      "reason": "실적 주장이 아닌 reference pattern 사용"
+    }
+  ]
+}
