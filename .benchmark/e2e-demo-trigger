@@ -1,0 +1,9 @@
+RFP-TEST-002 E2E proposal demo
+
+provider: openai
+model: gpt-5.6-luna
+reasoning_effort: low
+reused: frozen RFP Analyzer v4 + Strategist v4 + Evidence Pack
+live_calls: pagination, slide_batch, visual_batch, final_qa
+expected_calls: 4
+triggered: 2026-09-29T17:23+09:00
