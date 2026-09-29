@@ -14,6 +14,8 @@ METRICS = (
     "numeric_fidelity",
     "requirement_assertion_recall",
     "unsupported_addition_count",
+    "source_quote_coverage",
+    "source_quote_validity",
 )
 
 
@@ -36,6 +38,10 @@ def summarize_version(records: list[dict]) -> dict:
         "rfp_ids": sorted({r["input"]["rfp_id"] for r in records}),
         "json_parseable_rate": round(
             sum(bool(r["evaluation"]["json_parseable"]) for r in records) / len(records),
+            4,
+        ),
+        "output_truncated_rate": round(
+            sum(bool(r["evaluation"].get("output_truncated")) for r in records) / len(records),
             4,
         ),
         "metrics": {},
@@ -111,8 +117,8 @@ def render_markdown(result: dict) -> str:
         "",
         "## Version comparison",
         "",
-        "| Version | Runs | JSON parseable | Assertion pass | Deliverable | Numeric fidelity | Requirement recall | Unsupported additions |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|",
+        "| Version | Runs | JSON | Truncated | Assertion | Deliverable | Numeric | Requirement | Quote coverage | Quote validity | Unsupported |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
 
     def fmt_metric(data):
@@ -129,10 +135,13 @@ def render_markdown(result: dict) -> str:
                 version,
                 str(data["run_count"]),
                 f'{data["json_parseable_rate"]:.2%}',
+                f'{data["output_truncated_rate"]:.2%}',
                 fmt_metric(data["metrics"]["assertion_pass_rate"]),
                 fmt_metric(data["metrics"]["deliverable_recall"]),
                 fmt_metric(data["metrics"]["numeric_fidelity"]),
                 fmt_metric(data["metrics"]["requirement_assertion_recall"]),
+                fmt_metric(data["metrics"]["source_quote_coverage"]),
+                fmt_metric(data["metrics"]["source_quote_validity"]),
                 unsupported_text,
             ])
             + " |"
