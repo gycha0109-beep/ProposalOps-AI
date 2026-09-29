@@ -1,35 +1,35 @@
 # Prompt Architecture
 
-프롬프트는 두 종류로 관리합니다.
+프롬프트는 실험 variants와 production 영역을 분리해 관리합니다.
 
 ## Experimental Tracks
 
-프롬프트 엔지니어링 효과를 비교하기 위한 사전 정의 variants입니다. **과거 운영 이력을 의미하지 않습니다.**
+- `rfp_analyzer/`: 요구사항 추출·구조 안정성·source grounding
+- `proposal_strategist/`: 근거 기반 전략
+- `proposal_qa/`: 오류 탐지
 
-- `rfp_analyzer/`: 요구사항 추출 품질
-- `proposal_strategist/`: 근거 기반 전략 품질
-- `proposal_qa/`: 오류 탐지 품질
+RFP Analyzer progression:
 
-RFP Analyzer는 dev 회귀 분석 이후 `v4_compact_grounded` candidate까지 확장했습니다. 다른 track은 아직 v0~v3 비교 구조입니다.
+`v0_baseline → v1_structured → v2_grounded → v3_final → v4_compact_grounded`
 
-세부 intervention은 `experiment-manifest.json`에 기록합니다.
+이 버전들은 과거 고객 운영 이력을 의미하지 않고, frozen benchmark에서 intervention 효과를 비교하기 위한 실험 variants입니다.
+
+현재 RFP Analyzer dev 결과:
+- v1: 안정적인 JSON schema, grounding 없음
+- v2: 95% assertion / 100% numeric / 100% requirement / 100% quote coverage & validity, 단 schema drift 관찰
+- v3: JSON truncation regression
+- v4: candidate 설계 완료, provider 503/429로 아직 NOT_EVALUATED
 
 ## Production
 
-`production/`에는 실제 ProposalOps workflow에서 사용할 candidate prompt와 지원 prompt를 둡니다.
+- RFP Analyzer: **NOT FROZEN**
+- Proposal Strategist: `proposal_strategist/v3_final.md` candidate
+- Proposal QA: `proposal_qa/v3_final.md` candidate
 
-현재 production candidate:
-- RFP Analyzer → `rfp_analyzer/v3_final.md` (v4 dev acceptance 전까지 유지)
-- Proposal Strategist → `proposal_strategist/v3_final.md`
-- Proposal QA → `proposal_qa/v3_final.md`
+RFP Analyzer는 v4 dev acceptance 전까지 production alias를 확정하지 않습니다.
 
 지원 prompt:
 - Retrieval Planner
 - Evidence Builder
 
-## Evaluation Integrity
-
-동일 frozen benchmark를 모든 버전에 적용하기 전에는 개선 수치를 주장하지 않습니다.
-
-평가 규칙:
-`../docs/evaluation-methodology.md`
+평가 규칙: `../docs/evaluation-methodology.md`
