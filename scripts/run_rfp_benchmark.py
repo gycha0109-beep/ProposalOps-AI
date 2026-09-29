@@ -233,6 +233,7 @@ def main() -> None:
     delay = float(config["parameters"].get("request_delay_seconds", 0))
 
     completed = 0
+    failed = 0
     for index, item in enumerate(plan):
         path = output_path(root, item)
         if path.exists() and not args.overwrite:
@@ -271,7 +272,9 @@ def main() -> None:
                 ) + "\n",
                 encoding="utf-8",
             )
-            raise SystemExit(f"Model call failed: {exc}") from exc
+            failed += 1
+            print(f"  FAILED: {exc}")
+            continue
 
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(
@@ -287,7 +290,9 @@ def main() -> None:
             f'unsupported={metrics["unsupported_addition_count"]}'
         )
 
-    print(f"completed={completed} planned={len(plan)}")
+    print(f"completed={completed} failed={failed} planned={len(plan)}")
+    if failed:
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":
