@@ -1,0 +1,352 @@
+{
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 5,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": null,
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2692,
+          "mean": 2692
+        },
+        "output_tokens": {
+          "total": 731,
+          "mean": 731
+        },
+        "total_tokens": {
+          "total": 3423,
+          "mean": 3423
+        },
+        "reasoning_tokens": {
+          "total": 196,
+          "mean": 196
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-holdout-v0_baseline-01",
+          "case_ids": [
+            "QA-019"
+          ]
+        }
+      ]
+    },
+    "v1_rules": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": null,
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.6,
+          "min": 0.6,
+          "max": 0.6,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2727,
+          "mean": 2727
+        },
+        "output_tokens": {
+          "total": 602,
+          "mean": 602
+        },
+        "total_tokens": {
+          "total": 3329,
+          "mean": 3329
+        },
+        "reasoning_tokens": {
+          "total": 233,
+          "mean": 233
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-holdout-v1_rules-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v2_evidence": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": null,
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2745,
+          "mean": 2745
+        },
+        "output_tokens": {
+          "total": 519,
+          "mean": 519
+        },
+        "total_tokens": {
+          "total": 3264,
+          "mean": 3264
+        },
+        "reasoning_tokens": {
+          "total": 105,
+          "mean": 105
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-holdout-v2_evidence-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v3_final": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": null,
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2837,
+          "mean": 2837
+        },
+        "output_tokens": {
+          "total": 553,
+          "mean": 553
+        },
+        "total_tokens": {
+          "total": 3390,
+          "mean": 3390
+        },
+        "reasoning_tokens": {
+          "total": 157,
+          "mean": 157
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-holdout-v3_final-01",
+          "case_ids": []
+        }
+      ]
+    },
+    "v4_compact_taxonomy": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "critical_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "warning_detection_recall": null,
+        "all_error_detection_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "false_positive_rate": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "error_type_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "severity_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2950,
+          "mean": 2950
+        },
+        "output_tokens": {
+          "total": 398,
+          "mean": 398
+        },
+        "total_tokens": {
+          "total": 3348,
+          "mean": 3348
+        },
+        "reasoning_tokens": {
+          "total": 62,
+          "mean": 62
+        }
+      },
+      "failed_cases": [
+        {
+          "run_id": "proposal_qa-1.0-holdout-v4_compact_taxonomy-01",
+          "case_ids": []
+        }
+      ]
+    }
+  }
+}

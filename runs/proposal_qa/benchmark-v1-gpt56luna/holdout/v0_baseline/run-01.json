@@ -1,0 +1,197 @@
+{
+  "run_id": "proposal_qa-1.0-holdout-v0_baseline-01",
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "prompt_version": "v0_baseline",
+  "prompt_file": "prompts/proposal_qa/v0_baseline.md",
+  "prompt_sha256": "8dd10b627387bc68d622eb4e08d28e80054fe9c659b036a90c28e61b203f7d8b",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "case_ids": [
+      "QA-012",
+      "QA-013",
+      "QA-015",
+      "QA-017",
+      "QA-019",
+      "QA-020"
+    ],
+    "inputs_file": "evals/qa-injected-errors/inputs-v1.json",
+    "cases_file": "evals/qa-injected-errors/cases.json",
+    "split_file": "evals/frozen/v1/holdout/qa.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:52:08.343063+00:00",
+    "git_commit": "8a3a2baa40a3f85d3451e4f4a900565f6351f99f",
+    "provider": "openai",
+    "provider_response_id": "resp_00112504138225fe016abb600e5d2c87d098341ab7e02b813a",
+    "latency_seconds": 10.2097,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 2692,
+      "input_tokens_details": {
+        "cache_write_tokens": 2689,
+        "cached_tokens": 0
+      },
+      "output_tokens": 731,
+      "output_tokens_details": {
+        "reasoning_tokens": 196
+      },
+      "total_tokens": 3423
+    }
+  },
+  "raw_output": "{\"results\":[{\"case_id\":\"QA-012\",\"detected\":true,\"predicted_type\":\"EVIDENCE_MISMATCH\",\"severity\":\"HIGH\",\"reason\":\"EV-EVENT-015는 현장 안전 및 촬영동의 절차만 지원하고 행사 만족도 95% 성과를 지원하지 않는다. 만족도 수치의 근거를 별도로 제시하거나 근거 없는 수치를 삭제해야 한다.\"},{\"case_id\":\"QA-013\",\"detected\":true,\"predicted_type\":\"REQUIREMENT_OMISSION\",\"severity\":\"MEDIUM\",\"reason\":\"covered_requirement_ids에서 개인정보 안내와 촬영·활용 동의 절차에 해당하는 R-305가 누락되었다. 해당 절차를 초안에 추가하고 R-305를 포함해야 한다.\"},{\"case_id\":\"QA-015\",\"detected\":true,\"predicted_type\":\"EVIDENCE_MISMATCH\",\"severity\":\"HIGH\",\"reason\":\"EV-TOUR-006은 지역 관광 방문 탐색·동선 콘텐츠만 지원하며 정책 신청 전환 실적을 지원하지 않는다. 정책 신청 전환 근거인 EV-POLICY-008을 사용하거나 주장을 관광 동선 패턴 적용으로 수정해야 한다.\"},{\"case_id\":\"QA-017\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_COMPANY_CLAIM\",\"severity\":\"HIGH\",\"reason\":\"회사 사실과 증거가 없어 기존 행사 무사고 10년 운영 실적을 검증할 수 없다. 공식 실적 자료를 제시하거나 검증 가능한 범위의 표현으로 완화해야 한다.\"},{\"case_id\":\"QA-019\",\"detected\":true,\"predicted_type\":\"REQUIREMENT_COVERAGE_MISMATCH\",\"severity\":\"HIGH\",\"reason\":\"저작권 검수 체크리스트 제안은 제시된 행사 요구사항의 동선, 혼잡, 확산, 안전, 촬영동의, 성과지표를 다루지 않는데 모든 요구사항을 covered로 표시했다. 관련 요구사항을 실제로 다루는 내용으로 보완하거나 covered_requirement_ids를 수정해야 한다.\"},{\"case_id\":\"QA-020\",\"detected\":true,\"predicted_type\":\"EVIDENCE_MISMATCH\",\"severity\":\"HIGH\",\"reason\":\"EV-PR-018은 지역 크리에이터 협업 운영 패턴만 지원하고 개인정보 최소수집 원칙은 지원하지 않으며, 오히려 해당 내용을 지원하지 않는다고 명시한다. 개인정보 근거를 별도로 확보하거나 주장을 삭제·수정해야 한다.\"}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "case_id": "QA-012",
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "severity": "HIGH",
+        "reason": "EV-EVENT-015는 현장 안전 및 촬영동의 절차만 지원하고 행사 만족도 95% 성과를 지원하지 않는다. 만족도 수치의 근거를 별도로 제시하거나 근거 없는 수치를 삭제해야 한다."
+      },
+      {
+        "case_id": "QA-013",
+        "detected": true,
+        "predicted_type": "REQUIREMENT_OMISSION",
+        "severity": "MEDIUM",
+        "reason": "covered_requirement_ids에서 개인정보 안내와 촬영·활용 동의 절차에 해당하는 R-305가 누락되었다. 해당 절차를 초안에 추가하고 R-305를 포함해야 한다."
+      },
+      {
+        "case_id": "QA-015",
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "severity": "HIGH",
+        "reason": "EV-TOUR-006은 지역 관광 방문 탐색·동선 콘텐츠만 지원하며 정책 신청 전환 실적을 지원하지 않는다. 정책 신청 전환 근거인 EV-POLICY-008을 사용하거나 주장을 관광 동선 패턴 적용으로 수정해야 한다."
+      },
+      {
+        "case_id": "QA-017",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_COMPANY_CLAIM",
+        "severity": "HIGH",
+        "reason": "회사 사실과 증거가 없어 기존 행사 무사고 10년 운영 실적을 검증할 수 없다. 공식 실적 자료를 제시하거나 검증 가능한 범위의 표현으로 완화해야 한다."
+      },
+      {
+        "case_id": "QA-019",
+        "detected": true,
+        "predicted_type": "REQUIREMENT_COVERAGE_MISMATCH",
+        "severity": "HIGH",
+        "reason": "저작권 검수 체크리스트 제안은 제시된 행사 요구사항의 동선, 혼잡, 확산, 안전, 촬영동의, 성과지표를 다루지 않는데 모든 요구사항을 covered로 표시했다. 관련 요구사항을 실제로 다루는 내용으로 보완하거나 covered_requirement_ids를 수정해야 한다."
+      },
+      {
+        "case_id": "QA-020",
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "severity": "HIGH",
+        "reason": "EV-PR-018은 지역 크리에이터 협업 운영 패턴만 지원하고 개인정보 최소수집 원칙은 지원하지 않으며, 오히려 해당 내용을 지원하지 않는다고 명시한다. 개인정보 근거를 별도로 확보하거나 주장을 삭제·수정해야 한다."
+      }
+    ]
+  },
+  "json_parseable": true,
+  "evaluation": {
+    "track": "proposal_qa",
+    "evaluator_version": "1.1",
+    "split": "holdout",
+    "case_count": 6,
+    "result_count": 6,
+    "metrics": {
+      "result_coverage": 1.0,
+      "critical_error_detection_recall": 1.0,
+      "warning_detection_recall": null,
+      "all_error_detection_recall": 1.0,
+      "false_positive_rate": 1.0,
+      "error_type_accuracy": 0.0,
+      "severity_accuracy": 0.0
+    },
+    "counts": {
+      "block_total": 5,
+      "block_detected": 5,
+      "warn_total": 0,
+      "warn_detected": 0,
+      "clean_total": 1,
+      "false_positive_count": 1
+    },
+    "missing_result_case_ids": [],
+    "unexpected_result_case_ids": [],
+    "details": [
+      {
+        "case_id": "QA-012",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "predicted_severity": "HIGH",
+        "type_correct": false,
+        "severity_correct": false,
+        "reason": "EV-EVENT-015는 현장 안전 및 촬영동의 절차만 지원하고 행사 만족도 95% 성과를 지원하지 않는다. 만족도 수치의 근거를 별도로 제시하거나 근거 없는 수치를 삭제해야 한다."
+      },
+      {
+        "case_id": "QA-013",
+        "expected_type": "MISSING_REQUIREMENT",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "REQUIREMENT_OMISSION",
+        "predicted_severity": "MEDIUM",
+        "type_correct": false,
+        "severity_correct": false,
+        "reason": "covered_requirement_ids에서 개인정보 안내와 촬영·활용 동의 절차에 해당하는 R-305가 누락되었다. 해당 절차를 초안에 추가하고 R-305를 포함해야 한다."
+      },
+      {
+        "case_id": "QA-015",
+        "expected_type": "CROSS_PROPOSAL_MERGE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "predicted_severity": "HIGH",
+        "type_correct": false,
+        "severity_correct": false,
+        "reason": "EV-TOUR-006은 지역 관광 방문 탐색·동선 콘텐츠만 지원하며 정책 신청 전환 실적을 지원하지 않는다. 정책 신청 전환 근거인 EV-POLICY-008을 사용하거나 주장을 관광 동선 패턴 적용으로 수정해야 한다."
+      },
+      {
+        "case_id": "QA-017",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_COMPANY_CLAIM",
+        "predicted_severity": "HIGH",
+        "type_correct": false,
+        "severity_correct": false,
+        "reason": "회사 사실과 증거가 없어 기존 행사 무사고 10년 운영 실적을 검증할 수 없다. 공식 실적 자료를 제시하거나 검증 가능한 범위의 표현으로 완화해야 한다."
+      },
+      {
+        "case_id": "QA-019",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": true,
+        "predicted_type": "REQUIREMENT_COVERAGE_MISMATCH",
+        "predicted_severity": "HIGH",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": "저작권 검수 체크리스트 제안은 제시된 행사 요구사항의 동선, 혼잡, 확산, 안전, 촬영동의, 성과지표를 다루지 않는데 모든 요구사항을 covered로 표시했다. 관련 요구사항을 실제로 다루는 내용으로 보완하거나 covered_requirement_ids를 수정해야 한다."
+      },
+      {
+        "case_id": "QA-020",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "EVIDENCE_MISMATCH",
+        "predicted_severity": "HIGH",
+        "type_correct": false,
+        "severity_correct": false,
+        "reason": "EV-PR-018은 지역 크리에이터 협업 운영 패턴만 지원하고 개인정보 최소수집 원칙은 지원하지 않으며, 오히려 해당 내용을 지원하지 않는다고 명시한다. 개인정보 근거를 별도로 확보하거나 주장을 삭제·수정해야 한다."
+      }
+    ]
+  }
+}

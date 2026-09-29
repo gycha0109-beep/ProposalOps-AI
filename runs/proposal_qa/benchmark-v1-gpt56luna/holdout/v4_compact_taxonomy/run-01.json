@@ -1,0 +1,197 @@
+{
+  "run_id": "proposal_qa-1.0-holdout-v4_compact_taxonomy-01",
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "prompt_version": "v4_compact_taxonomy",
+  "prompt_file": "prompts/proposal_qa/v4_compact_taxonomy.md",
+  "prompt_sha256": "cd412635485cab53ad269eba178bf672ae00990845e624f5a44f2fb0d6afab75",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "case_ids": [
+      "QA-012",
+      "QA-013",
+      "QA-015",
+      "QA-017",
+      "QA-019",
+      "QA-020"
+    ],
+    "inputs_file": "evals/qa-injected-errors/inputs-v1.json",
+    "cases_file": "evals/qa-injected-errors/cases.json",
+    "split_file": "evals/frozen/v1/holdout/qa.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:52:29.854963+00:00",
+    "git_commit": "8a3a2baa40a3f85d3451e4f4a900565f6351f99f",
+    "provider": "openai",
+    "provider_response_id": "resp_08bd559fde3c1590016abb602aba3887d092ffe7e9d96d5b1b",
+    "latency_seconds": 3.2175,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 2950,
+      "input_tokens_details": {
+        "cache_write_tokens": 2947,
+        "cached_tokens": 0
+      },
+      "output_tokens": 398,
+      "output_tokens_details": {
+        "reasoning_tokens": 62
+      },
+      "total_tokens": 3348
+    }
+  },
+  "raw_output": "{\"results\":[{\"case_id\":\"QA-012\",\"detected\":true,\"predicted_type\":\"INVALID_REFERENCE\",\"severity\":\"BLOCK\",\"reason\":\"PA-EVENT-004-P015는 현장 안전 및 촬영동의 절차를 지원하지만 행사 만족도 95% 성과를 지원하지 않습니다.\"},{\"case_id\":\"QA-013\",\"detected\":true,\"predicted_type\":\"MISSING_REQUIREMENT\",\"severity\":\"BLOCK\",\"reason\":\"mandatory R-305 개인정보 안내와 사진·영상 촬영 및 활용 동의 절차가 covered_requirement_ids에서 누락되었습니다.\"},{\"case_id\":\"QA-015\",\"detected\":true,\"predicted_type\":\"CROSS_PROPOSAL_MERGE\",\"severity\":\"BLOCK\",\"reason\":\"지역 관광 캠페인과 정책 신청 전환 구조는 서로 다른 proposal의 evidence이며, 이를 하나의 지역 관광 캠페인 검증 실적으로 결합했습니다.\"},{\"case_id\":\"QA-017\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"company_facts에 기존 행사 무사고 10년 운영 실적을 뒷받침하는 사실이나 수치가 없습니다.\"},{\"case_id\":\"QA-019\",\"detected\":false,\"predicted_type\":\"CLEAN\",\"severity\":\"NONE\",\"reason\":\"\"},{\"case_id\":\"QA-020\",\"detected\":true,\"predicted_type\":\"INVALID_REFERENCE\",\"severity\":\"BLOCK\",\"reason\":\"PA-PR-007-P018은 지역 크리에이터 협업 운영 패턴만 지원하며 개인정보 최소수집 원칙을 직접 지원하지 않습니다.\"}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "case_id": "QA-012",
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "severity": "BLOCK",
+        "reason": "PA-EVENT-004-P015는 현장 안전 및 촬영동의 절차를 지원하지만 행사 만족도 95% 성과를 지원하지 않습니다."
+      },
+      {
+        "case_id": "QA-013",
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "severity": "BLOCK",
+        "reason": "mandatory R-305 개인정보 안내와 사진·영상 촬영 및 활용 동의 절차가 covered_requirement_ids에서 누락되었습니다."
+      },
+      {
+        "case_id": "QA-015",
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_MERGE",
+        "severity": "BLOCK",
+        "reason": "지역 관광 캠페인과 정책 신청 전환 구조는 서로 다른 proposal의 evidence이며, 이를 하나의 지역 관광 캠페인 검증 실적으로 결합했습니다."
+      },
+      {
+        "case_id": "QA-017",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "severity": "BLOCK",
+        "reason": "company_facts에 기존 행사 무사고 10년 운영 실적을 뒷받침하는 사실이나 수치가 없습니다."
+      },
+      {
+        "case_id": "QA-019",
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "severity": "NONE",
+        "reason": ""
+      },
+      {
+        "case_id": "QA-020",
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "severity": "BLOCK",
+        "reason": "PA-PR-007-P018은 지역 크리에이터 협업 운영 패턴만 지원하며 개인정보 최소수집 원칙을 직접 지원하지 않습니다."
+      }
+    ]
+  },
+  "json_parseable": true,
+  "evaluation": {
+    "track": "proposal_qa",
+    "evaluator_version": "1.1",
+    "split": "holdout",
+    "case_count": 6,
+    "result_count": 6,
+    "metrics": {
+      "result_coverage": 1.0,
+      "critical_error_detection_recall": 1.0,
+      "warning_detection_recall": null,
+      "all_error_detection_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "error_type_accuracy": 1.0,
+      "severity_accuracy": 1.0
+    },
+    "counts": {
+      "block_total": 5,
+      "block_detected": 5,
+      "warn_total": 0,
+      "warn_detected": 0,
+      "clean_total": 1,
+      "false_positive_count": 0
+    },
+    "missing_result_case_ids": [],
+    "unexpected_result_case_ids": [],
+    "details": [
+      {
+        "case_id": "QA-012",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "PA-EVENT-004-P015는 현장 안전 및 촬영동의 절차를 지원하지만 행사 만족도 95% 성과를 지원하지 않습니다."
+      },
+      {
+        "case_id": "QA-013",
+        "expected_type": "MISSING_REQUIREMENT",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "MISSING_REQUIREMENT",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "mandatory R-305 개인정보 안내와 사진·영상 촬영 및 활용 동의 절차가 covered_requirement_ids에서 누락되었습니다."
+      },
+      {
+        "case_id": "QA-015",
+        "expected_type": "CROSS_PROPOSAL_MERGE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_MERGE",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "지역 관광 캠페인과 정책 신청 전환 구조는 서로 다른 proposal의 evidence이며, 이를 하나의 지역 관광 캠페인 검증 실적으로 결합했습니다."
+      },
+      {
+        "case_id": "QA-017",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "company_facts에 기존 행사 무사고 10년 운영 실적을 뒷받침하는 사실이나 수치가 없습니다."
+      },
+      {
+        "case_id": "QA-019",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "predicted_severity": "NONE",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": ""
+      },
+      {
+        "case_id": "QA-020",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "INVALID_REFERENCE",
+        "predicted_severity": "BLOCK",
+        "type_correct": true,
+        "severity_correct": true,
+        "reason": "PA-PR-007-P018은 지역 크리에이터 협업 운영 패턴만 지원하며 개인정보 최소수집 원칙을 직접 지원하지 않습니다."
+      }
+    ]
+  }
+}

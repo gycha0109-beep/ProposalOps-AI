@@ -1,0 +1,197 @@
+{
+  "run_id": "proposal_qa-1.0-holdout-v3_final-01",
+  "track": "proposal_qa",
+  "benchmark_version": "1.0",
+  "split": "holdout",
+  "prompt_version": "v3_final",
+  "prompt_file": "prompts/proposal_qa/v3_final.md",
+  "prompt_sha256": "fc8514f360391a6f91e292391816f101f26135102f122028893a642fceb33ec5",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "case_ids": [
+      "QA-012",
+      "QA-013",
+      "QA-015",
+      "QA-017",
+      "QA-019",
+      "QA-020"
+    ],
+    "inputs_file": "evals/qa-injected-errors/inputs-v1.json",
+    "cases_file": "evals/qa-injected-errors/cases.json",
+    "split_file": "evals/frozen/v1/holdout/qa.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:52:26.636699+00:00",
+    "git_commit": "8a3a2baa40a3f85d3451e4f4a900565f6351f99f",
+    "provider": "openai",
+    "provider_response_id": "resp_0855b9a1f6184b2a016abb6024f62487d0aac72ba39ae9f5ba",
+    "latency_seconds": 6.1453,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 2837,
+      "input_tokens_details": {
+        "cache_write_tokens": 2834,
+        "cached_tokens": 0
+      },
+      "output_tokens": 553,
+      "output_tokens_details": {
+        "reasoning_tokens": 157
+      },
+      "total_tokens": 3390
+    }
+  },
+  "raw_output": "{\"results\":[{\"case_id\":\"QA-012\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_QUANTITATIVE_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"EV-EVENT-015 explicitly does not support the claimed 행사 만족도 95%; replace the claim with a supported statement or add valid evidence.\"},{\"case_id\":\"QA-013\",\"detected\":true,\"predicted_type\":\"MANDATORY_RFP_REQUIREMENT_MISSING\",\"severity\":\"BLOCK\",\"reason\":\"R-305 개인정보 안내 및 촬영·활용 동의 절차 is absent from covered_requirement_ids; add explicit coverage for R-305.\"},{\"case_id\":\"QA-015\",\"detected\":true,\"predicted_type\":\"CROSS_PROPOSAL_EVIDENCE_MIXING\",\"severity\":\"BLOCK\",\"reason\":\"The draft attributes a policy application conversion structure to a local tourism campaign, while EV-TOUR-006 and EV-POLICY-008 belong to different proposals and do not jointly support that claim; separate the references or revise the claim.\"},{\"case_id\":\"QA-017\",\"detected\":true,\"predicted_type\":\"UNSUPPORTED_COMPANY_PERFORMANCE_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"The factual company claim of 10 years of accident-free operation has no supporting company facts or evidence; provide verifiable evidence or remove the claim.\"},{\"case_id\":\"QA-019\",\"detected\":false,\"predicted_type\":\"CLEAN\",\"severity\":\"NONE\",\"reason\":\"The draft is explicitly classified as AI_RECOMMENDATION and does not assert unsupported company performance or evidence-backed facts.\"},{\"case_id\":\"QA-020\",\"detected\":true,\"predicted_type\":\"EVIDENCE_DOES_NOT_SUPPORT_CLAIM\",\"severity\":\"BLOCK\",\"reason\":\"EV-PR-018 supports regional creator collaboration operations but explicitly does not support the 개인정보 최소수집 원칙 claim; revise the citation or add appropriate privacy evidence.\"}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "case_id": "QA-012",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_QUANTITATIVE_CLAIM",
+        "severity": "BLOCK",
+        "reason": "EV-EVENT-015 explicitly does not support the claimed 행사 만족도 95%; replace the claim with a supported statement or add valid evidence."
+      },
+      {
+        "case_id": "QA-013",
+        "detected": true,
+        "predicted_type": "MANDATORY_RFP_REQUIREMENT_MISSING",
+        "severity": "BLOCK",
+        "reason": "R-305 개인정보 안내 및 촬영·활용 동의 절차 is absent from covered_requirement_ids; add explicit coverage for R-305."
+      },
+      {
+        "case_id": "QA-015",
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_EVIDENCE_MIXING",
+        "severity": "BLOCK",
+        "reason": "The draft attributes a policy application conversion structure to a local tourism campaign, while EV-TOUR-006 and EV-POLICY-008 belong to different proposals and do not jointly support that claim; separate the references or revise the claim."
+      },
+      {
+        "case_id": "QA-017",
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_COMPANY_PERFORMANCE_CLAIM",
+        "severity": "BLOCK",
+        "reason": "The factual company claim of 10 years of accident-free operation has no supporting company facts or evidence; provide verifiable evidence or remove the claim."
+      },
+      {
+        "case_id": "QA-019",
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "severity": "NONE",
+        "reason": "The draft is explicitly classified as AI_RECOMMENDATION and does not assert unsupported company performance or evidence-backed facts."
+      },
+      {
+        "case_id": "QA-020",
+        "detected": true,
+        "predicted_type": "EVIDENCE_DOES_NOT_SUPPORT_CLAIM",
+        "severity": "BLOCK",
+        "reason": "EV-PR-018 supports regional creator collaboration operations but explicitly does not support the 개인정보 최소수집 원칙 claim; revise the citation or add appropriate privacy evidence."
+      }
+    ]
+  },
+  "json_parseable": true,
+  "evaluation": {
+    "track": "proposal_qa",
+    "evaluator_version": "1.1",
+    "split": "holdout",
+    "case_count": 6,
+    "result_count": 6,
+    "metrics": {
+      "result_coverage": 1.0,
+      "critical_error_detection_recall": 1.0,
+      "warning_detection_recall": null,
+      "all_error_detection_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "error_type_accuracy": 0.0,
+      "severity_accuracy": 1.0
+    },
+    "counts": {
+      "block_total": 5,
+      "block_detected": 5,
+      "warn_total": 0,
+      "warn_detected": 0,
+      "clean_total": 1,
+      "false_positive_count": 0
+    },
+    "missing_result_case_ids": [],
+    "unexpected_result_case_ids": [],
+    "details": [
+      {
+        "case_id": "QA-012",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_QUANTITATIVE_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "EV-EVENT-015 explicitly does not support the claimed 행사 만족도 95%; replace the claim with a supported statement or add valid evidence."
+      },
+      {
+        "case_id": "QA-013",
+        "expected_type": "MISSING_REQUIREMENT",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "MANDATORY_RFP_REQUIREMENT_MISSING",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "R-305 개인정보 안내 및 촬영·활용 동의 절차 is absent from covered_requirement_ids; add explicit coverage for R-305."
+      },
+      {
+        "case_id": "QA-015",
+        "expected_type": "CROSS_PROPOSAL_MERGE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "CROSS_PROPOSAL_EVIDENCE_MIXING",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "The draft attributes a policy application conversion structure to a local tourism campaign, while EV-TOUR-006 and EV-POLICY-008 belong to different proposals and do not jointly support that claim; separate the references or revise the claim."
+      },
+      {
+        "case_id": "QA-017",
+        "expected_type": "UNSUPPORTED_CLAIM",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "UNSUPPORTED_COMPANY_PERFORMANCE_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "The factual company claim of 10 years of accident-free operation has no supporting company facts or evidence; provide verifiable evidence or remove the claim."
+      },
+      {
+        "case_id": "QA-019",
+        "expected_type": "CLEAN",
+        "expected_severity": "NONE",
+        "expected_detected": false,
+        "detected": false,
+        "predicted_type": "CLEAN",
+        "predicted_severity": "NONE",
+        "type_correct": null,
+        "severity_correct": null,
+        "reason": "The draft is explicitly classified as AI_RECOMMENDATION and does not assert unsupported company performance or evidence-backed facts."
+      },
+      {
+        "case_id": "QA-020",
+        "expected_type": "INVALID_REFERENCE",
+        "expected_severity": "BLOCK",
+        "expected_detected": true,
+        "detected": true,
+        "predicted_type": "EVIDENCE_DOES_NOT_SUPPORT_CLAIM",
+        "predicted_severity": "BLOCK",
+        "type_correct": false,
+        "severity_correct": true,
+        "reason": "EV-PR-018 supports regional creator collaboration operations but explicitly does not support the 개인정보 최소수집 원칙 claim; revise the citation or add appropriate privacy evidence."
+      }
+    ]
+  }
+}
