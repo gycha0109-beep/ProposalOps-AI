@@ -30,6 +30,7 @@ on:
     branches: [main]
     paths:
       - ".benchmark/rfp-dev-trigger"
+      - ".benchmark/rfp-holdout-trigger"
 
 permissions:
   contents: write
@@ -43,10 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || 'dev' }}
+      BENCH_SPLIT: ${{ github.event_name == 'workflow_dispatch' && inputs.split || (contains(github.event.head_commit.message, '[holdout]') && 'holdout' || 'dev') }}
       BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
       BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '1' }}
-      BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
+      BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || contains(github.event.head_commit.message, '[holdout]') }}
       BENCH_RUN_NAMESPACE: benchmark-v1-gpt56luna
     steps:
       - uses: actions/checkout@v7
