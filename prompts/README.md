@@ -10,7 +10,7 @@
 - `proposal_strategist/`: 근거 기반 전략 품질
 - `proposal_qa/`: 오류 탐지 품질
 
-각 track은 `v0_baseline → v1 → v2 → v3_final` 순서로 intervention을 하나씩 추가합니다.
+RFP Analyzer는 dev 회귀 분석 이후 `v4_compact_grounded` candidate까지 확장했습니다. 다른 track은 아직 v0~v3 비교 구조입니다.
 
 세부 intervention은 `experiment-manifest.json`에 기록합니다.
 
@@ -19,7 +19,7 @@
 `production/`에는 실제 ProposalOps workflow에서 사용할 candidate prompt와 지원 prompt를 둡니다.
 
 현재 production candidate:
-- RFP Analyzer → `rfp_analyzer/v3_final.md`
+- RFP Analyzer → `rfp_analyzer/v3_final.md` (v4 dev acceptance 전까지 유지)
 - Proposal Strategist → `proposal_strategist/v3_final.md`
 - Proposal QA → `proposal_qa/v3_final.md`
 
