@@ -376,6 +376,7 @@ If there is no real issue, return PASS with an empty issues array.
         "slide_count": len(slides.get("slides", [])),
         "visual_count": len(visuals.get("visuals", [])),
         "qa_issue_count": len(qa.get("issues", [])),
+        "qa_issues": qa.get("issues", []),
         "usage": package["usage"],
         "output_root": str(root),
     }, ensure_ascii=False, indent=2))
