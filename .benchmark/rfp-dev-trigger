@@ -1,4 +1,4 @@
-RFP Analyzer v4 dev candidate retry
+RFP Analyzer v4 dev candidate final quota-window retry
 
 benchmark: v1
 provider: gemini
@@ -13,5 +13,6 @@ max_503_retries_per_call: 1
 retry_delay_seconds: 15
 holdout: locked
 acceptance: evals/acceptance/rfp-analyzer-v4-dev.json
-retry: 1
-triggered: 2026-09-29T13:30+09:00
+provider_retryinfo_observed: 24s,4s
+retry: final
+triggered: 2026-09-29T13:33+09:00
