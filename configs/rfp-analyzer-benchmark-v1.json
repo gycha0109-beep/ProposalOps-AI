@@ -18,7 +18,8 @@
     "v0_baseline": "prompts/rfp_analyzer/v0_baseline.md",
     "v1_structured": "prompts/rfp_analyzer/v1_structured.md",
     "v2_grounded": "prompts/rfp_analyzer/v2_grounded.md",
-    "v3_final": "prompts/rfp_analyzer/v3_final.md"
+    "v3_final": "prompts/rfp_analyzer/v3_final.md",
+    "v4_compact_grounded": "prompts/rfp_analyzer/v4_compact_grounded.md"
   },
   "cases": {
     "dev": [
