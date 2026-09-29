@@ -1,0 +1,111 @@
+name: RFP Analyzer Live Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      split:
+        description: "Benchmark split"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - holdout
+      versions:
+        description: "all or comma-separated prompt versions"
+        required: true
+        default: "all"
+        type: string
+      repetitions:
+        description: "Repeated runs per RFP/version"
+        required: true
+        default: "3"
+        type: string
+      confirm_holdout:
+        description: "Required only when split=holdout"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rfp-analyzer-live-benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Protect holdout
+        shell: bash
+        run: |
+          if [[ "${{ inputs.split }}" == "holdout" && "${{ inputs.confirm_holdout }}" != "true" ]]; then
+            echo "Holdout is protected. Re-run with confirm_holdout=true only after prompt freeze."
+            exit 1
+          fi
+
+      - name: Require API key
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "Repository secret OPENAI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Validate benchmark plan
+        run: |
+          python scripts/run_rfp_benchmark.py \
+            --split "${{ inputs.split }}" \
+            --versions "${{ inputs.versions }}" \
+            --repetitions "${{ inputs.repetitions }}" \
+            --plan-only
+
+      - name: Run benchmark
+        shell: bash
+        run: |
+          EXTRA_ARGS=""
+          if [[ "${{ inputs.split }}" == "holdout" ]]; then
+            EXTRA_ARGS="--confirm-holdout"
+          fi
+          python scripts/run_rfp_benchmark.py \
+            --split "${{ inputs.split }}" \
+            --versions "${{ inputs.versions }}" \
+            --repetitions "${{ inputs.repetitions }}" \
+            $EXTRA_ARGS
+
+      - name: Aggregate results
+        run: |
+          mkdir -p reports
+          python scripts/aggregate_rfp_runs.py \
+            --root "runs/rfp_analyzer/benchmark-v1/${{ inputs.split }}" \
+            --json-out "reports/rfp-analyzer-${{ inputs.split }}-v1.json" \
+            --md-out "reports/rfp-analyzer-${{ inputs.split }}-v1.md"
+          python scripts/generate_prompt_diff.py \
+            --from-version v0_baseline \
+            --to-version v3_final \
+            --out reports/rfp-analyzer-v0-v3.diff
+
+      - name: Commit raw evidence and report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/rfp_analyzer/benchmark-v1 reports
+          if git diff --cached --quiet; then
+            echo "No benchmark changes to commit."
+            exit 0
+          fi
+          git commit -m "benchmark: record RFP analyzer ${{ inputs.split }} runs"
+          git push
