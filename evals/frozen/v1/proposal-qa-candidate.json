@@ -1,13 +1,13 @@
 {
   "track": "proposal_qa",
   "benchmark_version": "1.0",
-  "candidate": "v3_final",
-  "prompt_file": "prompts/proposal_qa/v3_final.md",
+  "candidate": "v4_compact_taxonomy",
+  "prompt_file": "prompts/proposal_qa/v4_compact_taxonomy.md",
   "status": "not_frozen",
-  "acceptance_report": "reports/proposal-qa-v3-acceptance.json",
+  "acceptance_report": "reports/proposal-qa-v4-acceptance.json",
   "acceptance_required": true,
   "holdout_allowed": false,
   "candidate_commit": null,
   "frozen_at": null,
-  "note": "Holdout remains locked until a QA candidate passes frozen dev acceptance."
+  "note": "QA v3 detected errors but failed taxonomy type accuracy; v4 restores explicit taxonomy. Holdout remains locked."
 }
