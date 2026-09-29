@@ -1,15 +1,15 @@
 # RFP Analyzer Dev Failure Analysis — Benchmark v1
 
-> 모델: Gemini 3.6 Flash / thinking medium. 아래 내용은 frozen dev RFP 2종의 기존 raw output 8건을 evaluator 1.4로 재평가한 결과다.
+> 모델: Gemini 3.6 Flash / thinking medium. 아래 내용은 frozen dev RFP 2종의 기존 raw output 8건을 evaluator 1.5로 재평가한 결과다.
 
 ## Baseline
 
-| Version | Assertion | Numeric | Requirement | JSON | Quote Coverage | Quote Validity |
-|---|---:|---:|---:|---:|---:|---:|
-| v0_baseline | 66.66% | 72.86% | 33.33% | 0% | 0% | - |
-| v1_structured | 95% | 100% | 100% | 100% | 0% | - |
-| v2_grounded | 95% | 100% | 100% | 100% | 100% | 100% |
-| v3_final | 95% | 90% | 100% | 50% | 50% | 100% |
+| Version | Assertion | Numeric | Requirement | JSON | Schema | Quote Coverage | Quote Validity |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| v0_baseline | 66.66% | 72.86% | 33.33% | 0% | 0% | 0% | - |
+| v1_structured | 95% | 100% | 100% | 100% | 100% | 0% | - |
+| v2_grounded | 95% | 100% | 100% | 100% | 0% | 100% | 100% |
+| v3_final | 95% | 90% | 100% | 50% | 0% | 50% | 100% |
 
 ## F-001 — Unstructured baseline
 
@@ -36,7 +36,7 @@ Design implication: source grounding은 유지한다.
 - `project` → `project_overview`
 - `evaluation` → `evaluations`
 
-내용 정확도는 evaluator의 semantic fallback으로 인정할 수 있지만 실제 agent pipeline에서는 계약 파손 위험이다.
+내용 정확도는 evaluator의 semantic fallback으로 인정할 수 있지만 canonical schema validity는 0%다. 실제 agent pipeline에서는 계약 파손 위험이다.
 
 Design implication: exact top-level schema와 `Do not rename keys` 규칙을 명시한다.
 
