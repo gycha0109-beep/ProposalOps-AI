@@ -123,7 +123,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python scripts/check_rfp_acceptance.py \
+          python scripts/check_benchmark_acceptance.py \
             --report reports/rfp-analyzer-dev-v1-gemini36.json \
             --acceptance evals/acceptance/rfp-analyzer-v4-dev.json \
             --version v4_compact_grounded \
@@ -136,7 +136,9 @@ jobs:
       - name: Freeze v4 candidate for holdout
         if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0' && env.acceptance_exit_code == '0'
         run: |
-          python scripts/freeze_rfp_candidate.py \
+          python scripts/freeze_benchmark_candidate.py \
+            --track rfp_analyzer \
+            --benchmark-version 1.0 \
             --acceptance reports/rfp-analyzer-v4-acceptance.json \
             --state evals/frozen/v1/rfp-analyzer-candidate.json \
             --prompt prompts/rfp_analyzer/v4_compact_grounded.md \
