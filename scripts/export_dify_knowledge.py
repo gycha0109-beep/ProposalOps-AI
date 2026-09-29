@@ -12,15 +12,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "exports" / "dify" / "knowledge-v1"
 
 
-def source_paths() -> list[Path]:
+def source_paths(include_distractors: bool = False) -> list[Path]:
     paths = [ROOT / "data" / "processed" / "proposals" / "proposal-assets.jsonl"]
     paths.extend(sorted((ROOT / "data" / "processed" / "proposals" / "benchmark").glob("*.jsonl")))
+    if include_distractors:
+        paths.append(ROOT / "data" / "processed" / "proposals" / "distractors" / "hard-negatives.jsonl")
     return paths
 
 
-def load_assets() -> list[dict]:
+def load_assets(include_distractors: bool = False) -> list[dict]:
     assets: list[dict] = []
-    for path in source_paths():
+    for path in source_paths(include_distractors):
         for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 assets.append(json.loads(line))
@@ -144,16 +146,18 @@ def metadata_schema() -> dict:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", default=str(DEFAULT_OUTPUT))
+    parser.add_argument("--include-distractors", action="store_true")
     args = parser.parse_args()
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
-    assets = load_assets()
+    assets = load_assets(args.include_distractors)
     documents = [make_document(asset) for asset in assets]
+    expected_count = 63 if args.include_distractors else 51
 
-    if len(documents) != 51:
-        raise SystemExit(f"Expected 51 normal proposal assets, got {len(documents)}")
+    if len(documents) != expected_count:
+        raise SystemExit(f"Expected {expected_count} proposal assets, got {len(documents)}")
 
     ids = [doc["asset_id"] for doc in documents]
     if len(ids) != len(set(ids)):
@@ -169,8 +173,9 @@ def main():
         "version": "1.0",
         "format": "dify_create_by_text_manifest",
         "document_count": len(documents),
-        "source_files": [str(path.relative_to(ROOT)) for path in source_paths()],
-        "excluded_sources": ["data/processed/proposals/distractors/"],
+        "source_files": [str(path.relative_to(ROOT)) for path in source_paths(args.include_distractors)],
+        "excluded_sources": [] if args.include_distractors else ["data/processed/proposals/distractors/"],
+        "include_distractors": args.include_distractors,
         "one_asset_per_document": True,
         "document_name_rule": "{asset_id}__{title}",
         "categories": dict(sorted(Counter(asset["category"] for asset in assets).items())),
