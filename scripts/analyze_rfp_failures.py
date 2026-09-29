@@ -20,7 +20,10 @@ def classify(record):
     if evaluation.get("output_truncated"):
         failures.append("OUTPUT_TRUNCATION")
 
-    if isinstance(parsed, dict):
+    schema_valid = evaluation["metrics"].get("canonical_schema_valid")
+    if schema_valid is not None and schema_valid < 1.0:
+        failures.append("SCHEMA_DRIFT")
+    elif isinstance(parsed, dict):
         missing = REQUIRED_TOP_LEVEL - set(parsed)
         aliases = {"project_overview", "evaluations"} & set(parsed)
         if missing or aliases:
