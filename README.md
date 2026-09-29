@@ -200,8 +200,8 @@ ProposalOps-AI/
 - [x] RFP Analyzer benchmark runner / raw recorder / aggregator / prompt diff 구축
 - [x] holdout 실행 보호 및 CI dry validation
 - [x] Gemini 3.6 Flash 기준 RFP Analyzer v0~v3 dev raw run 8건 저장
-- [x] RFP Analyzer evaluator 1.4 + grounding/truncation metric 적용
-- [x] v0→v1 구조화 개선 및 v2 grounding 효과 측정
+- [x] RFP Analyzer evaluator 1.5 + grounding/truncation/canonical-schema metric 적용
+- [x] v0→v1 구조화 개선 및 v2 grounding 효과 측정 (v1 schema 100%, v2 grounding 100% / schema 0%)
 - [x] v3 truncation regression 분석
 - [x] v4 prompt + dev acceptance criteria 사전 고정
 - [ ] v4 dev 유효 출력 확보 (`NOT_EVALUATED`: provider 503/429)
