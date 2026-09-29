@@ -1,0 +1,85 @@
+{
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "model": "gemini-3.8-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 4,
+    "max_503_retries": 1,
+    "retry_delay_seconds": 12
+  },
+  "run_count": 1,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 1,
+      "rfp_ids": [
+        "RFP-TEST-001"
+      ],
+      "json_parseable_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 0.6,
+          "min": 0.6,
+          "max": 0.6,
+          "stdev": 0.0
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 0.6,
+          "min": 0.6,
+          "max": 0.6,
+          "stdev": 0.0
+        },
+        "requirement_assertion_recall": {
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 681,
+          "mean": 681
+        },
+        "output_tokens": {
+          "total": 1002,
+          "mean": 1002
+        },
+        "total_tokens": {
+          "total": 3178,
+          "mean": 3178
+        },
+        "reasoning_tokens": {
+          "total": 1495,
+          "mean": 1495
+        }
+      },
+      "failed_assertions": [
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-01",
+            "001-06",
+            "001-07",
+            "001-09"
+          ]
+        }
+      ]
+    }
+  }
+}
