@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "split": "holdout",
+  "track": "proposal_strategist",
+  "input_rfp": "RFP-TEST-003",
+  "required_requirement_ids": [
+    "R-301",
+    "R-302",
+    "R-303",
+    "R-304",
+    "R-305",
+    "R-306"
+  ],
+  "evidence_expectations": [
+    {
+      "requirement_id": "R-301",
+      "allowed_asset_ids": [
+        "PA-EVENT-004-P013"
+      ]
+    },
+    {
+      "requirement_id": "R-302",
+      "allowed_asset_ids": [
+        "PA-EVENT-004-P014"
+      ]
+    },
+    {
+      "requirement_id": "R-303",
+      "allowed_asset_ids": [
+        "PA-CAMP-005-P009",
+        "PA-CAMP-005-P010",
+        "PA-PR-002-P013"
+      ]
+    },
+    {
+      "requirement_id": "R-304",
+      "allowed_asset_ids": [
+        "PA-EVENT-004-P015"
+      ]
+    },
+    {
+      "requirement_id": "R-305",
+      "allowed_asset_ids": [
+        "PA-EVENT-004-P015",
+        "PA-VIDEO-012-P017"
+      ]
+    },
+    {
+      "requirement_id": "R-306",
+      "allowed_asset_ids": [
+        "PA-EVENT-004-P016"
+      ]
+    }
+  ],
+  "forbidden_claims": [
+    "과거 참여자 5만",
+    "만족도 98%",
+    "무사고 10년",
+    "기존 행사 실적"
+  ],
+  "required_information_classes": [
+    "AI_RECOMMENDATION"
+  ],
+  "scoring": [
+    "requirement_coverage",
+    "evidence_citation_coverage",
+    "evidence_validity",
+    "unsupported_company_claims",
+    "unsupported_quantitative_claims"
+  ]
+}
