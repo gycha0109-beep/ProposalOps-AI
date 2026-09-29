@@ -2,16 +2,18 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from lib.openai_responses import (
+from lib.gemini_generate_content import (
     ProviderError,
-    call_openai_responses,
-    get_openai_api_key,
+    call_gemini_generate_content,
+    get_gemini_api_key,
 )
 from lib.rfp_eval import evaluate_rfp, parse_json_output
 
@@ -111,12 +113,12 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
     model = config["model"]
     parameters = config["parameters"]
 
-    response = call_openai_responses(
+    response = call_gemini_generate_content(
         api_key=api_key,
         model=model,
-        reasoning_effort=parameters["reasoning_effort"],
+        thinking_level=parameters["thinking_level"],
         max_output_tokens=parameters["max_output_tokens"],
-        instructions=instructions,
+        system_instruction=instructions,
         input_text=(
             f'RFP ID: {item["rfp_id"]}\n\n'
             f'{rfp_text}'
@@ -138,13 +140,12 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
         "split": item["split"],
         "prompt_version": item["prompt_version"],
         "prompt_file": item["prompt"],
-        "prompt_sha256": __import__("hashlib").sha256(
-            prompt_content.encode("utf-8")
-        ).hexdigest(),
+        "prompt_sha256": hashlib.sha256(prompt_content.encode("utf-8")).hexdigest(),
         "model": response["model"],
         "parameters": {
-            "reasoning_effort": parameters["reasoning_effort"],
+            "thinking_level": parameters["thinking_level"],
             "max_output_tokens": parameters["max_output_tokens"],
+            "request_delay_seconds": parameters.get("request_delay_seconds", 0),
         },
         "input": {
             "rfp_id": item["rfp_id"],
@@ -213,32 +214,57 @@ def main() -> None:
         )
         return
 
-    if config["provider"] != "openai":
+    if config["provider"] != "gemini":
         raise SystemExit(f'Unsupported provider: {config["provider"]}')
 
     try:
-        api_key = get_openai_api_key()
+        api_key = get_gemini_api_key()
     except ProviderError as exc:
         raise SystemExit(str(exc)) from exc
 
     commit = git_commit()
     root = Path(args.output_root)
+    delay = float(config["parameters"].get("request_delay_seconds", 0))
 
     completed = 0
-    for item in plan:
+    for index, item in enumerate(plan):
         path = output_path(root, item)
         if path.exists() and not args.overwrite:
             print(f"SKIP existing: {path}")
             continue
 
+        if completed > 0 and delay > 0:
+            time.sleep(delay)
+
         print(
-            f'RUN {item["split"]} {item["prompt_version"]} '
+            f'RUN {index + 1}/{len(plan)} '
+            f'{item["split"]} {item["prompt_version"]} '
             f'{item["rfp_id"]} repeat={item["repeat"]}'
         )
 
         try:
             record = run_one(config, item, api_key, commit)
         except ProviderError as exc:
+            failure_path = root / item["split"] / "_failures" / (
+                f'{item["prompt_version"]}-{item["rfp_id"]}-'
+                f'{item["repeat"]:02d}.json'
+            )
+            failure_path.parent.mkdir(parents=True, exist_ok=True)
+            failure_path.write_text(
+                json.dumps(
+                    {
+                        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+                        "prompt_version": item["prompt_version"],
+                        "rfp_id": item["rfp_id"],
+                        "repeat": item["repeat"],
+                        "error": str(exc),
+                        "git_commit": commit,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                ) + "\n",
+                encoding="utf-8",
+            )
             raise SystemExit(f"Model call failed: {exc}") from exc
 
         path.parent.mkdir(parents=True, exist_ok=True)
