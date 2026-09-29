@@ -1,0 +1,42 @@
+{
+  "benchmark_version": "1.0",
+  "track": "proposal_strategist",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 8000,
+    "request_delay_seconds": 20,
+    "max_503_retries": 1,
+    "retry_delay_seconds": 15
+  },
+  "inputs_file": "evals/strategist/inputs-v1.json",
+  "versions": {
+    "v0_baseline": "prompts/proposal_strategist/v0_baseline.md",
+    "v1_reference": "prompts/proposal_strategist/v1_reference.md",
+    "v2_evidence": "prompts/proposal_strategist/v2_evidence.md",
+    "v3_final": "prompts/proposal_strategist/v3_final.md"
+  },
+  "cases": {
+    "dev": [
+      {
+        "rfp_id": "RFP-TEST-001",
+        "rfp_file": "data/raw/rfps/RFP-TEST-001.md",
+        "gold_file": "evals/frozen/v1/dev/strategist/RFP-TEST-001.json"
+      },
+      {
+        "rfp_id": "RFP-TEST-002",
+        "rfp_file": "data/raw/rfps/RFP-TEST-002.md",
+        "gold_file": "evals/frozen/v1/dev/strategist/RFP-TEST-002.json"
+      }
+    ],
+    "holdout": [
+      {
+        "rfp_id": "RFP-TEST-003",
+        "rfp_file": "data/raw/rfps/RFP-TEST-003.md",
+        "gold_file": "evals/frozen/v1/holdout/strategist/RFP-TEST-003.json"
+      }
+    ]
+  },
+  "run_namespace": "benchmark-v1-gemini36"
+}
