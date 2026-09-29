@@ -2,13 +2,13 @@
   "benchmark_version": "1.0",
   "track": "rfp_analyzer",
   "provider": "gemini",
-  "model": "gemini-3.7-flash",
+  "model": "gemini-3.6-flash",
   "parameters": {
     "thinking_level": "medium",
     "max_output_tokens": 6000,
-    "request_delay_seconds": 4,
-    "max_503_retries": 1,
-    "retry_delay_seconds": 12
+    "request_delay_seconds": 15,
+    "max_503_retries": 0,
+    "retry_delay_seconds": 0
   },
   "repetitions": {
     "dev": 1,
@@ -41,5 +41,5 @@
       }
     ]
   },
-  "run_namespace": "benchmark-v1-gemini37"
+  "run_namespace": "benchmark-v1-gemini36"
 }
