@@ -54,6 +54,14 @@ v3 Guarded
 v4 Compact Grounded candidate
 ```
 
+## Portfolio Navigation
+
+- Wishket 요구사항 ↔ 저장소 증거: `docs/wishket-evidence-map.md`
+- 3분 데모 가이드: `docs/demo-guide.md`
+- Agent platform setup: `dify/setup-guide.md`
+- Logical workflow blueprint: `dify/workflow-spec.yaml`
+- RFP Analyzer failure analysis: `docs/prompt-failure-analysis/rfp-analyzer-dev-v1.md`
+
 ## Evaluation Integrity
 
 ```text
@@ -143,7 +151,9 @@ ProposalOps-AI/
 │  ├─ prompt-engineering-case-study.md
 │  ├─ retrieval-baseline.md
 │  ├─ proposal-qa-benchmark-runner.md
-│  └─ proposal-strategist-benchmark-runner.md
+│  ├─ proposal-strategist-benchmark-runner.md
+│  ├─ wishket-evidence-map.md
+│  └─ demo-guide.md
 ├─ data/
 │  ├─ raw/
 │  ├─ processed/
