@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "split": "dev",
+  "track": "rfp_analyzer",
+  "source": "data/raw/rfps/RFP-TEST-002.md",
+  "cases": [
+    {
+      "id": "002-01",
+      "metric": "exact_or_semantic",
+      "path": "project.duration",
+      "expected": "계약일로부터 5개월",
+      "critical": true
+    },
+    {
+      "id": "002-02",
+      "metric": "exact_or_semantic",
+      "path": "project.budget",
+      "expected": "95,000,000원",
+      "critical": true
+    },
+    {
+      "id": "002-03",
+      "metric": "contains",
+      "path": "project.target_audience",
+      "expected_terms": [
+        "20~40대",
+        "여행객",
+        "지역 주민"
+      ],
+      "critical": true
+    },
+    {
+      "id": "002-04",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "숏폼",
+        "quantity": "15편"
+      },
+      "critical": true
+    },
+    {
+      "id": "002-05",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "카드",
+        "quantity": "24건"
+      },
+      "critical": true
+    },
+    {
+      "id": "002-06",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "크리에이터",
+        "quantity": "6건"
+      },
+      "critical": true
+    },
+    {
+      "id": "002-07",
+      "metric": "deliverable",
+      "expected": {
+        "name_contains": "코스",
+        "quantity": "8건"
+      },
+      "critical": true
+    },
+    {
+      "id": "002-08",
+      "metric": "evaluation_sum",
+      "expected": 100,
+      "critical": true
+    },
+    {
+      "id": "002-09",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "맛집",
+        "휴식",
+        "체험",
+        "문화관람"
+      ],
+      "critical": true
+    },
+    {
+      "id": "002-10",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "저장",
+        "상세조회",
+        "예약"
+      ],
+      "critical": true
+    },
+    {
+      "id": "002-11",
+      "metric": "requirement_terms",
+      "expected_terms": [
+        "휴관",
+        "매진",
+        "운영시간",
+        "행사 일정"
+      ],
+      "critical": true
+    },
+    {
+      "id": "002-12",
+      "metric": "unsupported_addition",
+      "forbidden_terms": [
+        "방문객 100만",
+        "매출 증가",
+        "수상 실적"
+      ],
+      "critical": true
+    }
+  ]
+}
