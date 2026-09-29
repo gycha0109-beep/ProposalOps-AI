@@ -135,13 +135,15 @@ ProposalOps-AI/
 ├─ .github/workflows/
 │  ├─ benchmark-validation.yml
 │  ├─ rfp-analyzer-live.yml
-│  └─ proposal-qa-live.yml
+│  ├─ proposal-qa-live.yml
+│  └─ proposal-strategist-live.yml
 ├─ docs/
 │  ├─ architecture.md
 │  ├─ evaluation-methodology.md
 │  ├─ prompt-engineering-case-study.md
 │  ├─ retrieval-baseline.md
-│  └─ proposal-qa-benchmark-runner.md
+│  ├─ proposal-qa-benchmark-runner.md
+│  └─ proposal-strategist-benchmark-runner.md
 ├─ data/
 │  ├─ raw/
 │  ├─ processed/
@@ -211,7 +213,9 @@ ProposalOps-AI/
 - [x] Proposal QA neutral input fixture / evaluator / batch runner / aggregator / holdout gate 구축
 - [x] Proposal QA dev acceptance criteria 사전 고정
 - [ ] Proposal QA dev live 비교 실행 (4 Gemini calls)
-- [ ] Strategist prompt benchmark 실행
+- [x] Proposal Strategist neutral Evidence Pack / evaluator / batch runner / aggregator / holdout gate 구축
+- [x] Proposal Strategist dev acceptance criteria 사전 고정
+- [ ] Proposal Strategist dev live 비교 실행 (4 Gemini calls)
 - [ ] Dify Knowledge 실제 Retrieval Test
 - [ ] 최종 RFP → 전략 → 목차 → 장표 초안 통합 Workflow
 
