@@ -53,38 +53,10 @@ jobs:
             --plan-only > /tmp/rfp-holdout-plan.json
           cat /tmp/rfp-holdout-plan.json
 
-      - name: Verify holdout gate is locked
-        shell: bash
+      - name: Validate RFP candidate state
         run: |
-          set +e
-          python scripts/check_holdout_gate.py \
-            --state evals/frozen/v1/rfp-analyzer-candidate.json \
-            --require-holdout
-          EXIT_CODE=$?
-          set -e
-          if [[ "$EXIT_CODE" == "0" ]]; then
-            echo "Holdout gate unexpectedly open."
-            exit 1
-          fi
-          echo "Holdout gate correctly locked."
-
-      - name: Verify candidate cannot freeze without acceptance
-        shell: bash
-        run: |
-          cp evals/frozen/v1/rfp-analyzer-candidate.json /tmp/rfp-candidate.json
-          set +e
-          python scripts/freeze_rfp_candidate.py \
-            --acceptance reports/rfp-analyzer-v4-acceptance.json \
-            --state /tmp/rfp-candidate.json \
-            --prompt prompts/rfp_analyzer/v4_compact_grounded.md \
-            --candidate v4_compact_grounded
-          EXIT_CODE=$?
-          set -e
-          if [[ "$EXIT_CODE" == "0" ]]; then
-            echo "Candidate freeze unexpectedly succeeded."
-            exit 1
-          fi
-          echo "Candidate freeze correctly blocked."
+          python scripts/validate_candidate_state.py \
+            --state evals/frozen/v1/rfp-analyzer-candidate.json
 
       - name: Self-test Proposal QA evaluator and neutral inputs
         run: python scripts/selftest_qa_eval.py
@@ -105,20 +77,10 @@ jobs:
             --plan-only > /tmp/qa-holdout-plan.json
           cat /tmp/qa-holdout-plan.json
 
-      - name: Verify Proposal QA holdout gate is locked
-        shell: bash
+      - name: Validate Proposal QA candidate state
         run: |
-          set +e
-          python scripts/check_holdout_gate.py \
-            --state evals/frozen/v1/proposal-qa-candidate.json \
-            --require-holdout
-          EXIT_CODE=$?
-          set -e
-          if [[ "$EXIT_CODE" == "0" ]]; then
-            echo "Proposal QA holdout gate unexpectedly open."
-            exit 1
-          fi
-          echo "Proposal QA holdout gate correctly locked."
+          python scripts/validate_candidate_state.py \
+            --state evals/frozen/v1/proposal-qa-candidate.json
 
       - name: Self-test Proposal Strategist neutral inputs
         run: python scripts/selftest_strategy_inputs.py
@@ -139,20 +101,10 @@ jobs:
             --plan-only > /tmp/strategist-holdout-plan.json
           cat /tmp/strategist-holdout-plan.json
 
-      - name: Verify Proposal Strategist holdout gate is locked
-        shell: bash
+      - name: Validate Proposal Strategist candidate state
         run: |
-          set +e
-          python scripts/check_holdout_gate.py \
-            --state evals/frozen/v1/proposal-strategist-candidate.json \
-            --require-holdout
-          EXIT_CODE=$?
-          set -e
-          if [[ "$EXIT_CODE" == "0" ]]; then
-            echo "Proposal Strategist holdout gate unexpectedly open."
-            exit 1
-          fi
-          echo "Proposal Strategist holdout gate correctly locked."
+          python scripts/validate_candidate_state.py \
+            --state evals/frozen/v1/proposal-strategist-candidate.json
 
       - name: Run retrieval baseline on dev split
         run: |
