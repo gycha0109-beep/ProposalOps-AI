@@ -7,10 +7,11 @@ run_namespace: benchmark-v1-gemini36
 split: dev
 versions: all
 repetitions: 1
-expected_calls: 8
+expected_new_calls: 1
 request_delay_seconds: 15
 max_503_retries_per_call: 0
 continue_on_provider_error: true
 persist_raw_runs: true
-rerun: 2
-triggered: 2026-09-29T10:55+09:00
+rerun: 3
+target_missing: v2_grounded/RFP-TEST-002
+triggered: 2026-09-29T11:01+09:00
