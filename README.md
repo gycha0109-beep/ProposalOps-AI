@@ -160,6 +160,9 @@ ProposalOps-AI/
 │  │  └─ holdout/
 │  ├─ baselines/
 │  └─ qa-injected-errors/
+├─ dify/
+│  ├─ workflow-spec.yaml
+│  └─ setup-guide.md
 ├─ runs/
 └─ scripts/
    ├─ benchmark_inventory.py
@@ -169,6 +172,29 @@ ProposalOps-AI/
    ├─ evaluate_qa.py
    └─ render_knowledge_docs.py
 ```
+
+
+## Integration Workflow Status
+
+production chain의 논리 계약은 현재 다음까지 연결돼 있습니다.
+
+```text
+RFP Analyzer
+→ Retrieval Planner
+→ Knowledge Retrieval
+→ Evidence Builder
+→ Proposal Strategist
+→ Human Review
+→ Pagination
+→ Coverage Validator
+→ Slide Draft iteration
+→ Visual Prompt iteration
+→ Proposal QA
+→ Targeted Repair
+→ Final Package
+```
+
+`dify/workflow-spec.yaml`은 특정 제품의 import DSL이 아니라 Dify/Antigravity 등에 옮길 수 있는 **논리 blueprint**입니다. 실제 플랫폼 node wiring과 live end-to-end 실행은 아직 남아 있습니다.
 
 ## Prompt Engineering Interventions
 
@@ -216,7 +242,9 @@ ProposalOps-AI/
 - [x] Proposal Strategist neutral Evidence Pack / evaluator / batch runner / aggregator / holdout gate 구축
 - [x] Proposal Strategist dev acceptance criteria 사전 고정
 - [ ] Proposal Strategist dev live 비교 실행 (4 Gemini calls)
+- [x] Pagination / Coverage / Slide Draft / Visual Prompt / Targeted Repair production draft prompt 구축
+- [x] Agent-platform logical workflow blueprint + setup guide 구축
 - [ ] Dify Knowledge 실제 Retrieval Test
-- [ ] 최종 RFP → 전략 → 목차 → 장표 초안 통합 Workflow
+- [ ] Dify/Antigravity 실제 node wiring 및 end-to-end live demo
 
 Prompt 개선 수치는 위 미완료 항목을 끝낸 뒤에만 위시켓 포트폴리오에 사용합니다.
