@@ -1,0 +1,10 @@
+Proposal Strategist frozen candidate holdout
+
+provider: openai
+model: gpt-5.6-luna
+reasoning_effort: low
+candidate: v4_explicit_classes
+split: holdout
+expected_calls: 1
+run_namespace: benchmark-v1-gpt56luna
+triggered: 2026-09-29T17:18+09:00
