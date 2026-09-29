@@ -3,11 +3,12 @@
   "benchmark_version": "1.0",
   "candidate": "v4_explicit_classes",
   "prompt_file": "prompts/proposal_strategist/v4_explicit_classes.md",
-  "status": "not_frozen",
+  "prompt_sha256": "080aef29a852fa4d963d8d8c4f27daedb511fc17903b0529ad6a3864c7044fdb",
+  "status": "frozen",
   "acceptance_report": "reports/proposal-strategist-v4-acceptance.json",
   "acceptance_required": true,
-  "holdout_allowed": false,
-  "candidate_commit": null,
-  "frozen_at": null,
-  "note": "v3 passed grounding but missed explicit AI_RECOMMENDATION separation on one dev RFP; v4 makes information classes explicit."
+  "holdout_allowed": true,
+  "candidate_commit": "925115b381a9ed5d076c1b150bbc06fc294ce711",
+  "frozen_at": "2026-09-29T07:02:13.269788+00:00",
+  "note": "Frozen only after dev acceptance passed. Do not modify prompt before holdout."
 }
