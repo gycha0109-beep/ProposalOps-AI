@@ -511,7 +511,7 @@
       },
       {
         "pillar": "변경 가능한 운영정보의 게시 전 검수",
-        "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능 항목을 콘텐츠 제작 시점과 게시 직전에 확인한다. 변경이 발생하면 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태도 함께 갱신하고 확인 시점을 표시한다.",
+        "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 항목을 게시 전에 확인한다. 변경이 발생하면 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신하고 변경 정보의 버전을 표시한다.",
         "requirement_ids": [
           "R-205"
         ],
@@ -524,7 +524,7 @@
       },
       {
         "pillar": "방문 의도 중심의 단계형 성과관리",
-        "description": "월별 보고와 최종 보고에서 도달을 시작점으로 시청, 저장, 상세조회, 지도 클릭, 일정 저장, 예약 페이지 이동을 단계별로 측정한다. 콘텐츠 유형·방문 동기·크리에이터별로 전환 흐름을 비교해 다음 제작 우선순위와 코스 구성을 개선한다.",
+        "description": "월별 보고와 최종 보고에서 도달, 상세조회, 저장, 지도·코스·예약 페이지 이동 등 방문 의도에 가까운 행동을 단계별로 측정한다. 측정 결과를 다음 제작 우선순위와 코스 구성 개선에 활용한다.",
         "requirement_ids": [
           "R-206"
         ],
@@ -766,8 +766,8 @@
         "section": "운영 및 검수",
         "page_type": "information_verification",
         "title": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
-        "page_goal": "변경 가능한 방문정보의 검수·갱신 절차를 제시한다.",
-        "key_message": "휴관, 매진, 운영시간, 행사 일정은 제작 시점과 게시 직전에 확인하고, 변경 발생 시 연결된 카드·코스·크리에이터 콘텐츠까지 상태를 갱신한다.",
+        "page_goal": "변경 가능한 방문정보의 게시 전 확인과 변경 시 상태 갱신 절차를 제시한다.",
+        "key_message": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 연결된 카드·코스·크리에이터 콘텐츠의 상태를 함께 갱신한다.",
         "rfp_requirement_ids": [
           "R-205"
         ],
@@ -781,23 +781,23 @@
         "content_blocks": [
           {
             "role": "검수 항목",
-            "intent": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능 정보를 구분한다."
+            "intent": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 구분한다."
           },
           {
             "role": "게시 전 검수",
-            "intent": "제작 시점과 게시 직전에 공식 확인 채널 및 담당자를 통해 정보를 재확인한다."
+            "intent": "변경 가능한 운영정보를 게시 전에 재확인한다."
           },
           {
             "role": "변경 대응",
             "intent": "변경 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신한다."
           },
           {
-            "role": "관리 기록",
-            "intent": "확인 시점, 변경 이력, 버전 정보를 기록한다."
+            "role": "버전 표시",
+            "intent": "변경 정보의 버전을 표시한다."
           }
         ],
-        "visual_direction": "정보 수집 → 제작 검수 → 게시 직전 재검수 → 변경 감지·연결 콘텐츠 갱신의 프로세스 다이어그램을 사용한다.",
-        "fact_risk": "medium"
+        "visual_direction": "변경 가능한 운영정보의 게시 전 재확인과 변경 시 연결 콘텐츠 상태 갱신을 중심으로 프로세스 다이어그램을 구성한다.",
+        "fact_risk": "low"
       },
       {
         "page_id": "PAGE-007",
@@ -843,7 +843,7 @@
         "page_type": "kpi_and_reporting",
         "title": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
         "page_goal": "방문 의도 중심의 KPI와 월별·최종 성과관리 방식을 제시한다.",
-        "key_message": "도달과 시청을 시작점으로 저장, 상세조회, 지도 클릭, 일정 저장, 예약 페이지 이동까지 단계별로 측정해 콘텐츠와 코스 운영을 개선한다.",
+        "key_message": "도달을 시작점으로 상세조회, 저장, 지도·코스·예약 페이지 이동까지 단계별로 측정해 콘텐츠와 코스 운영을 개선한다.",
         "rfp_requirement_ids": [
           "R-206"
         ],
@@ -857,11 +857,7 @@
         "content_blocks": [
           {
             "role": "KPI 퍼널",
-            "intent": "도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동의 단계별 지표를 제시한다."
-          },
-          {
-            "role": "분석 단위",
-            "intent": "콘텐츠 유형, 방문 동기, 크리에이터별 전환 흐름을 비교한다."
+            "intent": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 제시한다."
           },
           {
             "role": "월별 보고",
@@ -872,7 +868,7 @@
             "intent": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리한다."
           }
         ],
-        "visual_direction": "단계형 KPI 퍼널과 월별 보고 사이클을 결합하고, 각 단계의 측정 항목을 아이콘과 함께 표시한다.",
+        "visual_direction": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지의 단계형 KPI와 월별 보고 사이클을 결합하고, 각 측정 항목을 아이콘과 함께 표시한다.",
         "fact_risk": "low"
       }
     ],
@@ -1161,7 +1157,7 @@
       {
         "page_id": "PAGE-006",
         "headline": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
-        "subheadline": "변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 기존 게시물의 상태를 함께 갱신합니다.",
+        "subheadline": "변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 함께 갱신합니다.",
         "body_blocks": [
           {
             "label": "검수 항목",
@@ -1172,17 +1168,17 @@
           },
           {
             "label": "게시 전 검수",
-            "text": "변경 가능한 운영정보를 게시 전에 재확인합니다. 시설별 확인 채널과 담당자 지정은 착수 후 협의합니다.",
+            "text": "변경 가능한 운영정보를 게시 전에 재확인합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-205-01",
               "EV-R-205-02"
             ],
-            "client_confirmation_required": true
+            "client_confirmation_required": false
           },
           {
             "label": "변경 대응",
-            "text": "변경 발생 시 기존 게시물의 상태를 함께 갱신합니다.",
+            "text": "변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-205-01"
@@ -1190,11 +1186,13 @@
             "client_confirmation_required": false
           },
           {
-            "label": "관리 기록",
-            "text": "확인 시점, 변경 이력, 버전 정보를 기록하는 관리 체계를 협의합니다.",
-            "claim_type": "AI_RECOMMENDATION",
-            "evidence_ids": [],
-            "client_confirmation_required": true
+            "label": "버전 표시",
+            "text": "변경 정보의 버전을 표시합니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-205-02"
+            ],
+            "client_confirmation_required": false
           }
         ],
         "evidence_ids": [
@@ -1202,8 +1200,8 @@
           "EV-R-205-02"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "현재 근거는 변경 가능한 운영정보의 게시 전 확인과 변경 시 기존 게시물 상태 갱신을 지원합니다. 시설별 확인 채널과 담당자 지정 및 기록 체계는 착수 단계에서 협의·확정해야 합니다.",
-        "fact_risk": "medium"
+        "speaker_note": "변경 가능한 운영정보를 게시 전에 재확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 갱신합니다. 변경 정보는 버전으로 구분해 관리합니다.",
+        "fact_risk": "low"
       },
       {
         "page_id": "PAGE-007",
@@ -1247,21 +1245,11 @@
       {
         "page_id": "PAGE-008",
         "headline": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
-        "subheadline": "도달과 시청을 시작점으로 저장·상세조회·지도 및 예약 페이지 이동까지 측정해 콘텐츠와 코스 운영을 개선합니다.",
+        "subheadline": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지 측정해 콘텐츠와 코스 운영을 개선합니다.",
         "body_blocks": [
           {
             "label": "KPI 퍼널",
-            "text": "도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동의 단계별 지표를 관리합니다.",
-            "claim_type": "REFERENCE_PATTERN",
-            "evidence_ids": [
-              "EV-R-206-01",
-              "EV-R-206-02"
-            ],
-            "client_confirmation_required": false
-          },
-          {
-            "label": "분석 단위",
-            "text": "콘텐츠 유형, 방문 동기, 크리에이터별 전환 흐름을 비교합니다.",
+            "text": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 관리합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-206-01",
@@ -1291,7 +1279,7 @@
           "EV-R-206-02"
         ],
         "visual_type": "data_chart",
-        "speaker_note": "단순 도달 수치가 아니라 실제 방문 의도에 가까운 행동 지표를 단계별로 확인하고, 월별 결과를 다음 제작에 반영합니다.",
+        "speaker_note": "단순 도달 수치뿐 아니라 상세조회, 저장, 지도·코스·예약 페이지 이동과 같은 방문 의도에 가까운 행동 지표를 단계별로 확인하고 월별 결과를 다음 제작에 반영합니다.",
         "fact_risk": "low"
       }
     ]
@@ -1694,39 +1682,39 @@
         "page_id": "PAGE-006",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "변경 가능한 운영정보를 게시 전에 재확인하고 변경 시 기존 게시물의 상태를 갱신하는 관리 절차를 보여준다.",
-        "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 정보 수집 → 게시 전 재검수 → 게시·모니터링의 순서로 연결하고, 변경 감지 시 기존 게시물의 상태를 갱신하는 분기 루프를 표시. 휴관, 매진, 운영시간, 행사 일정은 각각 달력·시계·경고 아이콘으로 표현하되 긴 텍스트는 사용하지 않음. 확인 시점과 변경 이력은 문서·체크 아이콘으로 표현. 시설별 확인 채널과 담당자 지정은 착수 후 협의사항임을 중립적인 점선 박스로 표시하되, 이미 확정된 운영 방식처럼 보이지 않게 표현.",
+        "purpose": "변경 가능한 운영정보를 게시 전에 재확인하고 변경 시 기존 게시물과 연결 콘텐츠의 상태를 갱신하는 절차를 보여준다.",
+        "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 휴관·매진·운영시간·행사 일정 등 변경 가능한 정보 항목을 표시하고, 정보 확인 → 게시 전 재확인 → 게시의 순서로 연결한다. 변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 갱신하는 분기 루프를 표시한다. 변경 정보의 버전 표시는 문서·라벨 아이콘으로 표현한다. 실제 시설별 담당자·확인 채널·운영 시스템은 표시하지 않는다.",
         "diagram_spec": {
           "nodes": [
             {
-              "id": "collect",
-              "label": "정보 수집",
-              "description": "변경 가능한 운영정보 확인"
+              "id": "information",
+              "label": "변경 가능 정보",
+              "description": "휴관·매진·운영시간·행사 일정"
             },
             {
               "id": "publish-check",
-              "label": "게시 전 재검수",
-              "description": "변경 가능한 운영정보 게시 전 확인"
+              "label": "게시 전 재확인",
+              "description": "변경 가능한 운영정보 재확인"
             },
             {
               "id": "publish",
-              "label": "게시·모니터링",
-              "description": "게시 후 변경 여부 관찰"
+              "label": "게시",
+              "description": "확인된 정보 게시"
             },
             {
               "id": "update",
-              "label": "게시물 상태 갱신",
-              "description": "변경 발생 시 기존 게시물 상태 갱신"
+              "label": "연결 콘텐츠 상태 갱신",
+              "description": "변경 발생 시 기존 게시물과 연결 콘텐츠 상태 갱신"
             },
             {
-              "id": "log",
-              "label": "확인·변경 이력 기록",
-              "description": "확인 시점과 변경 이력 관리"
+              "id": "version",
+              "label": "버전 표시",
+              "description": "변경 정보 버전 표시"
             }
           ],
           "edges": [
             {
-              "from": "collect",
+              "from": "information",
               "to": "publish-check",
               "label": "게시 전 확인"
             },
@@ -1747,13 +1735,13 @@
             },
             {
               "from": "publish-check",
-              "to": "log",
-              "label": "재검수 기록"
+              "to": "version",
+              "label": "버전 표시"
             },
             {
               "from": "update",
-              "to": "log",
-              "label": "변경 이력 기록"
+              "to": "version",
+              "label": "변경 버전 반영"
             }
           ]
         },
@@ -1762,12 +1750,12 @@
           "EV-R-205-02"
         ],
         "prohibited_elements": [
+          "제작 시점 확인을 포함한 표현",
           "이미 확정된 공식 담당자·채널처럼 보이는 정보",
-          "시설별 확인 채널과 담당자가 확정된 운영 프로세스처럼 보이는 표현",
           "실제 운영 시스템 화면이나 고객 시설 사진",
           "무오류·자동갱신을 보장하는 표현"
         ],
-        "fact_risk": "medium"
+        "fact_risk": "low"
       },
       {
         "page_id": "PAGE-007",
@@ -1864,18 +1852,13 @@
         "visual_type": "process_diagram",
         "do_not_generate": false,
         "purpose": "방문 의도에 가까운 행동을 단계별로 측정하고 월별 개선 사이클로 연결하는 KPI 구조를 보여준다.",
-        "image_prompt": "수치 없이 구성한 단계형 KPI 퍼널 인포그래픽. 도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동의 5단계를 좌에서 우 또는 위에서 아래로 연결하고, 각 단계에는 눈, 재생, 문서, 북마크, 지도·링크 아이콘을 사용. 퍼널 옆에는 콘텐츠 유형·방문 동기·크리에이터별 비교라는 분석 축을 태그 형태로 표시. 하단에는 월별 보고 → 우선순위 조정 → 다음 제작의 순환 화살표를 배치. 실제 비율, 막대 높이, 축 값, 성과 수치는 넣지 않으며 각 단계의 상대적 크기도 표현하지 않음.",
+        "image_prompt": "수치 없이 구성한 단계형 KPI 인포그래픽. 도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 4단계를 연결하고, 각 단계에는 노출·문서·북마크·지도·링크 아이콘을 사용한다. 하단에는 월별 보고 → 다음 제작 우선순위 및 코스 구성 조정의 순환 구조를 배치한다. 실제 비율, 막대 높이, 축 값, 성과 수치와 상대적 단계 크기는 표현하지 않는다.",
         "diagram_spec": {
           "nodes": [
             {
               "id": "reach",
               "label": "도달",
-              "description": "콘텐츠 노출과 도달"
-            },
-            {
-              "id": "watch",
-              "label": "시청",
-              "description": "영상 또는 콘텐츠 소비"
+              "description": "콘텐츠 도달"
             },
             {
               "id": "detail",
@@ -1889,13 +1872,8 @@
             },
             {
               "id": "move",
-              "label": "지도·예약 이동",
+              "label": "지도·코스·예약 페이지 이동",
               "description": "방문 관련 다음 단계 이동"
-            },
-            {
-              "id": "analysis",
-              "label": "분석",
-              "description": "콘텐츠 유형·방문 동기·크리에이터별 비교"
             },
             {
               "id": "report",
@@ -1904,8 +1882,8 @@
             },
             {
               "id": "optimize",
-              "label": "다음 제작 조정",
-              "description": "우선순위와 코스 구성 개선"
+              "label": "다음 제작·코스 구성 조정",
+              "description": "월별 결과 기반 개선"
             },
             {
               "id": "final",
@@ -1916,58 +1894,28 @@
           "edges": [
             {
               "from": "reach",
-              "to": "watch",
-              "label": "관심 형성"
-            },
-            {
-              "from": "watch",
               "to": "detail",
               "label": "상세 탐색"
             },
             {
               "from": "detail",
               "to": "save",
-              "label": "방문 고려"
+              "label": "저장"
             },
             {
               "from": "save",
               "to": "move",
-              "label": "방문 행동 의도"
-            },
-            {
-              "from": "reach",
-              "to": "analysis",
-              "label": "분석 단위별 분류"
-            },
-            {
-              "from": "watch",
-              "to": "analysis",
-              "label": "분석 단위별 비교"
-            },
-            {
-              "from": "detail",
-              "to": "analysis",
-              "label": "분석 단위별 비교"
-            },
-            {
-              "from": "save",
-              "to": "analysis",
-              "label": "분석 단위별 비교"
+              "label": "다음 단계 이동"
             },
             {
               "from": "move",
-              "to": "analysis",
-              "label": "분석 단위별 비교"
-            },
-            {
-              "from": "analysis",
               "to": "report",
               "label": "월별 취합"
             },
             {
               "from": "report",
               "to": "optimize",
-              "label": "개선안 도출"
+              "label": "우선순위·코스 구성 조정"
             },
             {
               "from": "optimize",
@@ -1986,6 +1934,8 @@
           "EV-R-206-02"
         ],
         "prohibited_elements": [
+          "시청 단계를 포함한 표현",
+          "콘텐츠 유형·방문 동기·크리에이터별 비교 축",
           "실제 KPI 수치·전환율·비율",
           "수치가 있는 것처럼 보이는 축·막대·퍼널 폭 비교",
           "보장된 예약·방문 성과 표현"
@@ -1995,24 +1945,9 @@
     ]
   },
   "qa": {
-    "status": "FAIL",
-    "issues": [
-      {
-        "error_type": "INVALID_REFERENCE",
-        "severity": "BLOCK",
-        "page_id": "PAGE-006",
-        "reason": "슬라이드 본문은 수정되었지만 proposal_strategy의 ST-05와 PAGE-006 content_blocks에는 여전히 ‘제작 시점과 게시 직전에 확인한다’는 표현이 남아 있다. 연결된 EV-R-205-01 및 EV-R-205-02는 게시 전 확인, 변경정보 재검수, 변경 시 상태 갱신은 지원하지만 제작 시점 확인까지는 지원하지 않는다.",
-        "suggested_action": "해당 표현을 ‘게시 전에 변경 가능한 운영정보를 재확인한다’로 통일하거나, 제작 시점 확인을 제안 운영안으로 유지할 경우 해당 문구를 AI_RECOMMENDATION으로 분류하고 reference evidence 연결을 제거한다."
-      },
-      {
-        "error_type": "INVALID_REFERENCE",
-        "severity": "BLOCK",
-        "page_id": "PAGE-008",
-        "reason": "PAGE-008의 ‘도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동’ 및 ‘콘텐츠 유형·방문 동기·크리에이터별 전환 흐름 비교’ 표현은 연결된 EV-R-206-01과 EV-R-206-02가 직접 지원하는 범위를 일부 초과한다. 해당 evidence는 도달, 상세조회, 저장, 지도·예약 페이지 이동과 단계형 KPI를 지원하지만 시청 단계와 해당 세부 분석 축까지는 명시하지 않는다.",
-        "suggested_action": "evidence가 지원하는 범위에 맞춰 ‘도달 → 상세조회 → 저장 → 지도·예약 페이지 이동’으로 수정하고, 시청 및 세부 분석 축을 유지하려면 이를 AI_RECOMMENDATION 또는 별도 제안 운영안으로 표시해 reference evidence 연결을 제거한다."
-      }
-    ],
-    "summary": "PAGE-006에는 이전 QA에서 지적된 근거 범위 초과 표현이 strategy와 content_blocks에 잔존하며, PAGE-008도 KPI 단계와 분석 축 일부가 연결 evidence의 직접 지원 범위를 초과한다."
+    "status": "PASS",
+    "issues": [],
+    "summary": "제공된 RFP 요구사항은 모두 페이지에 반영되어 있으며, 회사 실적·정량 성과의 무근거 주장이나 유효하지 않은 evidence 연결이 확인되지 않았습니다. 이전 INVALID_REFERENCE 이슈도 chain repair output에서 수정된 상태로 반영되어 있습니다."
   },
   "deterministic_validations": {
     "pagination": {
@@ -2122,18 +2057,92 @@
     "total_tokens": 56659,
     "reasoning_tokens": 808
   },
-  "status": "FAIL",
+  "status": "PASS",
   "repair": {
-    "cycle": 2,
-    "generated_at": "2026-09-29T08:36:33.314948+00:00",
+    "cycle": 3,
+    "scope": "strategy_to_visual",
+    "generated_at": "2026-09-29T08:39:50.761540+00:00",
     "repair_output": {
-      "repairs": [
+      "strategy_repairs": [
+        {
+          "strategy_id": "ST-05",
+          "repaired_pillar": {
+            "pillar": "변경 가능한 운영정보의 게시 전 검수",
+            "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 항목을 게시 전에 확인한다. 변경이 발생하면 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신하고 변경 정보의 버전을 표시한다.",
+            "requirement_ids": [
+              "R-205"
+            ],
+            "classification": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-205-01",
+              "EV-R-205-02"
+            ],
+            "strategy_id": "ST-05"
+          }
+        },
+        {
+          "strategy_id": "ST-06",
+          "repaired_pillar": {
+            "pillar": "방문 의도 중심의 단계형 성과관리",
+            "description": "월별 보고와 최종 보고에서 도달, 상세조회, 저장, 지도·코스·예약 페이지 이동 등 방문 의도에 가까운 행동을 단계별로 측정한다. 측정 결과를 다음 제작 우선순위와 코스 구성 개선에 활용한다.",
+            "requirement_ids": [
+              "R-206"
+            ],
+            "classification": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-206-01",
+              "EV-R-206-02"
+            ],
+            "strategy_id": "ST-06"
+          }
+        }
+      ],
+      "page_repairs": [
         {
           "page_id": "PAGE-006",
+          "repaired_page": {
+            "page_id": "PAGE-006",
+            "page_no": 6,
+            "section": "운영 및 검수",
+            "page_type": "information_verification",
+            "title": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
+            "page_goal": "변경 가능한 방문정보의 게시 전 확인과 변경 시 상태 갱신 절차를 제시한다.",
+            "key_message": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 연결된 카드·코스·크리에이터 콘텐츠의 상태를 함께 갱신한다.",
+            "rfp_requirement_ids": [
+              "R-205"
+            ],
+            "strategy_ids": [
+              "ST-05"
+            ],
+            "evidence_ids": [
+              "EV-R-205-01",
+              "EV-R-205-02"
+            ],
+            "content_blocks": [
+              {
+                "role": "검수 항목",
+                "intent": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 구분한다."
+              },
+              {
+                "role": "게시 전 검수",
+                "intent": "변경 가능한 운영정보를 게시 전에 재확인한다."
+              },
+              {
+                "role": "변경 대응",
+                "intent": "변경 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신한다."
+              },
+              {
+                "role": "버전 표시",
+                "intent": "변경 정보의 버전을 표시한다."
+              }
+            ],
+            "visual_direction": "변경 가능한 운영정보의 게시 전 재확인과 변경 시 연결 콘텐츠 상태 갱신을 중심으로 프로세스 다이어그램을 구성한다.",
+            "fact_risk": "low"
+          },
           "repaired_slide": {
             "page_id": "PAGE-006",
             "headline": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
-            "subheadline": "변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 기존 게시물의 상태를 함께 갱신합니다.",
+            "subheadline": "변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 함께 갱신합니다.",
             "body_blocks": [
               {
                 "label": "검수 항목",
@@ -2144,17 +2153,17 @@
               },
               {
                 "label": "게시 전 검수",
-                "text": "변경 가능한 운영정보를 게시 전에 재확인합니다. 시설별 확인 채널과 담당자 지정은 착수 후 협의합니다.",
+                "text": "변경 가능한 운영정보를 게시 전에 재확인합니다.",
                 "claim_type": "REFERENCE_PATTERN",
                 "evidence_ids": [
                   "EV-R-205-01",
                   "EV-R-205-02"
                 ],
-                "client_confirmation_required": true
+                "client_confirmation_required": false
               },
               {
                 "label": "변경 대응",
-                "text": "변경 발생 시 기존 게시물의 상태를 함께 갱신합니다.",
+                "text": "변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신합니다.",
                 "claim_type": "REFERENCE_PATTERN",
                 "evidence_ids": [
                   "EV-R-205-01"
@@ -2162,11 +2171,13 @@
                 "client_confirmation_required": false
               },
               {
-                "label": "관리 기록",
-                "text": "확인 시점, 변경 이력, 버전 정보를 기록하는 관리 체계를 협의합니다.",
-                "claim_type": "AI_RECOMMENDATION",
-                "evidence_ids": [],
-                "client_confirmation_required": true
+                "label": "버전 표시",
+                "text": "변경 정보의 버전을 표시합니다.",
+                "claim_type": "REFERENCE_PATTERN",
+                "evidence_ids": [
+                  "EV-R-205-02"
+                ],
+                "client_confirmation_required": false
               }
             ],
             "evidence_ids": [
@@ -2174,46 +2185,46 @@
               "EV-R-205-02"
             ],
             "visual_type": "process_diagram",
-            "speaker_note": "현재 근거는 변경 가능한 운영정보의 게시 전 확인과 변경 시 기존 게시물 상태 갱신을 지원합니다. 시설별 확인 채널과 담당자 지정 및 기록 체계는 착수 단계에서 협의·확정해야 합니다.",
-            "fact_risk": "medium"
+            "speaker_note": "변경 가능한 운영정보를 게시 전에 재확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 갱신합니다. 변경 정보는 버전으로 구분해 관리합니다.",
+            "fact_risk": "low"
           },
           "repaired_visual": {
             "page_id": "PAGE-006",
             "visual_type": "process_diagram",
             "do_not_generate": false,
-            "purpose": "변경 가능한 운영정보를 게시 전에 재확인하고 변경 시 기존 게시물의 상태를 갱신하는 관리 절차를 보여준다.",
-            "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 정보 수집 → 게시 전 재검수 → 게시·모니터링의 순서로 연결하고, 변경 감지 시 기존 게시물의 상태를 갱신하는 분기 루프를 표시. 휴관, 매진, 운영시간, 행사 일정은 각각 달력·시계·경고 아이콘으로 표현하되 긴 텍스트는 사용하지 않음. 확인 시점과 변경 이력은 문서·체크 아이콘으로 표현. 시설별 확인 채널과 담당자 지정은 착수 후 협의사항임을 중립적인 점선 박스로 표시하되, 이미 확정된 운영 방식처럼 보이지 않게 표현.",
+            "purpose": "변경 가능한 운영정보를 게시 전에 재확인하고 변경 시 기존 게시물과 연결 콘텐츠의 상태를 갱신하는 절차를 보여준다.",
+            "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 휴관·매진·운영시간·행사 일정 등 변경 가능한 정보 항목을 표시하고, 정보 확인 → 게시 전 재확인 → 게시의 순서로 연결한다. 변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 갱신하는 분기 루프를 표시한다. 변경 정보의 버전 표시는 문서·라벨 아이콘으로 표현한다. 실제 시설별 담당자·확인 채널·운영 시스템은 표시하지 않는다.",
             "diagram_spec": {
               "nodes": [
                 {
-                  "id": "collect",
-                  "label": "정보 수집",
-                  "description": "변경 가능한 운영정보 확인"
+                  "id": "information",
+                  "label": "변경 가능 정보",
+                  "description": "휴관·매진·운영시간·행사 일정"
                 },
                 {
                   "id": "publish-check",
-                  "label": "게시 전 재검수",
-                  "description": "변경 가능한 운영정보 게시 전 확인"
+                  "label": "게시 전 재확인",
+                  "description": "변경 가능한 운영정보 재확인"
                 },
                 {
                   "id": "publish",
-                  "label": "게시·모니터링",
-                  "description": "게시 후 변경 여부 관찰"
+                  "label": "게시",
+                  "description": "확인된 정보 게시"
                 },
                 {
                   "id": "update",
-                  "label": "게시물 상태 갱신",
-                  "description": "변경 발생 시 기존 게시물 상태 갱신"
+                  "label": "연결 콘텐츠 상태 갱신",
+                  "description": "변경 발생 시 기존 게시물과 연결 콘텐츠 상태 갱신"
                 },
                 {
-                  "id": "log",
-                  "label": "확인·변경 이력 기록",
-                  "description": "확인 시점과 변경 이력 관리"
+                  "id": "version",
+                  "label": "버전 표시",
+                  "description": "변경 정보 버전 표시"
                 }
               ],
               "edges": [
                 {
-                  "from": "collect",
+                  "from": "information",
                   "to": "publish-check",
                   "label": "게시 전 확인"
                 },
@@ -2234,13 +2245,13 @@
                 },
                 {
                   "from": "publish-check",
-                  "to": "log",
-                  "label": "재검수 기록"
+                  "to": "version",
+                  "label": "버전 표시"
                 },
                 {
                   "from": "update",
-                  "to": "log",
-                  "label": "변경 이력 기록"
+                  "to": "version",
+                  "label": "변경 버전 반영"
                 }
               ]
             },
@@ -2249,72 +2260,252 @@
               "EV-R-205-02"
             ],
             "prohibited_elements": [
+              "제작 시점 확인을 포함한 표현",
               "이미 확정된 공식 담당자·채널처럼 보이는 정보",
-              "시설별 확인 채널과 담당자가 확정된 운영 프로세스처럼 보이는 표현",
               "실제 운영 시스템 화면이나 고객 시설 사진",
               "무오류·자동갱신을 보장하는 표현"
             ],
-            "fact_risk": "medium"
+            "fact_risk": "low"
+          }
+        },
+        {
+          "page_id": "PAGE-008",
+          "repaired_page": {
+            "page_id": "PAGE-008",
+            "page_no": 8,
+            "section": "성과관리",
+            "page_type": "kpi_and_reporting",
+            "title": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
+            "page_goal": "방문 의도 중심의 KPI와 월별·최종 성과관리 방식을 제시한다.",
+            "key_message": "도달을 시작점으로 상세조회, 저장, 지도·코스·예약 페이지 이동까지 단계별로 측정해 콘텐츠와 코스 운영을 개선한다.",
+            "rfp_requirement_ids": [
+              "R-206"
+            ],
+            "strategy_ids": [
+              "ST-06"
+            ],
+            "evidence_ids": [
+              "EV-R-206-01",
+              "EV-R-206-02"
+            ],
+            "content_blocks": [
+              {
+                "role": "KPI 퍼널",
+                "intent": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 제시한다."
+              },
+              {
+                "role": "월별 보고",
+                "intent": "운영 결과와 행동 지표를 월별로 점검해 다음 제작 우선순위와 코스 구성을 조정한다."
+              },
+              {
+                "role": "최종 보고",
+                "intent": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리한다."
+              }
+            ],
+            "visual_direction": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지의 단계형 KPI와 월별 보고 사이클을 결합하고, 각 측정 항목을 아이콘과 함께 표시한다.",
+            "fact_risk": "low"
           },
-          "repair_summary": [
-            {
-              "error_type": "INVALID_REFERENCE",
-              "change": "‘제작 시점과 게시 직전에’라는 표현을 근거가 직접 지원하는 ‘게시 전에’로 수정하고, 제작 시점 검수 단계와 관련 시각 요소를 제거했습니다.",
-              "resolved": true
+          "repaired_slide": {
+            "page_id": "PAGE-008",
+            "headline": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
+            "subheadline": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지 측정해 콘텐츠와 코스 운영을 개선합니다.",
+            "body_blocks": [
+              {
+                "label": "KPI 퍼널",
+                "text": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 관리합니다.",
+                "claim_type": "REFERENCE_PATTERN",
+                "evidence_ids": [
+                  "EV-R-206-01",
+                  "EV-R-206-02"
+                ],
+                "client_confirmation_required": false
+              },
+              {
+                "label": "월별 보고",
+                "text": "월별 운영 결과와 행동 지표를 점검해 다음 제작 우선순위와 코스 구성을 조정합니다.",
+                "claim_type": "REFERENCE_PATTERN",
+                "evidence_ids": [
+                  "EV-R-206-02"
+                ],
+                "client_confirmation_required": false
+              },
+              {
+                "label": "최종 보고",
+                "text": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리합니다.",
+                "claim_type": "RFP_FACT",
+                "evidence_ids": [],
+                "client_confirmation_required": false
+              }
+            ],
+            "evidence_ids": [
+              "EV-R-206-01",
+              "EV-R-206-02"
+            ],
+            "visual_type": "data_chart",
+            "speaker_note": "단순 도달 수치뿐 아니라 상세조회, 저장, 지도·코스·예약 페이지 이동과 같은 방문 의도에 가까운 행동 지표를 단계별로 확인하고 월별 결과를 다음 제작에 반영합니다.",
+            "fact_risk": "low"
+          },
+          "repaired_visual": {
+            "page_id": "PAGE-008",
+            "visual_type": "process_diagram",
+            "do_not_generate": false,
+            "purpose": "방문 의도에 가까운 행동을 단계별로 측정하고 월별 개선 사이클로 연결하는 KPI 구조를 보여준다.",
+            "image_prompt": "수치 없이 구성한 단계형 KPI 인포그래픽. 도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 4단계를 연결하고, 각 단계에는 노출·문서·북마크·지도·링크 아이콘을 사용한다. 하단에는 월별 보고 → 다음 제작 우선순위 및 코스 구성 조정의 순환 구조를 배치한다. 실제 비율, 막대 높이, 축 값, 성과 수치와 상대적 단계 크기는 표현하지 않는다.",
+            "diagram_spec": {
+              "nodes": [
+                {
+                  "id": "reach",
+                  "label": "도달",
+                  "description": "콘텐츠 도달"
+                },
+                {
+                  "id": "detail",
+                  "label": "상세조회",
+                  "description": "프로그램·코스 상세 탐색"
+                },
+                {
+                  "id": "save",
+                  "label": "저장",
+                  "description": "일정·콘텐츠 저장"
+                },
+                {
+                  "id": "move",
+                  "label": "지도·코스·예약 페이지 이동",
+                  "description": "방문 관련 다음 단계 이동"
+                },
+                {
+                  "id": "report",
+                  "label": "월별 보고",
+                  "description": "운영 결과와 행동 지표 점검"
+                },
+                {
+                  "id": "optimize",
+                  "label": "다음 제작·코스 구성 조정",
+                  "description": "월별 결과 기반 개선"
+                },
+                {
+                  "id": "final",
+                  "label": "최종 보고",
+                  "description": "성과지표 원자료와 콘텐츠 목록 정리"
+                }
+              ],
+              "edges": [
+                {
+                  "from": "reach",
+                  "to": "detail",
+                  "label": "상세 탐색"
+                },
+                {
+                  "from": "detail",
+                  "to": "save",
+                  "label": "저장"
+                },
+                {
+                  "from": "save",
+                  "to": "move",
+                  "label": "다음 단계 이동"
+                },
+                {
+                  "from": "move",
+                  "to": "report",
+                  "label": "월별 취합"
+                },
+                {
+                  "from": "report",
+                  "to": "optimize",
+                  "label": "우선순위·코스 구성 조정"
+                },
+                {
+                  "from": "optimize",
+                  "to": "report",
+                  "label": "다음 월 반영"
+                },
+                {
+                  "from": "report",
+                  "to": "final",
+                  "label": "최종 누적"
+                }
+              ]
             },
-            {
-              "error_type": "REFERENCE_PATTERN_SCOPE",
-              "change": "변경 대응 문구를 evidence가 직접 지원하는 ‘기존 게시물의 상태를 함께 갱신’으로 정리하고, 연결 콘텐츠 갱신 표현을 제거했습니다.",
-              "resolved": true
-            }
-          ]
+            "data_source": [
+              "EV-R-206-01",
+              "EV-R-206-02"
+            ],
+            "prohibited_elements": [
+              "시청 단계를 포함한 표현",
+              "콘텐츠 유형·방문 동기·크리에이터별 비교 축",
+              "실제 KPI 수치·전환율·비율",
+              "수치가 있는 것처럼 보이는 축·막대·퍼널 폭 비교",
+              "보장된 예약·방문 성과 표현"
+            ],
+            "fact_risk": "low"
+          }
+        }
+      ],
+      "repair_summary": [
+        {
+          "error_type": "INVALID_REFERENCE",
+          "target_id": "ST-05",
+          "change": "‘제작 시점과 게시 직전에 확인한다’를 삭제하고 ‘게시 전에 확인한다’로 통일했으며, 근거가 지원하는 상태 갱신과 버전 표시만 유지했습니다.",
+          "resolved": true
+        },
+        {
+          "error_type": "INVALID_REFERENCE",
+          "target_id": "PAGE-006",
+          "change": "페이지·슬라이드·비주얼에서 제작 시점 확인과 확정된 담당자·채널 workflow 표현을 제거하고 게시 전 재확인, 변경 시 상태 갱신, 버전 표시로 정렬했습니다.",
+          "resolved": true
+        },
+        {
+          "error_type": "INVALID_REFERENCE",
+          "target_id": "ST-06",
+          "change": "근거가 직접 지원하지 않는 시청 단계와 콘텐츠 유형·방문 동기·크리에이터별 비교 축을 제거했습니다.",
+          "resolved": true
+        },
+        {
+          "error_type": "INVALID_REFERENCE",
+          "target_id": "PAGE-008",
+          "change": "KPI 퍼널을 도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동으로 수정하고, 근거가 없는 분석 축과 시청 단계 표현을 페이지·슬라이드·비주얼에서 제거했습니다.",
+          "resolved": true
         }
       ],
       "escalation_required": false,
       "escalation_reason": null
     },
-    "validation": [
-      {
-        "page_id": "PAGE-006",
-        "invalid_evidence_ids": [],
-        "status": "PASS"
-      }
-    ],
     "stage_metadata": {
       "repair": {
-        "response_id": "resp_0d363440bf681b1a016abb787be99887d0a89b884afb1c821e",
+        "response_id": "resp_09347572479f823a016abb793752dc87d180da9405929206ac",
         "model": "gpt-5.6-luna",
-        "latency_seconds": 11.377,
+        "latency_seconds": 27.4659,
         "retry_count": 0,
         "usage": {
-          "input_tokens": 8283,
+          "input_tokens": 7482,
           "input_tokens_details": {
-            "cache_write_tokens": 8280,
+            "cache_write_tokens": 7479,
             "cached_tokens": 0
           },
-          "output_tokens": 1602,
+          "output_tokens": 3987,
           "output_tokens_details": {
-            "reasoning_tokens": 217
+            "reasoning_tokens": 143
           },
-          "total_tokens": 9885
+          "total_tokens": 11469
         }
       },
       "qa_recheck": {
-        "response_id": "resp_02c05c7b13de6452016abb7887244487d0bf436833f12fcaad",
+        "response_id": "resp_06f70ce054b6ffa5016abb7952307c87d18fc63513d7b649ee",
         "model": "gpt-5.6-luna",
-        "latency_seconds": 10.2536,
+        "latency_seconds": 4.681,
         "retry_count": 0,
         "usage": {
-          "input_tokens": 19656,
+          "input_tokens": 23248,
           "input_tokens_details": {
-            "cache_write_tokens": 19653,
+            "cache_write_tokens": 23245,
             "cached_tokens": 0
           },
-          "output_tokens": 913,
+          "output_tokens": 349,
           "output_tokens_details": {
-            "reasoning_tokens": 435
+            "reasoning_tokens": 263
           },
-          "total_tokens": 20569
+          "total_tokens": 23597
         }
       }
     }
@@ -2723,6 +2914,458 @@
               "reasoning_tokens": 435
             },
             "total_tokens": 20569
+          }
+        }
+      }
+    },
+    {
+      "cycle": 3,
+      "scope": "strategy_to_visual",
+      "generated_at": "2026-09-29T08:39:50.761540+00:00",
+      "repair_output": {
+        "strategy_repairs": [
+          {
+            "strategy_id": "ST-05",
+            "repaired_pillar": {
+              "pillar": "변경 가능한 운영정보의 게시 전 검수",
+              "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 항목을 게시 전에 확인한다. 변경이 발생하면 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신하고 변경 정보의 버전을 표시한다.",
+              "requirement_ids": [
+                "R-205"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-205-01",
+                "EV-R-205-02"
+              ],
+              "strategy_id": "ST-05"
+            }
+          },
+          {
+            "strategy_id": "ST-06",
+            "repaired_pillar": {
+              "pillar": "방문 의도 중심의 단계형 성과관리",
+              "description": "월별 보고와 최종 보고에서 도달, 상세조회, 저장, 지도·코스·예약 페이지 이동 등 방문 의도에 가까운 행동을 단계별로 측정한다. 측정 결과를 다음 제작 우선순위와 코스 구성 개선에 활용한다.",
+              "requirement_ids": [
+                "R-206"
+              ],
+              "classification": "REFERENCE_PATTERN",
+              "evidence_ids": [
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "strategy_id": "ST-06"
+            }
+          }
+        ],
+        "page_repairs": [
+          {
+            "page_id": "PAGE-006",
+            "repaired_page": {
+              "page_id": "PAGE-006",
+              "page_no": 6,
+              "section": "운영 및 검수",
+              "page_type": "information_verification",
+              "title": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
+              "page_goal": "변경 가능한 방문정보의 게시 전 확인과 변경 시 상태 갱신 절차를 제시한다.",
+              "key_message": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 연결된 카드·코스·크리에이터 콘텐츠의 상태를 함께 갱신한다.",
+              "rfp_requirement_ids": [
+                "R-205"
+              ],
+              "strategy_ids": [
+                "ST-05"
+              ],
+              "evidence_ids": [
+                "EV-R-205-01",
+                "EV-R-205-02"
+              ],
+              "content_blocks": [
+                {
+                  "role": "검수 항목",
+                  "intent": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 구분한다."
+                },
+                {
+                  "role": "게시 전 검수",
+                  "intent": "변경 가능한 운영정보를 게시 전에 재확인한다."
+                },
+                {
+                  "role": "변경 대응",
+                  "intent": "변경 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신한다."
+                },
+                {
+                  "role": "버전 표시",
+                  "intent": "변경 정보의 버전을 표시한다."
+                }
+              ],
+              "visual_direction": "변경 가능한 운영정보의 게시 전 재확인과 변경 시 연결 콘텐츠 상태 갱신을 중심으로 프로세스 다이어그램을 구성한다.",
+              "fact_risk": "low"
+            },
+            "repaired_slide": {
+              "page_id": "PAGE-006",
+              "headline": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
+              "subheadline": "변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 함께 갱신합니다.",
+              "body_blocks": [
+                {
+                  "label": "검수 항목",
+                  "text": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 별도 관리합니다.",
+                  "claim_type": "RFP_FACT",
+                  "evidence_ids": [],
+                  "client_confirmation_required": false
+                },
+                {
+                  "label": "게시 전 검수",
+                  "text": "변경 가능한 운영정보를 게시 전에 재확인합니다.",
+                  "claim_type": "REFERENCE_PATTERN",
+                  "evidence_ids": [
+                    "EV-R-205-01",
+                    "EV-R-205-02"
+                  ],
+                  "client_confirmation_required": false
+                },
+                {
+                  "label": "변경 대응",
+                  "text": "변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신합니다.",
+                  "claim_type": "REFERENCE_PATTERN",
+                  "evidence_ids": [
+                    "EV-R-205-01"
+                  ],
+                  "client_confirmation_required": false
+                },
+                {
+                  "label": "버전 표시",
+                  "text": "변경 정보의 버전을 표시합니다.",
+                  "claim_type": "REFERENCE_PATTERN",
+                  "evidence_ids": [
+                    "EV-R-205-02"
+                  ],
+                  "client_confirmation_required": false
+                }
+              ],
+              "evidence_ids": [
+                "EV-R-205-01",
+                "EV-R-205-02"
+              ],
+              "visual_type": "process_diagram",
+              "speaker_note": "변경 가능한 운영정보를 게시 전에 재확인하고, 변경 발생 시 기존 게시물과 연결 콘텐츠의 상태를 갱신합니다. 변경 정보는 버전으로 구분해 관리합니다.",
+              "fact_risk": "low"
+            },
+            "repaired_visual": {
+              "page_id": "PAGE-006",
+              "visual_type": "process_diagram",
+              "do_not_generate": false,
+              "purpose": "변경 가능한 운영정보를 게시 전에 재확인하고 변경 시 기존 게시물과 연결 콘텐츠의 상태를 갱신하는 절차를 보여준다.",
+              "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 휴관·매진·운영시간·행사 일정 등 변경 가능한 정보 항목을 표시하고, 정보 확인 → 게시 전 재확인 → 게시의 순서로 연결한다. 변경 발생 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 갱신하는 분기 루프를 표시한다. 변경 정보의 버전 표시는 문서·라벨 아이콘으로 표현한다. 실제 시설별 담당자·확인 채널·운영 시스템은 표시하지 않는다.",
+              "diagram_spec": {
+                "nodes": [
+                  {
+                    "id": "information",
+                    "label": "변경 가능 정보",
+                    "description": "휴관·매진·운영시간·행사 일정"
+                  },
+                  {
+                    "id": "publish-check",
+                    "label": "게시 전 재확인",
+                    "description": "변경 가능한 운영정보 재확인"
+                  },
+                  {
+                    "id": "publish",
+                    "label": "게시",
+                    "description": "확인된 정보 게시"
+                  },
+                  {
+                    "id": "update",
+                    "label": "연결 콘텐츠 상태 갱신",
+                    "description": "변경 발생 시 기존 게시물과 연결 콘텐츠 상태 갱신"
+                  },
+                  {
+                    "id": "version",
+                    "label": "버전 표시",
+                    "description": "변경 정보 버전 표시"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "information",
+                    "to": "publish-check",
+                    "label": "게시 전 확인"
+                  },
+                  {
+                    "from": "publish-check",
+                    "to": "publish",
+                    "label": "확인 후 게시"
+                  },
+                  {
+                    "from": "publish",
+                    "to": "update",
+                    "label": "변경 발생 시"
+                  },
+                  {
+                    "from": "update",
+                    "to": "publish",
+                    "label": "상태 반영"
+                  },
+                  {
+                    "from": "publish-check",
+                    "to": "version",
+                    "label": "버전 표시"
+                  },
+                  {
+                    "from": "update",
+                    "to": "version",
+                    "label": "변경 버전 반영"
+                  }
+                ]
+              },
+              "data_source": [
+                "EV-R-205-01",
+                "EV-R-205-02"
+              ],
+              "prohibited_elements": [
+                "제작 시점 확인을 포함한 표현",
+                "이미 확정된 공식 담당자·채널처럼 보이는 정보",
+                "실제 운영 시스템 화면이나 고객 시설 사진",
+                "무오류·자동갱신을 보장하는 표현"
+              ],
+              "fact_risk": "low"
+            }
+          },
+          {
+            "page_id": "PAGE-008",
+            "repaired_page": {
+              "page_id": "PAGE-008",
+              "page_no": 8,
+              "section": "성과관리",
+              "page_type": "kpi_and_reporting",
+              "title": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
+              "page_goal": "방문 의도 중심의 KPI와 월별·최종 성과관리 방식을 제시한다.",
+              "key_message": "도달을 시작점으로 상세조회, 저장, 지도·코스·예약 페이지 이동까지 단계별로 측정해 콘텐츠와 코스 운영을 개선한다.",
+              "rfp_requirement_ids": [
+                "R-206"
+              ],
+              "strategy_ids": [
+                "ST-06"
+              ],
+              "evidence_ids": [
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "content_blocks": [
+                {
+                  "role": "KPI 퍼널",
+                  "intent": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 제시한다."
+                },
+                {
+                  "role": "월별 보고",
+                  "intent": "운영 결과와 행동 지표를 월별로 점검해 다음 제작 우선순위와 코스 구성을 조정한다."
+                },
+                {
+                  "role": "최종 보고",
+                  "intent": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리한다."
+                }
+              ],
+              "visual_direction": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지의 단계형 KPI와 월별 보고 사이클을 결합하고, 각 측정 항목을 아이콘과 함께 표시한다.",
+              "fact_risk": "low"
+            },
+            "repaired_slide": {
+              "page_id": "PAGE-008",
+              "headline": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
+              "subheadline": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지 측정해 콘텐츠와 코스 운영을 개선합니다.",
+              "body_blocks": [
+                {
+                  "label": "KPI 퍼널",
+                  "text": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 관리합니다.",
+                  "claim_type": "REFERENCE_PATTERN",
+                  "evidence_ids": [
+                    "EV-R-206-01",
+                    "EV-R-206-02"
+                  ],
+                  "client_confirmation_required": false
+                },
+                {
+                  "label": "월별 보고",
+                  "text": "월별 운영 결과와 행동 지표를 점검해 다음 제작 우선순위와 코스 구성을 조정합니다.",
+                  "claim_type": "REFERENCE_PATTERN",
+                  "evidence_ids": [
+                    "EV-R-206-02"
+                  ],
+                  "client_confirmation_required": false
+                },
+                {
+                  "label": "최종 보고",
+                  "text": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리합니다.",
+                  "claim_type": "RFP_FACT",
+                  "evidence_ids": [],
+                  "client_confirmation_required": false
+                }
+              ],
+              "evidence_ids": [
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "visual_type": "data_chart",
+              "speaker_note": "단순 도달 수치뿐 아니라 상세조회, 저장, 지도·코스·예약 페이지 이동과 같은 방문 의도에 가까운 행동 지표를 단계별로 확인하고 월별 결과를 다음 제작에 반영합니다.",
+              "fact_risk": "low"
+            },
+            "repaired_visual": {
+              "page_id": "PAGE-008",
+              "visual_type": "process_diagram",
+              "do_not_generate": false,
+              "purpose": "방문 의도에 가까운 행동을 단계별로 측정하고 월별 개선 사이클로 연결하는 KPI 구조를 보여준다.",
+              "image_prompt": "수치 없이 구성한 단계형 KPI 인포그래픽. 도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 4단계를 연결하고, 각 단계에는 노출·문서·북마크·지도·링크 아이콘을 사용한다. 하단에는 월별 보고 → 다음 제작 우선순위 및 코스 구성 조정의 순환 구조를 배치한다. 실제 비율, 막대 높이, 축 값, 성과 수치와 상대적 단계 크기는 표현하지 않는다.",
+              "diagram_spec": {
+                "nodes": [
+                  {
+                    "id": "reach",
+                    "label": "도달",
+                    "description": "콘텐츠 도달"
+                  },
+                  {
+                    "id": "detail",
+                    "label": "상세조회",
+                    "description": "프로그램·코스 상세 탐색"
+                  },
+                  {
+                    "id": "save",
+                    "label": "저장",
+                    "description": "일정·콘텐츠 저장"
+                  },
+                  {
+                    "id": "move",
+                    "label": "지도·코스·예약 페이지 이동",
+                    "description": "방문 관련 다음 단계 이동"
+                  },
+                  {
+                    "id": "report",
+                    "label": "월별 보고",
+                    "description": "운영 결과와 행동 지표 점검"
+                  },
+                  {
+                    "id": "optimize",
+                    "label": "다음 제작·코스 구성 조정",
+                    "description": "월별 결과 기반 개선"
+                  },
+                  {
+                    "id": "final",
+                    "label": "최종 보고",
+                    "description": "성과지표 원자료와 콘텐츠 목록 정리"
+                  }
+                ],
+                "edges": [
+                  {
+                    "from": "reach",
+                    "to": "detail",
+                    "label": "상세 탐색"
+                  },
+                  {
+                    "from": "detail",
+                    "to": "save",
+                    "label": "저장"
+                  },
+                  {
+                    "from": "save",
+                    "to": "move",
+                    "label": "다음 단계 이동"
+                  },
+                  {
+                    "from": "move",
+                    "to": "report",
+                    "label": "월별 취합"
+                  },
+                  {
+                    "from": "report",
+                    "to": "optimize",
+                    "label": "우선순위·코스 구성 조정"
+                  },
+                  {
+                    "from": "optimize",
+                    "to": "report",
+                    "label": "다음 월 반영"
+                  },
+                  {
+                    "from": "report",
+                    "to": "final",
+                    "label": "최종 누적"
+                  }
+                ]
+              },
+              "data_source": [
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "prohibited_elements": [
+                "시청 단계를 포함한 표현",
+                "콘텐츠 유형·방문 동기·크리에이터별 비교 축",
+                "실제 KPI 수치·전환율·비율",
+                "수치가 있는 것처럼 보이는 축·막대·퍼널 폭 비교",
+                "보장된 예약·방문 성과 표현"
+              ],
+              "fact_risk": "low"
+            }
+          }
+        ],
+        "repair_summary": [
+          {
+            "error_type": "INVALID_REFERENCE",
+            "target_id": "ST-05",
+            "change": "‘제작 시점과 게시 직전에 확인한다’를 삭제하고 ‘게시 전에 확인한다’로 통일했으며, 근거가 지원하는 상태 갱신과 버전 표시만 유지했습니다.",
+            "resolved": true
+          },
+          {
+            "error_type": "INVALID_REFERENCE",
+            "target_id": "PAGE-006",
+            "change": "페이지·슬라이드·비주얼에서 제작 시점 확인과 확정된 담당자·채널 workflow 표현을 제거하고 게시 전 재확인, 변경 시 상태 갱신, 버전 표시로 정렬했습니다.",
+            "resolved": true
+          },
+          {
+            "error_type": "INVALID_REFERENCE",
+            "target_id": "ST-06",
+            "change": "근거가 직접 지원하지 않는 시청 단계와 콘텐츠 유형·방문 동기·크리에이터별 비교 축을 제거했습니다.",
+            "resolved": true
+          },
+          {
+            "error_type": "INVALID_REFERENCE",
+            "target_id": "PAGE-008",
+            "change": "KPI 퍼널을 도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동으로 수정하고, 근거가 없는 분석 축과 시청 단계 표현을 페이지·슬라이드·비주얼에서 제거했습니다.",
+            "resolved": true
+          }
+        ],
+        "escalation_required": false,
+        "escalation_reason": null
+      },
+      "stage_metadata": {
+        "repair": {
+          "response_id": "resp_09347572479f823a016abb793752dc87d180da9405929206ac",
+          "model": "gpt-5.6-luna",
+          "latency_seconds": 27.4659,
+          "retry_count": 0,
+          "usage": {
+            "input_tokens": 7482,
+            "input_tokens_details": {
+              "cache_write_tokens": 7479,
+              "cached_tokens": 0
+            },
+            "output_tokens": 3987,
+            "output_tokens_details": {
+              "reasoning_tokens": 143
+            },
+            "total_tokens": 11469
+          }
+        },
+        "qa_recheck": {
+          "response_id": "resp_06f70ce054b6ffa5016abb7952307c87d18fc63513d7b649ee",
+          "model": "gpt-5.6-luna",
+          "latency_seconds": 4.681,
+          "retry_count": 0,
+          "usage": {
+            "input_tokens": 23248,
+            "input_tokens_details": {
+              "cache_write_tokens": 23245,
+              "cached_tokens": 0
+            },
+            "output_tokens": 349,
+            "output_tokens_details": {
+              "reasoning_tokens": 263
+            },
+            "total_tokens": 23597
           }
         }
       }

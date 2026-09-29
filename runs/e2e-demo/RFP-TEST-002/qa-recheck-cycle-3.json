@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "issues": [],
+  "summary": "제공된 RFP 요구사항은 모두 페이지에 반영되어 있으며, 회사 실적·정량 성과의 무근거 주장이나 유효하지 않은 evidence 연결이 확인되지 않았습니다. 이전 INVALID_REFERENCE 이슈도 chain repair output에서 수정된 상태로 반영되어 있습니다."
+}

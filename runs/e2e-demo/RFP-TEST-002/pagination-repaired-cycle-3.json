@@ -1,0 +1,348 @@
+{
+  "pages": [
+    {
+      "page_id": "PAGE-001",
+      "page_no": 1,
+      "section": "사업 이해 및 제안 방향",
+      "page_type": "overview",
+      "title": "보고 싶은 곳에서, 이번 주말 갈 코스로",
+      "page_goal": "사업 목적과 제안의 전체 전환 방향을 제시한다.",
+      "key_message": "지역 문화·관광 정보를 발견 콘텐츠, 저장 가능한 코스 정보, 최신 운영정보와 연결해 온라인 탐색을 실제 방문 계획으로 전환한다.",
+      "rfp_requirement_ids": [],
+      "strategy_ids": [
+        "ST-02",
+        "ST-05",
+        "ST-06"
+      ],
+      "evidence_ids": [],
+      "content_blocks": [
+        {
+          "role": "사업 목표",
+          "intent": "온라인 탐색을 실제 방문 행동으로 연결하는 사업 방향을 요약한다."
+        },
+        {
+          "role": "제안 콘셉트",
+          "intent": "발견에서 저장·상세 탐색·방문 계획으로 이어지는 핵심 흐름을 보여준다."
+        },
+        {
+          "role": "사업 범위",
+          "intent": "5개월 동안 숏폼 15편, 카드형 콘텐츠 24건, 크리에이터 협업 6건, 코스 콘텐츠 8건을 운영하는 구조를 제시한다."
+        }
+      ],
+      "visual_direction": "Discover → Save → Visit 전환 퍼널과 콘텐츠 산출물 수량을 한 화면에 배치한다.",
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-002",
+      "page_no": 2,
+      "section": "전략 적합성",
+      "page_type": "target_strategy",
+      "title": "방문 동기와 상황에 따라 달라지는 타깃 전략",
+      "page_goal": "방문 동기별 타깃 세분화와 메시지 차별화 방식을 제시한다.",
+      "key_message": "맛집·휴식·체험·문화관람 등의 방문 동기와 가족 나들이·혼자 관람·데이트 등의 상황을 구분해 세그먼트별 훅과 추천 코스를 설계한다.",
+      "rfp_requirement_ids": [
+        "R-201"
+      ],
+      "strategy_ids": [
+        "ST-01"
+      ],
+      "evidence_ids": [
+        "EV-R-201-01",
+        "EV-R-201-02"
+      ],
+      "content_blocks": [
+        {
+          "role": "동기 세그먼트",
+          "intent": "맛집, 휴식, 체험, 문화관람 등 방문 목적별 탐색 맥락을 구분한다."
+        },
+        {
+          "role": "방문 상황",
+          "intent": "가족 나들이, 혼자 관람, 데이트 등 상황별로 메시지와 추천 동선을 달리한다."
+        },
+        {
+          "role": "착수 후 정교화",
+          "intent": "채널·검색·반응 데이터와 시설별 이용자료를 분석해 세그먼트 우선순위를 확정한다."
+        }
+      ],
+      "visual_direction": "방문 동기 × 방문 상황 매트릭스와 세그먼트별 대표 훅·추천 코스 예시를 구성한다.",
+      "fact_risk": "medium"
+    },
+    {
+      "page_id": "PAGE-003",
+      "page_no": 3,
+      "section": "콘텐츠 기획",
+      "page_type": "content_architecture",
+      "title": "발견 콘텐츠를 저장과 방문 계획으로 연결하는 구조",
+      "page_goal": "콘텐츠 유형별 역할과 이용자 행동 전환 구조를 설명한다.",
+      "key_message": "숏폼은 관심을 만드는 발견 콘텐츠로, 주말 추천 카드와 연계 코스 콘텐츠는 저장·상세 탐색·지도 및 예약 페이지 이동을 돕는 방문계획형 정보로 운영한다.",
+      "rfp_requirement_ids": [
+        "R-202"
+      ],
+      "strategy_ids": [
+        "ST-02"
+      ],
+      "evidence_ids": [
+        "EV-R-202-01",
+        "EV-R-202-02",
+        "EV-R-202-03",
+        "EV-R-202-04"
+      ],
+      "content_blocks": [
+        {
+          "role": "Discover",
+          "intent": "숏폼과 짧은 소재로 방문 관심을 유발한다."
+        },
+        {
+          "role": "Save",
+          "intent": "주말 추천 카드에 대상, 시간, 소요시간 등 선택에 필요한 정보를 압축한다."
+        },
+        {
+          "role": "Visit",
+          "intent": "문화시설과 관광지를 반나절·하루 동선으로 묶어 실제 방문 계획으로 연결한다."
+        },
+        {
+          "role": "산출물 적용",
+          "intent": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건의 역할을 전환 구조에 배치한다."
+        }
+      ],
+      "visual_direction": "Discover → Save → Visit 퍼널에 각 콘텐츠 유형과 CTA를 연결하고, 장소에서 코스로 확장되는 흐름을 표현한다.",
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-004",
+      "page_no": 4,
+      "section": "콘텐츠 기획",
+      "page_type": "shortform_plan",
+      "title": "첫 3초에 이해되고 하나의 행동으로 이어지는 숏폼",
+      "page_goal": "세로형 숏폼 15편의 메시지 구성과 행동 유도 방식을 제시한다.",
+      "key_message": "세로형 숏폼은 첫 3초에 방문 동기나 상황을 제시하고 핵심 매력과 이용 정보를 전달한 뒤 저장·코스 확인·지도 이동 중 하나의 행동만 요청한다.",
+      "rfp_requirement_ids": [
+        "R-203"
+      ],
+      "strategy_ids": [
+        "ST-03"
+      ],
+      "evidence_ids": [
+        "EV-R-203-01",
+        "EV-R-203-02"
+      ],
+      "content_blocks": [
+        {
+          "role": "Hook",
+          "intent": "첫 3~5초에 방문 목적이나 상황을 제시해 즉시 이해를 돕는다."
+        },
+        {
+          "role": "Core",
+          "intent": "핵심 매력과 필요한 이용 정보를 짧고 명확하게 전달한다."
+        },
+        {
+          "role": "Action",
+          "intent": "저장, 코스 확인, 지도 이동 등 콘텐츠별 단일 CTA를 제시한다."
+        },
+        {
+          "role": "제작 체계",
+          "intent": "15편의 소재를 방문 동기와 콘텐츠 역할에 따라 배분한다."
+        }
+      ],
+      "visual_direction": "세로형 모바일 화면 목업 안에 Hook → Core → Action 3단 구성을 적용한다.",
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-005",
+      "page_no": 5,
+      "section": "크리에이터 운영",
+      "page_type": "creator_collaboration",
+      "title": "공식 채널의 신뢰성과 지역 크리에이터의 체험성을 연결",
+      "page_goal": "공식 채널과 지역 크리에이터의 역할 분리 및 협업 운영방안을 제시한다.",
+      "key_message": "공식 채널은 시설·일정·이용방법 등 신뢰성 있는 정보를 제공하고, 지역 크리에이터 6건은 실제 방문 맥락과 체험 후기를 전달해 정보성과 생생함을 함께 확보한다.",
+      "rfp_requirement_ids": [
+        "R-204"
+      ],
+      "strategy_ids": [
+        "ST-04"
+      ],
+      "evidence_ids": [
+        "EV-R-204-01"
+      ],
+      "content_blocks": [
+        {
+          "role": "공식 채널",
+          "intent": "시설, 일정, 이용방법과 코스형 정보를 기준 정보로 제공한다."
+        },
+        {
+          "role": "지역 크리에이터",
+          "intent": "실제 방문 맥락과 체험 후기를 통해 방문 동기를 강화한다."
+        },
+        {
+          "role": "연결 운영",
+          "intent": "양쪽 콘텐츠에 동일한 방문 정보 기준을 적용해 공식 정보와 체험 콘텐츠를 연결한다."
+        },
+        {
+          "role": "후보 선정 기준",
+          "intent": "착수 후 지역성, 콘텐츠 적합성, 권리 동의 가능성을 기준으로 후보를 선정한다."
+        }
+      ],
+      "visual_direction": "공식 채널과 크리에이터의 역할을 좌우로 구분하고, 공통 정보 기준과 상호 연결 CTA를 중앙에 배치한다.",
+      "fact_risk": "medium"
+    },
+    {
+      "page_id": "PAGE-006",
+      "page_no": 6,
+      "section": "운영 및 검수",
+      "page_type": "information_verification",
+      "title": "게시 전 확인하고 변경 시 함께 갱신하는 운영정보 검수",
+      "page_goal": "변경 가능한 방문정보의 게시 전 확인과 변경 시 상태 갱신 절차를 제시한다.",
+      "key_message": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 게시 전에 확인하고, 변경 발생 시 연결된 카드·코스·크리에이터 콘텐츠의 상태를 함께 갱신한다.",
+      "rfp_requirement_ids": [
+        "R-205"
+      ],
+      "strategy_ids": [
+        "ST-05"
+      ],
+      "evidence_ids": [
+        "EV-R-205-01",
+        "EV-R-205-02"
+      ],
+      "content_blocks": [
+        {
+          "role": "검수 항목",
+          "intent": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 방문정보를 구분한다."
+        },
+        {
+          "role": "게시 전 검수",
+          "intent": "변경 가능한 운영정보를 게시 전에 재확인한다."
+        },
+        {
+          "role": "변경 대응",
+          "intent": "변경 시 기존 게시물과 연결된 코스·카드·크리에이터 콘텐츠의 상태를 함께 갱신한다."
+        },
+        {
+          "role": "버전 표시",
+          "intent": "변경 정보의 버전을 표시한다."
+        }
+      ],
+      "visual_direction": "변경 가능한 운영정보의 게시 전 재확인과 변경 시 연결 콘텐츠 상태 갱신을 중심으로 프로세스 다이어그램을 구성한다.",
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-007",
+      "page_no": 7,
+      "section": "운영 계획",
+      "page_type": "schedule_and_deliverables",
+      "title": "5개월 운영 로드맵과 산출물 관리",
+      "page_goal": "계약기간 내 콘텐츠 제작·운영·보고의 실행 구조를 제시한다.",
+      "key_message": "5개월 동안 타깃 확정, 콘텐츠 제작·게시, 크리에이터 협업, 운영정보 검수, 월별 보고와 최종 원자료 제출을 하나의 관리 체계로 운영한다.",
+      "rfp_requirement_ids": [],
+      "strategy_ids": [
+        "ST-01",
+        "ST-03",
+        "ST-04",
+        "ST-05"
+      ],
+      "evidence_ids": [],
+      "content_blocks": [
+        {
+          "role": "착수 및 설계",
+          "intent": "데이터 분석과 시설별 확인 체계 협의를 통해 타깃과 운영 기준을 확정한다."
+        },
+        {
+          "role": "제작 및 운영",
+          "intent": "숏폼 15편, 카드형 콘텐츠 24건, 크리에이터 협업 6건, 연계 코스 콘텐츠 8건의 제작·게시 흐름을 관리한다."
+        },
+        {
+          "role": "월별 보고",
+          "intent": "월별 운영 현황과 성과를 점검하고 다음 콘텐츠 우선순위에 반영한다."
+        },
+        {
+          "role": "최종 제출",
+          "intent": "사업 종료 시 콘텐츠 목록과 성과지표 원자료를 정리해 제출한다."
+        }
+      ],
+      "visual_direction": "5개월 타임라인에 설계, 제작, 게시, 검수, 보고, 최종 제출 활동을 겹쳐 표시한다.",
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-008",
+      "page_no": 8,
+      "section": "성과관리",
+      "page_type": "kpi_and_reporting",
+      "title": "도달을 넘어 방문 의도를 측정하는 단계형 KPI",
+      "page_goal": "방문 의도 중심의 KPI와 월별·최종 성과관리 방식을 제시한다.",
+      "key_message": "도달을 시작점으로 상세조회, 저장, 지도·코스·예약 페이지 이동까지 단계별로 측정해 콘텐츠와 코스 운영을 개선한다.",
+      "rfp_requirement_ids": [
+        "R-206"
+      ],
+      "strategy_ids": [
+        "ST-06"
+      ],
+      "evidence_ids": [
+        "EV-R-206-01",
+        "EV-R-206-02"
+      ],
+      "content_blocks": [
+        {
+          "role": "KPI 퍼널",
+          "intent": "도달 → 상세조회 → 저장 → 지도·코스·예약 페이지 이동의 단계별 지표를 제시한다."
+        },
+        {
+          "role": "월별 보고",
+          "intent": "운영 결과와 행동 지표를 월별로 점검해 다음 제작 우선순위와 코스 구성을 조정한다."
+        },
+        {
+          "role": "최종 보고",
+          "intent": "성과지표 원자료와 콘텐츠 목록을 포함해 최종 결과를 정리한다."
+        }
+      ],
+      "visual_direction": "도달부터 상세조회·저장·지도·코스·예약 페이지 이동까지의 단계형 KPI와 월별 보고 사이클을 결합하고, 각 측정 항목을 아이콘과 함께 표시한다.",
+      "fact_risk": "low"
+    }
+  ],
+  "requirement_coverage": [
+    {
+      "requirement_id": "R-201",
+      "page_ids": [
+        "PAGE-002"
+      ],
+      "status": "COVERED"
+    },
+    {
+      "requirement_id": "R-202",
+      "page_ids": [
+        "PAGE-003"
+      ],
+      "status": "COVERED"
+    },
+    {
+      "requirement_id": "R-203",
+      "page_ids": [
+        "PAGE-004"
+      ],
+      "status": "COVERED"
+    },
+    {
+      "requirement_id": "R-204",
+      "page_ids": [
+        "PAGE-005"
+      ],
+      "status": "COVERED"
+    },
+    {
+      "requirement_id": "R-205",
+      "page_ids": [
+        "PAGE-006"
+      ],
+      "status": "COVERED"
+    },
+    {
+      "requirement_id": "R-206",
+      "page_ids": [
+        "PAGE-008"
+      ],
+      "status": "COVERED"
+    }
+  ],
+  "planning_warnings": [
+    "실제 시설별 운영정보, 방문객 데이터, 지역 크리에이터 후보 및 과거 성과 근거가 제공되지 않았으므로 해당 내용은 제안 방향과 착수 후 확정 절차로만 구성했다.",
+    "페이지별 세부 제작 일정과 월별 산출물 배분은 RFP에 월별 수량이 명시되지 않아 운영 로드맵 수준으로 제시했다."
+  ]
+}
