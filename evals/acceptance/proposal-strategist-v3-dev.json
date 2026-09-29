@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "track": "proposal_strategist",
+  "candidate": "v3_final",
+  "split": "dev",
+  "frozen_before_candidate_run": true,
+  "criteria": {
+    "run_count": {
+      "min": 1
+    },
+    "json_parseable_rate": {
+      "min": 1
+    },
+    "result_coverage": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "requirement_coverage": {
+      "mean_min": 0.95,
+      "min_min": 0.9
+    },
+    "evidence_citation_coverage": {
+      "mean_min": 0.9,
+      "min_min": 0.85
+    },
+    "evidence_validity": {
+      "mean_min": 0.9,
+      "min_min": 0.85
+    },
+    "unsupported_company_claim_count": {
+      "mean_max": 0,
+      "max_max": 0
+    },
+    "unsupported_quantitative_claim_count": {
+      "mean_max": 0,
+      "max_max": 0
+    },
+    "information_class_separation": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "invalid_evidence_reference_count": {
+      "mean_max": 0,
+      "max_max": 0
+    }
+  },
+  "blocking_rules": [
+    "Missing an RFP result fails acceptance.",
+    "Any unsupported company claim fails acceptance.",
+    "Any unsupported quantitative claim fails acceptance.",
+    "Any invalid evidence reference fails acceptance."
+  ],
+  "decision_rule": "If v3 fails, diagnose on dev and create a new candidate. Holdout remains locked."
+}
