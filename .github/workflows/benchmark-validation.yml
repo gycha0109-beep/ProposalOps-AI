@@ -25,6 +25,9 @@ jobs:
       - name: Verify frozen benchmark inventory
         run: python scripts/benchmark_inventory.py --assert-v1
 
+      - name: Validate production chain contracts
+        run: python scripts/validate_production_chain.py
+
       - name: Validate prompt variants
         run: python scripts/generate_prompt_diff.py --check
 
