@@ -6,7 +6,7 @@
     "MISSING_REQUIREMENT": 2,
     "MISSING_SOURCE_QUOTE": 5,
     "OUTPUT_TRUNCATION": 1,
-    "SCHEMA_DRIFT": 2,
+    "SCHEMA_DRIFT": 6,
     "UNKNOWN_POLICY_FAILURE": 2
   },
   "runs": [
@@ -18,7 +18,8 @@
         "FACT_OR_NUMERIC_MISMATCH",
         "INVALID_JSON",
         "MISSING_REQUIREMENT",
-        "MISSING_SOURCE_QUOTE"
+        "MISSING_SOURCE_QUOTE",
+        "SCHEMA_DRIFT"
       ],
       "raw_path": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/v0_baseline/RFP-TEST-001/run-01.json"
     },
@@ -30,7 +31,8 @@
         "FACT_OR_NUMERIC_MISMATCH",
         "INVALID_JSON",
         "MISSING_REQUIREMENT",
-        "MISSING_SOURCE_QUOTE"
+        "MISSING_SOURCE_QUOTE",
+        "SCHEMA_DRIFT"
       ],
       "raw_path": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/v0_baseline/RFP-TEST-002/run-01.json"
     },
@@ -80,7 +82,8 @@
         "FACT_OR_NUMERIC_MISMATCH",
         "INVALID_JSON",
         "MISSING_SOURCE_QUOTE",
-        "OUTPUT_TRUNCATION"
+        "OUTPUT_TRUNCATION",
+        "SCHEMA_DRIFT"
       ],
       "raw_path": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/v3_final/RFP-TEST-001/run-01.json"
     },
@@ -88,7 +91,9 @@
       "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-002-01",
       "prompt_version": "v3_final",
       "rfp_id": "RFP-TEST-002",
-      "failure_types": [],
+      "failure_types": [
+        "SCHEMA_DRIFT"
+      ],
       "raw_path": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/v3_final/RFP-TEST-002/run-01.json"
     }
   ]
