@@ -1,12 +1,7 @@
-Proposal Strategist GPT-5.6 Luna dev benchmark
-
-benchmark: v1
+Strategist GPT-5.6 Luna rerun after push-race fix
 provider: openai
 model: gpt-5.6-luna
-reasoning_effort: low
-run_namespace: benchmark-v1-gpt56luna
-split: dev
 versions: all
 expected_calls: 4
-holdout: locked
-triggered: 2026-09-29T15:37+09:00
+run_namespace: benchmark-v1-gpt56luna
+triggered: 2026-09-29T15:42+09:00
