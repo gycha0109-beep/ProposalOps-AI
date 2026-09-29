@@ -1,0 +1,41 @@
+{
+  "benchmark_version": "1.0",
+  "track": "rfp_analyzer",
+  "provider": "openai",
+  "model": "gpt-6-sol",
+  "parameters": {
+    "reasoning_effort": "medium",
+    "max_output_tokens": 6000
+  },
+  "repetitions": {
+    "dev": 3,
+    "holdout": 1
+  },
+  "versions": {
+    "v0_baseline": "prompts/rfp_analyzer/v0_baseline.md",
+    "v1_structured": "prompts/rfp_analyzer/v1_structured.md",
+    "v2_grounded": "prompts/rfp_analyzer/v2_grounded.md",
+    "v3_final": "prompts/rfp_analyzer/v3_final.md"
+  },
+  "cases": {
+    "dev": [
+      {
+        "rfp_id": "RFP-TEST-001",
+        "input": "data/raw/rfps/RFP-TEST-001.md",
+        "gold": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-001.json"
+      },
+      {
+        "rfp_id": "RFP-TEST-002",
+        "input": "data/raw/rfps/RFP-TEST-002.md",
+        "gold": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-002.json"
+      }
+    ],
+    "holdout": [
+      {
+        "rfp_id": "RFP-TEST-003",
+        "input": "data/raw/rfps/RFP-TEST-003.md",
+        "gold": "evals/frozen/v1/holdout/rfp-analyzer/RFP-TEST-003.json"
+      }
+    ]
+  }
+}
