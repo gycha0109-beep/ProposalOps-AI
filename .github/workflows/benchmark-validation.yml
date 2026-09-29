@@ -142,6 +142,7 @@ jobs:
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/benchmark-v1/documents.jsonl \
             --plan-only
+          python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
 
       - name: Run retrieval baseline on dev split
