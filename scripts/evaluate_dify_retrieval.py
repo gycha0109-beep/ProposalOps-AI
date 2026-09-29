@@ -154,7 +154,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE", DEFAULT_API_BASE))
     parser.add_argument("--api-key", default=os.environ.get("DIFY_API_KEY"))
-    parser.add_argument("--dataset-id", default=os.environ.get("DIFY_DATASET_ID"))
+    parser.add_argument(
+        "--dataset-id",
+        default=os.environ.get("DIFY_BENCHMARK_DATASET_ID") or os.environ.get("DIFY_DATASET_ID"),
+    )
     parser.add_argument("--top-k", type=int, default=5)
     parser.add_argument(
         "--search-method",
@@ -201,8 +204,8 @@ def main():
         "search_method": args.search_method,
         "top_k": args.top_k,
         "corpus": {
-            "assets": 51,
-            "hard_negatives_in_dify": 0,
+            "assets": 63,
+            "hard_negatives_in_dify": 12,
         },
         "dev": dev,
         "holdout": holdout,
@@ -213,9 +216,8 @@ def main():
             "holdout": baseline["holdout"],
         },
         "comparison_note": (
-            "Dify export intentionally contains only 51 normal assets. "
-            "The lexical baseline contains 51 normal assets + 12 hard negatives, "
-            "so direct score comparison must note the corpus difference."
+            "Dify benchmark-v1 uses the same 51 normal assets + 12 hard negatives "
+            "as the local lexical baseline for a like-for-like corpus comparison."
         ),
     }
 
