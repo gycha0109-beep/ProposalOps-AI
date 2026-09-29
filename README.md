@@ -89,14 +89,14 @@ RFP Analyzer의 v0~v3 dev live raw run 8건은 완료됐습니다. v4는 prompt�
 
 ## Live Prompt Benchmark Model
 
-RFP Analyzer의 현재 비교 benchmark는 **Gemini 3.6 Flash**를 고정 모델로 사용합니다.
+RFP Analyzer의 현재 비교 benchmark는 **GPT-5.6 Luna**를 고정 모델로 사용합니다.
 
-- provider: Gemini Developer API
+- provider: OpenAI Responses API
 - model: `gemini-3.6-flash`
-- thinking level: `medium`
+- reasoning effort: `low`
 - measured dev runs: `2 RFP × v0~v3 = 8 raw outputs`
 - v4: `NOT_EVALUATED` (provider 503/429)
-- secret: `GEMINI_API_KEY`
+- secret: `OPENAI_API_KEY`
 
 provider 오류와 quota 실패도 raw evidence로 보존합니다. v4는 provider 응답을 얻지 못했기 때문에 acceptance를 통과/실패로 판정하지 않았습니다.
 
@@ -113,6 +113,23 @@ provider 오류와 quota 실패도 raw evidence로 보존합니다. v4는 provid
 - injected QA cases: **20**
 - prompt experiment tracks: **3**
 - prompt variants: **13**
+
+## Proposal QA Result
+
+GPT-5.6 Luna / reasoning low 기준으로 QA v4는 dev와 holdout 모두 통과했습니다.
+
+- dev BLOCK recall: **100%**
+- dev false positive: **0%**
+- dev error type accuracy: **100%**
+- dev severity accuracy: **100%**
+- holdout BLOCK recall: **100%**
+- holdout false positive: **0%**
+- holdout error type accuracy: **100%**
+- holdout severity accuracy: **100%**
+
+Candidate: `proposal_qa/v4_compact_taxonomy.md`
+
+> holdout 실행에서 이전 variants도 함께 실행된 기록은 보존하며, frozen v4는 holdout 결과를 본 뒤 수정하지 않습니다.
 
 ## Retrieval Baseline v1
 
@@ -239,7 +256,7 @@ RFP Analyzer
 - [x] GitHub Actions reproducibility check
 - [x] RFP Analyzer benchmark runner / raw recorder / aggregator / prompt diff 구축
 - [x] holdout 실행 보호 및 CI dry validation
-- [x] Gemini 3.6 Flash 기준 RFP Analyzer v0~v3 dev raw run 8건 저장
+- [x] GPT-5.6 Luna 기준 RFP Analyzer v0~v3 dev raw run 8건 저장
 - [x] RFP Analyzer evaluator 1.5 + grounding/truncation/canonical-schema metric 적용
 - [x] v0→v1 구조화 개선 및 v2 grounding 효과 측정 (v1 schema 100%, v2 grounding 100% / schema 0%)
 - [x] v3 truncation regression 분석
@@ -248,10 +265,10 @@ RFP Analyzer
 - [ ] v4 candidate freeze 후 RFP-TEST-003 holdout 실행
 - [x] Proposal QA neutral input fixture / evaluator / batch runner / aggregator / holdout gate 구축
 - [x] Proposal QA dev acceptance criteria 사전 고정
-- [ ] Proposal QA dev live 비교 실행 (4 Gemini calls)
+- [x] Proposal QA GPT-5.6 Luna dev 비교 + v4 freeze + holdout 완료
 - [x] Proposal Strategist neutral Evidence Pack / evaluator / batch runner / aggregator / holdout gate 구축
 - [x] Proposal Strategist dev acceptance criteria 사전 고정
-- [ ] Proposal Strategist dev live 비교 실행 (4 Gemini calls)
+- [ ] Proposal Strategist GPT-5.6 Luna v4 dev acceptance + holdout 완료
 - [x] Pagination / Coverage / Slide Draft / Visual Prompt / Targeted Repair production draft prompt 구축
 - [x] Agent-platform logical workflow blueprint + setup guide 구축
 - [ ] Dify Knowledge 실제 Retrieval Test
