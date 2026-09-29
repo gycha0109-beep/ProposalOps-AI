@@ -125,33 +125,49 @@ python scripts/validate_dify_export.py \
 
 ## Required Dify secrets
 
-실제 Dify API를 호출할 때만 필요하다.
-
-Production dataset:
+실제 Dify API를 호출할 때 필수인 값은 하나다.
 
 ```text
 DIFY_API_KEY
+```
+
+workflow가 다음 Knowledge Base를 이름으로 조회하고, 없으면 자동 생성한다.
+
+- `ProposalOps Production v1`
+- `ProposalOps Benchmark v1`
+
+생성된 ID는 `runs/dify/datasets.json`에 저장된다.
+
+Optional override:
+
+```text
 DIFY_DATASET_ID
-```
-
-Fair retrieval benchmark dataset:
-
-```text
-DIFY_API_KEY
 DIFY_BENCHMARK_DATASET_ID
-```
-
-Optional:
-
-```text
 DIFY_API_BASE
 ```
+
+기존 dataset을 강제로 사용하고 싶을 때만 ID override를 등록한다.
 
 기본값:
 
 ```text
 https://api.dify.ai/v1
 ```
+
+## One-command Phase 1
+
+GitHub Actions의 `Dify Knowledge Phase 1` workflow에서 operation을 `full-phase1`으로 실행하면:
+
+```text
+DIFY_API_KEY
+→ dataset 2개 자동 생성/재사용
+→ production 51개 업로드
+→ benchmark 63개 업로드
+→ frozen retrieval query 48개 실행
+→ reports/dify-retrieval-v1.json 저장
+```
+
+으로 이어진다.
 
 ## Upload plan
 
@@ -256,8 +272,9 @@ Dify benchmark dataset 역시 동일한 **51 normal + 12 hard negative = 63** co
 - [x] Dify retrieval benchmark runner
 - [x] local/CI export integrity validation
 
-Dify workspace가 있어야 가능한 항목:
+Dify API key가 있어야 가능한 항목:
 
+- [ ] Production/benchmark dataset 자동 bootstrap
 - [ ] Production dataset 실제 업로드
 - [ ] Benchmark dataset 실제 업로드
 - [ ] 48 frozen query live retrieval
