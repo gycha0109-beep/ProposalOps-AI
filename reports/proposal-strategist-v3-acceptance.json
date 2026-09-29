@@ -1,0 +1,8 @@
+{
+  "version": "v3_final",
+  "accepted": false,
+  "failures": [
+    "information_class_separation.mean=0.5",
+    "information_class_separation.min=0.5"
+  ]
+}

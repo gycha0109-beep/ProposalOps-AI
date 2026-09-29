@@ -1,0 +1,646 @@
+{
+  "run_id": "proposal_strategist-1.0-dev-v1_reference-01",
+  "track": "proposal_strategist",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v1_reference",
+  "prompt_file": "prompts/proposal_strategist/v1_reference.md",
+  "prompt_sha256": "286541eaddba6ec4d0c05e8311a9236e9a7308327704b55793f94bb3aa67fcf2",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 8000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:49:47.734721+00:00",
+    "git_commit": "30770f7936f9395a32467739dcfca4ac7d8b630c",
+    "provider": "openai",
+    "provider_response_id": "resp_0ac889cede41d808016abb5f78b4d087d2995ec40c9154970c",
+    "latency_seconds": 19.11,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 7117,
+      "input_tokens_details": {
+        "cache_write_tokens": 7114,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2083,
+      "output_tokens_details": {
+        "reasoning_tokens": 45
+      },
+      "total_tokens": 9200
+    }
+  },
+  "json_parseable": true,
+  "raw_output": "{\"results\":[{\"rfp_id\":\"RFP-TEST-001\",\"strategy\":{\"proposal_thesis\":\"청년 정책을 일방적으로 설명하는 대신, 청년의 실제 상황과 질문에서 출발해 발견·상호작용·참여·정보 탐색으로 이어지는 디지털 정책 커뮤니케이션을 구축한다.\",\"concept\":\"내 상황에 맞는 청년정책, 보고 끝내지 않고 바로 행동하기\",\"strategy_pillars\":[{\"strategy_id\":\"S-001-01\",\"name\":\"상황 기반 정책 발견 퍼널\",\"objective\":\"청년층이 자신의 상황과 연결해 정책을 인지하고 다음 정보 탐색 행동으로 이동하도록 한다.\",\"related_requirement_ids\":[\"R-001\",\"R-002\",\"R-003\",\"R-006\"],\"used_reference_ids\":[\"EV-R-002-01\",\"EV-R-002-02\",\"EV-R-003-02\",\"EV-R-006-01\"],\"execution_ideas\":[\"주거·취업·금융·생활 등 청년의 상황을 질문형 훅으로 제시한다.\",\"숏폼은 Hook → Core → Action 구조로 제작하고, 카드 콘텐츠는 자격·혜택·신청 절차를 저장하기 쉽게 구성한다.\",\"콘텐츠별로 저장, 상세 페이지 이동, 신청 정보 확인 등 하나의 핵심 행동을 설정한다.\",\"인지·시청·저장·상세탐색·참여 전환을 단계별로 측정한다.\"]},{\"strategy_id\":\"S-001-02\",\"name\":\"30초 정책 번역 콘텐츠\",\"objective\":\"복잡한 정책 정보를 짧고 이해하기 쉬운 영상 및 카드형 콘텐츠로 변환해 정보 접근성을 높인다.\",\"related_requirement_ids\":[\"R-002\",\"R-003\",\"R-005\"],\"used_reference_ids\":[\"EV-R-003-01\",\"EV-R-003-02\",\"EV-R-005-01\",\"EV-R-005-02\"],\"execution_ideas\":[\"숏폼 20편은 첫 3초 관심 유도, 핵심 정보, 마지막 단일 행동 유도의 포맷으로 통일한다.\",\"카드형 콘텐츠는 '나도 해당될까?', '얼마나 받을 수 있나?', '무엇을 준비해야 하나?'와 같은 질문 단위로 기획한다.\",\"월별 정책 캘린더와 주제별 콘텐츠 묶음으로 숏폼과 카드를 상호 연결한다.\",\"정책 수치·기간·자격 조건은 기획 단계와 게시 직전에 이중 검수하고 게시 버전을 기록한다.\"]},{\"strategy_id\":\"S-001-03\",\"name\":\"작은 행동을 만드는 참여 캠페인\",\"objective\":\"정책 홍보의 도달을 이용자 반응과 실제 참여 행동으로 전환한다.\",\"related_requirement_ids\":[\"R-002\",\"R-004\",\"R-006\"],\"used_reference_ids\":[\"EV-R-002-02\",\"EV-R-004-01\",\"EV-R-004-02\",\"EV-R-004-03\",\"EV-R-004-04\"],\"execution_ideas\":[\"참여 캠페인 2회는 인지 → 퀴즈·투표 등 가벼운 상호작용 → 정책 확인·신청 준비 등 실제 참여의 단계로 설계한다.\",\"큰 참여 과제를 하루 한 번 수행 가능한 마이크로 액션으로 분해한다.\",\"참여자가 자신의 실천을 짧은 문장이나 이미지로 인증하고 다른 참여자의 사례를 발견하도록 한다.\",\"참여 결과와 댓글·응답을 후속 카드·숏폼으로 재가공해 참여 결과 → 후속 콘텐츠 → 신규 도달의 루프를 만든다.\"]},{\"strategy_id\":\"S-001-04\",\"name\":\"검수 기반 6개월 운영 체계\",\"objective\":\"콘텐츠 제작부터 검수·게시·성과 보고까지 안정적인 공공 홍보 운영을 구현한다.\",\"related_requirement_ids\":[\"R-005\",\"R-006\",\"R-007\"],\"used_reference_ids\":[\"EV-R-005-01\",\"EV-R-005-02\",\"EV-R-007-01\",\"EV-R-007-02\",\"EV-R-007-03\"],\"execution_ideas\":[\"월간 기획, 제작, 내부 검수, 발주처 검수, 게시, 성과 분석의 반복 운영체계를 수립한다.\",\"저작권·초상권·개인정보·정책 정보 정확성을 구분한 게시 전 체크리스트를 운영한다.\",\"출연 및 이미지 사용 범위·채널·기간을 사전에 확인하고 동의 상태를 기록한다.\",\"월간 리포트에는 도달·시청·상호작용·저장·상세탐색·참여 전환을 포함하고, 최종 보고서에는 콘텐츠 목록과 성과 원자료를 정리한다.\"]}]}},{\"rfp_id\":\"RFP-TEST-002\",\"strategy\":{\"proposal_thesis\":\"방문 동기별로 지역의 매력을 재구성하고, 발견형 숏폼을 저장 가능한 코스·운영정보·방문 계획으로 연결해 온라인 관심을 실제 지역 방문 행동으로 전환한다.\",\"concept\":\"취향에 맞는 주말을 발견하고, 저장하고, 떠나는 지역 여행 콘텐츠\",\"strategy_pillars\":[{\"strategy_id\":\"S-002-01\",\"name\":\"방문 동기 기반 타깃 설계\",\"objective\":\"맛집·휴식·체험·문화관람 등 서로 다른 방문 동기에 맞춰 메시지와 추천 콘텐츠를 차별화한다.\",\"related_requirement_ids\":[\"R-201\",\"R-202\"],\"used_reference_ids\":[\"EV-R-201-01\",\"EV-R-201-02\",\"EV-R-202-03\",\"EV-R-202-04\"],\"execution_ideas\":[\"방문 목적과 상황을 기준으로 맛집형, 휴식형, 체험형, 문화관람형 등 콘텐츠 세그먼트를 구성한다.\",\"혼자, 데이트, 가족 나들이, 친구와의 주말 등 방문 맥락별 추천 카피와 코스를 달리한다.\",\"주말 추천 카드는 대상·이용 가능 시간·소요시간 등 선택에 필요한 정보 중심으로 구성한다.\",\"관심 주제 선택 → 맞춤 장소·프로그램 추천 → 운영정보 확인의 탐색 흐름을 제공한다.\"]},{\"strategy_id\":\"S-002-02\",\"name\":\"발견에서 방문계획까지의 콘텐츠 퍼널\",\"objective\":\"짧은 영상이나 카드로 지역을 발견한 이용자가 저장·상세조회·지도 및 예약 페이지 이동까지 이어지도록 한다.\",\"related_requirement_ids\":[\"R-202\",\"R-203\",\"R-206\"],\"used_reference_ids\":[\"EV-R-202-01\",\"EV-R-202-02\",\"EV-R-202-04\",\"EV-R-203-01\",\"EV-R-206-01\",\"EV-R-206-02\"],\"execution_ideas\":[\"숏폼은 첫 3초 훅, 핵심 볼거리·정보, 마지막 단일 행동 유도의 Hook → Core → Action 구조로 제작한다.\",\"단일 시설 소개에 그치지 않고 반나절·하루 동선의 코스 콘텐츠 8건으로 재구성한다.\",\"발견형 숏폼은 저장 가능한 카드·코스 콘텐츠와 연결하고, 카드에는 지도·운영시간·소요시간 등 방문 계획 정보를 배치한다.\",\"도달 → 시청 → 저장 → 상세조회 → 지도·예약 페이지 이동을 단계별 KPI로 관리한다.\"]},{\"strategy_id\":\"S-002-03\",\"name\":\"공식 정보와 지역 체험의 크리에이터 협업\",\"objective\":\"공식 채널의 신뢰도와 지역 크리에이터의 현장성을 결합해 탐색 신뢰와 방문 욕구를 높인다.\",\"related_requirement_ids\":[\"R-201\",\"R-202\",\"R-204\"],\"used_reference_ids\":[\"EV-R-204-01\",\"EV-R-202-02\",\"EV-R-202-03\"],\"execution_ideas\":[\"공식 채널은 정확한 시설·코스·운영정보를 제공하고, 지역 크리에이터는 실제 동선과 체험 맥락을 전달하도록 역할을 구분한다.\",\"크리에이터 협업 콘텐츠 6건은 방문 동기별로 배정해 각기 다른 여행 상황을 보여준다.\",\"크리에이터 콘텐츠에서 공식 코스 카드와 상세 정보로 연결되는 링크·행동 유도를 일관되게 적용한다.\",\"체험 콘텐츠의 사실 정보는 게시 전 공식 정보와 대조해 신뢰성을 확보한다.\"]},{\"strategy_id\":\"S-002-04\",\"name\":\"운영정보 검수와 방문 의도 성과관리\",\"objective\":\"변경 가능한 현장 정보를 최신 상태로 제공하고 콘텐츠 성과를 실제 방문 의도 중심으로 관리한다.\",\"related_requirement_ids\":[\"R-205\",\"R-206\"],\"used_reference_ids\":[\"EV-R-205-01\",\"EV-R-205-02\",\"EV-R-206-01\",\"EV-R-206-02\"],\"execution_ideas\":[\"휴관·매진·운영시간·행사 일정 등 변동 정보를 게시 전 확인하는 시설별 검수 프로세스를 운영한다.\",\"변경 발생 시 기존 게시물의 상태와 연결된 코스·카드 정보도 함께 갱신한다.\",\"콘텐츠별 정보 확인일과 버전을 관리해 최신 운영정보 여부를 표시한다.\",\"월별 보고에는 도달뿐 아니라 저장, 상세조회, 일정 저장, 지도 클릭, 예약 페이지 이동을 포함하고 최종 결과에는 콘텐츠 목록과 성과 원자료를 제출한다.\"]}]}}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "rfp_id": "RFP-TEST-001",
+        "strategy": {
+          "proposal_thesis": "청년 정책을 일방적으로 설명하는 대신, 청년의 실제 상황과 질문에서 출발해 발견·상호작용·참여·정보 탐색으로 이어지는 디지털 정책 커뮤니케이션을 구축한다.",
+          "concept": "내 상황에 맞는 청년정책, 보고 끝내지 않고 바로 행동하기",
+          "strategy_pillars": [
+            {
+              "strategy_id": "S-001-01",
+              "name": "상황 기반 정책 발견 퍼널",
+              "objective": "청년층이 자신의 상황과 연결해 정책을 인지하고 다음 정보 탐색 행동으로 이동하도록 한다.",
+              "related_requirement_ids": [
+                "R-001",
+                "R-002",
+                "R-003",
+                "R-006"
+              ],
+              "used_reference_ids": [
+                "EV-R-002-01",
+                "EV-R-002-02",
+                "EV-R-003-02",
+                "EV-R-006-01"
+              ],
+              "execution_ideas": [
+                "주거·취업·금융·생활 등 청년의 상황을 질문형 훅으로 제시한다.",
+                "숏폼은 Hook → Core → Action 구조로 제작하고, 카드 콘텐츠는 자격·혜택·신청 절차를 저장하기 쉽게 구성한다.",
+                "콘텐츠별로 저장, 상세 페이지 이동, 신청 정보 확인 등 하나의 핵심 행동을 설정한다.",
+                "인지·시청·저장·상세탐색·참여 전환을 단계별로 측정한다."
+              ]
+            },
+            {
+              "strategy_id": "S-001-02",
+              "name": "30초 정책 번역 콘텐츠",
+              "objective": "복잡한 정책 정보를 짧고 이해하기 쉬운 영상 및 카드형 콘텐츠로 변환해 정보 접근성을 높인다.",
+              "related_requirement_ids": [
+                "R-002",
+                "R-003",
+                "R-005"
+              ],
+              "used_reference_ids": [
+                "EV-R-003-01",
+                "EV-R-003-02",
+                "EV-R-005-01",
+                "EV-R-005-02"
+              ],
+              "execution_ideas": [
+                "숏폼 20편은 첫 3초 관심 유도, 핵심 정보, 마지막 단일 행동 유도의 포맷으로 통일한다.",
+                "카드형 콘텐츠는 '나도 해당될까?', '얼마나 받을 수 있나?', '무엇을 준비해야 하나?'와 같은 질문 단위로 기획한다.",
+                "월별 정책 캘린더와 주제별 콘텐츠 묶음으로 숏폼과 카드를 상호 연결한다.",
+                "정책 수치·기간·자격 조건은 기획 단계와 게시 직전에 이중 검수하고 게시 버전을 기록한다."
+              ]
+            },
+            {
+              "strategy_id": "S-001-03",
+              "name": "작은 행동을 만드는 참여 캠페인",
+              "objective": "정책 홍보의 도달을 이용자 반응과 실제 참여 행동으로 전환한다.",
+              "related_requirement_ids": [
+                "R-002",
+                "R-004",
+                "R-006"
+              ],
+              "used_reference_ids": [
+                "EV-R-002-02",
+                "EV-R-004-01",
+                "EV-R-004-02",
+                "EV-R-004-03",
+                "EV-R-004-04"
+              ],
+              "execution_ideas": [
+                "참여 캠페인 2회는 인지 → 퀴즈·투표 등 가벼운 상호작용 → 정책 확인·신청 준비 등 실제 참여의 단계로 설계한다.",
+                "큰 참여 과제를 하루 한 번 수행 가능한 마이크로 액션으로 분해한다.",
+                "참여자가 자신의 실천을 짧은 문장이나 이미지로 인증하고 다른 참여자의 사례를 발견하도록 한다.",
+                "참여 결과와 댓글·응답을 후속 카드·숏폼으로 재가공해 참여 결과 → 후속 콘텐츠 → 신규 도달의 루프를 만든다."
+              ]
+            },
+            {
+              "strategy_id": "S-001-04",
+              "name": "검수 기반 6개월 운영 체계",
+              "objective": "콘텐츠 제작부터 검수·게시·성과 보고까지 안정적인 공공 홍보 운영을 구현한다.",
+              "related_requirement_ids": [
+                "R-005",
+                "R-006",
+                "R-007"
+              ],
+              "used_reference_ids": [
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-007-01",
+                "EV-R-007-02",
+                "EV-R-007-03"
+              ],
+              "execution_ideas": [
+                "월간 기획, 제작, 내부 검수, 발주처 검수, 게시, 성과 분석의 반복 운영체계를 수립한다.",
+                "저작권·초상권·개인정보·정책 정보 정확성을 구분한 게시 전 체크리스트를 운영한다.",
+                "출연 및 이미지 사용 범위·채널·기간을 사전에 확인하고 동의 상태를 기록한다.",
+                "월간 리포트에는 도달·시청·상호작용·저장·상세탐색·참여 전환을 포함하고, 최종 보고서에는 콘텐츠 목록과 성과 원자료를 정리한다."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "rfp_id": "RFP-TEST-002",
+        "strategy": {
+          "proposal_thesis": "방문 동기별로 지역의 매력을 재구성하고, 발견형 숏폼을 저장 가능한 코스·운영정보·방문 계획으로 연결해 온라인 관심을 실제 지역 방문 행동으로 전환한다.",
+          "concept": "취향에 맞는 주말을 발견하고, 저장하고, 떠나는 지역 여행 콘텐츠",
+          "strategy_pillars": [
+            {
+              "strategy_id": "S-002-01",
+              "name": "방문 동기 기반 타깃 설계",
+              "objective": "맛집·휴식·체험·문화관람 등 서로 다른 방문 동기에 맞춰 메시지와 추천 콘텐츠를 차별화한다.",
+              "related_requirement_ids": [
+                "R-201",
+                "R-202"
+              ],
+              "used_reference_ids": [
+                "EV-R-201-01",
+                "EV-R-201-02",
+                "EV-R-202-03",
+                "EV-R-202-04"
+              ],
+              "execution_ideas": [
+                "방문 목적과 상황을 기준으로 맛집형, 휴식형, 체험형, 문화관람형 등 콘텐츠 세그먼트를 구성한다.",
+                "혼자, 데이트, 가족 나들이, 친구와의 주말 등 방문 맥락별 추천 카피와 코스를 달리한다.",
+                "주말 추천 카드는 대상·이용 가능 시간·소요시간 등 선택에 필요한 정보 중심으로 구성한다.",
+                "관심 주제 선택 → 맞춤 장소·프로그램 추천 → 운영정보 확인의 탐색 흐름을 제공한다."
+              ]
+            },
+            {
+              "strategy_id": "S-002-02",
+              "name": "발견에서 방문계획까지의 콘텐츠 퍼널",
+              "objective": "짧은 영상이나 카드로 지역을 발견한 이용자가 저장·상세조회·지도 및 예약 페이지 이동까지 이어지도록 한다.",
+              "related_requirement_ids": [
+                "R-202",
+                "R-203",
+                "R-206"
+              ],
+              "used_reference_ids": [
+                "EV-R-202-01",
+                "EV-R-202-02",
+                "EV-R-202-04",
+                "EV-R-203-01",
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "execution_ideas": [
+                "숏폼은 첫 3초 훅, 핵심 볼거리·정보, 마지막 단일 행동 유도의 Hook → Core → Action 구조로 제작한다.",
+                "단일 시설 소개에 그치지 않고 반나절·하루 동선의 코스 콘텐츠 8건으로 재구성한다.",
+                "발견형 숏폼은 저장 가능한 카드·코스 콘텐츠와 연결하고, 카드에는 지도·운영시간·소요시간 등 방문 계획 정보를 배치한다.",
+                "도달 → 시청 → 저장 → 상세조회 → 지도·예약 페이지 이동을 단계별 KPI로 관리한다."
+              ]
+            },
+            {
+              "strategy_id": "S-002-03",
+              "name": "공식 정보와 지역 체험의 크리에이터 협업",
+              "objective": "공식 채널의 신뢰도와 지역 크리에이터의 현장성을 결합해 탐색 신뢰와 방문 욕구를 높인다.",
+              "related_requirement_ids": [
+                "R-201",
+                "R-202",
+                "R-204"
+              ],
+              "used_reference_ids": [
+                "EV-R-204-01",
+                "EV-R-202-02",
+                "EV-R-202-03"
+              ],
+              "execution_ideas": [
+                "공식 채널은 정확한 시설·코스·운영정보를 제공하고, 지역 크리에이터는 실제 동선과 체험 맥락을 전달하도록 역할을 구분한다.",
+                "크리에이터 협업 콘텐츠 6건은 방문 동기별로 배정해 각기 다른 여행 상황을 보여준다.",
+                "크리에이터 콘텐츠에서 공식 코스 카드와 상세 정보로 연결되는 링크·행동 유도를 일관되게 적용한다.",
+                "체험 콘텐츠의 사실 정보는 게시 전 공식 정보와 대조해 신뢰성을 확보한다."
+              ]
+            },
+            {
+              "strategy_id": "S-002-04",
+              "name": "운영정보 검수와 방문 의도 성과관리",
+              "objective": "변경 가능한 현장 정보를 최신 상태로 제공하고 콘텐츠 성과를 실제 방문 의도 중심으로 관리한다.",
+              "related_requirement_ids": [
+                "R-205",
+                "R-206"
+              ],
+              "used_reference_ids": [
+                "EV-R-205-01",
+                "EV-R-205-02",
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "execution_ideas": [
+                "휴관·매진·운영시간·행사 일정 등 변동 정보를 게시 전 확인하는 시설별 검수 프로세스를 운영한다.",
+                "변경 발생 시 기존 게시물의 상태와 연결된 코스·카드 정보도 함께 갱신한다.",
+                "콘텐츠별 정보 확인일과 버전을 관리해 최신 운영정보 여부를 표시한다.",
+                "월별 보고에는 도달뿐 아니라 저장, 상세조회, 일정 저장, 지도 클릭, 예약 페이지 이동을 포함하고 최종 결과에는 콘텐츠 목록과 성과 원자료를 제출한다."
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "evaluation": {
+    "metrics": {
+      "requirement_coverage": 1.0,
+      "evidence_citation_coverage": 1.0,
+      "evidence_validity": 1.0,
+      "unsupported_company_claim_count": 0.0,
+      "unsupported_quantitative_claim_count": 0.0,
+      "information_class_separation": 0.0,
+      "invalid_evidence_reference_count": 0.0,
+      "result_coverage": 1.0
+    },
+    "per_rfp": [
+      {
+        "rfp_id": "RFP-TEST-001",
+        "found": true,
+        "evaluation": {
+          "metrics": {
+            "requirement_coverage": 1.0,
+            "evidence_citation_coverage": 1.0,
+            "evidence_validity": 1.0,
+            "unsupported_company_claim_count": 0,
+            "unsupported_quantitative_claim_count": 0,
+            "information_class_separation": 0.0,
+            "invalid_evidence_reference_count": 0
+          },
+          "covered_requirement_ids": [
+            "R-001",
+            "R-002",
+            "R-003",
+            "R-004",
+            "R-005",
+            "R-006",
+            "R-007"
+          ],
+          "missing_requirement_ids": [],
+          "forbidden_claim_hits": [],
+          "invalid_evidence_refs": [],
+          "evidence_details": [
+            {
+              "requirement_id": "R-002",
+              "cited_ids": [
+                "EV-R-002-01",
+                "EV-R-002-02",
+                "EV-R-003-02",
+                "EV-R-006-01",
+                "EV-R-003-01",
+                "EV-R-003-02",
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-002-02",
+                "EV-R-004-01",
+                "EV-R-004-02",
+                "EV-R-004-03",
+                "EV-R-004-04"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-005-P008",
+                "PA-CAMP-005-P009",
+                "PA-EDU-003-P017",
+                "PA-EDU-003-P018",
+                "PA-PR-002-P012",
+                "PA-PR-002-P013",
+                "PA-PR-007-P019",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P021",
+                "PA-VIDEO-004-P022"
+              ],
+              "allowed_assets": [
+                "PA-EDU-003-P017",
+                "PA-PR-002-P013"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-003",
+              "cited_ids": [
+                "EV-R-002-01",
+                "EV-R-002-02",
+                "EV-R-003-02",
+                "EV-R-006-01",
+                "EV-R-003-01",
+                "EV-R-003-02",
+                "EV-R-005-01",
+                "EV-R-005-02"
+              ],
+              "resolved_assets": [
+                "PA-EDU-003-P017",
+                "PA-PR-002-P012",
+                "PA-PR-002-P013",
+                "PA-PR-007-P019",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P021",
+                "PA-VIDEO-004-P022"
+              ],
+              "allowed_assets": [
+                "PA-PR-002-P012",
+                "PA-VIDEO-004-P021"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-004",
+              "cited_ids": [
+                "EV-R-002-02",
+                "EV-R-004-01",
+                "EV-R-004-02",
+                "EV-R-004-03",
+                "EV-R-004-04"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-005-P008",
+                "PA-CAMP-005-P009",
+                "PA-EDU-003-P017",
+                "PA-EDU-003-P018"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-005-P008",
+                "PA-CAMP-005-P009",
+                "PA-EDU-003-P017",
+                "PA-EDU-003-P018"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-005",
+              "cited_ids": [
+                "EV-R-003-01",
+                "EV-R-003-02",
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-007-01",
+                "EV-R-007-02",
+                "EV-R-007-03"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P015",
+                "PA-PR-002-P012",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P021",
+                "PA-VIDEO-004-P022",
+                "PA-VIDEO-012-P017"
+              ],
+              "allowed_assets": [
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P022"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-006",
+              "cited_ids": [
+                "EV-R-002-01",
+                "EV-R-002-02",
+                "EV-R-003-02",
+                "EV-R-006-01",
+                "EV-R-002-02",
+                "EV-R-004-01",
+                "EV-R-004-02",
+                "EV-R-004-03",
+                "EV-R-004-04",
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-007-01",
+                "EV-R-007-02",
+                "EV-R-007-03"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-005-P008",
+                "PA-CAMP-005-P009",
+                "PA-EDU-003-P017",
+                "PA-EDU-003-P018",
+                "PA-EVENT-004-P015",
+                "PA-PR-002-P012",
+                "PA-PR-002-P013",
+                "PA-PR-007-P019",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P022",
+                "PA-VIDEO-012-P017"
+              ],
+              "allowed_assets": [
+                "PA-EDU-006-P014",
+                "PA-PR-007-P019",
+                "PA-VIDEO-004-P021"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-007",
+              "cited_ids": [
+                "EV-R-005-01",
+                "EV-R-005-02",
+                "EV-R-007-01",
+                "EV-R-007-02",
+                "EV-R-007-03"
+              ],
+              "resolved_assets": [
+                "PA-EVENT-004-P015",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P022",
+                "PA-VIDEO-012-P017"
+              ],
+              "allowed_assets": [
+                "PA-EVENT-004-P015",
+                "PA-VIDEO-004-P022",
+                "PA-VIDEO-012-P017"
+              ],
+              "citation_present": true,
+              "valid": true
+            }
+          ]
+        }
+      },
+      {
+        "rfp_id": "RFP-TEST-002",
+        "found": true,
+        "evaluation": {
+          "metrics": {
+            "requirement_coverage": 1.0,
+            "evidence_citation_coverage": 1.0,
+            "evidence_validity": 1.0,
+            "unsupported_company_claim_count": 0,
+            "unsupported_quantitative_claim_count": 0,
+            "information_class_separation": 0.0,
+            "invalid_evidence_reference_count": 0
+          },
+          "covered_requirement_ids": [
+            "R-201",
+            "R-202",
+            "R-203",
+            "R-204",
+            "R-205",
+            "R-206"
+          ],
+          "missing_requirement_ids": [],
+          "forbidden_claim_hits": [],
+          "invalid_evidence_refs": [],
+          "evidence_details": [
+            {
+              "requirement_id": "R-201",
+              "cited_ids": [
+                "EV-R-201-01",
+                "EV-R-201-02",
+                "EV-R-202-03",
+                "EV-R-202-04",
+                "EV-R-204-01",
+                "EV-R-202-02",
+                "EV-R-202-03"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P020",
+                "PA-CAMP-010-P021",
+                "PA-CAMP-010-P022",
+                "PA-PR-007-P015",
+                "PA-PR-007-P017",
+                "PA-PR-007-P018"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-010-P020",
+                "PA-PR-007-P015"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-202",
+              "cited_ids": [
+                "EV-R-201-01",
+                "EV-R-201-02",
+                "EV-R-202-03",
+                "EV-R-202-04",
+                "EV-R-202-01",
+                "EV-R-202-02",
+                "EV-R-202-04",
+                "EV-R-203-01",
+                "EV-R-206-01",
+                "EV-R-206-02",
+                "EV-R-204-01",
+                "EV-R-202-02",
+                "EV-R-202-03"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P020",
+                "PA-CAMP-010-P021",
+                "PA-CAMP-010-P022",
+                "PA-CAMP-010-P024",
+                "PA-PR-007-P015",
+                "PA-PR-007-P016",
+                "PA-PR-007-P017",
+                "PA-PR-007-P018",
+                "PA-PR-007-P019",
+                "PA-VIDEO-004-P021"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-010-P021",
+                "PA-CAMP-010-P022",
+                "PA-PR-007-P016",
+                "PA-PR-007-P017"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-203",
+              "cited_ids": [
+                "EV-R-202-01",
+                "EV-R-202-02",
+                "EV-R-202-04",
+                "EV-R-203-01",
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P022",
+                "PA-CAMP-010-P024",
+                "PA-PR-007-P016",
+                "PA-PR-007-P017",
+                "PA-PR-007-P019",
+                "PA-VIDEO-004-P021"
+              ],
+              "allowed_assets": [
+                "PA-VIDEO-004-P021",
+                "PA-VIDEO-008-P008"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-204",
+              "cited_ids": [
+                "EV-R-204-01",
+                "EV-R-202-02",
+                "EV-R-202-03"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P021",
+                "PA-PR-007-P017",
+                "PA-PR-007-P018"
+              ],
+              "allowed_assets": [
+                "PA-PR-007-P018"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-205",
+              "cited_ids": [
+                "EV-R-205-01",
+                "EV-R-205-02",
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P023",
+                "PA-CAMP-010-P024",
+                "PA-PR-007-P019",
+                "PA-PR-011-P012"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-010-P023",
+                "PA-PR-011-P012"
+              ],
+              "citation_present": true,
+              "valid": true
+            },
+            {
+              "requirement_id": "R-206",
+              "cited_ids": [
+                "EV-R-202-01",
+                "EV-R-202-02",
+                "EV-R-202-04",
+                "EV-R-203-01",
+                "EV-R-206-01",
+                "EV-R-206-02",
+                "EV-R-205-01",
+                "EV-R-205-02",
+                "EV-R-206-01",
+                "EV-R-206-02"
+              ],
+              "resolved_assets": [
+                "PA-CAMP-010-P022",
+                "PA-CAMP-010-P023",
+                "PA-CAMP-010-P024",
+                "PA-PR-007-P016",
+                "PA-PR-007-P017",
+                "PA-PR-007-P019",
+                "PA-PR-011-P012",
+                "PA-VIDEO-004-P021"
+              ],
+              "allowed_assets": [
+                "PA-CAMP-010-P024",
+                "PA-PR-007-P019"
+              ],
+              "citation_present": true,
+              "valid": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

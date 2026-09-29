@@ -1,0 +1,303 @@
+{
+  "track": "proposal_strategist",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 8000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 4,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_coverage": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "evidence_citation_coverage": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "evidence_validity": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_company_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_quantitative_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "information_class_separation": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "invalid_evidence_reference_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 7113,
+          "mean": 7113
+        },
+        "output_tokens": {
+          "total": 2307,
+          "mean": 2307
+        },
+        "total_tokens": {
+          "total": 9420,
+          "mean": 9420
+        },
+        "reasoning_tokens": {
+          "total": 41,
+          "mean": 41
+        }
+      }
+    },
+    "v1_reference": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_citation_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_company_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_quantitative_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "information_class_separation": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "invalid_evidence_reference_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 7117,
+          "mean": 7117
+        },
+        "output_tokens": {
+          "total": 2083,
+          "mean": 2083
+        },
+        "total_tokens": {
+          "total": 9200,
+          "mean": 9200
+        },
+        "reasoning_tokens": {
+          "total": 45,
+          "mean": 45
+        }
+      }
+    },
+    "v2_evidence": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_citation_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_company_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_quantitative_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "information_class_separation": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "invalid_evidence_reference_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 7131,
+          "mean": 7131
+        },
+        "output_tokens": {
+          "total": 2820,
+          "mean": 2820
+        },
+        "total_tokens": {
+          "total": 9951,
+          "mean": 9951
+        },
+        "reasoning_tokens": {
+          "total": 45,
+          "mean": 45
+        }
+      }
+    },
+    "v3_final": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_citation_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "evidence_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_company_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "unsupported_quantitative_claim_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "information_class_separation": {
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "stdev": 0.0
+        },
+        "invalid_evidence_reference_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 7279,
+          "mean": 7279
+        },
+        "output_tokens": {
+          "total": 2787,
+          "mean": 2787
+        },
+        "total_tokens": {
+          "total": 10066,
+          "mean": 10066
+        },
+        "reasoning_tokens": {
+          "total": 82,
+          "mean": 82
+        }
+      }
+    }
+  }
+}
