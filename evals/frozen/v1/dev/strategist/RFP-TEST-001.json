@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "split": "dev",
+  "track": "proposal_strategist",
+  "input_rfp": "RFP-TEST-001",
+  "required_requirement_ids": [
+    "R-001",
+    "R-002",
+    "R-003",
+    "R-004",
+    "R-005",
+    "R-006",
+    "R-007"
+  ],
+  "evidence_expectations": [
+    {
+      "requirement_id": "R-002",
+      "allowed_asset_ids": [
+        "PA-PR-002-P013",
+        "PA-EDU-003-P017"
+      ]
+    },
+    {
+      "requirement_id": "R-003",
+      "allowed_asset_ids": [
+        "PA-VIDEO-004-P021",
+        "PA-PR-002-P012"
+      ]
+    },
+    {
+      "requirement_id": "R-004",
+      "allowed_asset_ids": [
+        "PA-EDU-003-P017",
+        "PA-EDU-003-P018",
+        "PA-CAMP-005-P008",
+        "PA-CAMP-005-P009"
+      ]
+    },
+    {
+      "requirement_id": "R-005",
+      "allowed_asset_ids": [
+        "PA-VIDEO-004-P022",
+        "PA-PR-011-P012"
+      ]
+    },
+    {
+      "requirement_id": "R-006",
+      "allowed_asset_ids": [
+        "PA-PR-007-P019",
+        "PA-VIDEO-004-P021",
+        "PA-EDU-006-P014"
+      ]
+    },
+    {
+      "requirement_id": "R-007",
+      "allowed_asset_ids": [
+        "PA-VIDEO-004-P022",
+        "PA-VIDEO-012-P017",
+        "PA-EVENT-004-P015"
+      ]
+    }
+  ],
+  "forbidden_claims": [
+    "기존 참여율 42%",
+    "3년 연속 수행",
+    "당사 평균 성과",
+    "기존 고객 만족도 98%"
+  ],
+  "required_information_classes": [
+    "AI_RECOMMENDATION"
+  ],
+  "scoring": [
+    "requirement_coverage",
+    "evidence_citation_coverage",
+    "evidence_validity",
+    "unsupported_company_claims",
+    "unsupported_quantitative_claims"
+  ]
+}
