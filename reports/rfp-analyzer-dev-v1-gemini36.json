@@ -10,7 +10,7 @@
     "max_503_retries": 0,
     "retry_delay_seconds": 0
   },
-  "run_count": 7,
+  "run_count": 8,
   "versions": {
     "v0_baseline": {
       "run_count": 2,
@@ -159,17 +159,18 @@
       ]
     },
     "v2_grounded": {
-      "run_count": 1,
+      "run_count": 2,
       "rfp_ids": [
-        "RFP-TEST-001"
+        "RFP-TEST-001",
+        "RFP-TEST-002"
       ],
       "json_parseable_rate": 1.0,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.6,
+          "mean": 0.6333,
           "min": 0.6,
-          "max": 0.6,
-          "stdev": 0.0
+          "max": 0.6667,
+          "stdev": 0.0333
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -178,10 +179,10 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.6,
-          "min": 0.6,
+          "mean": 0.5857,
+          "min": 0.5714,
           "max": 0.6,
-          "stdev": 0.0
+          "stdev": 0.0143
         },
         "requirement_assertion_recall": {
           "mean": 1.0,
@@ -198,20 +199,20 @@
       },
       "usage": {
         "input_tokens": {
-          "total": 739,
-          "mean": 739
+          "total": 1509,
+          "mean": 754.5
         },
         "output_tokens": {
-          "total": 2019,
-          "mean": 2019
+          "total": 3779,
+          "mean": 1889.5
         },
         "total_tokens": {
-          "total": 5021,
-          "mean": 5021
+          "total": 9955,
+          "mean": 4977.5
         },
         "reasoning_tokens": {
-          "total": 2263,
-          "mean": 2263
+          "total": 4667,
+          "mean": 2333.5
         }
       },
       "failed_assertions": [
@@ -223,6 +224,16 @@
             "001-02",
             "001-06",
             "001-07"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-01",
+            "002-02",
+            "002-03",
+            "002-08"
           ]
         }
       ]
