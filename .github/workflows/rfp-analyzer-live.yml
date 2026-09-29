@@ -47,6 +47,7 @@ jobs:
       BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
       BENCH_REPETITIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.repetitions || '1' }}
       BENCH_CONFIRM_HOLDOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_holdout || false }}
+      BENCH_RUN_NAMESPACE: benchmark-v1-gemini37
     steps:
       - uses: actions/checkout@v7
         with:
@@ -100,12 +101,12 @@ jobs:
       - name: Aggregate available results
         shell: bash
         run: |
-          if find "runs/rfp_analyzer/benchmark-v1/$BENCH_SPLIT" -name "run-*.json" -print -quit 2>/dev/null | grep -q .; then
+          if find "runs/rfp_analyzer/$BENCH_RUN_NAMESPACE/$BENCH_SPLIT" -name "run-*.json" -print -quit 2>/dev/null | grep -q .; then
             mkdir -p reports
             python scripts/aggregate_rfp_runs.py \
-              --root "runs/rfp_analyzer/benchmark-v1/$BENCH_SPLIT" \
-              --json-out "reports/rfp-analyzer-$BENCH_SPLIT-v1.json" \
-              --md-out "reports/rfp-analyzer-$BENCH_SPLIT-v1.md"
+              --root "runs/rfp_analyzer/$BENCH_RUN_NAMESPACE/$BENCH_SPLIT" \
+              --json-out "reports/rfp-analyzer-$BENCH_SPLIT-v1-gemini37.json" \
+              --md-out "reports/rfp-analyzer-$BENCH_SPLIT-v1-gemini37.md"
             python scripts/generate_prompt_diff.py \
               --from-version v0_baseline \
               --to-version v3_final \
