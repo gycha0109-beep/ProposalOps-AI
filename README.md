@@ -9,6 +9,7 @@
 ## What This Project Proves
 
 ### 1. Proposal Automation
+
 ```text
 RFP
  ↓
@@ -30,7 +31,8 @@ Proposal QA
 ```
 
 ### 2. Prompt Engineering
-세 개의 핵심 prompt track을 동일 benchmark에서 비교합니다.
+
+세 개의 핵심 prompt track을 동일 frozen benchmark에서 비교합니다.
 
 | Track | 검증할 개선 |
 |---|---|
@@ -52,62 +54,75 @@ v3 Final candidate
 
 ## Evaluation Integrity
 
-평가 순서는 고정합니다.
-
 ```text
 Synthetic data
       ↓
 Gold assertions 작성
       ↓
-Evaluation set freeze
+Benchmark v1 freeze
       ↓
-Baseline 실행
-      ↓
-Prompt variants 실행
+Baseline / variants 실행
       ↓
 동일 evaluator로 비교
       ↓
 Raw output + metrics 보존
 ```
 
-결과를 본 뒤 같은 dataset version의 정답을 수정하지 않습니다. 오류 수정이 필요하면 dataset version을 올립니다.
+Benchmark v1은 현재 **frozen** 상태입니다. 같은 v1 gold file은 결과를 본 뒤 수정하지 않으며, 수정이 필요하면 새 benchmark version을 만듭니다.
 
-현재 benchmark는 **pilot/dev 단계**이며 별도 holdout이 아직 없으므로 최종 Prompt Engineering 개선율은 주장하지 않습니다.
+- dev RFP: `RFP-TEST-001`, `RFP-TEST-002`
+- holdout RFP: `RFP-TEST-003`
+- benchmark manifest: `evals/frozen/v1/manifest.json`
 
-상세 규칙: `docs/evaluation-methodology.md`
+아직 frontier-model prompt variants의 비교 run은 수행하지 않았으므로 **Prompt Engineering 개선율은 현재 주장하지 않습니다.**
 
-## Current Assets
+## Frozen Benchmark v1
 
-- synthetic proposals: 3
-- proposal assets: 6
-- synthetic RFP: 1
-- retrieval gold queries: 6
-- frozen RFP analyzer dev assertions: 10
-- injected QA cases: 10
-- prompt experiment tracks: 3
-- prompt variants: 12
+- synthetic proposals: **12**
+- normal proposal assets: **51**
+- retrieval hard negatives: **12**
+- total retrieval assets: **63**
+- synthetic RFPs: **3**
+- retrieval queries: **48**
+  - dev: 32
+  - holdout: 16
+- injected QA cases: **20**
+- prompt experiment tracks: **3**
+- prompt variants: **12**
 
-## Retrieval Baseline
+## Retrieval Baseline v1
 
-작은 synthetic corpus에 대한 로컬 lexical baseline만 먼저 측정했습니다.
+문자 n-gram TF-IDF lexical baseline을 GitHub Actions에서 실행했습니다.
 
-| Metric | Result |
-|---|---:|
-| Hit@1 | 100% |
-| Hit@3 | 100% |
-| Hit@5 | 100% |
-| MRR | 1.000 |
+| Split | Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---:|---:|---:|---:|
+| dev (32) | 90.62% | 100% | 100% | 0.9531 |
+| holdout (16) | 93.75% | 100% | 100% | 0.9688 |
 
-이 값은 **6개 asset / 6개 query의 문자 n-gram TF-IDF baseline**이며 Dify Knowledge 또는 실제 업무 성능이 아닙니다.
+hard-negative를 넣기 전에는 Hit@1이 100%였기 때문에 benchmark가 지나치게 쉬운 것으로 판단했고, 의미가 비슷하지만 목적이 다른 distractor를 추가했습니다.
+
+현재 1위 실패 사례도 보존합니다.
+
+- `RET-D06`: 정책 문서 검수 distractor가 영상 게시 전 정책정보 검수보다 위에 랭크
+- `RET-D25`: 일반 참여 퍼널이 교육용 마이크로러닝보다 위에 랭크
+- `RET-D30`: 정책 사실확인 distractor가 촬영 사용동의 자산보다 위에 랭크
+- `RET-H15`: 행사 목적 페이지가 실제 방문 동선 설계 페이지보다 위에 랭크
+
+상세: `docs/retrieval-baseline.md`
+
+> 이 값은 Dify Knowledge 또는 frontier embedding/reranker 성능이 아니라 로컬 lexical baseline입니다.
 
 ## Repository Structure
 
 ```text
 ProposalOps-AI/
+├─ .github/workflows/
+│  └─ benchmark-validation.yml
 ├─ docs/
 │  ├─ architecture.md
 │  ├─ evaluation-methodology.md
-│  └─ prompt-engineering-case-study.md
+│  ├─ prompt-engineering-case-study.md
+│  └─ retrieval-baseline.md
 ├─ data/
 │  ├─ raw/
 │  ├─ processed/
@@ -119,12 +134,14 @@ ProposalOps-AI/
 │  ├─ production/
 │  └─ experiment-manifest.json
 ├─ evals/
-│  ├─ frozen/
+│  ├─ frozen/v1/
 │  │  ├─ dev/
 │  │  └─ holdout/
+│  ├─ baselines/
 │  └─ qa-injected-errors/
 ├─ runs/
 └─ scripts/
+   ├─ benchmark_inventory.py
    ├─ evaluate_retrieval.py
    ├─ evaluate_rfp.py
    ├─ evaluate_strategy.py
@@ -155,16 +172,18 @@ ProposalOps-AI/
 - mandatory requirement coverage
 - false-positive control
 
-## Next Benchmark Gate
+## Benchmark Gate Status
 
-최종 포트폴리오 비교 수치를 내기 전에 반드시 다음을 완료합니다.
+- [x] synthetic proposals 10~12종
+- [x] proposal assets 50~80개
+- [x] 신규 RFP 2종 추가
+- [x] dev / holdout 분리 및 v1 freeze
+- [x] hard-negative retrieval 난이도 검증
+- [x] GitHub Actions reproducibility check
+- [ ] 동일 frontier model / 동일 parameters에서 v0~v3 raw run 저장
+- [ ] RFP Analyzer / Strategist / QA evaluator 실행
+- [ ] Prompt Engineering Before / After 결과 확정
+- [ ] Dify Knowledge 실제 Retrieval Test
+- [ ] 최종 RFP → 전략 → 목차 → 장표 초안 통합 Workflow
 
-1. synthetic proposals 10~12종으로 확대
-2. proposal assets 50~80개로 확대
-3. 신규 RFP 최소 2종 추가
-4. dev와 분리된 holdout freeze
-5. 동일 모델/파라미터에서 v0~v3 raw run 저장
-6. evaluator 실행
-7. 실패 케이스까지 공개
-
-그 이후에만 Before / After 개선 수치를 위시켓 포트폴리오에 사용합니다.
+Prompt 개선 수치는 위 미완료 항목을 끝낸 뒤에만 위시켓 포트폴리오에 사용합니다.
