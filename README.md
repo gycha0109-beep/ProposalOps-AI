@@ -45,11 +45,13 @@ Proposal QA
 ```text
 v0 Baseline
    ↓
-v1 Structured / Rule-based
+v1 Structured
    ↓
-v2 Grounded / Evidence-bound
+v2 Grounded
    ↓
-v3 Final candidate
+v3 Guarded
+   ↓
+v4 Compact Grounded candidate
 ```
 
 ## Evaluation Integrity
@@ -74,20 +76,21 @@ Benchmark v1은 현재 **frozen** 상태입니다. 같은 v1 gold file은 결과
 - holdout RFP: `RFP-TEST-003`
 - benchmark manifest: `evals/frozen/v1/manifest.json`
 
-아직 Gemini prompt variants의 **live 비교 run**은 수행하지 않았으므로 Prompt Engineering 개선율은 현재 주장하지 않습니다. RFP Analyzer용 실행·기록·평가·집계 인프라는 완료됐습니다.
+RFP Analyzer의 v0~v3 dev live raw run 8건은 완료됐습니다. v4는 prompt와 acceptance criteria를 먼저 고정했지만 Gemini 503/429 때문에 유효한 출력이 없어 `NOT_EVALUATED` 상태입니다. 따라서 아직 최종 production 개선율이나 holdout 성능은 주장하지 않습니다.
 
 
 ## Live Prompt Benchmark Model
 
-RFP Analyzer의 실제 프롬프트 비교는 **Gemini 3.8 Flash**를 고정 모델로 사용합니다.
+RFP Analyzer의 현재 비교 benchmark는 **Gemini 3.6 Flash**를 고정 모델로 사용합니다.
 
 - provider: Gemini Developer API
-- model: `gemini-3.8-flash`
+- model: `gemini-3.6-flash`
 - thinking level: `medium`
-- dev runs: `2 RFP × 4 prompt variants × 2 repeats = 16 calls`
+- measured dev runs: `2 RFP × v0~v3 = 8 raw outputs`
+- v4: `NOT_EVALUATED` (provider 503/429)
 - secret: `GEMINI_API_KEY`
 
-무료 RPD를 보존하기 위해 429/503 자동 재시도는 하지 않으며, 실패 시 완료된 raw run과 실패 evidence를 그대로 보존합니다.
+provider 오류와 quota 실패도 raw evidence로 보존합니다. v4는 provider 응답을 얻지 못했기 때문에 acceptance를 통과/실패로 판정하지 않았습니다.
 
 ## Frozen Benchmark v1
 
@@ -101,7 +104,7 @@ RFP Analyzer의 실제 프롬프트 비교는 **Gemini 3.8 Flash**를 고정 모
   - holdout: 16
 - injected QA cases: **20**
 - prompt experiment tracks: **3**
-- prompt variants: **12**
+- prompt variants: **13**
 
 ## Retrieval Baseline v1
 
@@ -196,9 +199,14 @@ ProposalOps-AI/
 - [x] GitHub Actions reproducibility check
 - [x] RFP Analyzer benchmark runner / raw recorder / aggregator / prompt diff 구축
 - [x] holdout 실행 보호 및 CI dry validation
-- [ ] 동일 Gemini 3.8 Flash / 동일 parameters에서 RFP Analyzer v0~v3 live raw run 저장
-- [ ] RFP Analyzer / Strategist / QA evaluator 실행
-- [ ] Prompt Engineering Before / After 결과 확정
+- [x] Gemini 3.6 Flash 기준 RFP Analyzer v0~v3 dev raw run 8건 저장
+- [x] RFP Analyzer evaluator 1.4 + grounding/truncation metric 적용
+- [x] v0→v1 구조화 개선 및 v2 grounding 효과 측정
+- [x] v3 truncation regression 분석
+- [x] v4 prompt + dev acceptance criteria 사전 고정
+- [ ] v4 dev 유효 출력 확보 (`NOT_EVALUATED`: provider 503/429)
+- [ ] v4 candidate freeze 후 RFP-TEST-003 holdout 실행
+- [ ] Strategist / QA prompt benchmark 실행
 - [ ] Dify Knowledge 실제 Retrieval Test
 - [ ] 최종 RFP → 전략 → 목차 → 장표 초안 통합 Workflow
 
