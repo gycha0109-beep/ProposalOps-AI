@@ -1,5 +1,5 @@
 {
-  "version": "pilot-0.1",
+  "version": "1.0",
   "cases": [
     {
       "id": "QA-001",
@@ -70,6 +70,76 @@
       "severity": "NONE",
       "text": "PA-VIDEO-004-P021의 Hook-Core-Action 구조를 영상 포맷 참고 패턴으로 사용합니다.",
       "reason": "실적 주장이 아닌 reference pattern 사용"
+    },
+    {
+      "id": "QA-011",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "당사는 유사 사업에서 평균 1억 2천만원 규모의 캠페인을 운영했습니다.",
+      "reason": "계약금액 company_fact 없음"
+    },
+    {
+      "id": "QA-012",
+      "type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "text": "PA-EVENT-004-P015를 근거로 행사 만족도 95%를 제시합니다.",
+      "reason": "안전·동의 체크 자산은 만족도 성과를 지원하지 않음"
+    },
+    {
+      "id": "QA-013",
+      "type": "MISSING_REQUIREMENT",
+      "severity": "BLOCK",
+      "omitted_requirement_id": "R-305",
+      "reason": "개인정보·촬영동의 요구 누락"
+    },
+    {
+      "id": "QA-014",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "전담 운영인력 12명을 즉시 투입할 수 있습니다.",
+      "reason": "조직 및 인력 company_fact 없음"
+    },
+    {
+      "id": "QA-015",
+      "type": "CROSS_PROPOSAL_MERGE",
+      "severity": "BLOCK",
+      "text": "지역 관광 캠페인에서 검증한 정책 신청 전환 구조를 그대로 적용합니다.",
+      "reason": "관광 제안서와 소상공인 정책 제안서의 서로 다른 패턴을 하나의 검증 실적으로 표현"
+    },
+    {
+      "id": "QA-016",
+      "type": "STRATEGY_PAGE_MISMATCH",
+      "severity": "WARN",
+      "text": "안전관리 페이지의 핵심 메시지가 크리에이터 확산 전략으로 작성되어 있습니다.",
+      "reason": "페이지 목적과 전략 축 불일치"
+    },
+    {
+      "id": "QA-017",
+      "type": "UNSUPPORTED_CLAIM",
+      "severity": "BLOCK",
+      "text": "기존 행사에서 무사고 10년 운영 실적을 보유하고 있습니다.",
+      "reason": "안전 운영 실적 company_fact 없음"
+    },
+    {
+      "id": "QA-018",
+      "type": "CLEAN",
+      "severity": "NONE",
+      "text": "PA-EVENT-004-P014의 대기열 분산 패턴을 이번 행사 동선에 맞게 재설계합니다.",
+      "reason": "reference pattern을 신규 제안에 활용하는 정상 사례"
+    },
+    {
+      "id": "QA-019",
+      "type": "CLEAN",
+      "severity": "NONE",
+      "text": "저작권 검수 자료가 부족하므로 신규 체크리스트를 AI_RECOMMENDATION으로 제안합니다.",
+      "reason": "근거 부족을 공개하고 신규 제안으로 분리한 정상 사례"
+    },
+    {
+      "id": "QA-020",
+      "type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "text": "PA-PR-007-P018은 개인정보 최소수집 원칙을 직접 지원합니다.",
+      "reason": "크리에이터 협업 자산으로 개인정보 원칙을 지원하지 않음"
     }
   ]
 }
