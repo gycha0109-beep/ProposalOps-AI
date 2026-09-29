@@ -1,0 +1,201 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-002-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v0_baseline",
+  "prompt_file": "prompts/rfp_analyzer/v0_baseline.md",
+  "prompt_sha256": "f30a27d02dbcbb9f3ec5c0e5faa056217f4455890a581010f909008bed2f2d8e",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 0,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-002",
+    "source_file": "data/raw/rfps/RFP-TEST-002.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-002.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T07:00:38.885270+00:00",
+    "git_commit": "668db650c9a3cb06078d33779406ecd01e9d2fa0",
+    "provider": "openai",
+    "provider_response_id": "resp_092b8f0cde1f53f9016abb62059b6487d1a1a8da7308ae98ed",
+    "latency_seconds": 17.4241,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 701,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2347,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3048
+    }
+  },
+  "raw_output": "# RFP-TEST-002 요약\n\n## 1. 사업 목적\n\n지역 문화시설과 관광자원의 온라인 홍보를 강화하고, 이용자의 콘텐츠 탐색을 실제 방문 행동으로 연결하는 것이 목적이다.\n\n핵심 방향은 다음과 같다.\n\n- 지역 문화·관광자원의 온라인 인지도 제고\n- 20~40대 국내 개별 여행객 및 지역 주민의 방문 동기 자극\n- 콘텐츠 발견 → 저장·상세 탐색 → 방문 계획·이동으로 이어지는 이용자 여정 설계\n- 도달률뿐 아니라 저장, 상세조회, 지도·예약 페이지 이동 등 방문 의도 중심 성과관리\n\n---\n\n## 2. 주요 대상\n\n### 핵심 타깃\n\n- 20~40대 국내 개별 여행객\n- 지역 주민\n\n### 방문 동기별 세분화 대상\n\n제안서에는 최소한 다음 방문 동기를 고려한 타깃 전략을 제시해야 한다.\n\n- 맛집·미식 탐방\n- 휴식·힐링\n- 체험·액티비티\n- 문화시설·전시·공연 관람\n\n타깃별 관심 정보, 콘텐츠 선호, 방문 전환 요인을 구분하여 제안하는 것이 필요하다.\n\n---\n\n## 3. 주요 과업\n\n| 구분 | 과업 | 수량·주기 |\n|---|---|---:|\n| 1 | 방문 동기별 타깃 세분화 및 홍보 전략 수립 | 1식 |\n| 2 | 세로형 숏폼 영상 제작 | 15편 |\n| 3 | 주말 추천 카드형 콘텐츠 제작 | 24건 |\n| 4 | 지역 크리에이터 협업 콘텐츠 운영 | 6건 |\n| 5 | 문화시설·관광지 연계 코스 콘텐츠 제작 | 8건 |\n| 6 | 성과 보고 | 월별 보고 및 최종 결과 보고 |\n\n### 과업 추진 시 중점사항\n\n- 모바일 이용자에 적합한 세로형 숏폼 기획\n- 공식 채널과 지역 크리에이터 간 역할 분담\n- 문화시설과 관광지를 연계한 방문 코스 제안\n- 방문 전 운영정보의 정확성 검수\n- 콘텐츠 이용 흐름과 방문 전환을 고려한 성과관리\n\n---\n\n## 4. 필수 산출물\n\nRFP에 명시된 과업 기준으로 다음 산출물이 요구된다.\n\n1. 방문 동기별 타깃 세분화 및 홍보 전략안\n2. 세로형 숏폼 영상 15편\n3. 주말 추천 카드형 콘텐츠 24건\n4. 지역 크리에이터 협업 콘텐츠 6건\n5. 문화시설·관광지 연계 코스 콘텐츠 8건\n6. 월별 성과 보고서\n7. 최종 결과 보고서\n8. 사업 종료 시 콘텐츠 목록\n9. 사업 종료 시 성과지표 원자료\n\n제안서에는 각 산출물의 제작 방식, 구성, 일정, 검수 절차 및 제출 형태를 구체화하는 것이 바람직하다.\n\n---\n\n## 5. 일정\n\n- 사업 기간: 계약일로부터 5개월\n- 월별 성과 보고 필요\n- 사업 종료 시 최종 결과 보고 및 원자료 제출 필요\n\n### 권장 일정 구성\n\n| 단계 | 주요 내용 |\n|---|---|\n| 1개월차 | 착수, 현황 및 타깃 분석, 방문 동기별 세분화, 홍보 전략 수립, 콘텐츠 운영계획 확정 |\n| 2개월차 | 숏폼·카드형·코스 콘텐츠 기획 및 제작 착수, 크리에이터 섭외·운영 준비 |\n| 3개월차 | 콘텐츠 제작·게시, 크리에이터 협업 콘텐츠 운영, 중간 성과 점검 |\n| 4개월차 | 콘텐츠 추가 제작·운영, 성과 기반 보완, 운영정보 재검수 |\n| 5개월차 | 잔여 콘텐츠 완료, 최종 성과 분석, 콘텐츠 목록·성과 원자료 정리, 최종 보고 |\n\n※ 실제 세부 일정은 발주처 협의 및 콘텐츠 검수 일정에 맞춰 제안해야 한다.\n\n---\n\n## 6. 예산\n\n- 총 사업비: **95,000,000원**\n- 별도 세부 예산 배분 기준은 제시되지 않음\n\n제안서에는 다음과 같은 비용 배분 계획을 포함하는 것이 좋다.\n\n- 전략 수립 및 기획\n- 숏폼 영상 제작\n- 카드형 콘텐츠 제작\n- 크리에이터 협업비\n- 촬영·편집·디자인 비용\n- 운영 및 검수\n- 성과 분석 및 보고\n- 제반 경비 및 부가세 포함 여부\n\n총액은 RFP의 사업비 **95,000,000원**을 초과하지 않도록 작성해야 한다.\n\n---\n\n## 7. 평가 기준\n\n| 평가 항목 | 배점 | 제안 시 중점사항 |\n|---|---:|---|\n| 사업 이해 | 15점 | 사업 목적, 대상, 방문 전환 과제에 대한 이해 |\n| 전략 적합성 | 25점 | 방문 동기별 타깃 전략 및 홍보 전략의 구체성 |\n| 콘텐츠 기획 | 25점 | 숏폼, 카드형, 코스 콘텐츠의 차별성·실행 가능성 |\n| 크리에이터 운영 | 15점 | 지역 크리에이터 선정, 역할 분담, 협업 및 관리 방안 |\n| 운영 및 검수 | 10점 | 운영정보 확인, 게시 전 검수, 변경사항 대응 체계 |\n| 성과관리 | 10점 | 도달 외 저장·상세조회·지도·예약 페이지 이동 등 KPI 설계 |\n\n### 고득점 핵심\n\n- 단순 노출 중심이 아닌 실제 방문 의도 중심의 전략 제시\n- 타깃별 콘텐츠와 행동 유도 방식을 구체화\n- 지역 크리에이터의 역할과 공식 채널의 기능을 명확히 구분\n- 운영정보 오류를 방지할 수 있는 검수 프로세스 제시\n- 측정 가능한 KPI와 원자료 관리방안 제시\n\n---\n\n## 8. 제안서에 반드시 포함해야 하는 내용\n\n### 1) 타깃 전략 — R-201\n\n맛집, 휴식, 체험, 문화관람 등 방문 동기별로 다음 내용을 제시해야 한다.\n\n- 타깃 세그먼트 정의\n- 세그먼트별 관심사와 이용 행태\n- 핵심 메시지\n- 적합 콘텐츠 유형\n- 방문 유도 방식\n\n### 2) 콘텐츠 구조 — R-202\n\n다음 단계로 이어지는 콘텐츠 이용 구조를 제시해야 한다.\n\n> 짧은 발견 콘텐츠 → 저장 → 상세 탐색 → 방문 계획\n\n콘텐츠별로 다음을 설명하는 것이 필요하다.\n\n- 최초 노출을 위한 후킹 방식\n- 저장을 유도하는 정보 구성\n- 상세 정보 확인 경로\n- 지도·예약·방문 계획으로 연결하는 CTA\n\n### 3) 영상 기획 — R-203\n\n세로형 숏폼 영상에 대해 다음 내용을 포함해야 한다.\n\n- 모바일 최적화 화면 구성\n- 영상 길이 및 편집 방향\n- 시작부 후킹 메시지\n- 자막·음원·장면 구성\n- 방문을 유도하는 행동 요청 방식\n\n### 4) 크리에이터 협업 — R-204\n\n다음 내용을 명확히 구분하여 제시해야 한다.\n\n- 공식 채널의 역할\n- 지역 크리에이터의 역할\n- 크리에이터 선정 기준\n- 콘텐츠 제작·검수·게시 방식\n- 협업 일정 및 커뮤니케이션 체계\n- 광고·표기·저작권 등 운영 기준\n\n### 5) 운영정보 검수 — R-205\n\n다음과 같은 변경 가능 정보를 게시 전에 확인하는 절차가 반드시 필요하다.\n\n- 휴관일\n- 운영시간\n- 매진 여부\n- 행사 일정\n- 예약 가능 여부\n- 입장·이용 조건\n\n권장 검수 절차는 다음과 같다.\n\n1. 정보 출처 및 담당자 지정\n2. 게시 전 최신 정보 확인\n3. 검수일·확인자 기록\n4. 변경사항 발생 시 수정·공지\n5. 게시 후 주기적 재확인\n\n### 6) 성과관리 — R-206\n\n도달과 노출뿐 아니라 방문 의도에 가까운 지표를 제시해야 한다.\n\n- 도달 및 노출\n- 영상 조회수·완주율\n- 콘텐츠 저장 수\n- 상세 페이지 조회\n- 프로필·링크 클릭\n- 지도 페이지 이동\n- 예약 페이지 이동\n- 콘텐츠 유형·타깃별 성과 비교\n- 월별 성과 추이 및 개선안\n\n---\n\n## 9. 주의할 제약사항\n\n1. **운영정보 임의 생성 금지**\n   - 실제 방문시설의 휴관, 운영시간, 행사 일정, 매진 여부 등을 확인 없이 작성해서는 안 된다.\n   - 콘텐츠 제작 전 공식 홈페이지, 시설 담당자 등 신뢰 가능한 출처를 통해 확인해야 한다.\n\n2. **과거 실적 근거 연결 필수**\n   - 과거 수행 실적을 제시할 경우 계약서, 결과보고서, 공개 링크 등 근거 자료를 연결해야 한다.\n   - 근거 없는 성과 수치나 실적은 제시하지 않는 것이 안전하다.\n\n3. **종료 시 원자료 제출**\n   - 사업 종료 시 콘텐츠 목록뿐 아니라 성과지표의 원자료도 제출해야 한다.\n   - 제안 단계에서 데이터 수집 항목, 저장 방식, 제출 포맷을 미리 제시하는 것이 필요하다.\n\n4. **예산 한도 준수**\n   - 총 사업비 95,000,000원 이내에서 모든 제작·운영·보고 비용을 편성해야 한다.\n\n5. **5개월 내 과업 완료**\n   - 총 53건의 콘텐츠 제작·운영 및 월별·최종 보고를 5개월 안에 수행해야 하므로 제작, 검수, 게시 일정을 현실적으로 제시해야 한다.\n\n6. **방문 전환 중심 제안 필요**\n   - 단순 조회수나 팔로워 증가만 강조하면 평가상 한계가 있다.\n   - 저장, 상세조회, 지도·예약 페이지 이동 등 실제 방문 가능성을 보여주는 지표를 중심으로 제안해야 한다.\n\n---\n\n## 10. 한눈에 보는 제안서 핵심 메시지\n\n> 방문 동기별 타깃을 세분화하고, 모바일 숏폼과 실용형 콘텐츠를 통해 이용자의 발견을 저장·탐색·방문 계획으로 연결하며, 정확한 운영정보 검수와 방문 의도 중심 KPI로 성과를 관리하는 지역 문화·관광 홍보 사업을 제안한다.",
+  "parsed_output": null,
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.5",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": false,
+    "output_truncated": false,
+    "metrics": {
+      "assertion_pass_rate": 0.9167,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 0.8571,
+      "requirement_assertion_recall": 1.0,
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "canonical_schema_valid": 0.0
+    },
+    "grounding": {
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "groundable_item_count": 0,
+      "source_quote_count": 0
+    },
+    "schema_contract": {
+      "canonical_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "project",
+        "requirements",
+        "scope"
+      ],
+      "actual_top_level_keys": [],
+      "valid": false
+    },
+    "passed": 11,
+    "total": 12,
+    "details": [
+      {
+        "id": "002-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 5개월",
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-02",
+        "metric": "exact_or_semantic",
+        "expected": "95,000,000원",
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-03",
+        "metric": "contains",
+        "expected_terms": [
+          "20~40대",
+          "여행객",
+          "지역 주민"
+        ],
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "15편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "24건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-06",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "크리에이터",
+          "quantity": "6건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-07",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "코스",
+          "quantity": "8건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-08",
+        "metric": "evaluation_sum",
+        "reason": "unstructured output cannot be safely summed",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "002-09",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "맛집",
+          "휴식",
+          "체험",
+          "문화관람"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-10",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저장",
+          "상세조회",
+          "예약"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-11",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "휴관",
+          "매진",
+          "운영시간",
+          "행사 일정"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-12",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}

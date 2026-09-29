@@ -1,0 +1,458 @@
+{
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 0,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 10,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 2,
+      "rfp_ids": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "json_parseable_rate": 0.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 0.8083,
+          "min": 0.7,
+          "max": 0.9167,
+          "stdev": 0.1084
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 0.8286,
+          "min": 0.8,
+          "max": 0.8571,
+          "stdev": 0.0285
+        },
+        "requirement_assertion_recall": {
+          "mean": 0.75,
+          "min": 0.5,
+          "max": 1.0,
+          "stdev": 0.25
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": null,
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 1374,
+          "mean": 687
+        },
+        "output_tokens": {
+          "total": 5076,
+          "mean": 2538
+        },
+        "total_tokens": {
+          "total": 6450,
+          "mean": 3225
+        },
+        "reasoning_tokens": {
+          "total": 41,
+          "mean": 20.5
+        }
+      },
+      "failed_assertions": [
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-06",
+            "001-07",
+            "001-09"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-08"
+          ]
+        }
+      ]
+    },
+    "v1_structured": {
+      "run_count": 2,
+      "rfp_ids": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "json_parseable_rate": 1.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 0.9083,
+          "min": 0.9,
+          "max": 0.9167,
+          "stdev": 0.0083
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 0.9285,
+          "min": 0.8571,
+          "max": 1.0,
+          "stdev": 0.0715
+        },
+        "requirement_assertion_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": null,
+        "canonical_schema_valid": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 1402,
+          "mean": 701
+        },
+        "output_tokens": {
+          "total": 2089,
+          "mean": 1044.5
+        },
+        "total_tokens": {
+          "total": 3491,
+          "mean": 1745.5
+        },
+        "reasoning_tokens": {
+          "total": 161,
+          "mean": 80.5
+        }
+      },
+      "failed_assertions": [
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v1_structured-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-07"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v1_structured-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-08"
+          ]
+        }
+      ]
+    },
+    "v2_grounded": {
+      "run_count": 2,
+      "rfp_ids": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "json_parseable_rate": 1.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 0.9083,
+          "min": 0.9,
+          "max": 0.9167,
+          "stdev": 0.0083
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 0.9285,
+          "min": 0.8571,
+          "max": 1.0,
+          "stdev": 0.0715
+        },
+        "requirement_assertion_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 1468,
+          "mean": 734
+        },
+        "output_tokens": {
+          "total": 4198,
+          "mean": 2099
+        },
+        "total_tokens": {
+          "total": 5666,
+          "mean": 2833
+        },
+        "reasoning_tokens": {
+          "total": 157,
+          "mean": 78.5
+        }
+      },
+      "failed_assertions": [
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-07"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-02"
+          ]
+        }
+      ]
+    },
+    "v3_final": {
+      "run_count": 2,
+      "rfp_ids": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "json_parseable_rate": 1.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 0.9083,
+          "min": 0.9,
+          "max": 0.9167,
+          "stdev": 0.0083
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 0.8286,
+          "min": 0.8,
+          "max": 0.8571,
+          "stdev": 0.0285
+        },
+        "requirement_assertion_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 1700,
+          "mean": 850
+        },
+        "output_tokens": {
+          "total": 6072,
+          "mean": 3036
+        },
+        "total_tokens": {
+          "total": 7772,
+          "mean": 3886
+        },
+        "reasoning_tokens": {
+          "total": 87,
+          "mean": 43.5
+        }
+      },
+      "failed_assertions": [
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-06"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-08"
+          ]
+        }
+      ]
+    },
+    "v4_compact_grounded": {
+      "run_count": 2,
+      "rfp_ids": [
+        "RFP-TEST-001",
+        "RFP-TEST-002"
+      ],
+      "json_parseable_rate": 1.0,
+      "output_truncated_rate": 0.0,
+      "metrics": {
+        "assertion_pass_rate": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "deliverable_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "numeric_fidelity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "requirement_assertion_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "unsupported_addition_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "source_quote_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "source_quote_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "canonical_schema_valid": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 2172,
+          "mean": 1086
+        },
+        "output_tokens": {
+          "total": 3343,
+          "mean": 1671.5
+        },
+        "total_tokens": {
+          "total": 5515,
+          "mean": 2757.5
+        },
+        "reasoning_tokens": {
+          "total": 211,
+          "mean": 105.5
+        }
+      },
+      "failed_assertions": []
+    }
+  }
+}

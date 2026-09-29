@@ -3,11 +3,12 @@
   "benchmark_version": "1.0",
   "candidate": "v4_compact_grounded",
   "prompt_file": "prompts/rfp_analyzer/v4_compact_grounded.md",
-  "status": "not_frozen",
+  "prompt_sha256": "1ed5ef662a216413e40b6e3481e2139bb6623a987b7efc42ceb1bfdf460e3a5b",
+  "status": "frozen",
   "acceptance_report": "reports/rfp-analyzer-v4-acceptance.json",
   "acceptance_required": true,
-  "holdout_allowed": false,
-  "candidate_commit": null,
-  "frozen_at": null,
-  "note": "Do not enable holdout until v4 has valid dev outputs and frozen acceptance passes."
+  "holdout_allowed": true,
+  "candidate_commit": "668db650c9a3cb06078d33779406ecd01e9d2fa0",
+  "frozen_at": "2026-09-29T07:01:30.454744+00:00",
+  "note": "Frozen only after dev acceptance passed. Do not modify prompt before holdout."
 }

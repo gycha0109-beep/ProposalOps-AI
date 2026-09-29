@@ -1,0 +1,494 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-001-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v3_final",
+  "prompt_file": "prompts/rfp_analyzer/v3_final.md",
+  "prompt_sha256": "2bb27eaf4c11193502668781217bbb85166bacebf5737447acd0abe7181fb6c0",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 0,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-001",
+    "source_file": "data/raw/rfps/RFP-TEST-001.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-001.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T07:00:11.446995+00:00",
+    "git_commit": "668db650c9a3cb06078d33779406ecd01e9d2fa0",
+    "provider": "openai",
+    "provider_response_id": "resp_02053b633bec222b016abb61e9b26887d1bdfc86b215cf35b8",
+    "latency_seconds": 17.8637,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 836,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 3052,
+      "output_tokens_details": {
+        "reasoning_tokens": 39
+      },
+      "total_tokens": 3888
+    }
+  },
+  "raw_output": "{\n  \"rfp_id\": \"RFP-TEST-001\",\n  \"project\": {\n    \"project_name\": \"청년 정책 디지털 홍보 콘텐츠 제작\",\n    \"issuer_type\": \"공공기관\",\n    \"project_period\": \"계약일로부터 6개월\",\n    \"target_audience\": \"만 19~34세 청년층\",\n    \"purpose\": \"청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다.\",\n    \"document_status\": \"포트폴리오 검증용 synthetic RFP이며 실제 발주 문서가 아님\",\n    \"source_quote\": \"청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다.\"\n  },\n  \"scope\": {\n    \"business_scope\": [\n      {\n        \"id\": \"S-001\",\n        \"item\": \"청년 정책 홍보 전략 수립\",\n        \"source_quote\": \"1. 청년 정책 홍보 전략 수립\"\n      },\n      {\n        \"id\": \"S-002\",\n        \"item\": \"월별 SNS 콘텐츠 기획\",\n        \"source_quote\": \"2. 월별 SNS 콘텐츠 기획\"\n      },\n      {\n        \"id\": \"S-003\",\n        \"item\": \"세로형 숏폼 영상 제작\",\n        \"quantity\": \"20편\",\n        \"source_quote\": \"3. 세로형 숏폼 영상 20편 제작\"\n      },\n      {\n        \"id\": \"S-004\",\n        \"item\": \"카드형 정보 콘텐츠 제작\",\n        \"quantity\": \"30건\",\n        \"source_quote\": \"4. 카드형 정보 콘텐츠 30건 제작\"\n      },\n      {\n        \"id\": \"S-005\",\n        \"item\": \"참여형 온라인 캠페인 운영\",\n        \"quantity\": \"2회\",\n        \"source_quote\": \"5. 참여형 온라인 캠페인 2회 운영\"\n      },\n      {\n        \"id\": \"S-006\",\n        \"item\": \"월간 성과 리포트 및 최종 결과 보고서 제출\",\n        \"source_quote\": \"6. 월간 성과 리포트 및 최종 결과 보고서 제출\"\n      }\n    ],\n    \"interpretation_note\": \"과업 범위에는 전략 수립, 월별 SNS 콘텐츠 기획, 영상·카드형 콘텐츠 제작, 캠페인 운영, 성과 보고가 포함된다.\"\n  },\n  \"deliverables\": [\n    {\n      \"deliverable\": \"청년 정책 홍보 전략\",\n      \"quantity\": \"unknown\",\n      \"timing\": \"unknown\",\n      \"source_quote\": \"1. 청년 정책 홍보 전략 수립\"\n    },\n    {\n      \"deliverable\": \"월별 SNS 콘텐츠 기획안\",\n      \"quantity\": \"unknown\",\n      \"timing\": \"월별\",\n      \"source_quote\": \"2. 월별 SNS 콘텐츠 기획\"\n    },\n    {\n      \"deliverable\": \"세로형 숏폼 영상\",\n      \"quantity\": \"20편\",\n      \"timing\": \"사업 기간 6개월 내\",\n      \"source_quote\": \"3. 세로형 숏폼 영상 20편 제작\"\n    },\n    {\n      \"deliverable\": \"카드형 정보 콘텐츠\",\n      \"quantity\": \"30건\",\n      \"timing\": \"사업 기간 6개월 내\",\n      \"source_quote\": \"4. 카드형 정보 콘텐츠 30건 제작\"\n    },\n    {\n      \"deliverable\": \"참여형 온라인 캠페인 운영 결과\",\n      \"quantity\": \"2회\",\n      \"timing\": \"사업 기간 6개월 내\",\n      \"source_quote\": \"5. 참여형 온라인 캠페인 2회 운영\"\n    },\n    {\n      \"deliverable\": \"월간 성과 리포트\",\n      \"quantity\": \"unknown\",\n      \"timing\": \"월간\",\n      \"source_quote\": \"6. 월간 성과 리포트 및 최종 결과 보고서 제출\"\n    },\n    {\n      \"deliverable\": \"최종 결과 보고서\",\n      \"quantity\": \"1건으로 해석 가능하나 원문상 수량 미명시\",\n      \"timing\": \"unknown\",\n      \"source_quote\": \"6. 월간 성과 리포트 및 최종 결과 보고서 제출\",\n      \"interpretation_note\": \"‘최종 결과 보고서’는 단일 최종 보고서를 의미하는 것으로 보이나 명시적 수량은 없다.\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"id\": \"R-001\",\n      \"category\": \"사업 이해\",\n      \"requirement\": \"정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다.\",\n      \"source_quote\": \"정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다.\"\n    },\n    {\n      \"id\": \"R-002\",\n      \"category\": \"전략\",\n      \"requirement\": \"청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다.\",\n      \"source_quote\": \"청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-003\",\n      \"category\": \"콘텐츠\",\n      \"requirement\": \"숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다.\",\n      \"source_quote\": \"숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-004\",\n      \"category\": \"참여\",\n      \"requirement\": \"단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다.\",\n      \"source_quote\": \"단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-005\",\n      \"category\": \"운영\",\n      \"requirement\": \"6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다.\",\n      \"source_quote\": \"6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-006\",\n      \"category\": \"성과관리\",\n      \"requirement\": \"도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다.\",\n      \"source_quote\": \"도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-007\",\n      \"category\": \"리스크\",\n      \"requirement\": \"저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.\",\n      \"source_quote\": \"저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.\"\n    }\n  ],\n  \"evaluation\": {\n    \"criteria\": [\n      {\n        \"criterion\": \"사업 이해도\",\n        \"points\": 15,\n        \"source_quote\": \"| 사업 이해도 | 15 |\"\n      },\n      {\n        \"criterion\": \"전략 적합성\",\n        \"points\": 25,\n        \"source_quote\": \"| 전략 적합성 | 25 |\"\n      },\n      {\n        \"criterion\": \"콘텐츠 기획력\",\n        \"points\": 25,\n        \"source_quote\": \"| 콘텐츠 기획력 | 25 |\"\n      },\n      {\n        \"criterion\": \"수행 체계\",\n        \"points\": 15,\n        \"source_quote\": \"| 수행 체계 | 15 |\"\n      },\n      {\n        \"criterion\": \"성과 관리\",\n        \"points\": 10,\n        \"source_quote\": \"| 성과 관리 | 10 |\"\n      },\n      {\n        \"criterion\": \"리스크 관리\",\n        \"points\": 10,\n        \"source_quote\": \"| 리스크 관리 | 10 |\"\n      }\n    ],\n    \"total_points\": 100,\n    \"source_quote\": \"평가 항목 표의 배점 합계\",\n    \"interpretation_note\": \"배점 합계는 100점이다. 세부 평가방법, 정성·정량 평가 기준, 가감점 기준은 명시되지 않았다.\"\n  },\n  \"constraints\": {\n    \"budget\": \"unknown\",\n    \"contract_conditions\": \"unknown\",\n    \"duration\": \"계약일로부터 6개월\",\n    \"target_age\": \"만 19~34세\",\n    \"production_quantities\": {\n      \"vertical_short_form_videos\": \"20편\",\n      \"card_information_contents\": \"30건\",\n      \"participatory_online_campaigns\": \"2회\"\n    },\n    \"mandatory_content_or_process_constraints\": [\n      {\n        \"constraint\": \"각 전략은 해당 RFP 요구사항과 연결되어야 한다.\",\n        \"source_quote\": \"각 전략은 해당 RFP 요구사항과 연결되어야 한다.\"\n      },\n      {\n        \"constraint\": \"수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.\",\n        \"source_quote\": \"수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.\"\n      },\n      {\n        \"constraint\": \"확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.\",\n        \"source_quote\": \"확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.\"\n      }\n    ],\n    \"risk_topics\": [\n      \"저작권\",\n      \"초상권\",\n      \"개인정보\",\n      \"정책 정보 오류\"\n    ],\n    \"source_quote\": \"저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.\"\n  },\n  \"submission_rules\": {\n    \"proposal_submission_format\": \"unknown\",\n    \"submission_deadline\": \"unknown\",\n    \"submission_method\": \"unknown\",\n    \"required_documents\": \"unknown\",\n    \"page_limit\": \"unknown\",\n    \"file_format\": \"unknown\",\n    \"stated_writing_conditions\": [\n      {\n        \"rule\": \"각 전략은 해당 RFP 요구사항과 연결되어야 한다.\",\n        \"source_quote\": \"각 전략은 해당 RFP 요구사항과 연결되어야 한다.\"\n      },\n      {\n        \"rule\": \"수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.\",\n        \"source_quote\": \"수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.\"\n      },\n      {\n        \"rule\": \"확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.\",\n        \"source_quote\": \"확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.\"\n      }\n    ]\n  },\n  \"open_questions\": [\n    {\n      \"topic\": \"예산\",\n      \"question\": \"총사업비 또는 예정가격이 얼마인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"제출\",\n      \"question\": \"제안서 제출 마감일, 제출 방법, 파일 형식, 분량 제한은 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"계약\",\n      \"question\": \"계약 방식, 대금 지급 조건, 지체상금 및 해지 조건은 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"검수\",\n      \"question\": \"콘텐츠 검수 주체, 검수 기한, 수정 가능 횟수 및 승인 기준은 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"콘텐츠 규격\",\n      \"question\": \"숏폼 영상의 영상 길이, 해상도, 플랫폼, 카드형 콘텐츠의 규격과 게시 채널은 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"게시 운영\",\n      \"question\": \"게시 일정, 게시 계정 운영 주체 및 매체비 포함 여부는 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"성과관리\",\n      \"question\": \"KPI의 목표값, 측정 도구, 보고서 양식 및 평가 기간은 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"권리\",\n      \"question\": \"제작물의 저작재산권 귀속, 사용 기간 및 2차 활용 범위는 무엇인가?\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"topic\": \"인력\",\n      \"question\": \"필수 투입 인력, 자격 요건 및 상주 여부는 무엇인가?\",\n      \"status\": \"unknown\"\n    }\n  ],\n  \"coverage_summary\": {\n    \"covered_sections\": [\n      \"사업 목적\",\n      \"사업 기간\",\n      \"대상\",\n      \"주요 과업\",\n      \"산출물\",\n      \"제안 요구 사항\",\n      \"평가 기준 및 배점\",\n      \"제안서 작성 조건\"\n    ],\n    \"missing_or_unknown_sections\": [\n      \"예산\",\n      \"제안서 제출 일정\",\n      \"제출 방법 및 형식\",\n      \"계약 조건\",\n      \"세부 콘텐츠 규격\",\n      \"검수 기준\",\n      \"KPI 목표값\",\n      \"권리 귀속 조건\",\n      \"필수 인력 요건\"\n    ],\n    \"quantitative_data_preserved\": [\n      \"계약일로부터 6개월\",\n      \"만 19~34세\",\n      \"세로형 숏폼 영상 20편\",\n      \"카드형 정보 콘텐츠 30건\",\n      \"참여형 온라인 캠페인 2회\",\n      \"평가 총점 100점\"\n    ],\n    \"overall_status\": \"partially_specified\",\n    \"source_quote\": \"포트폴리오 검증용 synthetic RFP입니다. 실제 발주 문서가 아닙니다.\"\n  }\n}",
+  "parsed_output": {
+    "rfp_id": "RFP-TEST-001",
+    "project": {
+      "project_name": "청년 정책 디지털 홍보 콘텐츠 제작",
+      "issuer_type": "공공기관",
+      "project_period": "계약일로부터 6개월",
+      "target_audience": "만 19~34세 청년층",
+      "purpose": "청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다.",
+      "document_status": "포트폴리오 검증용 synthetic RFP이며 실제 발주 문서가 아님",
+      "source_quote": "청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다."
+    },
+    "scope": {
+      "business_scope": [
+        {
+          "id": "S-001",
+          "item": "청년 정책 홍보 전략 수립",
+          "source_quote": "1. 청년 정책 홍보 전략 수립"
+        },
+        {
+          "id": "S-002",
+          "item": "월별 SNS 콘텐츠 기획",
+          "source_quote": "2. 월별 SNS 콘텐츠 기획"
+        },
+        {
+          "id": "S-003",
+          "item": "세로형 숏폼 영상 제작",
+          "quantity": "20편",
+          "source_quote": "3. 세로형 숏폼 영상 20편 제작"
+        },
+        {
+          "id": "S-004",
+          "item": "카드형 정보 콘텐츠 제작",
+          "quantity": "30건",
+          "source_quote": "4. 카드형 정보 콘텐츠 30건 제작"
+        },
+        {
+          "id": "S-005",
+          "item": "참여형 온라인 캠페인 운영",
+          "quantity": "2회",
+          "source_quote": "5. 참여형 온라인 캠페인 2회 운영"
+        },
+        {
+          "id": "S-006",
+          "item": "월간 성과 리포트 및 최종 결과 보고서 제출",
+          "source_quote": "6. 월간 성과 리포트 및 최종 결과 보고서 제출"
+        }
+      ],
+      "interpretation_note": "과업 범위에는 전략 수립, 월별 SNS 콘텐츠 기획, 영상·카드형 콘텐츠 제작, 캠페인 운영, 성과 보고가 포함된다."
+    },
+    "deliverables": [
+      {
+        "deliverable": "청년 정책 홍보 전략",
+        "quantity": "unknown",
+        "timing": "unknown",
+        "source_quote": "1. 청년 정책 홍보 전략 수립"
+      },
+      {
+        "deliverable": "월별 SNS 콘텐츠 기획안",
+        "quantity": "unknown",
+        "timing": "월별",
+        "source_quote": "2. 월별 SNS 콘텐츠 기획"
+      },
+      {
+        "deliverable": "세로형 숏폼 영상",
+        "quantity": "20편",
+        "timing": "사업 기간 6개월 내",
+        "source_quote": "3. 세로형 숏폼 영상 20편 제작"
+      },
+      {
+        "deliverable": "카드형 정보 콘텐츠",
+        "quantity": "30건",
+        "timing": "사업 기간 6개월 내",
+        "source_quote": "4. 카드형 정보 콘텐츠 30건 제작"
+      },
+      {
+        "deliverable": "참여형 온라인 캠페인 운영 결과",
+        "quantity": "2회",
+        "timing": "사업 기간 6개월 내",
+        "source_quote": "5. 참여형 온라인 캠페인 2회 운영"
+      },
+      {
+        "deliverable": "월간 성과 리포트",
+        "quantity": "unknown",
+        "timing": "월간",
+        "source_quote": "6. 월간 성과 리포트 및 최종 결과 보고서 제출"
+      },
+      {
+        "deliverable": "최종 결과 보고서",
+        "quantity": "1건으로 해석 가능하나 원문상 수량 미명시",
+        "timing": "unknown",
+        "source_quote": "6. 월간 성과 리포트 및 최종 결과 보고서 제출",
+        "interpretation_note": "‘최종 결과 보고서’는 단일 최종 보고서를 의미하는 것으로 보이나 명시적 수량은 없다."
+      }
+    ],
+    "requirements": [
+      {
+        "id": "R-001",
+        "category": "사업 이해",
+        "requirement": "정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다.",
+        "source_quote": "정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다."
+      },
+      {
+        "id": "R-002",
+        "category": "전략",
+        "requirement": "청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다.",
+        "source_quote": "청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다."
+      },
+      {
+        "id": "R-003",
+        "category": "콘텐츠",
+        "requirement": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다.",
+        "source_quote": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다."
+      },
+      {
+        "id": "R-004",
+        "category": "참여",
+        "requirement": "단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다.",
+        "source_quote": "단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다."
+      },
+      {
+        "id": "R-005",
+        "category": "운영",
+        "requirement": "6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다.",
+        "source_quote": "6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다."
+      },
+      {
+        "id": "R-006",
+        "category": "성과관리",
+        "requirement": "도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다.",
+        "source_quote": "도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다."
+      },
+      {
+        "id": "R-007",
+        "category": "리스크",
+        "requirement": "저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.",
+        "source_quote": "저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다."
+      }
+    ],
+    "evaluation": {
+      "criteria": [
+        {
+          "criterion": "사업 이해도",
+          "points": 15,
+          "source_quote": "| 사업 이해도 | 15 |"
+        },
+        {
+          "criterion": "전략 적합성",
+          "points": 25,
+          "source_quote": "| 전략 적합성 | 25 |"
+        },
+        {
+          "criterion": "콘텐츠 기획력",
+          "points": 25,
+          "source_quote": "| 콘텐츠 기획력 | 25 |"
+        },
+        {
+          "criterion": "수행 체계",
+          "points": 15,
+          "source_quote": "| 수행 체계 | 15 |"
+        },
+        {
+          "criterion": "성과 관리",
+          "points": 10,
+          "source_quote": "| 성과 관리 | 10 |"
+        },
+        {
+          "criterion": "리스크 관리",
+          "points": 10,
+          "source_quote": "| 리스크 관리 | 10 |"
+        }
+      ],
+      "total_points": 100,
+      "source_quote": "평가 항목 표의 배점 합계",
+      "interpretation_note": "배점 합계는 100점이다. 세부 평가방법, 정성·정량 평가 기준, 가감점 기준은 명시되지 않았다."
+    },
+    "constraints": {
+      "budget": "unknown",
+      "contract_conditions": "unknown",
+      "duration": "계약일로부터 6개월",
+      "target_age": "만 19~34세",
+      "production_quantities": {
+        "vertical_short_form_videos": "20편",
+        "card_information_contents": "30건",
+        "participatory_online_campaigns": "2회"
+      },
+      "mandatory_content_or_process_constraints": [
+        {
+          "constraint": "각 전략은 해당 RFP 요구사항과 연결되어야 한다.",
+          "source_quote": "각 전략은 해당 RFP 요구사항과 연결되어야 한다."
+        },
+        {
+          "constraint": "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.",
+          "source_quote": "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다."
+        },
+        {
+          "constraint": "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.",
+          "source_quote": "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다."
+        }
+      ],
+      "risk_topics": [
+        "저작권",
+        "초상권",
+        "개인정보",
+        "정책 정보 오류"
+      ],
+      "source_quote": "저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다."
+    },
+    "submission_rules": {
+      "proposal_submission_format": "unknown",
+      "submission_deadline": "unknown",
+      "submission_method": "unknown",
+      "required_documents": "unknown",
+      "page_limit": "unknown",
+      "file_format": "unknown",
+      "stated_writing_conditions": [
+        {
+          "rule": "각 전략은 해당 RFP 요구사항과 연결되어야 한다.",
+          "source_quote": "각 전략은 해당 RFP 요구사항과 연결되어야 한다."
+        },
+        {
+          "rule": "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.",
+          "source_quote": "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다."
+        },
+        {
+          "rule": "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.",
+          "source_quote": "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다."
+        }
+      ]
+    },
+    "open_questions": [
+      {
+        "topic": "예산",
+        "question": "총사업비 또는 예정가격이 얼마인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "제출",
+        "question": "제안서 제출 마감일, 제출 방법, 파일 형식, 분량 제한은 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "계약",
+        "question": "계약 방식, 대금 지급 조건, 지체상금 및 해지 조건은 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "검수",
+        "question": "콘텐츠 검수 주체, 검수 기한, 수정 가능 횟수 및 승인 기준은 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "콘텐츠 규격",
+        "question": "숏폼 영상의 영상 길이, 해상도, 플랫폼, 카드형 콘텐츠의 규격과 게시 채널은 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "게시 운영",
+        "question": "게시 일정, 게시 계정 운영 주체 및 매체비 포함 여부는 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "성과관리",
+        "question": "KPI의 목표값, 측정 도구, 보고서 양식 및 평가 기간은 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "권리",
+        "question": "제작물의 저작재산권 귀속, 사용 기간 및 2차 활용 범위는 무엇인가?",
+        "status": "unknown"
+      },
+      {
+        "topic": "인력",
+        "question": "필수 투입 인력, 자격 요건 및 상주 여부는 무엇인가?",
+        "status": "unknown"
+      }
+    ],
+    "coverage_summary": {
+      "covered_sections": [
+        "사업 목적",
+        "사업 기간",
+        "대상",
+        "주요 과업",
+        "산출물",
+        "제안 요구 사항",
+        "평가 기준 및 배점",
+        "제안서 작성 조건"
+      ],
+      "missing_or_unknown_sections": [
+        "예산",
+        "제안서 제출 일정",
+        "제출 방법 및 형식",
+        "계약 조건",
+        "세부 콘텐츠 규격",
+        "검수 기준",
+        "KPI 목표값",
+        "권리 귀속 조건",
+        "필수 인력 요건"
+      ],
+      "quantitative_data_preserved": [
+        "계약일로부터 6개월",
+        "만 19~34세",
+        "세로형 숏폼 영상 20편",
+        "카드형 정보 콘텐츠 30건",
+        "참여형 온라인 캠페인 2회",
+        "평가 총점 100점"
+      ],
+      "overall_status": "partially_specified",
+      "source_quote": "포트폴리오 검증용 synthetic RFP입니다. 실제 발주 문서가 아닙니다."
+    }
+  },
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.5",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": true,
+    "output_truncated": false,
+    "metrics": {
+      "assertion_pass_rate": 0.9,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 0.8,
+      "requirement_assertion_recall": 1.0,
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 1.0,
+      "source_quote_validity": 1.0,
+      "canonical_schema_valid": 0.0
+    },
+    "grounding": {
+      "source_quote_coverage": 1.0,
+      "source_quote_validity": 1.0,
+      "groundable_item_count": 14,
+      "source_quote_count": 14
+    },
+    "schema_contract": {
+      "canonical_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "project",
+        "requirements",
+        "scope"
+      ],
+      "actual_top_level_keys": [
+        "constraints",
+        "coverage_summary",
+        "deliverables",
+        "evaluation",
+        "open_questions",
+        "project",
+        "requirements",
+        "rfp_id",
+        "scope",
+        "submission_rules"
+      ],
+      "valid": false
+    },
+    "passed": 9,
+    "total": 10,
+    "details": [
+      {
+        "id": "001-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 6개월",
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-02",
+        "metric": "contains",
+        "expected_terms": [
+          "만 19~34세",
+          "청년"
+        ],
+        "evaluated_source": "project.target_audience",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-03",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "20편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "30건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "캠페인",
+          "quantity": "2회"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-06",
+        "metric": "evaluation_sum",
+        "actual_sum": null,
+        "expected_sum": 100,
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-07",
+        "metric": "unknown",
+        "expected": "unknown",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-08",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저작권",
+          "초상권",
+          "개인정보",
+          "정책 정보 오류"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-09",
+        "metric": "requirement_present",
+        "expected_term": "6개월간의 제작·검수·게시·보고 운영 체계",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-10",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}

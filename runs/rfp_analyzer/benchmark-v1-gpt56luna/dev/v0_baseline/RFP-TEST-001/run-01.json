@@ -1,0 +1,173 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-001-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v0_baseline",
+  "prompt_file": "prompts/rfp_analyzer/v0_baseline.md",
+  "prompt_sha256": "f30a27d02dbcbb9f3ec5c0e5faa056217f4455890a581010f909008bed2f2d8e",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 0,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-001",
+    "source_file": "data/raw/rfps/RFP-TEST-001.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-001.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T06:59:28.904914+00:00",
+    "git_commit": "668db650c9a3cb06078d33779406ecd01e9d2fa0",
+    "provider": "openai",
+    "provider_response_id": "resp_04189222bdc37450016abb61bc071c87d18772550d5eaac82c",
+    "latency_seconds": 21.5103,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 673,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2729,
+      "output_tokens_details": {
+        "reasoning_tokens": 41
+      },
+      "total_tokens": 3402
+    }
+  },
+  "raw_output": "# RFP 요약 정리\n\n## 1. 사업 목적\n\n청년 지원 정책에 대한 **인지도와 실제 정보 탐색 행동을 높이는 것**이 목적이다.  \n단순한 정책 노출을 넘어 청년층이 정책 정보를 확인하고, 콘텐츠에 반응하며, 캠페인에 참여하도록 유도해야 한다.\n\n---\n\n## 2. 주요 대상\n\n- **주요 대상:** 만 19~34세 청년층\n- **주요 특성으로 고려할 사항**\n  - SNS 및 모바일 중심의 콘텐츠 소비\n  - 짧고 직관적인 정보 선호\n  - 정책 용어와 복잡한 지원 조건에 대한 진입장벽\n  - 콘텐츠 시청 이후 실제 정책 정보 탐색 및 참여로 이어지는 전환 필요\n\n---\n\n## 3. 주요 과업\n\n| 구분 | 과업 내용 |\n|---|---|\n| 전략 수립 | 청년 정책 홍보 전략 수립 |\n| 콘텐츠 기획 | 월별 SNS 콘텐츠 기획 |\n| 숏폼 제작 | 세로형 숏폼 영상 20편 제작 |\n| 카드형 콘텐츠 | 카드형 정보 콘텐츠 30건 제작 |\n| 캠페인 운영 | 참여형 온라인 캠페인 2회 운영 |\n| 성과관리 | 월간 성과 리포트 제출 |\n| 최종보고 | 최종 결과 보고서 제출 |\n\n### 과업 수행 시 반드시 고려할 사항\n\n- 청년층의 콘텐츠 소비 특성 반영\n- 정책 인지도뿐 아니라 정보 탐색과 참여 전환까지 고려\n- 콘텐츠 제작 전반에 대한 기획·검수·게시·성과관리 체계 제시\n- 저작권, 초상권, 개인정보 및 정책 정보 오류에 대한 사전 검수\n\n---\n\n## 4. 필수 산출물\n\nRFP에 명시되었거나 과업 수행상 필요한 주요 산출물은 다음과 같다.\n\n1. **청년 정책 홍보 전략안**\n   - 대상 분석\n   - 정보 전달 문제 정의\n   - 핵심 메시지 및 채널 전략\n   - 콘텐츠 운영 방향\n\n2. **월별 SNS 콘텐츠 기획안**\n   - 월별 주제 및 콘텐츠 캘린더\n   - 게시 일정\n   - 콘텐츠별 목적과 타깃\n   - 채널별 운영 계획\n\n3. **세로형 숏폼 영상 20편**\n   - 영상 기획안 및 콘티\n   - 제작 영상 원본 또는 납품본\n   - 게시용 편집본 등\n\n4. **카드형 정보 콘텐츠 30건**\n   - 카드뉴스 기획안\n   - 디자인 제작물\n   - 게시용 파일\n\n5. **참여형 온라인 캠페인 2회 운영 결과물**\n   - 캠페인 기획안\n   - 참여 방식 및 운영 계획\n   - 홍보 콘텐츠\n   - 운영 결과 및 참여 실적\n\n6. **월간 성과 리포트**\n   - 도달\n   - 조회·시청\n   - 상호작용\n   - 참여 및 전환\n   - 월별 개선안\n\n7. **최종 결과 보고서**\n   - 전체 수행 내용\n   - 콘텐츠 및 캠페인 운영 결과\n   - KPI 달성 현황\n   - 성과 분석\n   - 개선점 및 향후 제언\n\n※ 세부 파일 형식, 원본 제공 여부, 검수 횟수 등은 RFP에 별도로 명시되어 있지 않으므로 제안서에서 합리적인 기준을 제시하는 것이 필요하다.\n\n---\n\n## 5. 일정\n\n- **총 사업 기간:** 계약일로부터 6개월\n- **월별 운영이 필요한 사항**\n  - SNS 콘텐츠 기획 및 제작\n  - 콘텐츠 검수 및 게시\n  - 성과 측정\n  - 월간 성과 리포트 제출\n- **기간 내 수행해야 하는 주요 내용**\n  - 홍보 전략 수립\n  - 숏폼 20편 제작\n  - 카드형 콘텐츠 30건 제작\n  - 온라인 캠페인 2회 운영\n  - 월간 리포트 및 최종보고서 제출\n\n### 제안서에 제시할 권장 일정 구조\n\n| 단계 | 주요 내용 |\n|---|---|\n| 착수·분석 | 사업 이해, 대상 분석, 정책 및 채널 현황 파악 |\n| 전략 수립 | 홍보 전략, 핵심 메시지, KPI 및 운영체계 수립 |\n| 콘텐츠 제작 | 월별 기획, 제작, 검수, 게시 |\n| 캠페인 운영 | 참여형 캠페인 2회 기획 및 실행 |\n| 성과관리 | 월간 데이터 분석 및 개선안 반영 |\n| 최종 정리 | 전체 성과 분석 및 최종 결과 보고 |\n\n---\n\n## 6. 예산\n\n- **RFP상 예산 정보가 제시되지 않음**\n- 제안서 작성 시 임의로 예산을 가정하거나 확정해서는 안 된다.\n- 가격 제안이 요구되는 경우 별도 가격입찰서 또는 발주처 양식의 기준을 확인해야 한다.\n- 예산 관련 정보가 없는 상태에서는 다음과 같은 비용 구성 체계를 제시하는 것이 적절하다.\n  - 전략 및 기획 비용\n  - 숏폼 영상 제작 비용\n  - 카드형 콘텐츠 제작 비용\n  - 캠페인 운영 비용\n  - 성과 측정 및 보고 비용\n  - 운영·관리 비용\n\n---\n\n## 7. 평가 기준\n\n| 평가 항목 | 배점 | 제안서 대응 방향 |\n|---|---:|---|\n| 사업 이해도 | 15점 | 청년층의 정책 정보 탐색 문제와 정보 전달 장벽을 구체적으로 정의 |\n| 전략 적합성 | 25점 | 청년층의 콘텐츠 이용 특성과 RFP 목적에 부합하는 홍보 전략 제시 |\n| 콘텐츠 기획력 | 25점 | 숏폼 및 카드형 콘텐츠의 차별화된 기획 방향과 운영 예시 제시 |\n| 수행 체계 | 15점 | 6개월간 기획·제작·검수·게시·보고 프로세스와 역할 체계 제시 |\n| 성과 관리 | 10점 | 도달, 시청, 상호작용, 참여 전환 중심의 KPI 체계 제시 |\n| 리스크 관리 | 10점 | 저작권·초상권·개인정보·정책 오류 검수 절차 제시 |\n\n### 평가상 핵심 포인트\n\n- 배점이 가장 높은 항목은 **전략 적합성 및 콘텐츠 기획력**\n- 단순 제작 역량보다 **정책 홍보 목적과 콘텐츠 전략의 연결성**이 중요\n- 콘텐츠 제작 계획, 캠페인 구조, KPI 및 리스크 대응이 서로 연결되어야 함\n\n---\n\n## 8. 제안서에 반드시 포함해야 하는 내용\n\n### 1) 사업 이해\n\n- 청년 정책 홍보의 대상과 특성\n- 현재 정책 정보 전달의 문제점\n- 청년층이 정책 정보를 탐색하고 참여하는 과정에 대한 분석\n- 본 사업의 목표와 성공 기준\n\n### 2) 홍보 전략\n\n- 핵심 홍보 방향\n- 정책 메시지 전달 방식\n- 채널별 역할\n- 청년층의 콘텐츠 소비 특성을 반영한 전략\n- 인지도에서 정보 탐색 및 참여로 이어지는 전환 구조\n\n### 3) 콘텐츠 기획\n\n- 숏폼 영상 20편의 기획 방향\n- 카드형 콘텐츠 30건의 구성 및 주제 방향\n- 월별 콘텐츠 운영 예시\n- 콘텐츠 유형별 메시지·형식·게시 전략\n- 실제 제작을 가정한 콘텐츠 샘플 또는 예시\n\n### 4) 참여형 캠페인 계획\n\n- 캠페인 목표\n- 참여 대상 및 참여 방식\n- 참여를 유도하는 장치\n- 홍보 및 운영 프로세스\n- 참여 결과 측정 방식\n- 캠페인 종료 후 성과 확산 계획\n\n### 5) 수행 및 운영 체계\n\n- 6개월 전체 일정\n- 월별 제작·검수·게시 일정\n- 발주처와의 협업 및 의사결정 체계\n- 담당 인력 및 역할\n- 수정·검수 대응 프로세스\n- 이슈 및 일정 지연 대응 방안\n\n### 6) 성과관리 체계\n\n다음 지표를 포함한 KPI 체계를 제시해야 한다.\n\n- **도달:** 노출 수, 도달 수, 신규 이용자 도달\n- **시청:** 영상 조회 수, 시청 지속률, 완주율\n- **상호작용:** 좋아요, 댓글, 공유, 저장 등\n- **참여 전환:** 캠페인 참여 수, 링크 클릭, 정책 정보 탐색 행동 등\n- **개선관리:** 월별 성과 분석과 다음 달 콘텐츠 개선안\n\n### 7) 리스크 관리\n\n다음 항목별 검수 절차를 구체적으로 제시해야 한다.\n\n- 저작권 침해 여부\n- 초상권 및 출연자 동의\n- 개인정보 노출 및 수집·처리\n- 정책 내용 및 지원 조건의 정확성\n- 게시 전 발주처 검수 및 승인\n- 오류 발생 시 수정·공지·재게시 절차\n\n### 8) 수행 실적 및 성과 근거\n\n- 기존 수행 실적을 제시할 경우 사업명, 기간, 역할, 결과 등 근거를 명확히 제시\n- 정량 성과를 제시할 경우 측정 기준과 출처를 함께 제시\n- 확인되지 않은 사례나 성과를 임의로 작성하지 않음\n\n---\n\n## 9. 주의할 제약사항\n\n1. **실제 발주 문서가 아닌 synthetic RFP**\n   - 본 문서는 포트폴리오 검증용으로 제공된 가상 RFP이므로 실제 사업 실적으로 오인하지 않아야 한다.\n\n2. **확인되지 않은 실적 생성 금지**\n   - 제안서 작성자가 수행하지 않은 사례를 임의로 만들어 제시해서는 안 된다.\n   - 정량 성과 역시 근거 없이 제시하지 않아야 한다.\n\n3. **RFP 요구사항과 전략의 연결 필수**\n   - 각 전략과 실행안은 R-001부터 R-007까지의 요구사항과 직접 연결되어야 한다.\n   - 단순 아이디어 나열이 아니라 요구사항별 대응 내용을 명확히 표시하는 것이 좋다.\n\n4. **정책 정보 오류 방지**\n   - 청년 정책의 지원 대상, 조건, 신청 기간 등은 변경될 수 있으므로 콘텐츠 제작 전 최신 정보 확인이 필요하다.\n\n5. **개인정보·초상권·저작권 준수**\n   - 캠페인 참여자 정보 수집, 이용자 이미지 활용, 외부 이미지·음원 사용 시 사전 동의 및 권리 확인이 필요하다.\n\n6. **예산 미제시**\n   - RFP에 예산이 없으므로 임의의 총사업비를 확정해 제시하지 않아야 한다.\n   - 필요 시 비용 항목별 산정 기준 또는 별도 확인 필요사항으로 제시한다.\n\n7. **세부 제작 조건 미제시**\n   - 영상 길이, 플랫폼, 카드뉴스 규격, 게시 채널, 검수 횟수, 원본 파일 제출 여부 등이 명시되지 않았다.\n   - 제안서에서 합리적인 기준을 제시하되, 발주처 협의가 필요한 사항은 별도 표기해야 한다.\n\n---\n\n## 10. 기획자용 핵심 정리\n\n이 사업은 **청년 정책을 알리는 콘텐츠 제작 사업이면서, 정책 정보 탐색과 이용자 참여까지 유도해야 하는 성과형 홍보 사업**이다. 따라서 제안서는 다음 흐름으로 구성하는 것이 효과적이다.\n\n> 청년층의 정보 탐색 문제 정의  \n> → SNS·숏폼 중심 홍보 전략  \n> → 영상·카드 콘텐츠 제작  \n> → 참여형 캠페인 운영  \n> → KPI 측정 및 월별 개선  \n> → 권리·개인정보·정책 오류 검수\n\n특히 평가 배점이 높은 **전략 적합성(25점)**과 **콘텐츠 기획력(25점)**을 중심으로, 각 콘텐츠와 캠페인이 최종적으로 정책 정보 탐색 및 참여 전환에 어떻게 기여하는지 명확하게 설명해야 한다.",
+  "parsed_output": null,
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.5",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": false,
+    "output_truncated": false,
+    "metrics": {
+      "assertion_pass_rate": 0.7,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 0.8,
+      "requirement_assertion_recall": 0.5,
+      "unsupported_addition_count": 0,
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "canonical_schema_valid": 0.0
+    },
+    "grounding": {
+      "source_quote_coverage": 0.0,
+      "source_quote_validity": null,
+      "groundable_item_count": 0,
+      "source_quote_count": 0
+    },
+    "schema_contract": {
+      "canonical_top_level_keys": [
+        "constraints",
+        "deliverables",
+        "evaluation",
+        "project",
+        "requirements",
+        "scope"
+      ],
+      "actual_top_level_keys": [],
+      "valid": false
+    },
+    "passed": 7,
+    "total": 10,
+    "details": [
+      {
+        "id": "001-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 6개월",
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-02",
+        "metric": "contains",
+        "expected_terms": [
+          "만 19~34세",
+          "청년"
+        ],
+        "evaluated_source": "raw_output_fallback",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-03",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "20편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "30건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "캠페인",
+          "quantity": "2회"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-06",
+        "metric": "evaluation_sum",
+        "reason": "unstructured output cannot be safely summed",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-07",
+        "metric": "unknown",
+        "expected": "unknown",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-08",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저작권",
+          "초상권",
+          "개인정보",
+          "정책 정보 오류"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-09",
+        "metric": "requirement_present",
+        "expected_term": "6개월간의 제작·검수·게시·보고 운영 체계",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-10",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}
