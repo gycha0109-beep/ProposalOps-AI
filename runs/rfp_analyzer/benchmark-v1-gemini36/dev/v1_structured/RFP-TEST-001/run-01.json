@@ -1,0 +1,274 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v1_structured-RFP-TEST-001-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v1_structured",
+  "prompt_file": "prompts/rfp_analyzer/v1_structured.md",
+  "prompt_sha256": "7aae21c992789f1f923ecfa07f0a22c081d4e592f3d3bd2d0bce05ebd87dbf9a",
+  "model": "gemini-3.6-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 15,
+    "max_503_retries": 0,
+    "retry_delay_seconds": 0
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-001",
+    "source_file": "data/raw/rfps/RFP-TEST-001.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-001.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T02:27:27.412882+00:00",
+    "git_commit": "8f18ff3a956add421ae4b86f427ce9b3ef5f524c",
+    "provider": "gemini",
+    "provider_response_id": "_SG7arrpDcjy-8YPu4eY0A8",
+    "latency_seconds": 18.2954,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 716,
+      "output_tokens": 997,
+      "total_tokens": 5056,
+      "output_tokens_details": {
+        "reasoning_tokens": 3343
+      },
+      "provider_usage_metadata": {
+        "promptTokenCount": 716,
+        "candidatesTokenCount": 997,
+        "totalTokenCount": 5056,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 716
+          }
+        ],
+        "thoughtsTokenCount": 3343,
+        "serviceTier": "standard"
+      }
+    }
+  },
+  "raw_output": "```json\n{\n  \"project\": {\n    \"name\": \"청년 정책 디지털 홍보 콘텐츠 제작\",\n    \"purpose\": [\n      \"청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다.\"\n    ],\n    \"target_audience\": [\n      \"만 19~34세 청년층\"\n    ],\n    \"duration\": \"계약일로부터 6개월\",\n    \"budget\": \"\"\n  },\n  \"scope\": [\n    \"청년 정책 홍보 전략 수립\",\n    \"월별 SNS 콘텐츠 기획\",\n    \"세로형 숏폼 영상 20편 제작\",\n    \"카드형 정보 콘텐츠 30건 제작\",\n    \"참여형 온라인 캠페인 2회 운영\",\n    \"월간 성과 리포트 및 최종 결과 보고서 제출\"\n  ],\n  \"deliverables\": [\n    {\n      \"name\": \"세로형 숏폼 영상\",\n      \"quantity\": \"20편\",\n      \"frequency\": \"\"\n    },\n    {\n      \"name\": \"카드형 정보 콘텐츠\",\n      \"quantity\": \"30건\",\n      \"frequency\": \"\"\n    },\n    {\n      \"name\": \"참여형 온라인 캠페인\",\n      \"quantity\": \"2회\",\n      \"frequency\": \"\"\n    },\n    {\n      \"name\": \"월간 성과 리포트\",\n      \"quantity\": \"\",\n      \"frequency\": \"월간\"\n    },\n    {\n      \"name\": \"최종 결과 보고서\",\n      \"quantity\": \"1건\",\n      \"frequency\": \"사업 종료 시\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"id\": \"R-001\",\n      \"title\": \"사업 이해\",\n      \"description\": \"정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다.\"\n    },\n    {\n      \"id\": \"R-002\",\n      \"title\": \"전략\",\n      \"description\": \"청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-003\",\n      \"title\": \"콘텐츠\",\n      \"description\": \"숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-004\",\n      \"title\": \"참여\",\n      \"description\": \"단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-005\",\n      \"title\": \"운영\",\n      \"description\": \"6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-006\",\n      \"title\": \"성과관리\",\n      \"description\": \"도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다.\"\n    },\n    {\n      \"id\": \"R-007\",\n      \"title\": \"리스크\",\n      \"description\": \"저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다.\"\n    }\n  ],\n  \"evaluation\": [\n    {\n      \"category\": \"사업 이해도\",\n      \"score\": 15\n    },\n    {\n      \"category\": \"전략 적합성\",\n      \"score\": 25\n    },\n    {\n      \"category\": \"콘텐츠 기획력\",\n      \"score\": 25\n    },\n    {\n      \"category\": \"수행 체계\",\n      \"score\": 15\n    },\n    {\n      \"category\": \"성과 관리\",\n      \"score\": 10\n    },\n    {\n      \"category\": \"리스크 관리\",\n      \"score\": 10\n    }\n  ],\n  \"constraints\": [\n    \"각 전략은 해당 RFP 요구사항과 연결되어야 한다.\",\n    \"수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.\",\n    \"확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다.\"\n  ]\n}\n```",
+  "parsed_output": {
+    "project": {
+      "name": "청년 정책 디지털 홍보 콘텐츠 제작",
+      "purpose": [
+        "청년 지원 정책의 인지도와 실제 정보 탐색 행동을 높인다."
+      ],
+      "target_audience": [
+        "만 19~34세 청년층"
+      ],
+      "duration": "계약일로부터 6개월",
+      "budget": ""
+    },
+    "scope": [
+      "청년 정책 홍보 전략 수립",
+      "월별 SNS 콘텐츠 기획",
+      "세로형 숏폼 영상 20편 제작",
+      "카드형 정보 콘텐츠 30건 제작",
+      "참여형 온라인 캠페인 2회 운영",
+      "월간 성과 리포트 및 최종 결과 보고서 제출"
+    ],
+    "deliverables": [
+      {
+        "name": "세로형 숏폼 영상",
+        "quantity": "20편",
+        "frequency": ""
+      },
+      {
+        "name": "카드형 정보 콘텐츠",
+        "quantity": "30건",
+        "frequency": ""
+      },
+      {
+        "name": "참여형 온라인 캠페인",
+        "quantity": "2회",
+        "frequency": ""
+      },
+      {
+        "name": "월간 성과 리포트",
+        "quantity": "",
+        "frequency": "월간"
+      },
+      {
+        "name": "최종 결과 보고서",
+        "quantity": "1건",
+        "frequency": "사업 종료 시"
+      }
+    ],
+    "requirements": [
+      {
+        "id": "R-001",
+        "title": "사업 이해",
+        "description": "정책 홍보 대상과 현재 정보 전달 문제를 정의해야 한다."
+      },
+      {
+        "id": "R-002",
+        "title": "전략",
+        "description": "청년층의 콘텐츠 소비 특성을 고려한 핵심 홍보 전략을 제시해야 한다."
+      },
+      {
+        "id": "R-003",
+        "title": "콘텐츠",
+        "description": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시를 제시해야 한다."
+      },
+      {
+        "id": "R-004",
+        "title": "참여",
+        "description": "단순 도달을 넘어 이용자 참여를 유도할 수 있는 캠페인 구조를 제시해야 한다."
+      },
+      {
+        "id": "R-005",
+        "title": "운영",
+        "description": "6개월간의 제작·검수·게시·보고 운영 체계를 제시해야 한다."
+      },
+      {
+        "id": "R-006",
+        "title": "성과관리",
+        "description": "도달, 시청, 상호작용, 참여 전환 등을 포함한 KPI 체계를 제시해야 한다."
+      },
+      {
+        "id": "R-007",
+        "title": "리스크",
+        "description": "저작권, 초상권, 개인정보, 정책 정보 오류에 대한 검수 절차를 제시해야 한다."
+      }
+    ],
+    "evaluation": [
+      {
+        "category": "사업 이해도",
+        "score": 15
+      },
+      {
+        "category": "전략 적합성",
+        "score": 25
+      },
+      {
+        "category": "콘텐츠 기획력",
+        "score": 25
+      },
+      {
+        "category": "수행 체계",
+        "score": 15
+      },
+      {
+        "category": "성과 관리",
+        "score": 10
+      },
+      {
+        "category": "리스크 관리",
+        "score": 10
+      }
+    ],
+    "constraints": [
+      "각 전략은 해당 RFP 요구사항과 연결되어야 한다.",
+      "수행 실적이나 정량 성과를 제시하는 경우 근거를 명확히 밝혀야 한다.",
+      "확인되지 않은 기존 수행 사례를 임의 생성해서는 안 된다."
+    ]
+  },
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.1",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": true,
+    "metrics": {
+      "assertion_pass_rate": 0.9,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 1.0,
+      "requirement_assertion_recall": 1.0,
+      "unsupported_addition_count": 0
+    },
+    "passed": 9,
+    "total": 10,
+    "details": [
+      {
+        "id": "001-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 6개월",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-02",
+        "metric": "contains",
+        "expected_terms": [
+          "만 19~34세",
+          "청년"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-03",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "20편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "30건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "캠페인",
+          "quantity": "2회"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-06",
+        "metric": "evaluation_sum",
+        "actual_sum": 100,
+        "expected_sum": 100,
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-07",
+        "metric": "unknown",
+        "actual": "",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-08",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저작권",
+          "초상권",
+          "개인정보",
+          "정책 정보 오류"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-09",
+        "metric": "requirement_present",
+        "expected_term": "6개월간의 제작·검수·게시·보고 운영 체계",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-10",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}

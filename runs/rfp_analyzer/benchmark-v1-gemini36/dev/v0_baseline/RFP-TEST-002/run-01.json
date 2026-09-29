@@ -1,0 +1,185 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-002-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v0_baseline",
+  "prompt_file": "prompts/rfp_analyzer/v0_baseline.md",
+  "prompt_sha256": "f30a27d02dbcbb9f3ec5c0e5faa056217f4455890a581010f909008bed2f2d8e",
+  "model": "gemini-3.6-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 15,
+    "max_503_retries": 0,
+    "retry_delay_seconds": 0
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-002",
+    "source_file": "data/raw/rfps/RFP-TEST-002.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-002.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T02:29:03.421346+00:00",
+    "git_commit": "8f18ff3a956add421ae4b86f427ce9b3ef5f524c",
+    "provider": "gemini",
+    "provider_response_id": "ZSK7asLgH5Hc_uMPlsqJ-QE",
+    "latency_seconds": 10.013,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 712,
+      "output_tokens": 846,
+      "total_tokens": 2859,
+      "output_tokens_details": {
+        "reasoning_tokens": 1301
+      },
+      "provider_usage_metadata": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 846,
+        "totalTokenCount": 2859,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 712
+          }
+        ],
+        "thoughtsTokenCount": 1301,
+        "serviceTier": "standard"
+      }
+    }
+  },
+  "raw_output": "[RFP-TEST-002] **지역 문화·관광 디지털 홍보 사업** 제안서 핵심 요약입니다.\n\n---\n\n### 1. 사업 개요\n* **사업 목적:** 지역 문화시설 및 관광자원의 온라인 탐색/소비를 실제 방문 행동으로 전환\n* **주요 대상:** 20~40대 국내 개별 여행객(FIT) 및 지역 주민\n* **사업 기간:** 계약일로부터 5개월\n* **총 사업비:** 95,000,000원 (9,500만 원)\n\n---\n\n### 2. 주요 과업\n1. **전략 수립:** 방문 동기별 타깃 세분화 및 디지털 홍보 전략 수립\n2. **콘텐츠 제작:**\n   * 세로형 숏폼 영상 **15편**\n   * 주말 추천 카드형 콘텐츠 **24건**\n   * 문화시설·관광지 연계 코스 콘텐츠 **8건**\n3. **크리에이터 협업:** 지역 크리에이터 연계 콘텐츠 **6건** 운영\n4. **보고 및 관리:** 월별 성과 보고 및 최종 결과 보고\n\n---\n\n### 3. 필수 산출물\n* **제작 콘텐츠 총합:** 숏폼 15편, 카드뉴스 24건, 크리에이터 콘텐츠 6건, 연계코스 콘텐츠 8건\n* **보고서:** 월별 성과보고서, 최종 결과보고서\n* **종료 제출물:** 전체 콘텐츠 목록, 성과지표 원자료(RAW Data)\n\n---\n\n### 4. 제안서에 반드시 포함해야 하는 내용 (필수 요구사항)\n\n| 구분 | 요구 항목 | 주요 작성 내용 |\n| :--- | :--- | :--- |\n| **R-201** | **타깃 전략** | 방문 동기(맛집, 휴식, 체험, 문화관람 등)에 따른 세분화 전략 |\n| **R-202** | **콘텐츠 구조** | 발견(노출) → 저장 → 상세 탐색 → 방문 계획으로 이어지는 유도 구조 |\n| **R-203** | **영상 기획** | 세로형 숏폼의 메시지 구성 및 실제 방문/클릭을 유도하는 CTA 방식 |\n| **R-204** | **크리에이터 협업** | 공식 채널과 지역 크리에이터 간 역할 분담 및 협업 운영 방안 |\n| **R-205** | **운영정보 검수** | 휴관, 매진, 운영시간 등 최신/유효 정보에 대한 게시 전 검수 절차 |\n| **R-206** | **성과관리** | 단순 도달을 넘어 저장, 상세조회, 지도/예약 페이지 전환 등 방문 의도 중심 KPI 설정 |\n\n---\n\n### 5. 평가 기준 (배점)\n\n* **전략 적합성 (25점)** & **콘텐츠 기획 (25점)** 배점이 가장 높음 (총 50%)\n* 사업 이해 (15점) / 크리에이터 운영 (15점)\n* 운영 및 검수 (10점) / 성과관리 (10점)\n\n---\n\n### 6. 주의할 제약사항 (신경 써야 할 점)\n* **정보 정확성:** 실제 방문시설의 운영정보(휴관일, 시간, 요금 등)를 임의로 작성/추정 금지 (R-205 검수 절차 수립과 연계)\n* **실적 증빙:** 과거 수행 실적 제시 시 반드시 근거 증빙 자료를 첨부/연결할 것\n* **데이터 제출:** 사업 종료 시 단순 요약본이 아닌 **성과지표 원자료(RAW Data)**와 전체 **콘텐츠 목록** 제출 필수",
+  "parsed_output": null,
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.1",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": false,
+    "metrics": {
+      "assertion_pass_rate": 0.8333,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 0.8571,
+      "requirement_assertion_recall": 0.6667,
+      "unsupported_addition_count": 0
+    },
+    "passed": 10,
+    "total": 12,
+    "details": [
+      {
+        "id": "002-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 5개월",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-02",
+        "metric": "exact_or_semantic",
+        "expected": "95,000,000원",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-03",
+        "metric": "contains",
+        "expected_terms": [
+          "20~40대",
+          "여행객",
+          "지역 주민"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "15편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "24건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-06",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "크리에이터",
+          "quantity": "6건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-07",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "코스",
+          "quantity": "8건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-08",
+        "metric": "evaluation_sum",
+        "reason": "unstructured output cannot be safely summed",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "002-09",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "맛집",
+          "휴식",
+          "체험",
+          "문화관람"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-10",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저장",
+          "상세조회",
+          "예약"
+        ],
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "002-11",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "휴관",
+          "매진",
+          "운영시간",
+          "행사 일정"
+        ],
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "002-12",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}

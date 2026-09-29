@@ -1,0 +1,158 @@
+{
+  "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-001-01",
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v0_baseline",
+  "prompt_file": "prompts/rfp_analyzer/v0_baseline.md",
+  "prompt_sha256": "f30a27d02dbcbb9f3ec5c0e5faa056217f4455890a581010f909008bed2f2d8e",
+  "model": "gemini-3.6-flash",
+  "parameters": {
+    "thinking_level": "medium",
+    "max_output_tokens": 6000,
+    "request_delay_seconds": 15,
+    "max_503_retries": 0,
+    "retry_delay_seconds": 0
+  },
+  "input": {
+    "rfp_id": "RFP-TEST-001",
+    "source_file": "data/raw/rfps/RFP-TEST-001.md",
+    "gold_file": "evals/frozen/v1/dev/rfp-analyzer/RFP-TEST-001.json"
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-29T02:26:54.115572+00:00",
+    "git_commit": "8f18ff3a956add421ae4b86f427ce9b3ef5f524c",
+    "provider": "gemini",
+    "provider_response_id": "3yG7apLZJ7Cu1MkPh8y5gQc",
+    "latency_seconds": 14.6196,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 681,
+      "output_tokens": 1134,
+      "total_tokens": 3417,
+      "output_tokens_details": {
+        "reasoning_tokens": 1602
+      },
+      "provider_usage_metadata": {
+        "promptTokenCount": 681,
+        "candidatesTokenCount": 1134,
+        "totalTokenCount": 3417,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 681
+          }
+        ],
+        "thoughtsTokenCount": 1602,
+        "serviceTier": "standard"
+      }
+    }
+  },
+  "raw_output": "제안서 작성에 앞서 기획자가 핵심 내용을 빠르게 파악할 수 있도록 **RFP-TEST-001(청년 정책 디지털 홍보 콘텐츠 제작 용역)**의 요약 및 분석 결과를 정리하였습니다.\n\n---\n\n# [RFP 요약] 청년 정책 디지털 홍보 콘텐츠 제작 용역\n\n### 1. 사업 목적\n* 청년 지원 정책에 대한 **인지도 제고**\n* 단순 정보 전달을 넘어 청년층의 **실제 정보 탐색 및 행동 전환 유도**\n\n### 2. 주요 대상\n* **만 19세 ~ 34세 청년층** (타깃의 디지털/콘텐츠 소비 특성 고려 필요)\n\n### 3. 주요 과업 (Work Scope)\n1. **전략 및 기획:** 청년 정책 홍보 전략 수립 및 월별 SNS 콘텐츠 기획\n2. **영상 제작:** 세로형 숏폼 영상 **20편**\n3. **카드뉴스 제작:** 카드형 정보 콘텐츠 **30건**\n4. **캠페인 운영:** 참여형 온라인 캠페인 **2회**\n5. **보고 및 관리:** 월간 성과 리포트 작성 및 최종 결과 보고\n\n### 4. 필수 산출물\n* **콘텐츠 실물:** 세로형 숏폼 영상 20편, 카드형 정보 콘텐츠 30건\n* **보고서:** 월간 성과 리포트(월 1회, 총 6회), 최종 결과 보고서(1회)\n* 기타 캠페인 운영 관련 결과물 및 기획서\n\n### 5. 일정 및 예산\n* **사업 기간:** 계약일로부터 **6개월**\n* **사업 예산:** **RFP 내 미명시** *(입찰 공고문 확인 또는 발주처 사전 확인 필요)*\n\n---\n\n### 6. 평가 기준 (총점 100점)\n> **전략 적합성**과 **콘텐츠 기획력**에 가장 높은 배점(총 50점)이 할당되어 있습니다.\n\n| 평가 항목 | 배점 | 핵심 착안점 |\n| :--- | :---: | :--- |\n| **전략 적합성** | **25** | 청년층 소비 특성 반영 및 요구사항 간 연계성 |\n| **콘텐츠 기획력** | **25** | 숏폼/카드뉴스 기획의 창의성 및 전달력 |\n| **사업 이해도** | **15** | 타깃 및 현 정보 전달 문제점에 대한 명확한 정의 |\n| **수행 체계** | **15** | 6개월간의 제작·검수·게시·보고 프로세스 효율성 |\n| **성과 관리** | **10** | KPI 체계의 타당성 (도달, 시청, 상호작용, 전환) |\n| **리스크 관리** | **10** | 저작권·초상권·개인정보·정책 오류 검수 절차 |\n\n---\n\n### 7. 제안서에 반드시 포함해야 하는 내용 (RFP 요구사항 매핑)\n\n* **[R-001] 사업 이해:** 정책 홍보 대상 분석 및 현 정보 전달 구조의 문제점 정의\n* **[R-002] 홍보 전략:** 청년층 미디어 소비 트렌드를 반영한 핵심 홍보 콘셉트 및 전략\n* **[R-003] 콘텐츠 기획:** \n  * 세로형 숏폼(20편) 및 카드뉴스(30건)의 기획 방향\n  * 실제 제작 예시(시안/콘티 수준의 예시 제시 권장)\n* **[R-004] 참여 캠페인:** 단순 노출을 넘어 청년들의 자발적 참여 및 행동을 유도할 온라인 캠페인(2회) 실행안\n* **[R-005] 운영 체계:** 6개월간의 제작 ➔ 검수 ➔ 게시 ➔ 성과 보고 체계 및 전담 인력 구성\n* **[R-006] 성과 관리(KPI):** 단순 조회수 외에 '상호작용 및 정책 정보 탐색 전환'까지 측정할 성과지표 체계\n* **[R-007] 리스크 관리:** 법적 이슈(저작권/초상권/개인정보) 및 정책 내용 오류 검수를 위한 사전/사후 프로세스\n\n---\n\n### 8. 주의할 제약사항 (기획자 유의사항)\n\n1. **허위 실적 작성 금지 (중요):**\n   * 확인되지 않은 기존 수행 사례를 임의로 생성하거나 가공해서는 안 됨.\n2. **근거 명확화:**\n   * 제안서 내 제시하는 수행 실적이나 정량 성과에는 반드시 객관적 근거/증빙을 명시해야 함.\n3. **요구사항 연계성 확보:**\n   * 제안하는 모든 전략 및 기획은 RFP의 요구사항(R-001~R-007)과 직접적으로 연결되도록 목차 및 내용을 구성해야 함.",
+  "parsed_output": null,
+  "evaluation": {
+    "track": "rfp_analyzer",
+    "evaluator_version": "1.1",
+    "gold_version": "1.0",
+    "split": "dev",
+    "json_parseable": false,
+    "metrics": {
+      "assertion_pass_rate": 0.5,
+      "deliverable_recall": 1.0,
+      "numeric_fidelity": 0.6,
+      "requirement_assertion_recall": 0.0,
+      "unsupported_addition_count": 0
+    },
+    "passed": 5,
+    "total": 10,
+    "details": [
+      {
+        "id": "001-01",
+        "metric": "exact_or_semantic",
+        "expected": "계약일로부터 6개월",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-02",
+        "metric": "contains",
+        "expected_terms": [
+          "만 19~34세",
+          "청년"
+        ],
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-03",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "숏폼",
+          "quantity": "20편"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-04",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "카드",
+          "quantity": "30건"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-05",
+        "metric": "deliverable",
+        "expected": {
+          "name_contains": "캠페인",
+          "quantity": "2회"
+        },
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-06",
+        "metric": "evaluation_sum",
+        "reason": "unstructured output cannot be safely summed",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-07",
+        "metric": "unknown",
+        "expected": "unknown",
+        "pass": true,
+        "critical": true
+      },
+      {
+        "id": "001-08",
+        "metric": "requirement_terms",
+        "expected_terms": [
+          "저작권",
+          "초상권",
+          "개인정보",
+          "정책 정보 오류"
+        ],
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-09",
+        "metric": "requirement_present",
+        "expected_term": "6개월간의 제작·검수·게시·보고 운영 체계",
+        "pass": false,
+        "critical": true
+      },
+      {
+        "id": "001-10",
+        "metric": "unsupported_addition",
+        "forbidden_hits": [],
+        "pass": true,
+        "critical": true
+      }
+    ]
+  }
+}

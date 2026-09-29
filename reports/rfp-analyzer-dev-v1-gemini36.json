@@ -10,20 +10,21 @@
     "max_503_retries": 0,
     "retry_delay_seconds": 0
   },
-  "run_count": 4,
+  "run_count": 7,
   "versions": {
     "v0_baseline": {
-      "run_count": 1,
+      "run_count": 2,
       "rfp_ids": [
-        "RFP-TEST-001"
+        "RFP-TEST-001",
+        "RFP-TEST-002"
       ],
       "json_parseable_rate": 0.0,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.8,
-          "min": 0.8,
-          "max": 0.8,
-          "stdev": 0.0
+          "mean": 0.6666,
+          "min": 0.5,
+          "max": 0.8333,
+          "stdev": 0.1667
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -32,16 +33,16 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.8,
-          "min": 0.8,
-          "max": 0.8,
-          "stdev": 0.0
+          "mean": 0.7286,
+          "min": 0.6,
+          "max": 0.8571,
+          "stdev": 0.1285
         },
         "requirement_assertion_recall": {
-          "mean": 0.5,
-          "min": 0.5,
-          "max": 0.5,
-          "stdev": 0.0
+          "mean": 0.3333,
+          "min": 0.0,
+          "max": 0.6667,
+          "stdev": 0.3333
         },
         "unsupported_addition_count": {
           "mean": 0,
@@ -52,20 +53,20 @@
       },
       "usage": {
         "input_tokens": {
-          "total": 681,
-          "mean": 681
+          "total": 1393,
+          "mean": 696.5
         },
         "output_tokens": {
-          "total": 973,
-          "mean": 973
+          "total": 1980,
+          "mean": 990
         },
         "total_tokens": {
-          "total": 3502,
-          "mean": 3502
+          "total": 6276,
+          "mean": 3138
         },
         "reasoning_tokens": {
-          "total": 1848,
-          "mean": 1848
+          "total": 2903,
+          "mean": 1451.5
         }
       },
       "failed_assertions": [
@@ -73,24 +74,36 @@
           "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-001-01",
           "rfp_id": "RFP-TEST-001",
           "failed_case_ids": [
+            "001-01",
+            "001-02",
             "001-06",
+            "001-08",
             "001-09"
+          ]
+        },
+        {
+          "run_id": "rfp_analyzer-1.0-dev-v0_baseline-RFP-TEST-002-01",
+          "rfp_id": "RFP-TEST-002",
+          "failed_case_ids": [
+            "002-08",
+            "002-11"
           ]
         }
       ]
     },
     "v1_structured": {
-      "run_count": 1,
+      "run_count": 2,
       "rfp_ids": [
-        "RFP-TEST-001"
+        "RFP-TEST-001",
+        "RFP-TEST-002"
       ],
       "json_parseable_rate": 1.0,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.9,
+          "mean": 0.95,
           "min": 0.9,
-          "max": 0.9,
-          "stdev": 0.0
+          "max": 1.0,
+          "stdev": 0.05
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -119,20 +132,20 @@
       },
       "usage": {
         "input_tokens": {
-          "total": 716,
-          "mean": 716
+          "total": 1463,
+          "mean": 731.5
         },
         "output_tokens": {
-          "total": 997,
-          "mean": 997
+          "total": 2095,
+          "mean": 1047.5
         },
         "total_tokens": {
-          "total": 3563,
-          "mean": 3563
+          "total": 9809,
+          "mean": 4904.5
         },
         "reasoning_tokens": {
-          "total": 1850,
-          "mean": 1850
+          "total": 6251,
+          "mean": 3125.5
         }
       },
       "failed_assertions": [
@@ -148,14 +161,14 @@
     "v2_grounded": {
       "run_count": 1,
       "rfp_ids": [
-        "RFP-TEST-002"
+        "RFP-TEST-001"
       ],
       "json_parseable_rate": 1.0,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.6667,
-          "min": 0.6667,
-          "max": 0.6667,
+          "mean": 0.6,
+          "min": 0.6,
+          "max": 0.6,
           "stdev": 0.0
         },
         "deliverable_recall": {
@@ -165,9 +178,9 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.5714,
-          "min": 0.5714,
-          "max": 0.5714,
+          "mean": 0.6,
+          "min": 0.6,
+          "max": 0.6,
           "stdev": 0.0
         },
         "requirement_assertion_recall": {
@@ -185,47 +198,48 @@
       },
       "usage": {
         "input_tokens": {
-          "total": 770,
-          "mean": 770
+          "total": 739,
+          "mean": 739
         },
         "output_tokens": {
-          "total": 1960,
-          "mean": 1960
+          "total": 2019,
+          "mean": 2019
         },
         "total_tokens": {
-          "total": 6289,
-          "mean": 6289
+          "total": 5021,
+          "mean": 5021
         },
         "reasoning_tokens": {
-          "total": 3559,
-          "mean": 3559
+          "total": 2263,
+          "mean": 2263
         }
       },
       "failed_assertions": [
         {
-          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-002-01",
-          "rfp_id": "RFP-TEST-002",
+          "run_id": "rfp_analyzer-1.0-dev-v2_grounded-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
           "failed_case_ids": [
-            "002-01",
-            "002-02",
-            "002-03",
-            "002-08"
+            "001-01",
+            "001-02",
+            "001-06",
+            "001-07"
           ]
         }
       ]
     },
     "v3_final": {
-      "run_count": 1,
+      "run_count": 2,
       "rfp_ids": [
+        "RFP-TEST-001",
         "RFP-TEST-002"
       ],
-      "json_parseable_rate": 1.0,
+      "json_parseable_rate": 0.5,
       "metrics": {
         "assertion_pass_rate": {
-          "mean": 0.9167,
-          "min": 0.9167,
+          "mean": 0.8583,
+          "min": 0.8,
           "max": 0.9167,
-          "stdev": 0.0
+          "stdev": 0.0583
         },
         "deliverable_recall": {
           "mean": 1.0,
@@ -234,10 +248,10 @@
           "stdev": 0.0
         },
         "numeric_fidelity": {
-          "mean": 0.8571,
-          "min": 0.8571,
+          "mean": 0.8286,
+          "min": 0.8,
           "max": 0.8571,
-          "stdev": 0.0
+          "stdev": 0.0285
         },
         "requirement_assertion_recall": {
           "mean": 1.0,
@@ -254,28 +268,36 @@
       },
       "usage": {
         "input_tokens": {
-          "total": 896,
-          "mean": 896
+          "total": 1761,
+          "mean": 880.5
         },
         "output_tokens": {
-          "total": 2530,
-          "mean": 2530
+          "total": 4481,
+          "mean": 2240.5
         },
         "total_tokens": {
-          "total": 7285,
-          "mean": 7285
+          "total": 13425,
+          "mean": 6712.5
         },
         "reasoning_tokens": {
-          "total": 3859,
-          "mean": 3859
+          "total": 7183,
+          "mean": 3591.5
         }
       },
       "failed_assertions": [
         {
+          "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-001-01",
+          "rfp_id": "RFP-TEST-001",
+          "failed_case_ids": [
+            "001-06",
+            "001-07"
+          ]
+        },
+        {
           "run_id": "rfp_analyzer-1.0-dev-v3_final-RFP-TEST-002-01",
           "rfp_id": "RFP-TEST-002",
           "failed_case_ids": [
-            "002-08"
+            "002-01"
           ]
         }
       ]

@@ -3,16 +3,16 @@
 - benchmark: 1.0
 - model: gemini-3.6-flash
 - thinking level: medium
-- runs: **4**
+- runs: **7**
 
 ## Version comparison
 
 | Version | Runs | JSON parseable | Assertion pass | Deliverable | Numeric fidelity | Requirement recall | Unsupported additions |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| v0_baseline | 1 | 0.00% | 80.00% | 100.00% | 80.00% | 50.00% | 0.00 |
-| v1_structured | 1 | 100.00% | 90.00% | 100.00% | 100.00% | 100.00% | 0.00 |
-| v2_grounded | 1 | 100.00% | 66.67% | 100.00% | 57.14% | 100.00% | 0.00 |
-| v3_final | 1 | 100.00% | 91.67% | 100.00% | 85.71% | 100.00% | 0.00 |
+| v0_baseline | 2 | 0.00% | 66.66% | 100.00% | 72.86% | 33.33% | 0.00 |
+| v1_structured | 2 | 100.00% | 95.00% | 100.00% | 100.00% | 100.00% | 0.00 |
+| v2_grounded | 1 | 100.00% | 60.00% | 100.00% | 60.00% | 100.00% | 0.00 |
+| v3_final | 2 | 50.00% | 85.83% | 100.00% | 82.86% | 100.00% | 0.00 |
 
 ## Interpretation rule
 
