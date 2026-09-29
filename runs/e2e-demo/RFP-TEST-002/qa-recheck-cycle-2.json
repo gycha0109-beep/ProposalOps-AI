@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "issues": [
+    {
+      "error_type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "page_id": "PAGE-006",
+      "reason": "슬라이드 본문은 수정되었지만 proposal_strategy의 ST-05와 PAGE-006 content_blocks에는 여전히 ‘제작 시점과 게시 직전에 확인한다’는 표현이 남아 있다. 연결된 EV-R-205-01 및 EV-R-205-02는 게시 전 확인, 변경정보 재검수, 변경 시 상태 갱신은 지원하지만 제작 시점 확인까지는 지원하지 않는다.",
+      "suggested_action": "해당 표현을 ‘게시 전에 변경 가능한 운영정보를 재확인한다’로 통일하거나, 제작 시점 확인을 제안 운영안으로 유지할 경우 해당 문구를 AI_RECOMMENDATION으로 분류하고 reference evidence 연결을 제거한다."
+    },
+    {
+      "error_type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "page_id": "PAGE-008",
+      "reason": "PAGE-008의 ‘도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동’ 및 ‘콘텐츠 유형·방문 동기·크리에이터별 전환 흐름 비교’ 표현은 연결된 EV-R-206-01과 EV-R-206-02가 직접 지원하는 범위를 일부 초과한다. 해당 evidence는 도달, 상세조회, 저장, 지도·예약 페이지 이동과 단계형 KPI를 지원하지만 시청 단계와 해당 세부 분석 축까지는 명시하지 않는다.",
+      "suggested_action": "evidence가 지원하는 범위에 맞춰 ‘도달 → 상세조회 → 저장 → 지도·예약 페이지 이동’으로 수정하고, 시청 및 세부 분석 축을 유지하려면 이를 AI_RECOMMENDATION 또는 별도 제안 운영안으로 표시해 reference evidence 연결을 제거한다."
+    }
+  ],
+  "summary": "PAGE-006에는 이전 QA에서 지적된 근거 범위 초과 표현이 strategy와 content_blocks에 잔존하며, PAGE-008도 KPI 단계와 분석 축 일부가 연결 evidence의 직접 지원 범위를 초과한다."
+}
