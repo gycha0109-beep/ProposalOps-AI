@@ -11,4 +11,6 @@ expected_calls: 8
 request_delay_seconds: 15
 max_503_retries_per_call: 0
 continue_on_provider_error: true
-triggered: 2026-09-29T10:48+09:00
+persist_raw_runs: true
+rerun: 2
+triggered: 2026-09-29T10:55+09:00
