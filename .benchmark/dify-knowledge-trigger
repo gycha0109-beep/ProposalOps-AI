@@ -1,3 +1,5 @@
 operation: plan
 phase: knowledge-v1
-triggered: 2026-09-30T08:15+09:00
+bootstrap: automatic
+required_secret: DIFY_API_KEY
+triggered: 2026-09-30T08:24+09:00
