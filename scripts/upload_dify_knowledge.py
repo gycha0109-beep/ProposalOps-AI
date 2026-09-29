@@ -176,7 +176,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default=DEFAULT_MANIFEST)
     parser.add_argument("--metadata-schema", default=DEFAULT_SCHEMA)
-    parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE", DEFAULT_API_BASE))
+    parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE") or DEFAULT_API_BASE)
     parser.add_argument("--dataset-id", default=os.environ.get("DIFY_DATASET_ID"))
     parser.add_argument("--api-key", default=os.environ.get("DIFY_API_KEY"))
     parser.add_argument("--delay-seconds", type=float, default=7.0)
