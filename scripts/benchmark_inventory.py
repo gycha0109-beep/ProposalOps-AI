@@ -21,21 +21,34 @@ EXPECTED_V1 = {
 def jsonl_count(root):
     total = 0
     ids = set()
+
     for file in sorted(Path(root).rglob("*.jsonl")):
         for line in file.read_text(encoding="utf-8").splitlines():
-            if line.strip():
-                row = json.loads(line)
-                total += 1
-                \n                proposal_id = row.get("proposal_id")\n                if proposal_id and not proposal_id.startswith("DISTRACTOR"):\n                    ids.add(proposal_id)
+            if not line.strip():
+                continue
+
+            row = json.loads(line)
+            total += 1
+
+            proposal_id = row.get("proposal_id")
+            if proposal_id and not proposal_id.startswith("DISTRACTOR"):
+                ids.add(proposal_id)
+
     return total, ids
 
 
 def build_inventory():
     assets, proposal_ids = jsonl_count("data/processed/proposals")
     rfps = sorted(Path("data/raw/rfps").glob("RFP-TEST-*.md"))
-    qa = json.loads(Path("evals/qa-injected-errors/cases.json").read_text(encoding="utf-8"))["cases"]
-    dev_ret = json.loads(Path("evals/frozen/v1/dev/retrieval.json").read_text(encoding="utf-8"))["cases"]
-    hold_ret = json.loads(Path("evals/frozen/v1/holdout/retrieval.json").read_text(encoding="utf-8"))["cases"]
+    qa = json.loads(
+        Path("evals/qa-injected-errors/cases.json").read_text(encoding="utf-8")
+    )["cases"]
+    dev_ret = json.loads(
+        Path("evals/frozen/v1/dev/retrieval.json").read_text(encoding="utf-8")
+    )["cases"]
+    hold_ret = json.loads(
+        Path("evals/frozen/v1/holdout/retrieval.json").read_text(encoding="utf-8")
+    )["cases"]
 
     return {
         "proposal_count": len(proposal_ids),
@@ -63,7 +76,10 @@ def main():
             if inventory.get(key) != expected
         }
         if mismatches:
-            print(json.dumps({"benchmark_mismatch": mismatches}, ensure_ascii=False, indent=2), file=sys.stderr)
+            print(
+                json.dumps({"benchmark_mismatch": mismatches}, ensure_ascii=False, indent=2),
+                file=sys.stderr,
+            )
             raise SystemExit(1)
 
 
