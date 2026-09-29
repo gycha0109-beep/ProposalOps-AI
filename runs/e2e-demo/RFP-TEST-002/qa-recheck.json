@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "issues": [
+    {
+      "error_type": "INVALID_REFERENCE",
+      "severity": "BLOCK",
+      "page_id": "PAGE-006",
+      "reason": "‘제작 시점과 게시 직전에 운영정보를 재확인한다’는 표현 중 제작 시점 확인은 연결된 EV-R-205-01 및 EV-R-205-02가 직접 지원하지 않는다. 해당 evidence는 게시 전 확인, 변경정보 재검수 및 변경 시 상태 갱신을 지원하지만 제작 시점 확인까지는 명시하지 않는다.",
+      "suggested_action": "문구를 ‘게시 전에 변경 가능한 운영정보를 재확인한다’로 수정하거나, 제작 시점 확인 절차를 제안 운영안으로 유지하려면 해당 블록을 AI_RECOMMENDATION으로 분류하고 reference evidence 연결을 제거한다."
+    }
+  ],
+  "summary": "필수 RFP 요구사항은 모두 커버되었고 회사 실적이나 정량 성과의 무근거 주장은 확인되지 않았다. 다만 PAGE-006에서 evidence가 직접 지원하지 않는 ‘제작 시점 확인’ 절차가 REFERENCE_PATTERN으로 제시되어 수정이 필요하다."
+}

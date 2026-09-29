@@ -1,0 +1,713 @@
+{
+  "visuals": [
+    {
+      "page_id": "PAGE-001",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "발견 콘텐츠가 저장 가능한 정보와 방문 계획으로 이어지는 전체 전환 구조와 주요 산출물 범위를 한눈에 보여준다.",
+      "image_prompt": "깔끔한 제안서용 인포그래픽, 좌에서 우로 이어지는 Discover → Save → Visit 3단계 전환 흐름. Discover에는 세로형 숏폼 아이콘, Save에는 카드와 북마크 아이콘, Visit에는 지도와 코스 핀 아이콘을 배치. 하단에는 숏폼 15편, 카드형 콘텐츠 24건, 크리에이터 협업 6건, 연계 코스 콘텐츠 8건을 짧은 라벨로 표시. 실제 장소나 행사 사진처럼 보이지 않는 추상적이고 현대적인 벡터 스타일, 긴 본문 텍스트 없음.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "discover",
+            "label": "Discover",
+            "description": "숏폼과 발견 콘텐츠로 관심 유발"
+          },
+          {
+            "id": "save",
+            "label": "Save",
+            "description": "주말 추천 카드와 이용정보를 저장"
+          },
+          {
+            "id": "visit",
+            "label": "Visit",
+            "description": "연계 코스와 최신 운영정보로 방문 계획 연결"
+          },
+          {
+            "id": "shortform",
+            "label": "숏폼 15편",
+            "description": "Discover 단계 산출물"
+          },
+          {
+            "id": "cards",
+            "label": "카드 24건",
+            "description": "Save 단계 산출물"
+          },
+          {
+            "id": "creator",
+            "label": "크리에이터 6건",
+            "description": "발견과 체험 맥락 보강"
+          },
+          {
+            "id": "courses",
+            "label": "코스 8건",
+            "description": "Visit 단계 산출물"
+          }
+        ],
+        "edges": [
+          {
+            "from": "discover",
+            "to": "save",
+            "label": "관심에서 저장으로"
+          },
+          {
+            "from": "save",
+            "to": "visit",
+            "label": "정보에서 계획으로"
+          },
+          {
+            "from": "shortform",
+            "to": "discover",
+            "label": "콘텐츠 역할"
+          },
+          {
+            "from": "cards",
+            "to": "save",
+            "label": "콘텐츠 역할"
+          },
+          {
+            "from": "creator",
+            "to": "discover",
+            "label": "체험성 보강"
+          },
+          {
+            "from": "courses",
+            "to": "visit",
+            "label": "콘텐츠 역할"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-202-01",
+        "EV-R-202-02",
+        "EV-R-205-01"
+      ],
+      "prohibited_elements": [
+        "실제 과거 행사나 고객 현장 사진처럼 보이는 이미지",
+        "근거 없는 전환율·성과 수치",
+        "긴 문장형 본문 텍스트"
+      ],
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-002",
+      "visual_type": "icon_diagram",
+      "do_not_generate": false,
+      "purpose": "방문 동기와 방문 상황을 교차해 타깃 세그먼트별 메시지와 추천 방향을 구조적으로 보여준다.",
+      "image_prompt": "제안서용 2축 세그먼트 매트릭스 인포그래픽. 가로축은 방문 동기: 맛집, 휴식, 체험, 문화관람. 세로축은 방문 상황: 가족 나들이, 혼자 관람, 데이트. 각 교차 영역에는 음식, 휴식, 체험, 문화, 가족, 1인, 데이트를 상징하는 단순 아이콘과 짧은 키워드만 배치. 우측에는 데이터 분석과 시설별 이용자료 검토 후 우선순위를 정교화한다는 의미의 분석 아이콘을 별도 표시. 실제 타깃 비율이나 우선순위가 확정된 것처럼 보이지 않게 중립적인 시각화.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "motivation",
+            "label": "방문 동기",
+            "description": "맛집·휴식·체험·문화관람"
+          },
+          {
+            "id": "context",
+            "label": "방문 상황",
+            "description": "가족 나들이·혼자 관람·데이트"
+          },
+          {
+            "id": "hook",
+            "label": "세그먼트별 훅",
+            "description": "동기와 상황에 맞춘 메시지"
+          },
+          {
+            "id": "route",
+            "label": "추천 코스",
+            "description": "상황별 추천 동선"
+          },
+          {
+            "id": "refine",
+            "label": "착수 후 정교화",
+            "description": "채널·검색·반응 데이터와 시설별 이용자료 분석"
+          }
+        ],
+        "edges": [
+          {
+            "from": "motivation",
+            "to": "hook",
+            "label": "동기별 메시지"
+          },
+          {
+            "from": "context",
+            "to": "hook",
+            "label": "상황별 메시지"
+          },
+          {
+            "from": "motivation",
+            "to": "route",
+            "label": "목적별 추천"
+          },
+          {
+            "from": "context",
+            "to": "route",
+            "label": "상황별 동선"
+          },
+          {
+            "from": "hook",
+            "to": "refine",
+            "label": "데이터 기반 보완"
+          },
+          {
+            "from": "route",
+            "to": "refine",
+            "label": "이용자료 기반 보완"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-201-01",
+        "EV-R-201-02"
+      ],
+      "prohibited_elements": [
+        "확정되지 않은 세그먼트 우선순위",
+        "실제 고객 프로필 사진처럼 보이는 인물 이미지",
+        "근거 없는 타깃 규모·비율"
+      ],
+      "fact_risk": "medium"
+    },
+    {
+      "page_id": "PAGE-003",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "콘텐츠 유형별 역할을 Discover, Save, Visit 단계에 배치해 방문 계획으로의 연결 구조를 설명한다.",
+      "image_prompt": "현대적인 디지털 콘텐츠 아키텍처 다이어그램. 좌에서 우로 Discover, Save, Visit 3개 컬럼을 배치. Discover에는 세로형 숏폼과 짧은 소재, Save에는 주말 추천 카드와 북마크, Visit에는 반나절·하루 코스와 지도 핀을 배치. 각 단계 하단에 짧은 CTA 키워드인 관심, 저장, 코스 확인을 표시. 장소 아이콘이 단일 장소에서 연결된 코스 지도 형태로 확장되도록 표현. 긴 설명문과 실제 장소 사진은 제외.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "discover",
+            "label": "Discover",
+            "description": "숏폼·짧은 소재로 관심 유발"
+          },
+          {
+            "id": "save",
+            "label": "Save",
+            "description": "주말 추천 카드로 선택 정보 압축"
+          },
+          {
+            "id": "visit",
+            "label": "Visit",
+            "description": "연계 코스로 방문 계획 연결"
+          },
+          {
+            "id": "shortform",
+            "label": "숏폼 15편",
+            "description": "발견 콘텐츠"
+          },
+          {
+            "id": "weekend-card",
+            "label": "카드형 콘텐츠 24건",
+            "description": "저장 가능한 정보"
+          },
+          {
+            "id": "course",
+            "label": "연계 코스 콘텐츠 8건",
+            "description": "반나절·하루 동선"
+          }
+        ],
+        "edges": [
+          {
+            "from": "shortform",
+            "to": "discover",
+            "label": "관심 유발"
+          },
+          {
+            "from": "discover",
+            "to": "save",
+            "label": "상세 탐색 유도"
+          },
+          {
+            "from": "weekend-card",
+            "to": "save",
+            "label": "저장 정보"
+          },
+          {
+            "from": "save",
+            "to": "visit",
+            "label": "코스 확인"
+          },
+          {
+            "from": "course",
+            "to": "visit",
+            "label": "방문 계획"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-202-01",
+        "EV-R-202-02",
+        "EV-R-202-03",
+        "EV-R-202-04"
+      ],
+      "prohibited_elements": [
+        "실제 지도 데이터처럼 오인되는 정확한 지리 정보",
+        "근거 없는 전환율·성과 수치",
+        "긴 본문 텍스트"
+      ],
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-004",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "모바일 숏폼의 Hook → Core → Action 구성과 콘텐츠별 단일 CTA 원칙을 시각화한다.",
+      "image_prompt": "세로형 스마트폰 목업 3개를 가로로 배열한 모바일 숏폼 제작 구조. 첫 화면은 Hook, 두 번째는 Core, 세 번째는 Action으로 구분하고 각 화면에는 아이콘 중심의 짧은 라벨만 표시. Hook은 방문 목적 또는 상황, Core는 핵심 매력과 이용정보, Action은 저장·코스 확인·지도 이동 중 하나의 CTA를 표현. 15편 제작 체계는 별도의 작은 필름 아이콘과 '15편' 라벨로 표시. 실제 촬영 장면이나 특정 장소 사진처럼 보이지 않는 추상 UI 스타일.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "hook",
+            "label": "Hook",
+            "description": "첫 3~5초에 방문 목적·상황 제시"
+          },
+          {
+            "id": "core",
+            "label": "Core",
+            "description": "핵심 매력과 이용정보 전달"
+          },
+          {
+            "id": "action",
+            "label": "Action",
+            "description": "콘텐츠별 단일 CTA 제시"
+          },
+          {
+            "id": "production",
+            "label": "숏폼 15편",
+            "description": "방문 동기와 역할에 따라 배분"
+          }
+        ],
+        "edges": [
+          {
+            "from": "hook",
+            "to": "core",
+            "label": "즉시 이해 후 핵심 전달"
+          },
+          {
+            "from": "core",
+            "to": "action",
+            "label": "정보 확인 후 다음 행동"
+          },
+          {
+            "from": "production",
+            "to": "hook",
+            "label": "소재 배분"
+          },
+          {
+            "from": "production",
+            "to": "core",
+            "label": "역할별 구성"
+          },
+          {
+            "from": "production",
+            "to": "action",
+            "label": "CTA 설계"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-203-01",
+        "EV-R-203-02"
+      ],
+      "prohibited_elements": [
+        "실제 광고 성과를 암시하는 조회수·전환율",
+        "한 화면에 여러 CTA를 동시에 강조하는 구성",
+        "긴 자막이나 본문 텍스트"
+      ],
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-005",
+      "visual_type": "icon_diagram",
+      "do_not_generate": false,
+      "purpose": "공식 채널과 지역 크리에이터의 역할을 분리하고 공통 정보 기준과 상호 연결 CTA를 보여준다.",
+      "image_prompt": "좌우 분할형 협업 구조 인포그래픽. 왼쪽은 공식 채널 영역으로 건물, 달력, 정보 카드 아이콘과 시설·일정·이용방법 라벨을 배치. 오른쪽은 지역 크리에이터 영역으로 사람, 카메라, 말풍선 아이콘과 방문 맥락·체험 후기 라벨을 배치. 중앙에는 동일 방문정보 기준을 상징하는 체크리스트와 연결 링크 아이콘을 배치하고 양쪽을 상호 연결 화살표로 연결. 하단에 크리에이터 협업 콘텐츠 6건을 짧게 표시. 실제 특정 크리에이터나 고객 현장 사진은 사용하지 않음.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "official",
+            "label": "공식 채널",
+            "description": "시설·일정·이용방법·코스형 기준 정보"
+          },
+          {
+            "id": "creator",
+            "label": "지역 크리에이터",
+            "description": "방문 맥락·체험 후기"
+          },
+          {
+            "id": "standard",
+            "label": "공통 방문정보 기준",
+            "description": "양쪽 콘텐츠에 동일하게 적용"
+          },
+          {
+            "id": "cta",
+            "label": "상호 연결 CTA",
+            "description": "공식 정보와 체험 콘텐츠 연결"
+          },
+          {
+            "id": "collab",
+            "label": "협업 콘텐츠 6건",
+            "description": "RFP에 명시된 운영 규모"
+          }
+        ],
+        "edges": [
+          {
+            "from": "official",
+            "to": "standard",
+            "label": "기준 정보 제공"
+          },
+          {
+            "from": "creator",
+            "to": "standard",
+            "label": "체험 정보 정렬"
+          },
+          {
+            "from": "standard",
+            "to": "cta",
+            "label": "연결 기준"
+          },
+          {
+            "from": "official",
+            "to": "cta",
+            "label": "공식 정보 연결"
+          },
+          {
+            "from": "creator",
+            "to": "cta",
+            "label": "체험 콘텐츠 연결"
+          },
+          {
+            "from": "collab",
+            "to": "creator",
+            "label": "운영 범위"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-204-01"
+      ],
+      "prohibited_elements": [
+        "실제 협업이 완료된 것처럼 보이는 인물 사진",
+        "확정되지 않은 크리에이터 후보·팔로워 수",
+        "근거 없는 영향력·성과 수치"
+      ],
+      "fact_risk": "medium"
+    },
+    {
+      "page_id": "PAGE-006",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "변경 가능한 운영정보를 게시 전 재확인하고 변경 시 연결 콘텐츠까지 갱신하는 관리 절차를 보여준다.",
+      "image_prompt": "정돈된 운영정보 검수 프로세스 다이어그램. 정보 수집 → 제작 시점 검수 → 게시 직전 재검수 → 게시·모니터링의 순서로 연결하고, 변경 감지 시 카드·코스·크리에이터 콘텐츠를 함께 갱신하는 분기 루프를 표시. 휴관, 매진, 운영시간, 행사 일정은 각각 달력·시계·경고 아이콘으로 표현하되 긴 텍스트는 사용하지 않음. 확인 시점과 변경 이력은 문서·체크 아이콘으로 표현. 시설별 확인 채널과 담당자 지정은 착수 후 협의사항임을 중립적인 점선 박스로 표시하되, 이미 확정된 운영 방식처럼 보이지 않게 표현.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "collect",
+            "label": "정보 수집",
+            "description": "변경 가능한 운영정보 확인"
+          },
+          {
+            "id": "production-check",
+            "label": "제작 시점 검수",
+            "description": "변경 가능한 운영정보 재확인"
+          },
+          {
+            "id": "publish-check",
+            "label": "게시 직전 재검수",
+            "description": "게시 전 운영정보 재확인"
+          },
+          {
+            "id": "publish",
+            "label": "게시·모니터링",
+            "description": "게시 후 변경 여부 관찰"
+          },
+          {
+            "id": "update",
+            "label": "연결 콘텐츠 갱신",
+            "description": "카드·코스·크리에이터 콘텐츠 상태 갱신"
+          },
+          {
+            "id": "log",
+            "label": "확인·변경 이력 기록",
+            "description": "확인 시점과 변경 이력 관리"
+          }
+        ],
+        "edges": [
+          {
+            "from": "collect",
+            "to": "production-check",
+            "label": "검수 시작"
+          },
+          {
+            "from": "production-check",
+            "to": "publish-check",
+            "label": "게시 전 재확인"
+          },
+          {
+            "from": "publish-check",
+            "to": "publish",
+            "label": "확인 후 게시"
+          },
+          {
+            "from": "publish",
+            "to": "update",
+            "label": "변경 발생 시"
+          },
+          {
+            "from": "update",
+            "to": "publish",
+            "label": "상태 반영"
+          },
+          {
+            "from": "production-check",
+            "to": "log",
+            "label": "검수 기록"
+          },
+          {
+            "from": "publish-check",
+            "to": "log",
+            "label": "재검수 기록"
+          },
+          {
+            "from": "update",
+            "to": "log",
+            "label": "변경 이력 기록"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-205-01",
+        "EV-R-205-02"
+      ],
+      "prohibited_elements": [
+        "이미 확정된 공식 담당자·채널처럼 보이는 정보",
+        "시설별 확인 채널과 담당자가 확정된 운영 프로세스처럼 보이는 표현",
+        "실제 운영 시스템 화면이나 고객 시설 사진",
+        "무오류·자동갱신을 보장하는 표현"
+      ],
+      "fact_risk": "medium"
+    },
+    {
+      "page_id": "PAGE-007",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "5개월 동안의 설계, 제작·게시, 검수, 월별 보고, 최종 제출 흐름과 산출물 관리를 한 화면에 보여준다.",
+      "image_prompt": "5개월 가로형 로드맵 인포그래픽. 월 1부터 월 5까지의 구간을 표시하되 세부 월별 배치는 확정안이 아닌 운영 프레임으로 표현. 상단에는 착수·타깃 설계, 중단에는 제작·게시·크리에이터 협업·운영정보 검수, 하단에는 월별 보고와 최종 원자료 제출을 겹쳐 배치. 산출물은 필름, 카드, 크리에이터, 지도 아이콘과 함께 숏폼 15편, 카드 24건, 협업 6건, 코스 8건으로 짧게 표시. 실제 성과 그래프와 확정되지 않은 월별 수량 배분은 제외.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "month1-5",
+            "label": "5개월 운영",
+            "description": "전체 사업 기간"
+          },
+          {
+            "id": "design",
+            "label": "착수·설계",
+            "description": "데이터 검토와 운영 기준 확정"
+          },
+          {
+            "id": "production",
+            "label": "제작·게시",
+            "description": "숏폼·카드·코스·협업 콘텐츠 운영"
+          },
+          {
+            "id": "verification",
+            "label": "검수·갱신",
+            "description": "운영정보 확인과 변경 대응"
+          },
+          {
+            "id": "monthly-report",
+            "label": "월별 보고",
+            "description": "운영 현황과 성과 점검"
+          },
+          {
+            "id": "final",
+            "label": "최종 제출",
+            "description": "콘텐츠 목록과 성과지표 원자료 제출"
+          },
+          {
+            "id": "deliverables",
+            "label": "산출물 관리",
+            "description": "15편·24건·6건·8건"
+          }
+        ],
+        "edges": [
+          {
+            "from": "month1-5",
+            "to": "design",
+            "label": "착수"
+          },
+          {
+            "from": "design",
+            "to": "production",
+            "label": "기준 확정 후 제작"
+          },
+          {
+            "from": "production",
+            "to": "verification",
+            "label": "게시 전·후 검수"
+          },
+          {
+            "from": "verification",
+            "to": "monthly-report",
+            "label": "운영 결과 취합"
+          },
+          {
+            "from": "monthly-report",
+            "to": "production",
+            "label": "다음 우선순위 반영"
+          },
+          {
+            "from": "monthly-report",
+            "to": "final",
+            "label": "최종 누적"
+          },
+          {
+            "from": "deliverables",
+            "to": "production",
+            "label": "산출물 범위"
+          }
+        ]
+      },
+      "data_source": [],
+      "prohibited_elements": [
+        "확정되지 않은 월별 세부 배치",
+        "근거 없는 월별 성과 수치",
+        "실제 프로젝트 관리 화면처럼 보이는 내부 시스템 정보"
+      ],
+      "fact_risk": "low"
+    },
+    {
+      "page_id": "PAGE-008",
+      "visual_type": "process_diagram",
+      "do_not_generate": false,
+      "purpose": "방문 의도에 가까운 행동을 단계별로 측정하고 월별 개선 사이클로 연결하는 KPI 구조를 보여준다.",
+      "image_prompt": "수치 없이 구성한 단계형 KPI 퍼널 인포그래픽. 도달 → 시청 → 상세조회 → 저장 → 지도·예약 페이지 이동의 5단계를 좌에서 우 또는 위에서 아래로 연결하고, 각 단계에는 눈, 재생, 문서, 북마크, 지도·링크 아이콘을 사용. 퍼널 옆에는 콘텐츠 유형·방문 동기·크리에이터별 비교라는 분석 축을 태그 형태로 표시. 하단에는 월별 보고 → 우선순위 조정 → 다음 제작의 순환 화살표를 배치. 실제 비율, 막대 높이, 축 값, 성과 수치는 넣지 않으며 각 단계의 상대적 크기도 표현하지 않음.",
+      "diagram_spec": {
+        "nodes": [
+          {
+            "id": "reach",
+            "label": "도달",
+            "description": "콘텐츠 노출과 도달"
+          },
+          {
+            "id": "watch",
+            "label": "시청",
+            "description": "영상 또는 콘텐츠 소비"
+          },
+          {
+            "id": "detail",
+            "label": "상세조회",
+            "description": "프로그램·코스 상세 탐색"
+          },
+          {
+            "id": "save",
+            "label": "저장",
+            "description": "일정·콘텐츠 저장"
+          },
+          {
+            "id": "move",
+            "label": "지도·예약 이동",
+            "description": "방문 관련 다음 단계 이동"
+          },
+          {
+            "id": "analysis",
+            "label": "분석",
+            "description": "콘텐츠 유형·방문 동기·크리에이터별 비교"
+          },
+          {
+            "id": "report",
+            "label": "월별 보고",
+            "description": "운영 결과와 행동 지표 점검"
+          },
+          {
+            "id": "optimize",
+            "label": "다음 제작 조정",
+            "description": "우선순위와 코스 구성 개선"
+          },
+          {
+            "id": "final",
+            "label": "최종 보고",
+            "description": "성과지표 원자료와 콘텐츠 목록 정리"
+          }
+        ],
+        "edges": [
+          {
+            "from": "reach",
+            "to": "watch",
+            "label": "관심 형성"
+          },
+          {
+            "from": "watch",
+            "to": "detail",
+            "label": "상세 탐색"
+          },
+          {
+            "from": "detail",
+            "to": "save",
+            "label": "방문 고려"
+          },
+          {
+            "from": "save",
+            "to": "move",
+            "label": "방문 행동 의도"
+          },
+          {
+            "from": "reach",
+            "to": "analysis",
+            "label": "분석 단위별 분류"
+          },
+          {
+            "from": "watch",
+            "to": "analysis",
+            "label": "분석 단위별 비교"
+          },
+          {
+            "from": "detail",
+            "to": "analysis",
+            "label": "분석 단위별 비교"
+          },
+          {
+            "from": "save",
+            "to": "analysis",
+            "label": "분석 단위별 비교"
+          },
+          {
+            "from": "move",
+            "to": "analysis",
+            "label": "분석 단위별 비교"
+          },
+          {
+            "from": "analysis",
+            "to": "report",
+            "label": "월별 취합"
+          },
+          {
+            "from": "report",
+            "to": "optimize",
+            "label": "개선안 도출"
+          },
+          {
+            "from": "optimize",
+            "to": "report",
+            "label": "다음 월 반영"
+          },
+          {
+            "from": "report",
+            "to": "final",
+            "label": "최종 누적"
+          }
+        ]
+      },
+      "data_source": [
+        "EV-R-206-01",
+        "EV-R-206-02"
+      ],
+      "prohibited_elements": [
+        "실제 KPI 수치·전환율·비율",
+        "수치가 있는 것처럼 보이는 축·막대·퍼널 폭 비교",
+        "보장된 예약·방문 성과 표현"
+      ],
+      "fact_risk": "low"
+    }
+  ]
+}
