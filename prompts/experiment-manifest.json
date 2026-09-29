@@ -19,6 +19,10 @@
       {
         "version": "v3_final",
         "intervention": "fail-closed unknown policy + full grounding"
+      },
+      {
+        "version": "v4_compact_grounded",
+        "intervention": "compact fixed schema + source grounding + explicit unknown policy"
       }
     ],
     "proposal_strategist": [
