@@ -116,7 +116,7 @@ jobs:
           fi
 
       - name: Check v4 dev acceptance
-        if: env.BENCH_SPLIT == 'dev'
+        if: env.BENCH_SPLIT == 'dev' && env.benchmark_exit_code == '0'
         shell: bash
         run: |
           set +e
