@@ -1,4 +1,2 @@
 Re-evaluate Gemini 3.6 RFP raw runs with evaluator 1.4
-metrics: content accuracy + source_quote coverage/validity
-model_calls: 0
-triggered: 2026-09-29
+triggered: 2026-09-29T13:15+09:00
