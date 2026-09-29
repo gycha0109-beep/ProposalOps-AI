@@ -46,6 +46,21 @@ jobs:
             --plan-only > /tmp/rfp-holdout-plan.json
           cat /tmp/rfp-holdout-plan.json
 
+      - name: Verify holdout gate is locked
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_holdout_gate.py \
+            --state evals/frozen/v1/rfp-analyzer-candidate.json \
+            --require-holdout
+          EXIT_CODE=$?
+          set -e
+          if [[ "$EXIT_CODE" == "0" ]]; then
+            echo "Holdout gate unexpectedly open."
+            exit 1
+          fi
+          echo "Holdout gate correctly locked."
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
