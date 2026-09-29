@@ -1,10 +1,10 @@
-RFP-TEST-002 targeted repair cycle 2
+RFP-TEST-002 provenance-chain repair cycle 3
 
 provider: openai
 model: gpt-5.6-luna
-target: PAGE-006
-base: final-package-repaired.json
-strict_reference_entailment: true
+strategy_ids: ST-05, ST-06
+page_ids: PAGE-006, PAGE-008
+scope: strategy -> pagination -> slide -> visual
 calls: repair + re-QA
 expected_calls: 2
-triggered: 2026-09-29T17:38+09:00
+triggered: 2026-09-29T17:42+09:00
