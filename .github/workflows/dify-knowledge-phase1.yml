@@ -13,6 +13,7 @@ on:
           - upload-production
           - upload-benchmark
           - retrieve-benchmark
+          - full-phase1
   push:
     branches: [main]
     paths:
@@ -64,6 +65,7 @@ jobs:
         run: |
           python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --plan-only
           python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --plan-only
+          python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
 
       - name: Require Dify API key
@@ -75,35 +77,39 @@ jobs:
             exit 1
           fi
 
-      - name: Upload production knowledge
-        if: env.DIFY_OPERATION == 'upload-production'
+      - name: Ensure Dify datasets
+        if: env.DIFY_OPERATION != 'plan'
         shell: bash
         run: |
-          if [[ -z "$DIFY_DATASET_ID" ]]; then
-            echo "Repository secret DIFY_DATASET_ID is not configured."
-            exit 1
-          fi
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --metadata-schema exports/dify/knowledge-v1/metadata-schema.json             --dataset-id "$DIFY_DATASET_ID"             --state-out runs/dify/knowledge-v1/upload-state.json
+          python scripts/ensure_dify_datasets.py             --out runs/dify/datasets.json
+          python - <<'PY' >> "$GITHUB_ENV"
+          import json
+          with open("runs/dify/datasets.json", encoding="utf-8") as handle:
+              data = json.load(handle)
+          print("DIFY_PRODUCTION_ID=" + data["production"]["dataset_id"])
+          print("DIFY_BENCHMARK_ID=" + data["benchmark"]["dataset_id"])
+          PY
+
+      - name: Upload production knowledge
+        if: env.DIFY_OPERATION == 'upload-production' || env.DIFY_OPERATION == 'full-phase1'
+        shell: bash
+        run: |
+          DATASET_ID="${DIFY_DATASET_ID:-$DIFY_PRODUCTION_ID}"
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --metadata-schema exports/dify/knowledge-v1/metadata-schema.json             --dataset-id "$DATASET_ID"             --state-out runs/dify/knowledge-v1/upload-state.json
 
       - name: Upload benchmark knowledge
-        if: env.DIFY_OPERATION == 'upload-benchmark'
+        if: env.DIFY_OPERATION == 'upload-benchmark' || env.DIFY_OPERATION == 'full-phase1'
         shell: bash
         run: |
-          if [[ -z "$DIFY_BENCHMARK_DATASET_ID" ]]; then
-            echo "Repository secret DIFY_BENCHMARK_DATASET_ID is not configured."
-            exit 1
-          fi
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --metadata-schema exports/dify/benchmark-v1/metadata-schema.json             --dataset-id "$DIFY_BENCHMARK_DATASET_ID"             --state-out runs/dify/benchmark-v1/upload-state.json
+          DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
+          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --metadata-schema exports/dify/benchmark-v1/metadata-schema.json             --dataset-id "$DATASET_ID"             --state-out runs/dify/benchmark-v1/upload-state.json
 
       - name: Run Dify retrieval benchmark
-        if: env.DIFY_OPERATION == 'retrieve-benchmark'
+        if: env.DIFY_OPERATION == 'retrieve-benchmark' || env.DIFY_OPERATION == 'full-phase1'
         shell: bash
         run: |
-          if [[ -z "$DIFY_BENCHMARK_DATASET_ID" ]]; then
-            echo "Repository secret DIFY_BENCHMARK_DATASET_ID is not configured."
-            exit 1
-          fi
-          python scripts/evaluate_dify_retrieval.py             --dataset-id "$DIFY_BENCHMARK_DATASET_ID"             --out reports/dify-retrieval-v1.json
+          DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
+          python scripts/evaluate_dify_retrieval.py             --dataset-id "$DATASET_ID"             --out reports/dify-retrieval-v1.json
 
       - name: Commit live evidence
         if: env.DIFY_OPERATION != 'plan'
