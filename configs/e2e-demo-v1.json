@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "demo_id": "RFP-TEST-002-E2E",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "max_output_tokens": {
+    "pagination": 5000,
+    "slides": 7000,
+    "visuals": 6000,
+    "qa": 5000,
+    "repair": 5000
+  },
+  "source": {
+    "rfp_analysis_run": "runs/rfp_analyzer/benchmark-v1-gpt56luna/dev/v4_compact_grounded/RFP-TEST-002/run-01.json",
+    "strategist_run": "runs/proposal_strategist/benchmark-v1-gpt56luna/dev/v4_explicit_classes/run-01.json",
+    "strategist_inputs": "evals/strategist/inputs-v1.json",
+    "rfp_id": "RFP-TEST-002"
+  },
+  "prompts": {
+    "pagination": "prompts/production/pagination.md",
+    "slide_draft": "prompts/production/slide_draft.md",
+    "visual_prompt": "prompts/production/visual_prompt.md",
+    "proposal_qa": "prompts/production/proposal_qa.md",
+    "targeted_repair": "prompts/production/targeted_repair.md"
+  },
+  "output_root": "runs/e2e-demo/RFP-TEST-002",
+  "default_page_limit": 10,
+  "max_repair_cycles": 1
+}
