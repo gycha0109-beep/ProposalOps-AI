@@ -1,0 +1,16 @@
+{
+  "version": "pilot-0.1",
+  "track": "proposal_qa",
+  "source": "evals/qa-injected-errors/cases.json",
+  "expected_summary": {
+    "critical_error_count": 8,
+    "clean_case_count": 2
+  },
+  "metrics": [
+    "critical_error_detection_recall",
+    "false_positive_rate",
+    "unsupported_claim_detection",
+    "missing_requirement_detection",
+    "invalid_reference_detection"
+  ]
+}
