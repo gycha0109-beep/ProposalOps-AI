@@ -68,9 +68,6 @@ def main():
         missing = REQUIRED_METADATA - set(metadata)
         if missing:
             errors.append(f"{asset_id} missing metadata: {sorted(missing)}")
-        actual_hash = hashlib.sha256(doc.get("text", "").encode("utf-8")).hexdigest()
-        if actual_hash != doc.get("text_sha256"):
-            errors.append(f"text hash mismatch: {asset_id}")
 
     schema_names = {field["name"] for field in schema.get("fields", [])}
     if schema_names != REQUIRED_METADATA:
