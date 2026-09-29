@@ -152,7 +152,7 @@ def run_split(api_base, api_key, dataset_id, path, top_k, search_method):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE", DEFAULT_API_BASE))
+    parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE") or DEFAULT_API_BASE)
     parser.add_argument("--api-key", default=os.environ.get("DIFY_API_KEY"))
     parser.add_argument(
         "--dataset-id",
