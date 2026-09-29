@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "track": "rfp_analyzer",
+  "candidate": "v4_compact_grounded",
+  "split": "dev",
+  "frozen_before_candidate_run": true,
+  "criteria": {
+    "run_count": {
+      "min": 2
+    },
+    "json_parseable_rate": {
+      "min": 1
+    },
+    "output_truncated_rate": {
+      "max": 0
+    },
+    "assertion_pass_rate": {
+      "mean_min": 0.95,
+      "min_min": 0.9
+    },
+    "deliverable_recall": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "numeric_fidelity": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "requirement_assertion_recall": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "source_quote_coverage": {
+      "mean_min": 0.9,
+      "min_min": 0.9
+    },
+    "source_quote_validity": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "unsupported_addition_count": {
+      "mean_max": 0,
+      "max_max": 0
+    }
+  },
+  "blocking_rules": [
+    "Any invalid JSON run fails acceptance.",
+    "Any output truncation fails acceptance.",
+    "Any mandatory requirement omission fails acceptance.",
+    "Any unsupported addition fails acceptance.",
+    "Any invalid source quote fails acceptance."
+  ],
+  "decision_rule": "If v4 fails, do not open holdout. Keep the best dev candidate or redesign on dev only."
+}
