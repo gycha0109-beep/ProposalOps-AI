@@ -170,6 +170,62 @@
       "expected_asset_ids": [
         "PA-CAMP-005-P011"
       ]
+    },
+    {
+      "id": "RET-D25",
+      "query": "성인 디지털 교육에서 설명을 길게 하기보다 하나씩 직접 해보게 하고 확인하는 방식",
+      "expected_asset_ids": [
+        "PA-EDU-006-P011"
+      ]
+    },
+    {
+      "id": "RET-D26",
+      "query": "지역 홍보에서 공식 채널은 정확한 정보를, 현지 창작자는 체험담을 맡도록 역할을 나누는 방식",
+      "expected_asset_ids": [
+        "PA-PR-007-P018"
+      ]
+    },
+    {
+      "id": "RET-D27",
+      "query": "지원사업 이름을 설명하기 전에 내가 신청 대상인지부터 판단하게 만드는 홍보 메시지",
+      "expected_asset_ids": [
+        "PA-PR-011-P010"
+      ]
+    },
+    {
+      "id": "RET-D28",
+      "query": "서비스 사용법 영상은 이용자가 겪는 문제를 먼저 보여주고 실제 화면과 해야 할 일을 이어서 보여주는 구성",
+      "expected_asset_ids": [
+        "PA-VIDEO-008-P007"
+      ]
+    },
+    {
+      "id": "RET-D29",
+      "query": "행사장에서 줄이 길어질 때 체험에 걸리는 시간과 동시에 받을 수 있는 사람 수로 흐름을 나누는 운영",
+      "expected_asset_ids": [
+        "PA-EVENT-004-P014"
+      ]
+    },
+    {
+      "id": "RET-D30",
+      "query": "사람을 촬영하기 전에 얼굴과 영상이 어느 채널에 얼마 동안 쓰이는지 확인하는 절차",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P017"
+      ]
+    },
+    {
+      "id": "RET-D31",
+      "query": "문화시설 게시물에서 휴관이나 매진이 바뀌면 예전에 올린 안내까지 상태를 고치는 운영",
+      "expected_asset_ids": [
+        "PA-CAMP-010-P023"
+      ]
+    },
+    {
+      "id": "RET-D32",
+      "query": "환경 참여를 거창한 약속 한 번으로 끝내지 않고 매일 할 수 있는 작은 행동으로 반복시키는 방식",
+      "expected_asset_ids": [
+        "PA-CAMP-005-P008"
+      ]
     }
   ]
 }
