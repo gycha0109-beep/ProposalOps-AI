@@ -7,6 +7,19 @@ import json
 from pathlib import Path
 
 
+def load_assets(path):
+    path = Path(path)
+    files = [path] if path.is_file() else sorted(path.rglob("*.jsonl"))
+    assets = []
+    for file in files:
+        assets.extend(
+            json.loads(line)
+            for line in file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        )
+    return assets
+
+
 def bullets(values):
     return "\n".join(f"- {value}" for value in values) if values else "- 없음"
 
@@ -32,14 +45,14 @@ def render(asset):
 ## Target Audience
 {bullets(asset.get("target_audience", []))}
 
-## Deliverables
-{bullets(asset.get("deliverables", []))}
-
 ## Strategies
 {bullets(asset.get("strategies", []))}
 
 ## Reusable Patterns
 {bullets(asset.get("reusable_patterns", []))}
+
+## KPI
+{bullets(asset.get("kpis", []))}
 
 ## Retrieval Text
 {asset.get("normalized_text", "")}
@@ -50,18 +63,13 @@ def render(asset):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--assets", default="data/processed/proposals/proposal-assets.jsonl")
-    parser.add_argument("--out-dir", default="data/knowledge/documents")
-    parser.add_argument("--manifest", default="data/knowledge/metadata-manifest.csv")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--assets", default="data/processed/proposals")
+    ap.add_argument("--out-dir", default="data/knowledge/documents")
+    ap.add_argument("--manifest", default="data/knowledge/metadata-manifest.csv")
+    args = ap.parse_args()
 
-    assets = [
-        json.loads(line)
-        for line in Path(args.assets).read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
-
+    assets = load_assets(args.assets)
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     manifest = Path(args.manifest)
@@ -69,10 +77,10 @@ def main():
 
     rows = []
     for asset in assets:
-        file_name = f'{asset["asset_id"]}.md'
-        (out_dir / file_name).write_text(render(asset), encoding="utf-8")
+        name = f'{asset["asset_id"]}.md'
+        (out_dir / name).write_text(render(asset), encoding="utf-8")
         rows.append({
-            "document_name": file_name,
+            "document_name": name,
             "asset_id": asset["asset_id"],
             "proposal_id": asset["proposal_id"],
             "category": asset["category"],
@@ -80,7 +88,7 @@ def main():
             "page_type": asset["page_type"],
             "source_page": asset["source"]["page"],
             "reuse_level": asset["reuse_level"],
-            "sensitivity": asset["sensitivity"]
+            "sensitivity": asset["sensitivity"],
         })
 
     with manifest.open("w", encoding="utf-8-sig", newline="") as handle:
