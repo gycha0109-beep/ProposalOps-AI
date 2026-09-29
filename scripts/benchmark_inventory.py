@@ -9,11 +9,11 @@ from pathlib import Path
 
 EXPECTED_V1 = {
     "proposal_count": 12,
-    "proposal_asset_count": 51,
+    "proposal_asset_count": 63,
     "rfp_count": 3,
-    "retrieval_query_count": 36,
-    "retrieval_dev_count": 24,
-    "retrieval_holdout_count": 12,
+    "retrieval_query_count": 48,
+    "retrieval_dev_count": 32,
+    "retrieval_holdout_count": 16,
     "qa_case_count": 20,
 }
 
@@ -26,7 +26,7 @@ def jsonl_count(root):
             if line.strip():
                 row = json.loads(line)
                 total += 1
-                ids.add(row.get("proposal_id"))
+                \n                proposal_id = row.get("proposal_id")\n                if proposal_id and not proposal_id.startswith("DISTRACTOR"):\n                    ids.add(proposal_id)
     return total, ids
 
 
