@@ -123,6 +123,8 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
             f'RFP ID: {item["rfp_id"]}\n\n'
             f'{rfp_text}'
         ),
+        max_503_retries=int(parameters.get("max_503_retries", 1)),
+        retry_delay_seconds=int(parameters.get("retry_delay_seconds", 12)),
     )
 
     raw_output = response["output_text"]
@@ -146,6 +148,8 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
             "thinking_level": parameters["thinking_level"],
             "max_output_tokens": parameters["max_output_tokens"],
             "request_delay_seconds": parameters.get("request_delay_seconds", 0),
+            "max_503_retries": parameters.get("max_503_retries", 1),
+            "retry_delay_seconds": parameters.get("retry_delay_seconds", 12),
         },
         "input": {
             "rfp_id": item["rfp_id"],
@@ -158,6 +162,7 @@ def run_one(config: dict, item: dict, api_key: str, commit: str) -> dict:
             "provider": response["provider"],
             "provider_response_id": response["response_id"],
             "latency_seconds": response["latency_seconds"],
+            "retry_count": response.get("retry_count", 0),
             "usage": response["usage"],
         },
         "raw_output": raw_output,
