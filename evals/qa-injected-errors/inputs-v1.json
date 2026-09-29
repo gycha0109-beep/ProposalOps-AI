@@ -1,0 +1,1037 @@
+{
+  "version": "1.0",
+  "status": "materialized_from_frozen_cases_before_qa_live_runs",
+  "note": "Inputs omit gold type/severity/reason. They provide only neutral RFP, evidence, company-fact, provenance and draft context needed for QA.",
+  "inputs": [
+    {
+      "case_id": "QA-001",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "기존 청년 캠페인에서 참여율을 42% 향상한 경험을 기반으로 합니다."
+      }
+    },
+    {
+      "case_id": "QA-002",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "당사는 해당 기관의 유사 사업을 3년 연속 수행했습니다."
+      }
+    },
+    {
+      "case_id": "QA-003",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-VIDEO-021",
+          "asset_id": "PA-VIDEO-004-P021",
+          "proposal_id": "PROP-VIDEO-004",
+          "supports": "30초 숏폼 Hook → Core → Action 포맷 패턴",
+          "does_not_support": "과거 성과 수치나 회사 실적"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "[EV-R003-999] 근거로 30초 숏폼 포맷을 제안합니다."
+      }
+    },
+    {
+      "case_id": "QA-004",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "COVERAGE_SUMMARY",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006"
+        ],
+        "text": "현재 제안 초안은 사업 이해, 전략, 콘텐츠, 참여, 운영, KPI를 다룹니다."
+      }
+    },
+    {
+      "case_id": "QA-005",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-PR-013",
+          "asset_id": "PA-PR-002-P013",
+          "proposal_id": "PROP-PR-002",
+          "supports": "Discover → React → Share SNS 확산 패턴",
+          "does_not_support": "30초 영상 제작 실적이나 성과 수치"
+        },
+        {
+          "evidence_id": "EV-VIDEO-021",
+          "asset_id": "PA-VIDEO-004-P021",
+          "proposal_id": "PROP-VIDEO-004",
+          "supports": "30초 숏폼 Hook → Core → Action 포맷 패턴",
+          "does_not_support": "과거 성과 수치나 회사 실적"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "PROP-PR-002에서 제작한 30초 영상 성과를 바탕으로 확산 전략을 적용합니다."
+      }
+    },
+    {
+      "case_id": "QA-006",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "캠페인 도달률 85%를 목표로 하며 이는 기존 평균 성과입니다."
+      }
+    },
+    {
+      "case_id": "QA-007",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-VIDEO-022",
+          "asset_id": "PA-VIDEO-004-P022",
+          "proposal_id": "PROP-VIDEO-004",
+          "supports": "정책 수치·기간·자격조건의 제작 전후 사실 검수 프로세스",
+          "does_not_support": "개인정보 처리 프로세스, 회사 실적"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "PA-VIDEO-004-P022는 개인정보 처리 프로세스를 입증합니다."
+      }
+    },
+    {
+      "case_id": "QA-008",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "COVERAGE_SUMMARY",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-006",
+          "R-007"
+        ],
+        "text": "현재 제안 초안은 사업 이해, 전략, 콘텐츠, 참여, KPI, 리스크 관리 중심으로 구성되어 있습니다."
+      }
+    },
+    {
+      "case_id": "QA-009",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "AI_RECOMMENDATION",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "이번 사업에서는 콘텐츠별 단일 CTA를 정의합니다."
+      }
+    },
+    {
+      "case_id": "QA-010",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-VIDEO-021",
+          "asset_id": "PA-VIDEO-004-P021",
+          "proposal_id": "PROP-VIDEO-004",
+          "supports": "30초 숏폼 Hook → Core → Action 포맷 패턴",
+          "does_not_support": "과거 성과 수치나 회사 실적"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_PATTERN",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "PA-VIDEO-004-P021의 Hook-Core-Action 구조를 영상 포맷 참고 패턴으로 사용합니다."
+      }
+    },
+    {
+      "case_id": "QA-011",
+      "rfp_id": "RFP-TEST-001",
+      "rfp_requirements": [
+        {
+          "id": "R-001",
+          "text": "정책 홍보 대상과 현재 정보 전달 문제를 정의"
+        },
+        {
+          "id": "R-002",
+          "text": "청년층 콘텐츠 소비 특성을 고려한 핵심 홍보 전략"
+        },
+        {
+          "id": "R-003",
+          "text": "숏폼 영상과 카드형 콘텐츠의 기획 방향 및 운영 예시"
+        },
+        {
+          "id": "R-004",
+          "text": "이용자 참여를 유도하는 캠페인 구조"
+        },
+        {
+          "id": "R-005",
+          "text": "6개월간 제작·검수·게시·보고 운영 체계"
+        },
+        {
+          "id": "R-006",
+          "text": "도달·시청·상호작용·참여 전환 KPI 체계"
+        },
+        {
+          "id": "R-007",
+          "text": "저작권·초상권·개인정보·정책 정보 오류 검수 절차"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-001",
+          "R-002",
+          "R-003",
+          "R-004",
+          "R-005",
+          "R-006",
+          "R-007"
+        ],
+        "text": "당사는 유사 사업에서 평균 1억 2천만원 규모의 캠페인을 운영했습니다."
+      }
+    },
+    {
+      "case_id": "QA-012",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-EVENT-015",
+          "asset_id": "PA-EVENT-004-P015",
+          "proposal_id": "PROP-EVENT-004",
+          "supports": "현장 안전 및 촬영동의 체크 절차",
+          "does_not_support": "행사 만족도 95% 성과"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "PA-EVENT-004-P015를 근거로 행사 만족도 95%를 제시합니다."
+      }
+    },
+    {
+      "case_id": "QA-013",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "COVERAGE_SUMMARY",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-306"
+        ],
+        "text": "현재 행사 제안 초안은 체험 동선, 혼잡 관리, 디지털 확산, 안전, 성과관리를 다룹니다."
+      }
+    },
+    {
+      "case_id": "QA-014",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "전담 운영인력 12명을 즉시 투입할 수 있습니다."
+      }
+    },
+    {
+      "case_id": "QA-015",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-TOUR-006",
+          "asset_id": "PA-TOUR-006-P010",
+          "proposal_id": "PROP-TOUR-006",
+          "supports": "지역 관광 방문 탐색·동선 콘텐츠 패턴",
+          "does_not_support": "소상공인 정책 신청 전환 실적"
+        },
+        {
+          "evidence_id": "EV-POLICY-008",
+          "asset_id": "PA-POLICY-008-P012",
+          "proposal_id": "PROP-POLICY-008",
+          "supports": "소상공인 정책 신청 단계 전환 패턴",
+          "does_not_support": "지역 관광 캠페인 실적"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "지역 관광 캠페인에서 검증한 정책 신청 전환 구조를 그대로 적용합니다."
+      }
+    },
+    {
+      "case_id": "QA-016",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": "현장 안전관리와 긴급상황 대응",
+        "claim_classification": "PAGE_MESSAGE",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "안전관리 페이지의 핵심 메시지가 크리에이터 확산 전략으로 작성되어 있습니다."
+      }
+    },
+    {
+      "case_id": "QA-017",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "FACTUAL_COMPANY_CLAIM",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "기존 행사에서 무사고 10년 운영 실적을 보유하고 있습니다."
+      }
+    },
+    {
+      "case_id": "QA-018",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-EVENT-014",
+          "asset_id": "PA-EVENT-004-P014",
+          "proposal_id": "PROP-EVENT-004",
+          "supports": "대기열 분산 및 현장 동선 패턴",
+          "does_not_support": "만족도 성과 수치"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_PATTERN",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "PA-EVENT-004-P014의 대기열 분산 패턴을 이번 행사 동선에 맞게 재설계합니다."
+      }
+    },
+    {
+      "case_id": "QA-019",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "AI_RECOMMENDATION",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "저작권 검수 자료가 부족하므로 신규 체크리스트를 AI_RECOMMENDATION으로 제안합니다."
+      }
+    },
+    {
+      "case_id": "QA-020",
+      "rfp_id": "RFP-TEST-003",
+      "rfp_requirements": [
+        {
+          "id": "R-301",
+          "text": "입장→핵심 체험→결과 확인→후속 정책정보 탐색 동선"
+        },
+        {
+          "id": "R-302",
+          "text": "대기열 및 혼잡 분산 방안"
+        },
+        {
+          "id": "R-303",
+          "text": "행사 전·중·후 디지털 확산 구조"
+        },
+        {
+          "id": "R-304",
+          "text": "현장 안전사고 예방과 긴급상황 대응"
+        },
+        {
+          "id": "R-305",
+          "text": "개인정보 안내와 사진·영상 촬영 및 활용 동의 절차"
+        },
+        {
+          "id": "R-306",
+          "text": "방문자·체험완료·후속조회·만족도 성과지표"
+        }
+      ],
+      "company_facts": [],
+      "evidence_catalog": [
+        {
+          "evidence_id": "EV-PR-018",
+          "asset_id": "PA-PR-007-P018",
+          "proposal_id": "PROP-PR-007",
+          "supports": "지역 크리에이터 협업 운영 패턴",
+          "does_not_support": "개인정보 최소수집 원칙"
+        }
+      ],
+      "draft": {
+        "page_goal": null,
+        "claim_classification": "REFERENCE_BACKED_CLAIM",
+        "covered_requirement_ids": [
+          "R-301",
+          "R-302",
+          "R-303",
+          "R-304",
+          "R-305",
+          "R-306"
+        ],
+        "text": "PA-PR-007-P018은 개인정보 최소수집 원칙을 직접 지원합니다."
+      }
+    }
+  ]
+}
