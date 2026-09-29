@@ -1,0 +1,57 @@
+name: E2E Proposal Demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/e2e-demo-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: e2e-proposal-demo
+  cancel-in-progress: true
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Require OpenAI API key
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "Repository secret OPENAI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Validate demo plan
+        run: python scripts/run_e2e_demo.py --plan-only
+
+      - name: Run E2E demo
+        run: python scripts/run_e2e_demo.py --overwrite
+
+      - name: Commit demo evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/e2e-demo/RFP-TEST-002
+          if git diff --cached --quiet; then
+            echo "No demo changes to commit."
+            exit 0
+          fi
+          git commit -m "demo: record RFP-TEST-002 E2E package"
+          git pull --rebase origin main
+          git push
