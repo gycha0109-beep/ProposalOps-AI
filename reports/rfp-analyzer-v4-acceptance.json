@@ -1,0 +1,27 @@
+{
+  "candidate": "v4_compact_grounded",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "status": "NOT_EVALUATED",
+  "accepted": null,
+  "reason": "No v4 model output was produced. Provider availability/quota prevented both dev calls.",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "attempts": [
+    {
+      "result": "provider_error",
+      "rfp_id": "RFP-TEST-001",
+      "latest_error": "503 UNAVAILABLE after bounded retry",
+      "evidence": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/_failures/v4_compact_grounded-RFP-TEST-001-01.json"
+    },
+    {
+      "result": "provider_error",
+      "rfp_id": "RFP-TEST-002",
+      "latest_error": "429 RESOURCE_EXHAUSTED; free-tier request quota value 20",
+      "evidence": "runs/rfp_analyzer/benchmark-v1-gemini36/dev/_failures/v4_compact_grounded-RFP-TEST-002-01.json"
+    }
+  ],
+  "acceptance_criteria": "evals/acceptance/rfp-analyzer-v4-dev.json",
+  "holdout_opened": false,
+  "decision": "Do not promote or reject v4 on quality. Keep holdout locked until v4 has valid dev outputs."
+}
