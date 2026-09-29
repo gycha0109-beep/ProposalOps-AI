@@ -18,6 +18,7 @@ on:
     branches: [main]
     paths:
       - ".benchmark/dify-knowledge-trigger"
+      - ".github/workflows/dify-knowledge-phase1.yml"
 
 permissions:
   contents: write
@@ -48,8 +49,10 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             OP="${{ inputs.operation }}"
-          else
+          elif [[ -f .benchmark/dify-knowledge-trigger ]]; then
             OP="$(awk -F': *' '/^operation:/ {print $2; exit}' .benchmark/dify-knowledge-trigger)"
+          else
+            OP="plan"
           fi
           if [[ -z "$OP" ]]; then OP="plan"; fi
           echo "DIFY_OPERATION=$OP" >> "$GITHUB_ENV"
@@ -57,14 +60,23 @@ jobs:
 
       - name: Validate exports
         run: |
-          python scripts/validate_dify_export.py             --root exports/dify/knowledge-v1             --expected-count 51
-          python scripts/validate_dify_export.py             --root exports/dify/benchmark-v1             --expected-count 63             --allow-distractors
+          python scripts/validate_dify_export.py \
+            --root exports/dify/knowledge-v1 \
+            --expected-count 51
+          python scripts/validate_dify_export.py \
+            --root exports/dify/benchmark-v1 \
+            --expected-count 63 \
+            --allow-distractors
 
       - name: Plan only
         if: env.DIFY_OPERATION == 'plan'
         run: |
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --plan-only
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --plan-only
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/knowledge-v1/documents.jsonl \
+            --plan-only
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/benchmark-v1/documents.jsonl \
+            --plan-only
           python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
 
@@ -81,7 +93,8 @@ jobs:
         if: env.DIFY_OPERATION != 'plan'
         shell: bash
         run: |
-          python scripts/ensure_dify_datasets.py             --out runs/dify/datasets.json
+          python scripts/ensure_dify_datasets.py \
+            --out runs/dify/datasets.json
           python - <<'PY' >> "$GITHUB_ENV"
           import json
           with open("runs/dify/datasets.json", encoding="utf-8") as handle:
@@ -95,21 +108,31 @@ jobs:
         shell: bash
         run: |
           DATASET_ID="${DIFY_DATASET_ID:-$DIFY_PRODUCTION_ID}"
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/knowledge-v1/documents.jsonl             --metadata-schema exports/dify/knowledge-v1/metadata-schema.json             --dataset-id "$DATASET_ID"             --state-out runs/dify/knowledge-v1/upload-state.json
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/knowledge-v1/documents.jsonl \
+            --metadata-schema exports/dify/knowledge-v1/metadata-schema.json \
+            --dataset-id "$DATASET_ID" \
+            --state-out runs/dify/knowledge-v1/upload-state.json
 
       - name: Upload benchmark knowledge
         if: env.DIFY_OPERATION == 'upload-benchmark' || env.DIFY_OPERATION == 'full-phase1'
         shell: bash
         run: |
           DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
-          python scripts/upload_dify_knowledge.py             --manifest exports/dify/benchmark-v1/documents.jsonl             --metadata-schema exports/dify/benchmark-v1/metadata-schema.json             --dataset-id "$DATASET_ID"             --state-out runs/dify/benchmark-v1/upload-state.json
+          python scripts/upload_dify_knowledge.py \
+            --manifest exports/dify/benchmark-v1/documents.jsonl \
+            --metadata-schema exports/dify/benchmark-v1/metadata-schema.json \
+            --dataset-id "$DATASET_ID" \
+            --state-out runs/dify/benchmark-v1/upload-state.json
 
       - name: Run Dify retrieval benchmark
         if: env.DIFY_OPERATION == 'retrieve-benchmark' || env.DIFY_OPERATION == 'full-phase1'
         shell: bash
         run: |
           DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
-          python scripts/evaluate_dify_retrieval.py             --dataset-id "$DATASET_ID"             --out reports/dify-retrieval-v1.json
+          python scripts/evaluate_dify_retrieval.py \
+            --dataset-id "$DATASET_ID" \
+            --out reports/dify-retrieval-v1.json
 
       - name: Commit live evidence
         if: env.DIFY_OPERATION != 'plan'
