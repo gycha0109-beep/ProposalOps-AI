@@ -1,0 +1,13 @@
+{
+  "track": "rfp_analyzer",
+  "benchmark_version": "1.0",
+  "candidate": "v4_compact_grounded",
+  "prompt_file": "prompts/rfp_analyzer/v4_compact_grounded.md",
+  "status": "not_frozen",
+  "acceptance_report": "reports/rfp-analyzer-v4-acceptance.json",
+  "acceptance_required": true,
+  "holdout_allowed": false,
+  "candidate_commit": null,
+  "frozen_at": null,
+  "note": "Do not enable holdout until v4 has valid dev outputs and frozen acceptance passes."
+}
