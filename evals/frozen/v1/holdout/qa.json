@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "split": "holdout",
+  "track": "proposal_qa",
+  "case_ids": [
+    "QA-012",
+    "QA-013",
+    "QA-015",
+    "QA-017",
+    "QA-019",
+    "QA-020"
+  ]
+}
