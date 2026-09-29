@@ -86,6 +86,35 @@
       "expected_asset_ids": [
         "PA-EVENT-004-P015"
       ]
+    },
+    {
+      "id": "RET-H13",
+      "query": "학생에게 정답을 외우게 하기보다 누가 만들었고 근거가 무엇이며 무엇을 유도하는지 묻게 하는 수업",
+      "expected_asset_ids": [
+        "PA-EDU-009-P009"
+      ]
+    },
+    {
+      "id": "RET-H14",
+      "query": "인터뷰에서 말만 보여주지 말고 그 사람이 언급한 현장과 작업 모습을 화면으로 뒷받침하는 구성",
+      "expected_asset_ids": [
+        "PA-VIDEO-012-P016"
+      ]
+    },
+    {
+      "id": "RET-H15",
+      "query": "정책 체험행사에서 처음 안내받고 직접 해본 뒤 결과를 확인하고 추가 정보를 찾아보게 만드는 흐름",
+      "expected_asset_ids": [
+        "PA-EVENT-004-P013"
+      ]
+    },
+    {
+      "id": "RET-H16",
+      "query": "관광 홍보 성과를 단순 조회수가 아니라 저장이나 예약 페이지로 넘어간 행동으로 판단",
+      "expected_asset_ids": [
+        "PA-PR-007-P019",
+        "PA-CAMP-010-P024"
+      ]
     }
   ]
 }
