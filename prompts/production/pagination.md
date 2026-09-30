@@ -1,11 +1,11 @@
 # Production Draft — Pagination Planner
 
-Status: **DEMO VALIDATED — NOT FROZEN**
+Status: **LIVE INTEGRATION VALIDATED — NOT FROZEN**
 
 
 ## Validation status
 
-RFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.
+RFP-TEST-002 live E2E와 Dify Phase 3 integration에서 실제 사용되었습니다. Phase 3에서는 6개 requirement가 6개 page에 연결되고 deterministic Coverage Gate가 blocking error 0 / warning 0으로 PASS했습니다.
 
 이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.
 
@@ -44,7 +44,7 @@ JSON만 출력합니다.
       "key_message": "string",
       "rfp_requirement_ids": ["R-001"],
       "strategy_ids": ["ST-01"],
-      "evidence_ids": ["EV-R001-01"],
+      "evidence_ids": ["EV-R-001-01"],
       "content_blocks": [
         {
           "role": "string",
