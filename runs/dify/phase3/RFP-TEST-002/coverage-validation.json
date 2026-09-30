@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "blocking_errors": [],
+  "warnings": [],
+  "coverage_summary": {
+    "total_requirements": 6,
+    "covered": 6,
+    "partial": 0,
+    "missing": 0
+  },
+  "page_count": 6,
+  "page_limit": 8,
+  "valid_strategy_ids": [
+    "ST-01",
+    "ST-02",
+    "ST-03",
+    "ST-04",
+    "ST-05",
+    "ST-06"
+  ],
+  "valid_evidence_ids": [
+    "EV-R-201-01",
+    "EV-R-202-01",
+    "EV-R-203-01",
+    "EV-R-204-01",
+    "EV-R-205-01",
+    "EV-R-206-01"
+  ],
+  "requirement_page_map": {
+    "R-201": [
+      "PAGE-001"
+    ],
+    "R-202": [
+      "PAGE-002"
+    ],
+    "R-203": [
+      "PAGE-003"
+    ],
+    "R-204": [
+      "PAGE-004"
+    ],
+    "R-205": [
+      "PAGE-005"
+    ],
+    "R-206": [
+      "PAGE-006"
+    ]
+  }
+}
