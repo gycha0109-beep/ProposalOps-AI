@@ -77,7 +77,7 @@ Return JSON only:
     {
       "requirement_id": "R-201",
       "intent": "strategy | content | operation | kpi | risk",
-      "search_queries": ["single focused query"],
+      "search_queries": ["semantic mechanism query", "anchor query preserving key nouns"],
       "filters": {},
       "must_find": ["..."],
       "nice_to_have": ["..."],
@@ -88,8 +88,9 @@ Return JSON only:
 }
 
 Return exactly one plan per supplied RFP requirement.
-Every plan must include at least one non-empty search query.
-The first query must be a concise semantic description of the exact reusable mechanism needed.
+Every plan must include exactly two non-empty, distinct search queries.
+Query 1 must be a concise semantic description of the exact reusable mechanism needed.
+Query 2 must preserve important nouns, formats, and action terms from the requirement while using a different phrasing.
 Do not combine unrelated requirements into one plan.
 '''
 
@@ -178,9 +179,12 @@ def validate_plans(rfp_analysis: dict, planner: dict):
         if not row:
             continue
         queries = row.get("search_queries")
-        if not isinstance(queries, list) or not any(
-            isinstance(query, str) and query.strip() for query in queries
-        ):
+        normalized_queries = (
+            [query.strip() for query in queries if isinstance(query, str) and query.strip()]
+            if isinstance(queries, list)
+            else []
+        )
+        if len(normalized_queries) != 2 or len(set(normalized_queries)) != 2:
             invalid.append(rid)
     extras = sorted(set(by_req) - set(required))
     return {
