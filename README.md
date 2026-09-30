@@ -227,25 +227,55 @@ ProposalOps-AI/
 └─ scripts/
 ```
 
-## Dify Knowledge Phase 1
+## Dify Knowledge Integration
 
-Dify 연결 전 준비는 완료됐습니다.
+### Phase 1 — Knowledge / Retrieval
+
+실제 Dify Cloud Sandbox 연결과 Knowledge retrieval benchmark를 완료했습니다.
 
 - production corpus: **51** normal Proposal Assets
-- fair benchmark corpus: **63** = 51 normal + 12 hard negatives
-- native metadata fields: **14**
-- frozen retrieval queries: **48**
-- upload/retrieval workflow plan: **CI PASS**
+- benchmark corpus: **63** = 51 normal + 12 hard negatives
+- High Quality semantic retrieval: **48 frozen queries complete**
+- DEV Hit@1: **90.62%**
+- HOLDOUT Hit@1: **93.75%**
+- Hit@3 / Hit@5: **100% / 100%**
+- local char n-gram TF-IDF baseline과 aggregate metric 동률
 
-Files:
+Evidence:
 
-- `exports/dify/knowledge-v1/`
-- `exports/dify/benchmark-v1/`
-- `scripts/upload_dify_knowledge.py`
-- `scripts/evaluate_dify_retrieval.py`
+- `reports/dify-retrieval-v1-semantic.json`
 - `docs/dify-knowledge-phase1.md`
 
-실제 Dify 호출에는 repository secret `DIFY_API_KEY`만 필수입니다. Production/benchmark dataset은 workflow가 자동 생성하며, `DIFY_DATASET_ID` / `DIFY_BENCHMARK_DATASET_ID`는 기존 dataset을 쓸 때만 선택적으로 override합니다.
+### Phase 2 — Grounded Strategy Core
+
+RFP-TEST-002를 실제 live chain으로 실행했습니다.
+
+```text
+RFP Analyzer
+→ dual-query Retrieval Planner
+→ Dify Production Knowledge semantic retrieval
+→ Evidence Builder
+→ Proposal Strategist
+```
+
+Final validation:
+
+- RFP requirement IDs: **PASS**
+- Retrieval Planner contract: **PASS**
+- Evidence primary recall / precision / provenance / status: **100%**
+- unsupported company / numeric claims: **0 / 0**
+- Strategist requirement coverage / evidence citation / evidence validity: **100%**
+- information-class separation: **100%**
+- broken provenance chain: **0**
+- Phase 2 Core: **PASS**
+
+Evidence:
+
+- `reports/dify-phase2-core-rfp-test-002.json`
+- `reports/dify-phase2-core-rfp-test-002.md`
+- `docs/dify-phase2-core.md`
+
+Evidence Builder도 별도 live benchmark에서 frozen candidate `v1_grounded`가 PASS했습니다.
 
 ## Remaining Work
 
@@ -257,6 +287,7 @@ Files:
 - [x] RFP Analyzer dev + holdout
 - [x] Proposal Strategist dev + holdout
 - [x] Proposal QA dev + holdout
+- [x] Evidence Builder live dev benchmark + frozen candidate
 - [x] frozen production prompt promotion
 - [x] Pagination / Slide / Visual live E2E
 - [x] final QA BLOCK evidence
@@ -264,17 +295,16 @@ Files:
 - [x] final E2E QA PASS
 - [x] GitHub Actions reproducibility / candidate-state validation
 - [x] vendor-neutral agent workflow blueprint
-- [x] Dify production Knowledge export — 51 normal Proposal Assets
-- [x] Dify fair retrieval benchmark export — 51 normal + 12 hard negatives = 63
-- [x] Dify create-by-text uploader + native metadata sync
-- [x] Dify retrieval benchmark runner — frozen 48 queries
-- [x] Dify Phase 1 CI / plan workflow 검증
+- [x] Dify production Knowledge upload
+- [x] Dify benchmark Knowledge upload
+- [x] Dify frozen semantic retrieval 48-query comparison
+- [x] Dify Phase 2 RFP → Retrieval → Evidence → Strategy live PASS
 
 남음:
 
-- [ ] Dify production/benchmark dataset 실제 업로드
-- [ ] 실제 Dify Knowledge retrieval 비교
-- [ ] Dify 또는 Antigravity 실제 node wiring
+- [ ] current Dify DSL 0.7.0 import candidate
+- [ ] Dify Studio node UI import / smoke test
+- [ ] Strategy → Pagination → Coverage Validator node wiring
 - [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
 
-현재 포트폴리오에서 주장하는 성능은 **synthetic frozen benchmark와 demo workflow 결과에 한정**합니다.
+현재 포트폴리오에서 주장하는 성능은 **synthetic frozen benchmark와 demo/live workflow 결과에 한정**합니다.
