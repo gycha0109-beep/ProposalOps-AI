@@ -106,6 +106,13 @@ jobs:
           python scripts/validate_candidate_state.py \
             --state evals/frozen/v1/proposal-strategist-candidate.json
 
+      - name: Validate Evidence Builder dev batch plan
+        run: |
+          python scripts/run_evidence_builder_benchmark.py \
+            --versions all \
+            --plan-only > /tmp/evidence-builder-dev-plan.json
+          cat /tmp/evidence-builder-dev-plan.json
+
       - name: Validate committed Dify production export
         run: |
           python scripts/validate_dify_export.py \
