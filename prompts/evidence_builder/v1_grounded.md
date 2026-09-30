@@ -23,8 +23,11 @@ Classify candidate support as:
 6. Keep `asset_id`, `proposal_id`, title, source file, source page, and source type faithful to the selected candidate.
 7. Do not merge facts from different proposals into one historical project.
 8. Retrieval rank does not override content fit. A rank-1 hard negative must be rejected.
-9. If nothing is usable, return `NO_REFERENCE_FOUND`.
-10. If only limited pattern support exists, return `PARTIAL_REFERENCE_ONLY`.
+9. Use the smallest sufficient evidence set. Do not add a candidate merely because it is in the same domain or shares keywords.
+10. When at least one direct candidate exists, select only candidates that directly support the exact requirement mechanism. Do not pad the pack with generic KPI, channel, audience, safety, or content examples.
+11. A candidate is direct only when its actual summary/strategy materially answers the requirement, not when its tags or nouns merely overlap.
+12. If nothing is usable, return `NO_REFERENCE_FOUND`.
+13. If there is no direct support and only a transferable pattern exists, return `PARTIAL_REFERENCE_ONLY`.
 
 ## Evidence fields
 
