@@ -1,0 +1,7 @@
+Evidence Builder dev benchmark
+provider: openai
+model: gpt-5.6-luna
+versions: v0_baseline,v1_grounded
+cases: 6
+source: Dify semantic top-5
+triggered: 2026-09-30T12:10+09:00
