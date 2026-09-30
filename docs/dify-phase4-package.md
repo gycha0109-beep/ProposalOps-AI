@@ -196,5 +196,9 @@ The Studio DSL includes:
 The portable Studio candidate intentionally unrolls **one** repair/recheck pass.
 The Python runner remains authoritative for the maximum three-cycle bounded repair policy.
 
+The current Phase 4 Studio candidate also pins all ten LLM nodes to
+`langgenius/openai/openai / gpt-5.6-luna` and uses globally unique End-output
+variable names across the normal, gate-failure, repaired, and escalation branches.
+
 Actual Studio import / node-UI smoke testing still requires the user's authenticated Dify Studio session
 and is not claimed complete from Service API execution alone.
