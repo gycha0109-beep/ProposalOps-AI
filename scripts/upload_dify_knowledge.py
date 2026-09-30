@@ -16,6 +16,7 @@ DEFAULT_MANIFEST = "exports/dify/knowledge-v1/documents.jsonl"
 DEFAULT_SCHEMA = "exports/dify/knowledge-v1/metadata-schema.json"
 ASSET_ID_RE = re.compile(r"asset_id:\s*(PA-[A-Z]+-\d+-P\d+)")
 COMPACT_SEED_MARKER = "PROPOSALOPS_SANDBOX_COMPACT_CONTAINER"
+PACK_SEPARATOR = "\n<<<PROPOSALOPS_ASSET_BOUNDARY_V1>>>\n"
 
 
 class DifyError(RuntimeError):
@@ -180,35 +181,41 @@ def asset_id_from_segment(segment: dict) -> str | None:
     return match.group(1) if match else None
 
 
-def create_segments(
+def pack_documents(docs: list[dict]) -> str:
+    return PACK_SEPARATOR.join(doc["text"].strip() for doc in docs)
+
+
+def create_packed_document(
     client: DifyClient,
     dataset_id: str,
-    document_id: str,
+    document_name: str,
     docs: list[dict],
-    batch_size: int = 20,
-) -> list[dict]:
-    created = []
-    for start in range(0, len(docs), batch_size):
-        batch = docs[start : start + batch_size]
-        response = client.request(
-            "POST",
-            f"/datasets/{dataset_id}/documents/{document_id}/segments",
-            {
-                "segments": [
-                    {
-                        "content": doc["text"],
-                    }
-                    for doc in batch
-                ]
+) -> dict:
+    payload = {
+        "name": document_name,
+        "text": pack_documents(docs),
+        "indexing_technique": "high_quality",
+        "doc_form": "text_model",
+        "process_rule": {
+            "mode": "custom",
+            "rules": {
+                "pre_processing_rules": [
+                    {"id": "remove_extra_spaces", "enabled": True},
+                    {"id": "remove_urls_emails", "enabled": False},
+                ],
+                "segmentation": {
+                    "separator": PACK_SEPARATOR,
+                    "max_tokens": 2048,
+                    "chunk_overlap": 0,
+                },
             },
-        )
-        rows = response.get("data", [])
-        if len(rows) != len(batch):
-            raise DifyError(
-                f"Segment create count mismatch: requested={len(batch)} returned={len(rows)} response={response}"
-            )
-        created.extend(rows)
-    return created
+        },
+    }
+    return client.request(
+        "POST",
+        f"/datasets/{dataset_id}/document/create-by-text",
+        payload,
+    )
 
 
 def upload_compact(
@@ -224,85 +231,69 @@ def upload_compact(
 
     created_document = False
     if matches:
-        container = matches[0]
-        document_id = container["id"]
+        document_id = matches[0]["id"]
     else:
-        response = create_document(
-            client,
-            dataset_id,
-            {
-                "name": document_name,
-                "text": f"{COMPACT_SEED_MARKER}\nThis seed chunk is removed after indexing.",
-            },
-        )
-        container = response.get("document") or {}
-        document_id = container.get("id")
+        response = create_packed_document(client, dataset_id, document_name, docs)
+        document = response.get("document") or {}
+        document_id = document.get("id")
         if not document_id:
-            raise DifyError(f"Create compact document response missing document.id: {response}")
+            raise DifyError(f"Create packed document response missing document.id: {response}")
         created_document = True
 
     wait_for_document_ready(client, dataset_id, document_id)
     segments = list_all_segments(client, dataset_id, document_id)
 
-    seed_ids = [
-        segment.get("id")
-        for segment in segments
-        if COMPACT_SEED_MARKER in str(segment.get("content") or "") and segment.get("id")
-    ]
-    for segment_id in seed_ids:
-        client.request(
-            "DELETE",
-            f"/datasets/{dataset_id}/documents/{document_id}/segments/{segment_id}",
-        )
-
-    if seed_ids:
-        seed_id_set = set(seed_ids)
-        segments = [segment for segment in segments if segment.get("id") not in seed_id_set]
-
     requested_ids = {doc["asset_id"] for doc in docs}
-    existing_by_asset = {}
+    by_asset = {}
     duplicate_assets = []
+    unknown_segments = []
+
     for segment in segments:
         asset_id = asset_id_from_segment(segment)
         if not asset_id:
+            unknown_segments.append(
+                {
+                    "segment_id": segment.get("id"),
+                    "content_prefix": str(segment.get("content") or "")[:160],
+                }
+            )
             continue
-        if asset_id in existing_by_asset:
+        if asset_id in by_asset:
             duplicate_assets.append(asset_id)
-        existing_by_asset[asset_id] = segment
+        by_asset[asset_id] = segment
 
-    if duplicate_assets:
-        raise DifyError(f"Duplicate asset chunks already exist: {sorted(set(duplicate_assets))}")
+    missing_assets = sorted(requested_ids - set(by_asset))
+    extra_assets = sorted(set(by_asset) - requested_ids)
 
-    extra_assets = sorted(set(existing_by_asset) - requested_ids)
-    if extra_assets:
-        raise DifyError(f"Unexpected asset chunks in compact document: {extra_assets}")
-
-    missing_docs = [doc for doc in docs if doc["asset_id"] not in existing_by_asset]
-    created_segments = create_segments(client, dataset_id, document_id, missing_docs) if missing_docs else []
-
-    final_segments = list_all_segments(client, dataset_id, document_id)
-    final_by_asset = {}
-    for segment in final_segments:
-        asset_id = asset_id_from_segment(segment)
-        if asset_id:
-            final_by_asset[asset_id] = segment
-
-    missing_after = sorted(requested_ids - set(final_by_asset))
-    if missing_after:
-        raise DifyError(f"Compact upload incomplete; missing asset chunks: {missing_after}")
+    if duplicate_assets or missing_assets or extra_assets or unknown_segments or len(segments) != len(docs):
+        raise DifyError(
+            "Packed document segmentation mismatch: "
+            + json.dumps(
+                {
+                    "expected_segments": len(docs),
+                    "actual_segments": len(segments),
+                    "duplicate_assets": sorted(set(duplicate_assets)),
+                    "missing_assets": missing_assets,
+                    "extra_assets": extra_assets,
+                    "unknown_segments": unknown_segments,
+                },
+                ensure_ascii=False,
+            )
+        )
 
     return {
         "dataset_id": dataset_id,
         "api_base": client.api_base,
         "sandbox_compact": True,
+        "compact_strategy": "single_document_custom_separator",
         "compact_document_name": document_name,
         "compact_document_id": document_id,
         "compact_document_created": created_document,
         "requested_documents": len(docs),
         "available_documents": len(docs),
+        "dify_document_count": 1,
+        "segment_count": len(segments),
         "created_documents": 1 if created_document else 0,
-        "created_segments": len(created_segments),
-        "skipped_existing_segments": len(docs) - len(missing_docs),
         "failure_count": 0,
         "native_metadata_enabled": False,
         "documents": [
@@ -310,7 +301,7 @@ def upload_compact(
                 "asset_id": doc["asset_id"],
                 "document_name": document_name,
                 "document_id": document_id,
-                "segment_id": final_by_asset[doc["asset_id"]].get("id"),
+                "segment_id": by_asset[doc["asset_id"]].get("id"),
             }
             for doc in docs
         ],
@@ -386,7 +377,7 @@ def main():
         "one_asset_per_segment": args.sandbox_compact,
         "native_metadata": False if args.sandbox_compact else not args.skip_native_metadata,
         "create_endpoint": "/datasets/{dataset_id}/document/create-by-text",
-        "segment_endpoint": "/datasets/{dataset_id}/documents/{document_id}/segments",
+        "segment_endpoint": "automatic custom-separator segmentation during create-by-text",
         "retrieval_endpoint": "/datasets/{dataset_id}/retrieve",
         "delay_seconds": args.delay_seconds,
     }
