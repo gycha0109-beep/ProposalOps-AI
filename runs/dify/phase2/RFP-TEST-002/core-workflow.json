@@ -2,7 +2,7 @@
   "version": "1.0",
   "phase": "dify-phase2-core",
   "status": "FAIL",
-  "generated_at": "2026-09-30T03:51:20.140795+00:00",
+  "generated_at": "2026-09-30T03:55:33.384460+00:00",
   "rfp_id": "RFP-TEST-002",
   "model": "gpt-5.6-luna",
   "dify": {
@@ -59,7 +59,7 @@
       {
         "name": "주말 추천 카드형 콘텐츠",
         "quantity": "24건",
-        "frequency": "주말",
+        "frequency": "unknown",
         "source_quote": "주말 추천 카드형 콘텐츠 24건 제작"
       },
       {
@@ -75,16 +75,16 @@
         "source_quote": "문화시설·관광지 연계 코스 콘텐츠 8건 제작"
       },
       {
-        "name": "월별 성과 보고",
+        "name": "성과 보고",
         "quantity": "unknown",
         "frequency": "월별",
-        "source_quote": "월별 성과 보고 및 최종 결과 보고"
+        "source_quote": "월별 성과 보고"
       },
       {
         "name": "최종 결과 보고",
-        "quantity": "1건",
+        "quantity": "unknown",
         "frequency": "사업 종료 시",
-        "source_quote": "월별 성과 보고 및 최종 결과 보고"
+        "source_quote": "최종 결과 보고"
       },
       {
         "name": "콘텐츠 목록",
@@ -141,32 +141,32 @@
       {
         "category": "사업 이해",
         "score": 15,
-        "source_quote": "사업 이해 | 15"
+        "source_quote": "| 사업 이해 | 15 |"
       },
       {
         "category": "전략 적합성",
         "score": 25,
-        "source_quote": "전략 적합성 | 25"
+        "source_quote": "| 전략 적합성 | 25 |"
       },
       {
         "category": "콘텐츠 기획",
         "score": 25,
-        "source_quote": "콘텐츠 기획 | 25"
+        "source_quote": "| 콘텐츠 기획 | 25 |"
       },
       {
         "category": "크리에이터 운영",
         "score": 15,
-        "source_quote": "크리에이터 운영 | 15"
+        "source_quote": "| 크리에이터 운영 | 15 |"
       },
       {
         "category": "운영 및 검수",
         "score": 10,
-        "source_quote": "운영 및 검수 | 10"
+        "source_quote": "| 운영 및 검수 | 10 |"
       },
       {
         "category": "성과관리",
         "score": 10,
-        "source_quote": "성과관리 | 10"
+        "source_quote": "| 성과관리 | 10 |"
       }
     ],
     "constraints": [
@@ -189,73 +189,65 @@
       "requirement_id": "R-201",
       "intent": "strategy",
       "search_queries": [
-        "방문 동기별 관광객 세분화와 동기별 홍보 메시지 설계 사례",
-        "맛집 휴식 체험 문화관람 목적별 관광 타깃 전략",
-        "관광객 세그먼트별 콘텐츠 및 채널 운영 전략"
+        "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례"
       ],
       "filters": {
         "category": "strategy",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
-          "case_study",
-          "proposal",
-          "strategy"
+          "strategy",
+          "case_study"
         ]
       },
       "must_find": [
-        "방문 동기 기준의 타깃 세분화 체계",
+        "맛집·휴식·체험·문화관람 등 방문 동기별 타깃 세그먼트",
         "세그먼트별 핵심 니즈와 메시지",
-        "세분화 결과를 홍보 콘텐츠와 채널 운영에 연결한 방식"
+        "타깃별 채널 또는 콘텐츠 접근 방식"
       ],
       "nice_to_have": [
-        "20~40대 국내 개별 여행객 대상 사례",
-        "지역 주민을 포함한 복수 타깃 운영 사례",
-        "세분화 전략의 성과 또는 적용 결과"
+        "20~40대 국내 개별 여행객 대상 전략",
+        "지역 주민을 포함한 이중 타깃 운영 사례",
+        "세분화 결과와 방문 행동 간 연결 방식"
       ],
       "exclude": [
-        "방문 동기와 무관한 일반 인구통계 세분화",
-        "근거가 확인되지 않는 관광객 규모나 성과 수치"
+        "근거가 확인되지 않은 시장 규모나 성과 수치",
+        "방문 동기와 무관한 일반 브랜드 타깃팅 사례"
       ],
       "desired_evidence_count": 2
     },
     {
       "requirement_id": "R-202",
-      "intent": "strategy",
+      "intent": "content",
       "search_queries": [
-        "발견 콘텐츠에서 저장 상세조회 방문 계획으로 전환시키는 콘텐츠 퍼널 설계",
-        "관광 콘텐츠의 저장 상세정보 탐색 지도 이동 연결 구조",
-        "여행 콘텐츠 단계별 CTA와 방문 계획 유도 사례"
+        "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조"
       ],
       "filters": {
-        "category": "content_strategy",
+        "category": "content",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
-          "case_study",
-          "proposal",
-          "content_plan"
+          "content_strategy",
+          "case_study"
         ]
       },
       "must_find": [
-        "발견 단계와 상세 탐색 단계의 콘텐츠 역할 구분",
-        "저장 또는 재방문을 유도하는 장치",
-        "지도·예약·방문 계획으로 연결하는 CTA 또는 이용 흐름"
+        "짧은 발견 콘텐츠의 역할과 구성",
+        "저장 및 상세 탐색을 유도하는 정보 요소",
+        "지도·예약·방문 계획으로 연결하는 CTA 또는 콘텐츠 흐름"
       ],
       "nice_to_have": [
-        "소셜 숏폼과 카드형 콘텐츠를 연계한 사례",
-        "콘텐츠 단계별 KPI 정의",
-        "실제 방문 전환을 추적한 운영 방식"
+        "숏폼·카드뉴스·상세 페이지 간 연계 사례",
+        "콘텐츠 단계별 운영 포맷",
+        "방문 전환을 측정한 사례"
       ],
       "exclude": [
-        "단순 노출 중심의 콘텐츠 운영안",
-        "방문 행동과 연결되지 않는 일반 브랜딩 캠페인"
+        "인지도나 도달만을 목표로 한 콘텐츠 구조",
+        "방문 행동과 연결되지 않는 단일 콘텐츠 제작 사례"
       ],
       "desired_evidence_count": 2
     },
@@ -263,37 +255,33 @@
       "requirement_id": "R-203",
       "intent": "content",
       "search_queries": [
-        "모바일 세로형 숏폼의 후킹 메시지 본문 CTA 구성",
-        "관광 세로형 숏폼 영상 기획과 방문 행동 유도 사례",
-        "숏폼 영상에서 정보 전달과 지도·예약 이동을 연결하는 방식"
+        "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성"
       ],
       "filters": {
-        "category": "short_form_video",
+        "category": "content",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
-          "case_study",
+          "video",
           "content_plan",
-          "proposal"
+          "case_study"
         ]
       },
       "must_find": [
-        "세로형 모바일 영상의 메시지 구성",
-        "초반 주목을 유도하는 후킹 방식",
-        "방문·저장·상세 탐색을 유도하는 CTA"
+        "세로형 숏폼의 도입부 후킹 방식",
+        "짧은 영상 내 핵심 메시지 전달 구조",
+        "지도·상세정보·예약 등 방문 행동 유도 방식"
       ],
       "nice_to_have": [
-        "관광 또는 문화시설 홍보 숏폼 사례",
-        "영상 길이와 장면 구성 기준",
-        "숏폼 성과 측정 방식"
+        "관광지 또는 문화시설 숏폼 기획 사례",
+        "영상 길이·장면 구성·자막 운영 기준",
+        "플랫폼별 CTA 적용 사례"
       ],
       "exclude": [
-        "세로형이 아닌 장편 영상 중심 사례",
-        "영상 제작 실적만 있고 기획 구조가 없는 자료",
-        "근거 없는 조회수나 전환율"
+        "방문 목적이 아닌 제품 판매 중심 숏폼 사례",
+        "근거 없는 조회수·전환율 수치"
       ],
       "desired_evidence_count": 2
     },
@@ -301,76 +289,67 @@
       "requirement_id": "R-204",
       "intent": "operation",
       "search_queries": [
-        "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영",
-        "지역 크리에이터 섭외 검수 게시 및 성과관리 프로세스",
-        "공공기관 관광 홍보 크리에이터 협업 운영 사례"
+        "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영 모델"
       ],
       "filters": {
         "category": "creator_collaboration",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
+          "operation",
           "case_study",
-          "operation_plan",
-          "proposal"
+          "guideline"
         ]
       },
       "must_find": [
         "공식 채널의 정보·검수·배포 역할",
-        "크리에이터의 현장 경험·제작·확산 역할",
-        "섭외부터 콘텐츠 검수와 게시까지의 운영 절차"
+        "지역 크리에이터의 현장성·스토리텔링 역할",
+        "협업 콘텐츠 제작부터 게시까지의 운영 절차"
       ],
       "nice_to_have": [
-        "지역 기반 크리에이터 선정 기준",
-        "저작권·광고표기·브랜드 가이드 운영 방식",
-        "협업 콘텐츠 성과관리 사례"
+        "크리에이터 선정 기준",
+        "브리프·가이드·검수 체계",
+        "저작권·표기·일정 관리 방식"
       ],
       "exclude": [
-        "인플루언서 단순 광고 집행 사례",
-        "공식 채널과 크리에이터 역할이 구분되지 않은 사례",
-        "확인되지 않은 팔로워 수나 도달 성과"
+        "역할 구분이 없는 단순 인플루언서 광고 사례",
+        "확인되지 않은 크리에이터 성과나 팔로워 수"
       ],
       "desired_evidence_count": 2
     },
     {
       "requirement_id": "R-205",
-      "intent": "operation",
+      "intent": "risk",
       "search_queries": [
-        "관광시설 운영시간 휴관 행사일정 변경정보의 게시 전 검수 프로세스",
-        "공공 관광 콘텐츠 운영정보 사실확인 및 최신화 절차",
-        "문화시설·관광지 정보의 담당기관 확인과 게시 승인 체계"
+        "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차"
       ],
       "filters": {
-        "category": "content_quality_control",
+        "category": "risk_management",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광",
-          "문화시설"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
-          "operation_manual",
-          "proposal",
-          "case_study"
+          "operation",
+          "quality_control",
+          "guideline"
         ]
       },
       "must_find": [
-        "게시 전 운영정보 확인 단계",
-        "시설 담당자 또는 공식 출처를 통한 사실확인 방식",
-        "변경사항 발생 시 수정·재게시·이력관리 절차"
+        "게시 전 운영정보 확인 책임자와 확인 단계",
+        "시설·행사 주최 측을 통한 최신 정보 검증 방식",
+        "변경·오류 발생 시 수정 및 공지 절차"
       ],
       "nice_to_have": [
-        "검수 체크리스트",
-        "최종 승인 담당자와 승인 기준",
-        "매진·휴관·행사 변경에 대한 긴급 대응 체계"
+        "정보 확인 체크리스트",
+        "게시일 기준 정보 유효성 관리",
+        "변경 이력 및 승인 기록 관리"
       ],
       "exclude": [
-        "확인되지 않은 시설 운영시간이나 행사 일정",
-        "정보 출처와 검수 책임자가 없는 콘텐츠 제작안",
-        "임의로 생성한 방문 정보"
+        "실제 시설 운영정보를 근거 없이 제시하는 자료",
+        "검수 책임과 갱신 절차가 없는 단순 콘텐츠 제작 사례"
       ],
       "desired_evidence_count": 2
     },
@@ -378,38 +357,35 @@
       "requirement_id": "R-206",
       "intent": "kpi",
       "search_queries": [
-        "관광 홍보에서 도달보다 저장 상세조회 지도·예약 이동을 측정하는 KPI 체계",
-        "콘텐츠별 방문 의도 KPI와 퍼널 성과관리 방식",
-        "관광 캠페인의 저장 클릭 지도 이동 예약 전환 측정 사례"
+        "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계"
       ],
       "filters": {
-        "category": "performance_management",
+        "category": "performance_measurement",
         "client_type": [
-          "공공기관",
-          "지방자치단체",
-          "관광"
+          "지자체",
+          "문화관광"
         ],
         "page_type": [
-          "performance_report",
-          "kpi_framework",
-          "proposal",
+          "kpi",
+          "report",
           "case_study"
         ]
       },
       "must_find": [
-        "도달·노출과 방문 의도 지표의 구분",
-        "저장·상세조회·지도 이동·예약 페이지 이동 KPI",
-        "월별 보고와 최종 보고에 활용 가능한 원자료 수집 방식"
+        "도달·노출 등 인지 지표",
+        "저장·상세조회 등 관심 및 탐색 지표",
+        "지도·예약 페이지 이동 등 방문 의도 지표",
+        "월별 및 최종 성과 보고에 활용 가능한 집계 방식"
       ],
       "nice_to_have": [
         "콘텐츠 유형별 KPI 매핑",
-        "KPI 산식과 데이터 출처",
-        "월별 성과 추이 및 개선 조치 사례"
+        "플랫폼 분석 도구 또는 원자료 수집 방식",
+        "KPI 정의서와 보고서 템플릿"
       ],
       "exclude": [
-        "도달·노출만 제시한 성과관리안",
-        "측정 방법이나 데이터 출처가 없는 KPI",
-        "근거가 확인되지 않는 전환율과 방문자 수"
+        "도달·조회수만 제시하는 성과관리 사례",
+        "검증되지 않은 전환율이나 방문자 수",
+        "원자료 제출 또는 측정 방법이 없는 지표"
       ],
       "desired_evidence_count": 2
     }
@@ -418,7 +394,10 @@
     {
       "requirement_id": "R-201",
       "intent": "strategy",
-      "query": "방문 동기별 관광객 세분화와 동기별 홍보 메시지 설계 사례",
+      "query": "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례",
+      "queries": [
+        "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례"
+      ],
       "allowed_page_types": [
         "channel_plan",
         "strategy",
@@ -430,7 +409,7 @@
       "candidates": [
         {
           "retrieval_rank": 1,
-          "retrieval_score": 0.5630288,
+          "retrieval_score": 0.506366,
           "asset_id": "PA-PR-007-P015",
           "title": "여행 동기 세분화",
           "document_name": "PA-PR-007-P015__여행 동기 세분화",
@@ -450,11 +429,19 @@
             "source_page": 15,
             "source_type": "synthetic_demo",
             "tags": "관광|타깃|세분화"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례",
+              "rank": 1,
+              "score": 0.506366
+            }
+          ]
         },
         {
           "retrieval_rank": 2,
-          "retrieval_score": 0.5110387,
+          "retrieval_score": 0.43793905,
           "asset_id": "PA-CAMP-010-P020",
           "title": "방문 맥락 세분화",
           "document_name": "PA-CAMP-010-P020__방문 맥락 세분화",
@@ -474,35 +461,19 @@
             "source_page": 20,
             "source_type": "synthetic_demo",
             "tags": "문화시설|타깃|세분화"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례",
+              "rank": 2,
+              "score": 0.43793905
+            }
+          ]
         },
         {
           "retrieval_rank": 3,
-          "retrieval_score": 0.4575904,
-          "asset_id": "PA-PR-011-P010",
-          "title": "내가 대상인가 메시지",
-          "document_name": "PA-PR-011-P010__내가 대상인가 메시지",
-          "text": "# 내가 대상인가 메시지\n\n## Provenance\n- asset_id: PA-PR-011-P010\n- proposal_id: PROP-PR-011\n- category: public_relations\n- client_type: public_institution\n- project_type: 소상공인 지원정책 홍보\n- page: 10\n- page_type: strategy\n- section: 내가 대상인가 메시지\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_11.md\n- source_page: 10\n- source_type: synthetic_demo\n- tags: 정책홍보, 메시지, CTA\n\n## Normalized Summary\n업종, 사업기간, 지역 등 핵심 조건을 질문형으로 제시해 상세 정책 탐색으로 연결한다.\n\n## Objective\n- 업종, 사업기간, 지역 등 핵심 조건을 질문형으로 제시해 상세 정책 탐색으로 연결한다.\n\n## Target Audience\n- 소상공인 및 예비창업자\n\n## Deliverables\n- none\n\n## Strategies\n- 상황 질문 → 자격 확인 → 신청 정보\n\n## Differentiators\n- 상황 질문 → 자격 확인 → 신청 정보\n\n## Channels\n- none\n\n## KPIs\n- 자격확인\n- 질문\n\n## Reusable Patterns\n- 상황 질문 → 자격 확인 → 신청 정보\n\n## Company Facts\n- none\n\n## Search Terms\n정책홍보, 메시지, CTA, 상황 질문 → 자격 확인 → 신청 정보, 상황 질문 → 자격 확인 → 신청 정보",
-          "metadata": {
-            "asset_id": "PA-PR-011-P010",
-            "proposal_id": "PROP-PR-011",
-            "category": "public_relations",
-            "client_type": "public_institution",
-            "project_type": "소상공인 지원정책 홍보",
-            "page": 10,
-            "page_type": "strategy",
-            "section": "내가 대상인가 메시지",
-            "reuse_level": "pattern_allowed",
-            "sensitivity": "public_demo",
-            "source_file": "demo_pr_proposal_11.md",
-            "source_page": 10,
-            "source_type": "synthetic_demo",
-            "tags": "정책홍보|메시지|CTA"
-          }
-        },
-        {
-          "retrieval_rank": 5,
-          "retrieval_score": 0.44627798,
+          "retrieval_score": 0.37291622,
           "asset_id": "PA-PR-007-P018",
           "title": "크리에이터 증폭 구조",
           "document_name": "PA-PR-007-P018__크리에이터 증폭 구조",
@@ -522,29 +493,70 @@
             "source_page": 18,
             "source_type": "synthetic_demo",
             "tags": "관광|크리에이터|확산"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례",
+              "rank": 3,
+              "score": 0.37291622
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 5,
+          "retrieval_score": 0.36025512,
+          "asset_id": "PA-CAMP-010-P021",
+          "title": "취향에서 방문으로",
+          "document_name": "PA-CAMP-010-P021__취향에서 방문으로",
+          "text": "# 취향에서 방문으로\n\n## Provenance\n- asset_id: PA-CAMP-010-P021\n- proposal_id: PROP-CAMP-010\n- category: digital_campaign\n- client_type: public_institution\n- project_type: 지역 문화시설 이용 활성화 캠페인\n- page: 21\n- page_type: strategy\n- section: 취향에서 방문으로\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_campaign_proposal_10.md\n- source_page: 21\n- source_type: synthetic_demo\n- tags: 문화시설, 캠페인, 전환\n\n## Normalized Summary\n관심 주제 선택에서 시작해 맞춤 프로그램과 실제 방문 정보를 연결한다.\n\n## Objective\n- 관심 주제 선택에서 시작해 맞춤 프로그램과 실제 방문 정보를 연결한다.\n\n## Target Audience\n- 지역 주민 및 가족 단위 이용자\n\n## Deliverables\n- none\n\n## Strategies\n- Taste → Match → Visit\n\n## Differentiators\n- Taste → Match → Visit\n\n## Channels\n- none\n\n## KPIs\n- 취향\n- 매칭\n- 방문\n\n## Reusable Patterns\n- Taste → Match → Visit\n\n## Company Facts\n- none\n\n## Search Terms\n문화시설, 캠페인, 전환, Taste → Match → Visit, Taste → Match → Visit",
+          "metadata": {
+            "asset_id": "PA-CAMP-010-P021",
+            "proposal_id": "PROP-CAMP-010",
+            "category": "digital_campaign",
+            "client_type": "public_institution",
+            "project_type": "지역 문화시설 이용 활성화 캠페인",
+            "page": 21,
+            "page_type": "strategy",
+            "section": "취향에서 방문으로",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_campaign_proposal_10.md",
+            "source_page": 21,
+            "source_type": "synthetic_demo",
+            "tags": "문화시설|캠페인|전환"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "방문 동기별 여행객 세분화와 맞춤형 홍보 전략 수립 사례",
+              "rank": 5,
+              "score": 0.36025512
+            }
+          ]
         }
       ],
       "unknown_records": []
     },
     {
       "requirement_id": "R-202",
-      "intent": "strategy",
-      "query": "발견 콘텐츠에서 저장 상세조회 방문 계획으로 전환시키는 콘텐츠 퍼널 설계",
+      "intent": "content",
+      "query": "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조",
+      "queries": [
+        "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조"
+      ],
       "allowed_page_types": [
         "channel_plan",
-        "strategy",
-        "target_analysis"
+        "content_plan",
+        "strategy"
       ],
       "filtered_out_asset_ids": [
-        "PA-CAMP-010-P024",
-        "PA-VIDEO-012-P018",
-        "PA-VIDEO-012-P016"
+        "PA-CAMP-010-P024"
       ],
       "candidates": [
         {
           "retrieval_rank": 1,
-          "retrieval_score": 0.57294786,
+          "retrieval_score": 0.5994036,
           "asset_id": "PA-PR-007-P016",
           "title": "발견에서 저장까지",
           "document_name": "PA-PR-007-P016__발견에서 저장까지",
@@ -564,11 +576,51 @@
             "source_page": 16,
             "source_type": "synthetic_demo",
             "tags": "관광|SNS|확산"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조",
+              "rank": 1,
+              "score": 0.5994036
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 3,
+          "retrieval_score": 0.48381937,
+          "asset_id": "PA-EDU-006-P012",
+          "title": "생활 과업 중심 콘텐츠",
+          "document_name": "PA-EDU-006-P012__생활 과업 중심 콘텐츠",
+          "text": "# 생활 과업 중심 콘텐츠\n\n## Provenance\n- asset_id: PA-EDU-006-P012\n- proposal_id: PROP-EDU-006\n- category: education\n- client_type: public_institution\n- project_type: 중장년 디지털 역량 교육\n- page: 12\n- page_type: content_plan\n- section: 생활 과업 중심 콘텐츠\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_education_proposal_06.md\n- source_page: 12\n- source_type: synthetic_demo\n- tags: 교육, 생활과업, 콘텐츠\n\n## Normalized Summary\n앱 설치, 본인인증, 정보 검색처럼 실제 생활 과업을 교육 콘텐츠의 단위로 구성한다.\n\n## Objective\n- 앱 설치, 본인인증, 정보 검색처럼 실제 생활 과업을 교육 콘텐츠의 단위로 구성한다.\n\n## Target Audience\n- 50~60대 중장년\n\n## Deliverables\n- none\n\n## Strategies\n- 기능 설명보다 생활 과업 중심 구성\n- 과업별 체크리스트\n\n## Differentiators\n- 기능 설명보다 생활 과업 중심 구성\n\n## Channels\n- none\n\n## KPIs\n- 생활과업\n- 체크리스트\n\n## Reusable Patterns\n- 기능 설명보다 생활 과업 중심 구성\n- 과업별 체크리스트\n\n## Company Facts\n- none\n\n## Search Terms\n교육, 생활과업, 콘텐츠, 기능 설명보다 생활 과업 중심 구성, 과업별 체크리스트, 기능 설명보다 생활 과업 중심 구성, 과업별 체크리스트",
+          "metadata": {
+            "asset_id": "PA-EDU-006-P012",
+            "proposal_id": "PROP-EDU-006",
+            "category": "education",
+            "client_type": "public_institution",
+            "project_type": "중장년 디지털 역량 교육",
+            "page": 12,
+            "page_type": "content_plan",
+            "section": "생활 과업 중심 콘텐츠",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_education_proposal_06.md",
+            "source_page": 12,
+            "source_type": "synthetic_demo",
+            "tags": "교육|생활과업|콘텐츠"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조",
+              "rank": 3,
+              "score": 0.48381937
+            }
+          ]
         },
         {
           "retrieval_rank": 4,
-          "retrieval_score": 0.46367776,
+          "retrieval_score": 0.48275924,
           "asset_id": "PA-EDU-003-P017",
           "title": "참여형 콘텐츠 퍼널",
           "document_name": "PA-EDU-003-P017__참여형 콘텐츠 퍼널",
@@ -588,7 +640,47 @@
             "source_page": 17,
             "source_type": "synthetic_demo",
             "tags": "청년|교육|숏폼|참여|퍼널"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조",
+              "rank": 4,
+              "score": 0.48275924
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 5,
+          "retrieval_score": 0.46467727,
+          "asset_id": "PA-VIDEO-012-P016",
+          "title": "B-roll 증거화",
+          "document_name": "PA-VIDEO-012-P016__B-roll 증거화",
+          "text": "# B-roll 증거화\n\n## Provenance\n- asset_id: PA-VIDEO-012-P016\n- proposal_id: PROP-VIDEO-012\n- category: video\n- client_type: public_institution\n- project_type: 지역 인물 인터뷰 다큐멘터리\n- page: 16\n- page_type: content_plan\n- section: B-roll 증거화\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_video_proposal_12.md\n- source_page: 16\n- source_type: synthetic_demo\n- tags: 영상, B-roll, 현장\n\n## Normalized Summary\n인터뷰에서 언급된 장소와 작업 장면을 B-roll로 연결해 말과 화면의 근거를 일치시킨다.\n\n## Objective\n- 인터뷰에서 언급된 장소와 작업 장면을 B-roll로 연결해 말과 화면의 근거를 일치시킨다.\n\n## Target Audience\n- 지역 주민 및 방문객\n\n## Deliverables\n- none\n\n## Strategies\n- 발화 내용과 현장 화면 연결\n\n## Differentiators\n- 발화 내용과 현장 화면 연결\n\n## Channels\n- none\n\n## KPIs\n- B-roll\n- 근거\n\n## Reusable Patterns\n- 발화 내용과 현장 화면 연결\n\n## Company Facts\n- none\n\n## Search Terms\n영상, B-roll, 현장, 발화 내용과 현장 화면 연결, 발화 내용과 현장 화면 연결",
+          "metadata": {
+            "asset_id": "PA-VIDEO-012-P016",
+            "proposal_id": "PROP-VIDEO-012",
+            "category": "video",
+            "client_type": "public_institution",
+            "project_type": "지역 인물 인터뷰 다큐멘터리",
+            "page": 16,
+            "page_type": "content_plan",
+            "section": "B-roll 증거화",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_video_proposal_12.md",
+            "source_page": 16,
+            "source_type": "synthetic_demo",
+            "tags": "영상|B-roll|현장"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "발견 콘텐츠를 저장·상세 탐색·방문 계획으로 전환하는 콘텐츠 퍼널 구조",
+              "rank": 5,
+              "score": 0.46467727
+            }
+          ]
         }
       ],
       "unknown_records": []
@@ -596,7 +688,10 @@
     {
       "requirement_id": "R-203",
       "intent": "content",
-      "query": "모바일 세로형 숏폼의 후킹 메시지 본문 CTA 구성",
+      "query": "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성",
+      "queries": [
+        "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성"
+      ],
       "allowed_page_types": [
         "channel_plan",
         "content_plan",
@@ -604,12 +699,76 @@
       ],
       "filtered_out_asset_ids": [
         "PA-CAMP-010-P020",
-        "PA-CAMP-005-P007"
+        "PA-PR-007-P015"
       ],
       "candidates": [
         {
-          "retrieval_rank": 1,
-          "retrieval_score": 0.37815994,
+          "retrieval_rank": 2,
+          "retrieval_score": 0.32676762,
+          "asset_id": "PA-CAMP-010-P021",
+          "title": "취향에서 방문으로",
+          "document_name": "PA-CAMP-010-P021__취향에서 방문으로",
+          "text": "# 취향에서 방문으로\n\n## Provenance\n- asset_id: PA-CAMP-010-P021\n- proposal_id: PROP-CAMP-010\n- category: digital_campaign\n- client_type: public_institution\n- project_type: 지역 문화시설 이용 활성화 캠페인\n- page: 21\n- page_type: strategy\n- section: 취향에서 방문으로\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_campaign_proposal_10.md\n- source_page: 21\n- source_type: synthetic_demo\n- tags: 문화시설, 캠페인, 전환\n\n## Normalized Summary\n관심 주제 선택에서 시작해 맞춤 프로그램과 실제 방문 정보를 연결한다.\n\n## Objective\n- 관심 주제 선택에서 시작해 맞춤 프로그램과 실제 방문 정보를 연결한다.\n\n## Target Audience\n- 지역 주민 및 가족 단위 이용자\n\n## Deliverables\n- none\n\n## Strategies\n- Taste → Match → Visit\n\n## Differentiators\n- Taste → Match → Visit\n\n## Channels\n- none\n\n## KPIs\n- 취향\n- 매칭\n- 방문\n\n## Reusable Patterns\n- Taste → Match → Visit\n\n## Company Facts\n- none\n\n## Search Terms\n문화시설, 캠페인, 전환, Taste → Match → Visit, Taste → Match → Visit",
+          "metadata": {
+            "asset_id": "PA-CAMP-010-P021",
+            "proposal_id": "PROP-CAMP-010",
+            "category": "digital_campaign",
+            "client_type": "public_institution",
+            "project_type": "지역 문화시설 이용 활성화 캠페인",
+            "page": 21,
+            "page_type": "strategy",
+            "section": "취향에서 방문으로",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_campaign_proposal_10.md",
+            "source_page": 21,
+            "source_type": "synthetic_demo",
+            "tags": "문화시설|캠페인|전환"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성",
+              "rank": 2,
+              "score": 0.32676762
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 4,
+          "retrieval_score": 0.29421252,
+          "asset_id": "PA-PR-007-P016",
+          "title": "발견에서 저장까지",
+          "document_name": "PA-PR-007-P016__발견에서 저장까지",
+          "text": "# 발견에서 저장까지\n\n## Provenance\n- asset_id: PA-PR-007-P016\n- proposal_id: PROP-PR-007\n- category: public_relations\n- client_type: public_institution\n- project_type: 지역 관광 SNS 홍보\n- page: 16\n- page_type: strategy\n- section: 발견에서 저장까지\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_07.md\n- source_page: 16\n- source_type: synthetic_demo\n- tags: 관광, SNS, 확산\n\n## Normalized Summary\n짧은 발견 콘텐츠 이후 지도형 정보와 저장 가능한 코스 콘텐츠로 연결한다.\n\n## Objective\n- 짧은 발견 콘텐츠 이후 지도형 정보와 저장 가능한 코스 콘텐츠로 연결한다.\n\n## Target Audience\n- 20~40대 국내 여행객\n\n## Deliverables\n- none\n\n## Strategies\n- Discover → Save → Visit 구조\n- 콘텐츠 역할 분리\n\n## Differentiators\n- Discover → Save → Visit 구조\n\n## Channels\n- none\n\n## KPIs\n- 발견\n- 저장\n- 방문\n\n## Reusable Patterns\n- Discover → Save → Visit 구조\n- 콘텐츠 역할 분리\n\n## Company Facts\n- none\n\n## Search Terms\n관광, SNS, 확산, Discover → Save → Visit 구조, 콘텐츠 역할 분리, Discover → Save → Visit 구조, 콘텐츠 역할 분리",
+          "metadata": {
+            "asset_id": "PA-PR-007-P016",
+            "proposal_id": "PROP-PR-007",
+            "category": "public_relations",
+            "client_type": "public_institution",
+            "project_type": "지역 관광 SNS 홍보",
+            "page": 16,
+            "page_type": "strategy",
+            "section": "발견에서 저장까지",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_pr_proposal_07.md",
+            "source_page": 16,
+            "source_type": "synthetic_demo",
+            "tags": "관광|SNS|확산"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성",
+              "rank": 4,
+              "score": 0.29421252
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 5,
+          "retrieval_score": 0.2911237,
           "asset_id": "PA-PR-011-P010",
           "title": "내가 대상인가 메시지",
           "document_name": "PA-PR-011-P010__내가 대상인가 메시지",
@@ -629,55 +788,15 @@
             "source_page": 10,
             "source_type": "synthetic_demo",
             "tags": "정책홍보|메시지|CTA"
-          }
-        },
-        {
-          "retrieval_rank": 3,
-          "retrieval_score": 0.33261836,
-          "asset_id": "PA-PR-002-P012",
-          "title": "상황 질문 기반 정책 메시지",
-          "document_name": "PA-PR-002-P012__상황 질문 기반 정책 메시지",
-          "text": "# 상황 질문 기반 정책 메시지\n\n## Provenance\n- asset_id: PA-PR-002-P012\n- proposal_id: PROP-PR-002\n- category: public_relations\n- client_type: public_institution\n- project_type: 청년 정책 SNS 홍보 캠페인\n- page: 12\n- page_type: content_plan\n- section: 메시지 구조\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_02.md\n- source_page: 12\n- source_type: synthetic_demo\n- tags: 정책홍보, 메시지, 청년, CTA\n\n## Normalized Summary\n정책 문구를 반복하지 않고 이용자의 실제 상황을 질문으로 제시한 뒤 핵심 혜택과 다음 행동을 연결하는 메시지 패턴.\n\n## Objective\n- 정책 정보를 이용자 생활 상황과 연결\n\n## Target Audience\n- 청년층\n\n## Deliverables\n- SNS 메시지\n- 정보형 콘텐츠\n\n## Strategies\n- 상황 질문 → 핵심 혜택 → 다음 행동\n\n## Differentiators\n- 정책명보다 이용 상황에서 메시지를 시작\n\n## Channels\n- SNS\n\n## KPIs\n- 상세 정보 탐색\n- 행동 클릭\n\n## Reusable Patterns\n- 상황 질문 → 혜택 → 행동의 3단 메시지 구조\n\n## Company Facts\n- none\n\n## Search Terms\n정책홍보, 메시지, 청년, CTA, 상황 질문 → 혜택 → 행동의 3단 메시지 구조, 상황 질문 → 핵심 혜택 → 다음 행동",
-          "metadata": {
-            "asset_id": "PA-PR-002-P012",
-            "proposal_id": "PROP-PR-002",
-            "category": "public_relations",
-            "client_type": "public_institution",
-            "project_type": "청년 정책 SNS 홍보 캠페인",
-            "page": 12,
-            "page_type": "content_plan",
-            "section": "메시지 구조",
-            "reuse_level": "pattern_allowed",
-            "sensitivity": "public_demo",
-            "source_file": "demo_pr_proposal_02.md",
-            "source_page": 12,
-            "source_type": "synthetic_demo",
-            "tags": "정책홍보|메시지|청년|CTA"
-          }
-        },
-        {
-          "retrieval_rank": 4,
-          "retrieval_score": 0.32986563,
-          "asset_id": "PA-PR-007-P018",
-          "title": "크리에이터 증폭 구조",
-          "document_name": "PA-PR-007-P018__크리에이터 증폭 구조",
-          "text": "# 크리에이터 증폭 구조\n\n## Provenance\n- asset_id: PA-PR-007-P018\n- proposal_id: PROP-PR-007\n- category: public_relations\n- client_type: public_institution\n- project_type: 지역 관광 SNS 홍보\n- page: 18\n- page_type: channel_plan\n- section: 크리에이터 증폭 구조\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_07.md\n- source_page: 18\n- source_type: synthetic_demo\n- tags: 관광, 크리에이터, 확산\n\n## Normalized Summary\n공식 계정의 정보형 콘텐츠와 지역 크리에이터의 체험형 콘텐츠 역할을 분리한다.\n\n## Objective\n- 공식 계정의 정보형 콘텐츠와 지역 크리에이터의 체험형 콘텐츠 역할을 분리한다.\n\n## Target Audience\n- 20~40대 국내 여행객\n\n## Deliverables\n- none\n\n## Strategies\n- 공식 정보와 체험 후기의 채널 역할 분리\n\n## Differentiators\n- 공식 정보와 체험 후기의 채널 역할 분리\n\n## Channels\n- none\n\n## KPIs\n- 크리에이터\n- 공식계정\n\n## Reusable Patterns\n- 공식 정보와 체험 후기의 채널 역할 분리\n\n## Company Facts\n- none\n\n## Search Terms\n관광, 크리에이터, 확산, 공식 정보와 체험 후기의 채널 역할 분리, 공식 정보와 체험 후기의 채널 역할 분리",
-          "metadata": {
-            "asset_id": "PA-PR-007-P018",
-            "proposal_id": "PROP-PR-007",
-            "category": "public_relations",
-            "client_type": "public_institution",
-            "project_type": "지역 관광 SNS 홍보",
-            "page": 18,
-            "page_type": "channel_plan",
-            "section": "크리에이터 증폭 구조",
-            "reuse_level": "pattern_allowed",
-            "sensitivity": "public_demo",
-            "source_file": "demo_pr_proposal_07.md",
-            "source_page": 18,
-            "source_type": "synthetic_demo",
-            "tags": "관광|크리에이터|확산"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "모바일 세로형 숏폼의 후킹 메시지와 방문 행동 유도 구성",
+              "rank": 5,
+              "score": 0.2911237
+            }
+          ]
         }
       ],
       "unknown_records": []
@@ -685,7 +804,10 @@
     {
       "requirement_id": "R-204",
       "intent": "operation",
-      "query": "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영",
+      "query": "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영 모델",
+      "queries": [
+        "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영 모델"
+      ],
       "allowed_page_types": [
         "channel_plan",
         "operation_plan"
@@ -698,7 +820,7 @@
       "candidates": [
         {
           "retrieval_rank": 1,
-          "retrieval_score": 0.62816143,
+          "retrieval_score": 0.61832625,
           "asset_id": "PA-PR-007-P018",
           "title": "크리에이터 증폭 구조",
           "document_name": "PA-PR-007-P018__크리에이터 증폭 구조",
@@ -718,11 +840,19 @@
             "source_page": 18,
             "source_type": "synthetic_demo",
             "tags": "관광|크리에이터|확산"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영 모델",
+              "rank": 1,
+              "score": 0.61832625
+            }
+          ]
         },
         {
           "retrieval_rank": 2,
-          "retrieval_score": 0.53132564,
+          "retrieval_score": 0.5149764,
           "asset_id": "PA-CAMP-005-P010",
           "title": "공식 콘텐츠와 참여 콘텐츠 연결",
           "document_name": "PA-CAMP-005-P010__공식 콘텐츠와 참여 콘텐츠 연결",
@@ -742,27 +872,39 @@
             "source_page": 10,
             "source_type": "synthetic_demo",
             "tags": "환경|채널|확산"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "공식 채널과 지역 크리에이터의 역할을 분리한 관광 콘텐츠 협업 운영 모델",
+              "rank": 2,
+              "score": 0.5149764
+            }
+          ]
         }
       ],
       "unknown_records": []
     },
     {
       "requirement_id": "R-205",
-      "intent": "operation",
-      "query": "관광시설 운영시간 휴관 행사일정 변경정보의 게시 전 검수 프로세스",
+      "intent": "risk",
+      "query": "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차",
+      "queries": [
+        "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차"
+      ],
       "allowed_page_types": [
-        "channel_plan",
-        "operation_plan"
+        "operation_plan",
+        "process",
+        "risk"
       ],
       "filtered_out_asset_ids": [
-        "PA-EVENT-004-P012",
-        "PA-PR-007-P019"
+        "PA-EVENT-004-P015",
+        "PA-EVENT-004-P012"
       ],
       "candidates": [
         {
           "retrieval_rank": 1,
-          "retrieval_score": 0.5613718,
+          "retrieval_score": 0.47743976,
           "asset_id": "PA-CAMP-010-P023",
           "title": "프로그램 변경 대응",
           "document_name": "PA-CAMP-010-P023__프로그램 변경 대응",
@@ -782,11 +924,19 @@
             "source_page": 23,
             "source_type": "synthetic_demo",
             "tags": "문화시설|검수|운영"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차",
+              "rank": 1,
+              "score": 0.47743976
+            }
+          ]
         },
         {
           "retrieval_rank": 2,
-          "retrieval_score": 0.4514165,
+          "retrieval_score": 0.39078176,
           "asset_id": "PA-PR-011-P012",
           "title": "정책 변경 반영 운영",
           "document_name": "PA-PR-011-P012__정책 변경 반영 운영",
@@ -806,11 +956,19 @@
             "source_page": 12,
             "source_type": "synthetic_demo",
             "tags": "정책홍보|운영|검수"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차",
+              "rank": 2,
+              "score": 0.39078176
+            }
+          ]
         },
         {
           "retrieval_rank": 3,
-          "retrieval_score": 0.4182427,
+          "retrieval_score": 0.38437122,
           "asset_id": "PA-EVENT-004-P014",
           "title": "혼잡 분산 운영",
           "document_name": "PA-EVENT-004-P014__혼잡 분산 운영",
@@ -830,7 +988,15 @@
             "source_page": 14,
             "source_type": "synthetic_demo",
             "tags": "행사|운영|혼잡"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광시설 운영시간·휴관·매진·행사일정의 게시 전 확인 및 변경관리 절차",
+              "rank": 3,
+              "score": 0.38437122
+            }
+          ]
         }
       ],
       "unknown_records": []
@@ -838,7 +1004,10 @@
     {
       "requirement_id": "R-206",
       "intent": "kpi",
-      "query": "관광 홍보에서 도달보다 저장 상세조회 지도·예약 이동을 측정하는 KPI 체계",
+      "query": "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계",
+      "queries": [
+        "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계"
+      ],
       "allowed_page_types": [
         "kpi"
       ],
@@ -848,31 +1017,7 @@
       "candidates": [
         {
           "retrieval_rank": 1,
-          "retrieval_score": 0.6538773,
-          "asset_id": "PA-PR-007-P019",
-          "title": "저장과 방문 의도 KPI",
-          "document_name": "PA-PR-007-P019__저장과 방문 의도 KPI",
-          "text": "# 저장과 방문 의도 KPI\n\n## Provenance\n- asset_id: PA-PR-007-P019\n- proposal_id: PROP-PR-007\n- category: public_relations\n- client_type: public_institution\n- project_type: 지역 관광 SNS 홍보\n- page: 19\n- page_type: kpi\n- section: 저장과 방문 의도 KPI\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_07.md\n- source_page: 19\n- source_type: synthetic_demo\n- tags: 관광, KPI, 전환\n\n## Normalized Summary\n노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.\n\n## Objective\n- 노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.\n\n## Target Audience\n- 20~40대 국내 여행객\n\n## Deliverables\n- none\n\n## Strategies\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Differentiators\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Channels\n- none\n\n## KPIs\n- 저장\n- 지도클릭\n- 상세탐색\n\n## Reusable Patterns\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Company Facts\n- none\n\n## Search Terms\n관광, KPI, 전환, 노출 → 저장 → 상세탐색 단계 KPI, 노출 → 저장 → 상세탐색 단계 KPI",
-          "metadata": {
-            "asset_id": "PA-PR-007-P019",
-            "proposal_id": "PROP-PR-007",
-            "category": "public_relations",
-            "client_type": "public_institution",
-            "project_type": "지역 관광 SNS 홍보",
-            "page": 19,
-            "page_type": "kpi",
-            "section": "저장과 방문 의도 KPI",
-            "reuse_level": "pattern_allowed",
-            "sensitivity": "public_demo",
-            "source_file": "demo_pr_proposal_07.md",
-            "source_page": 19,
-            "source_type": "synthetic_demo",
-            "tags": "관광|KPI|전환"
-          }
-        },
-        {
-          "retrieval_rank": 2,
-          "retrieval_score": 0.5922901,
+          "retrieval_score": 0.6633669,
           "asset_id": "PA-CAMP-010-P024",
           "title": "탐색에서 예약까지 KPI",
           "document_name": "PA-CAMP-010-P024__탐색에서 예약까지 KPI",
@@ -892,11 +1037,51 @@
             "source_page": 24,
             "source_type": "synthetic_demo",
             "tags": "문화시설|KPI|전환"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계",
+              "rank": 1,
+              "score": 0.6633669
+            }
+          ]
+        },
+        {
+          "retrieval_rank": 2,
+          "retrieval_score": 0.6479328,
+          "asset_id": "PA-PR-007-P019",
+          "title": "저장과 방문 의도 KPI",
+          "document_name": "PA-PR-007-P019__저장과 방문 의도 KPI",
+          "text": "# 저장과 방문 의도 KPI\n\n## Provenance\n- asset_id: PA-PR-007-P019\n- proposal_id: PROP-PR-007\n- category: public_relations\n- client_type: public_institution\n- project_type: 지역 관광 SNS 홍보\n- page: 19\n- page_type: kpi\n- section: 저장과 방문 의도 KPI\n- reuse_level: pattern_allowed\n- sensitivity: public_demo\n- source_file: demo_pr_proposal_07.md\n- source_page: 19\n- source_type: synthetic_demo\n- tags: 관광, KPI, 전환\n\n## Normalized Summary\n노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.\n\n## Objective\n- 노출 외에 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정한다.\n\n## Target Audience\n- 20~40대 국내 여행객\n\n## Deliverables\n- none\n\n## Strategies\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Differentiators\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Channels\n- none\n\n## KPIs\n- 저장\n- 지도클릭\n- 상세탐색\n\n## Reusable Patterns\n- 노출 → 저장 → 상세탐색 단계 KPI\n\n## Company Facts\n- none\n\n## Search Terms\n관광, KPI, 전환, 노출 → 저장 → 상세탐색 단계 KPI, 노출 → 저장 → 상세탐색 단계 KPI",
+          "metadata": {
+            "asset_id": "PA-PR-007-P019",
+            "proposal_id": "PROP-PR-007",
+            "category": "public_relations",
+            "client_type": "public_institution",
+            "project_type": "지역 관광 SNS 홍보",
+            "page": 19,
+            "page_type": "kpi",
+            "section": "저장과 방문 의도 KPI",
+            "reuse_level": "pattern_allowed",
+            "sensitivity": "public_demo",
+            "source_file": "demo_pr_proposal_07.md",
+            "source_page": 19,
+            "source_type": "synthetic_demo",
+            "tags": "관광|KPI|전환"
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계",
+              "rank": 2,
+              "score": 0.6479328
+            }
+          ]
         },
         {
           "retrieval_rank": 3,
-          "retrieval_score": 0.57138133,
+          "retrieval_score": 0.61608815,
           "asset_id": "PA-EVENT-004-P016",
           "title": "체험 완료 KPI",
           "document_name": "PA-EVENT-004-P016__체험 완료 KPI",
@@ -916,11 +1101,19 @@
             "source_page": 16,
             "source_type": "synthetic_demo",
             "tags": "행사|KPI|체험"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계",
+              "rank": 3,
+              "score": 0.61608815
+            }
+          ]
         },
         {
           "retrieval_rank": 4,
-          "retrieval_score": 0.53768015,
+          "retrieval_score": 0.5403584,
           "asset_id": "PA-PR-011-P013",
           "title": "신청 탐색 행동 KPI",
           "document_name": "PA-PR-011-P013__신청 탐색 행동 KPI",
@@ -940,7 +1133,15 @@
             "source_page": 13,
             "source_type": "synthetic_demo",
             "tags": "정책홍보|KPI|신청"
-          }
+          },
+          "matched_queries": [
+            {
+              "query_index": 1,
+              "query": "관광 콘텐츠의 도달 이후 저장·상세조회·지도·예약 이동을 측정하는 KPI 체계",
+              "rank": 4,
+              "score": 0.5403584
+            }
+          ]
         }
       ],
       "unknown_records": []
@@ -956,14 +1157,14 @@
           "asset_id": "PA-PR-007-P015",
           "proposal_id": "PROP-PR-007",
           "title": "여행 동기 세분화",
-          "supported_point": "맛집, 휴식, 체험, 사진 촬영 등 서로 다른 방문 동기를 기준으로 세그먼트를 구분하는 전략을 지원한다.",
+          "supported_point": "맛집, 휴식, 체험, 사진 촬영 등 서로 다른 방문 동기를 기준으로 여행객 세그먼트를 구분하는 전략을 지원한다.",
           "reusable_patterns": [
             "동기 기반 세그먼트"
           ],
           "company_facts": [],
           "support_level": "direct",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "해당 세분화 전략을 자사의 과거 수행 실적이나 특정 고객 성과로 주장하지 말 것.",
+          "prohibited_use": "해당 세분화 전략을 실제 수행한 회사의 성과나 특정 고객 프로젝트의 실적이라고 주장할 수 없다.",
           "source": {
             "file_name": "demo_pr_proposal_07.md",
             "page": 15,
@@ -981,7 +1182,7 @@
           "asset_id": "PA-PR-007-P016",
           "proposal_id": "PROP-PR-007",
           "title": "발견에서 저장까지",
-          "supported_point": "짧은 발견 콘텐츠를 지도형 정보와 저장 가능한 코스로 연결하고, Discover → Save → Visit 구조로 방문 행동을 설계하는 방식을 지원한다.",
+          "supported_point": "짧은 발견 콘텐츠를 지도형 정보와 저장 가능한 코스로 연결하고, Discover → Save → Visit 구조로 방문 행동까지 이어지는 콘텐츠 퍼널을 지원한다.",
           "reusable_patterns": [
             "Discover → Save → Visit 구조",
             "콘텐츠 역할 분리"
@@ -989,7 +1190,7 @@
           "company_facts": [],
           "support_level": "direct",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "해당 퍼널을 실제 수행 사례, 자사 성과 또는 방문 전환 실적으로 주장하지 말 것.",
+          "prohibited_use": "해당 퍼널을 실제 고객에게 운영했거나 특정 방문 전환 성과를 달성했다고 주장할 수 없다.",
           "source": {
             "file_name": "demo_pr_proposal_07.md",
             "page": 16,
@@ -1004,40 +1205,21 @@
       "evidence": [
         {
           "evidence_id": "EV-R-203-01",
-          "asset_id": "PA-PR-002-P012",
-          "proposal_id": "PROP-PR-002",
-          "title": "상황 질문 기반 정책 메시지",
-          "supported_point": "상황 질문에서 핵심 혜택과 다음 행동으로 이어지는 3단 메시지 구조와 행동 유도 방식을 지원한다.",
+          "asset_id": "PA-PR-007-P016",
+          "proposal_id": "PROP-PR-007",
+          "title": "발견에서 저장까지",
+          "supported_point": "짧은 발견 콘텐츠에서 저장과 방문으로 이어지는 메시지·행동 흐름을 지원하지만, 세로형 모바일 숏폼 제작 방식은 명시하지 않는다.",
           "reusable_patterns": [
-            "상황 질문 → 혜택 → 행동의 3단 메시지 구조"
+            "Discover → Save → Visit 구조",
+            "콘텐츠 역할 분리"
           ],
           "company_facts": [],
           "support_level": "partial",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "모바일 세로형 숏폼 형식, 화면 구성 또는 해당 콘텐츠의 실제 성과를 이 근거만으로 주장하지 말 것.",
+          "prohibited_use": "세로형 숏폼 제작 경험, 모바일 최적화 성과 또는 구체적인 숏폼 실행 실적이라고 주장할 수 없다.",
           "source": {
-            "file_name": "demo_pr_proposal_02.md",
-            "page": 12,
-            "source_type": "synthetic_demo"
-          }
-        },
-        {
-          "evidence_id": "EV-R-203-02",
-          "asset_id": "PA-EDU-003-P017",
-          "proposal_id": "PROP-EDU-003",
-          "title": "참여형 콘텐츠 퍼널",
-          "supported_point": "숏폼으로 초기 접점을 만들고 후속 행동으로 연결하는 단계형 퍼널과 콘텐츠별 단일 행동 목표 배치 방식을 지원한다.",
-          "reusable_patterns": [
-            "인지 → 상호작용 → 참여로 이어지는 단계형 퍼널",
-            "각 콘텐츠에 단일 행동 목표 배치"
-          ],
-          "company_facts": [],
-          "support_level": "partial",
-          "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "세로형 모바일 영상 제작 실적이나 특정 영상 성과로 주장하지 말 것.",
-          "source": {
-            "file_name": "demo_education_proposal_03.md",
-            "page": 17,
+            "file_name": "demo_pr_proposal_07.md",
+            "page": 16,
             "source_type": "synthetic_demo"
           }
         }
@@ -1052,14 +1234,14 @@
           "asset_id": "PA-PR-007-P018",
           "proposal_id": "PROP-PR-007",
           "title": "크리에이터 증폭 구조",
-          "supported_point": "공식 계정은 정보형 콘텐츠를 담당하고 지역 크리에이터는 체험형 콘텐츠를 담당하도록 역할을 분리하는 협업 운영방안을 지원한다.",
+          "supported_point": "공식 계정은 정보형 콘텐츠를, 지역 크리에이터는 체험형 콘텐츠를 담당하도록 채널 역할을 분리하는 협업 운영 모델을 지원한다.",
           "reusable_patterns": [
             "공식 정보와 체험 후기의 채널 역할 분리"
           ],
           "company_facts": [],
           "support_level": "direct",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "해당 협업 구조를 자사의 실제 크리에이터 운영 실적이나 확산 성과로 주장하지 말 것.",
+          "prohibited_use": "해당 협업 모델을 실제 지역 크리에이터와 운영했거나 확산 성과를 달성했다고 주장할 수 없다.",
           "source": {
             "file_name": "demo_pr_proposal_07.md",
             "page": 18,
@@ -1077,7 +1259,7 @@
           "asset_id": "PA-CAMP-010-P023",
           "proposal_id": "PROP-CAMP-010",
           "title": "프로그램 변경 대응",
-          "supported_point": "휴관, 매진, 일정 변경을 게시 전에 확인하고 변경 시 기존 게시물의 상태를 갱신하는 절차를 지원한다.",
+          "supported_point": "휴관, 매진, 일정 변경 등 운영정보를 게시 전에 확인하고, 변경 시 기존 게시물의 상태를 함께 갱신하는 절차를 지원한다.",
           "reusable_patterns": [
             "운영정보 변경 모니터링",
             "게시물 상태 갱신"
@@ -1085,7 +1267,7 @@
           "company_facts": [],
           "support_level": "direct",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "해당 검수·갱신 절차를 자사의 실제 운영 실적이나 오류 방지 성과로 주장하지 말 것.",
+          "prohibited_use": "특정 시설의 운영정보를 실제로 관리했거나 오류 없는 게시를 보장했다고 주장할 수 없다.",
           "source": {
             "file_name": "demo_campaign_proposal_10.md",
             "page": 23,
@@ -1100,39 +1282,39 @@
       "evidence": [
         {
           "evidence_id": "EV-R-206-01",
-          "asset_id": "PA-PR-007-P019",
-          "proposal_id": "PROP-PR-007",
-          "title": "저장과 방문 의도 KPI",
-          "supported_point": "노출뿐 아니라 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 단계별 KPI로 측정하는 체계를 지원한다.",
-          "reusable_patterns": [
-            "노출 → 저장 → 상세탐색 단계 KPI"
-          ],
-          "company_facts": [],
-          "support_level": "direct",
-          "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "제시된 KPI를 실제 달성 실적이나 특정 수치 성과로 주장하지 말 것.",
-          "source": {
-            "file_name": "demo_pr_proposal_07.md",
-            "page": 19,
-            "source_type": "synthetic_demo"
-          }
-        },
-        {
-          "evidence_id": "EV-R-206-02",
           "asset_id": "PA-CAMP-010-P024",
           "proposal_id": "PROP-CAMP-010",
           "title": "탐색에서 예약까지 KPI",
-          "supported_point": "도달, 프로그램 상세조회, 일정 저장, 예약 페이지 이동을 단계별로 측정하는 KPI 구조를 지원한다.",
+          "supported_point": "콘텐츠 도달 이후 프로그램 상세조회, 일정 저장, 예약 페이지 이동을 단계별 KPI로 측정하는 체계를 지원한다.",
           "reusable_patterns": [
             "도달 → 상세조회 → 저장 → 예약 이동"
           ],
           "company_facts": [],
           "support_level": "direct",
           "allowed_use": "REFERENCE_PATTERN",
-          "prohibited_use": "해당 단계별 KPI 체계를 실제 캠페인 성과나 예약 전환 실적으로 주장하지 말 것.",
+          "prohibited_use": "해당 KPI 체계를 실제 캠페인에 적용했거나 예약 전환 성과를 달성했다고 주장할 수 없다.",
           "source": {
             "file_name": "demo_campaign_proposal_10.md",
             "page": 24,
+            "source_type": "synthetic_demo"
+          }
+        },
+        {
+          "evidence_id": "EV-R-206-02",
+          "asset_id": "PA-PR-007-P019",
+          "proposal_id": "PROP-PR-007",
+          "title": "저장과 방문 의도 KPI",
+          "supported_point": "노출뿐 아니라 저장, 지도 클릭, 코스 페이지 이동 등 방문 의도에 가까운 행동을 측정하는 KPI 체계를 지원한다.",
+          "reusable_patterns": [
+            "노출 → 저장 → 상세탐색 단계 KPI"
+          ],
+          "company_facts": [],
+          "support_level": "direct",
+          "allowed_use": "REFERENCE_PATTERN",
+          "prohibited_use": "해당 KPI를 실제 관광 캠페인에서 측정했거나 특정 수치의 성과를 달성했다고 주장할 수 없다.",
+          "source": {
+            "file_name": "demo_pr_proposal_07.md",
+            "page": 19,
             "source_type": "synthetic_demo"
           }
         }
@@ -1140,13 +1322,13 @@
     }
   ],
   "proposal_strategy": {
-    "proposal_thesis": "방문 동기별로 콘텐츠를 세분화하고, 짧은 발견에서 저장·상세 탐색·방문 계획으로 이어지는 행동 퍼널을 구축해 지역 문화·관광자원의 온라인 관심을 실제 방문 의도로 전환한다.",
-    "concept": "Discover Local, Save the Moment, Visit the Region",
+    "proposal_thesis": "방문 동기별 타깃을 세분화하고, 숏폼·카드형·코스형·크리에이터 콘텐츠를 역할별로 연결해 발견에서 저장·상세 탐색·방문 계획까지 이어지는 행동형 홍보 체계를 구축한다.",
+    "concept": "발견을 방문으로 바꾸는 지역 여행 퍼널: Discover → Save → Explore → Visit",
     "strategy_pillars": [
       {
         "strategy_id": "ST-01",
         "pillar": "방문 동기 기반 타깃 세분화",
-        "description": "20~40대 국내 개별 여행객과 지역 주민을 대상으로 맛집, 휴식, 체험, 문화관람 등 방문 동기별 세그먼트를 설정한다. 세그먼트별로 핵심 니즈, 추천 자원, 적합한 콘텐츠 유형과 행동 목표를 매칭해 홍보 전략을 설계한다.",
+        "description": "20~40대 국내 개별 여행객과 지역 주민을 대상으로 맛집, 휴식, 체험, 문화관람 등 방문 동기를 기준으로 세그먼트를 구분한다. 각 세그먼트별 핵심 욕구, 추천 콘텐츠 포맷, 주말 방문 상황과 행동 메시지를 정의해 홍보 전략과 콘텐츠 편성을 연계한다.",
         "requirement_ids": [
           "R-201"
         ],
@@ -1157,8 +1339,8 @@
       },
       {
         "strategy_id": "ST-02",
-        "pillar": "발견에서 방문 계획까지 이어지는 콘텐츠 퍼널",
-        "description": "짧은 발견 콘텐츠로 관심을 유도한 뒤 저장 가능한 코스와 상세 정보로 연결하고, 지도·예약 페이지 이동 등 방문 계획 행동으로 이어지도록 콘텐츠 역할을 분리한다. 세로형 숏폼 15편, 주말 추천 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별로 배치한다.",
+        "pillar": "발견에서 방문 계획까지의 콘텐츠 퍼널",
+        "description": "짧은 발견 콘텐츠로 관심을 유발한 뒤, 저장 가능한 장소·코스 정보와 상세 탐색 콘텐츠로 연결하고, 최종적으로 지도·예약·방문 계획 행동을 유도한다. 숏폼 15편은 발견과 관심 환기에, 주말 추천 카드 24건과 연계 코스 8건은 저장·상세 탐색에 집중하도록 콘텐츠 역할을 분리한다.",
         "requirement_ids": [
           "R-202"
         ],
@@ -1169,21 +1351,20 @@
       },
       {
         "strategy_id": "ST-03",
-        "pillar": "모바일 세로형 숏폼의 단일 행동 설계",
-        "description": "각 숏폼은 상황 질문 또는 즉시 공감 가능한 장면으로 시작하고, 지역 자원의 핵심 혜택을 짧게 제시한 뒤 저장, 상세보기, 코스 확인 등 하나의 다음 행동으로 마무리한다. 모바일 첫 화면에서 핵심 메시지가 빠르게 인지되도록 오프닝·혜택·행동 유도의 3단 구조를 적용한다.",
+        "pillar": "모바일 세로형 숏폼의 즉시 행동 설계",
+        "description": "세로형 숏폼은 첫 장면에서 방문 동기와 핵심 매력을 제시하고, 중간에 시설·관광지의 체험 장면과 이용 맥락을 압축 전달한 뒤, 마지막에 저장·상세정보 확인·지도 또는 예약 페이지 이동을 명확히 요청한다. 15편은 방문 동기별 시리즈로 구성해 메시지 일관성과 소재 다양성을 동시에 확보한다.",
         "requirement_ids": [
           "R-203"
         ],
         "classification": "AI_RECOMMENDATION",
         "evidence_ids": [
-          "EV-R-203-01",
-          "EV-R-203-02"
+          "EV-R-203-01"
         ]
       },
       {
         "strategy_id": "ST-04",
         "pillar": "공식 채널과 지역 크리에이터의 역할 분리",
-        "description": "공식 채널은 운영정보, 이용방법, 코스 구성 등 신뢰성 있는 정보형 콘텐츠를 담당하고, 지역 크리에이터는 실제 이용 맥락과 체험 중심의 콘텐츠를 담당한다. 총 6건의 협업 콘텐츠는 방문 동기별로 배정하고, 공식 채널에서 정보 보완 및 방문 행동 유도를 수행한다.",
+        "description": "공식 채널은 운영시간, 위치, 이용방법, 코스 정보 등 신뢰성 있는 정보형 콘텐츠를 담당하고, 지역 크리에이터는 실제 방문 맥락과 체험 중심의 콘텐츠를 담당한다. 6건의 협업 콘텐츠는 사전 브리프와 정보 검수 기준을 공유하되, 크리에이터의 관점과 표현을 살려 체험 신뢰도를 높인다.",
         "requirement_ids": [
           "R-204"
         ],
@@ -1194,8 +1375,8 @@
       },
       {
         "strategy_id": "ST-05",
-        "pillar": "게시 전 운영정보 검수와 변경 대응",
-        "description": "콘텐츠 제작 단계에서 휴관, 매진, 운영시간, 행사 일정 등 변경 가능 정보의 출처와 확인일을 기록하고, 게시 전 담당자 확인을 거친다. 변경 사항이 확인되면 게시물의 상태와 관련 안내를 갱신하며, 월별 운영 점검을 통해 기존 콘텐츠도 재확인한다.",
+        "pillar": "변경 가능 방문정보의 게시 전·게시 후 검수",
+        "description": "콘텐츠 제작 시 시설 담당자 또는 공식 출처를 기준으로 휴관, 매진, 운영시간, 행사 일정, 이용 제한 정보를 확인하고 검수 이력을 남긴다. 게시 직전 최종 확인 후 게시하며, 변경 사항이 발생하면 기존 게시물의 캡션·이미지·링크·상태를 함께 갱신한다. 실제 운영정보는 확인된 자료 없이 임의로 기재하지 않는다.",
         "requirement_ids": [
           "R-205"
         ],
@@ -1207,7 +1388,7 @@
       {
         "strategy_id": "ST-06",
         "pillar": "방문 의도 중심의 단계별 성과관리",
-        "description": "도달 중심 평가를 넘어 도달, 영상 시청 및 상호작용, 저장, 상세조회, 지도·코스 페이지 이동, 예약 페이지 이동을 단계별 KPI로 관리한다. 월별 보고서에는 콘텐츠별 성과와 퍼널 단계별 원자료를 포함하고, 최종 결과 보고에는 전체 콘텐츠 목록과 성과지표 원자료를 제출한다.",
+        "description": "월별 보고와 최종 결과 보고에서 도달만 제시하지 않고 콘텐츠 유형별로 도달, 영상 시청, 저장, 상세조회, 지도 클릭, 코스 페이지 이동, 예약 페이지 이동을 단계별로 집계한다. 콘텐츠 목록과 성과지표 원자료를 함께 관리해 소재·타깃·퍼널 단계별 효율을 비교하고 다음 달 편성에 반영한다.",
         "requirement_ids": [
           "R-206"
         ],
@@ -1220,30 +1401,39 @@
     ],
     "information_classes": {
       "RFP_FACT": [
-        "사업 대상은 20~40대 국내 개별 여행객과 지역 주민이며, 사업 기간은 계약일로부터 5개월이다.",
-        "세로형 숏폼 영상 15편, 주말 추천 카드형 콘텐츠 24건, 지역 크리에이터 협업 콘텐츠 6건, 문화시설·관광지 연계 코스 콘텐츠 8건을 제작·운영해야 한다.",
-        "월별 성과 보고와 최종 결과 보고를 수행하고, 사업 종료 시 콘텐츠 목록과 성과지표 원자료를 제출해야 한다."
+        "사업 대상은 20~40대 국내 개별 여행객과 지역 주민이며, 사업 목적은 지역 문화시설·관광자원의 온라인 탐색을 실제 방문 행동으로 연결하는 것이다.",
+        "주요 과업은 세로형 숏폼 15편, 주말 추천 카드형 콘텐츠 24건, 지역 크리에이터 협업 콘텐츠 6건, 연계 코스 콘텐츠 8건 제작·운영과 월별 및 최종 성과 보고다.",
+        "R-201부터 R-206까지 방문 동기 세분화, 콘텐츠 퍼널, 세로형 숏폼, 크리에이터 협업, 운영정보 검수, 방문 의도 KPI가 필수 제안 내용이다."
       ],
       "REFERENCE_FACT": [],
       "REFERENCE_PATTERN": [
-        "방문 동기를 기준으로 세그먼트를 구분하는 동기 기반 세그먼트 구조를 활용한다.",
-        "Discover → Save → Visit 구조로 짧은 발견 콘텐츠를 저장 가능한 코스와 방문 행동으로 연결한다.",
-        "상황 질문 → 혜택 → 행동의 3단 메시지 구조와 콘텐츠별 단일 행동 목표를 활용한다.",
-        "공식 채널은 정보형 콘텐츠, 지역 크리에이터는 체험형 콘텐츠를 담당하도록 역할을 분리한다.",
-        "운영정보를 게시 전에 확인하고 변경 시 기존 게시물의 상태를 갱신한다.",
-        "도달·저장·상세조회·지도 또는 예약 페이지 이동을 단계별 방문 의도 KPI로 측정한다."
+        "동기 기반 세그먼트 구조를 활용한다.",
+        "Discover → Save → Visit 퍼널과 콘텐츠 역할 분리 구조를 활용한다.",
+        "공식 정보와 체험 후기의 채널 역할을 분리한다.",
+        "운영정보 변경 모니터링과 게시물 상태 갱신 절차를 활용한다.",
+        "도달 → 상세조회 → 저장 → 예약·지도 이동의 단계별 KPI 구조를 활용한다."
       ],
       "AI_RECOMMENDATION": [
-        "방문 동기별 세그먼트에 콘텐츠 유형과 행동 목표를 매칭한다.",
-        "숏폼·카드형·연계 코스 콘텐츠를 발견·저장·방문 계획 퍼널에 배치한다.",
-        "숏폼마다 하나의 다음 행동을 지정하고 월별 보고서에 퍼널 단계별 원자료를 포함한다."
+        "세로형 숏폼을 방문 동기별 시리즈로 구성하고 첫 장면의 동기 제시와 마지막 행동 유도를 표준화한다.",
+        "숏폼은 발견, 카드형·코스형 콘텐츠는 저장과 상세 탐색을 담당하도록 5개월 콘텐츠 편성을 설계한다.",
+        "월별 성과를 콘텐츠 유형·타깃·퍼널 단계별로 비교해 다음 달 제작과 배포에 반영한다."
       ]
     },
     "reference_gaps": [
       {
         "requirement_id": "R-203",
-        "gap": "Evidence Pack은 메시지 구조와 퍼널 방식은 지원하지만, 모바일 세로형 숏폼의 구체적인 화면 구성, 촬영 방식, 편집 규격 또는 실제 제작 실적을 직접 입증하지 않는다.",
-        "response": "세로형 숏폼 제작 실적을 주장하지 않고, 본 사업을 위한 신규 제안으로 모바일 첫 화면 중심의 오프닝·혜택·단일 행동 유도 구조를 설계한다. 실제 제작 전 채널 규격과 발주처 검토 기준을 확인해 상세 포맷을 확정한다."
+        "gap": "Evidence Pack은 발견에서 저장·방문으로 이어지는 메시지 흐름은 지원하지만, 세로형 모바일 숏폼의 구체적 제작 경험이나 성과를 직접 입증하지 않는다.",
+        "response": "세로 비율, 초반 훅, 자막 가독성, 장면별 메시지, 마지막 행동 유도 등 본 사업을 위한 제작 기준을 새롭게 제안하며, 과거 숏폼 수행 실적이나 성과로 표현하지 않는다."
+      },
+      {
+        "requirement_id": "R-205",
+        "gap": "실제 시설별 운영정보의 제공 주체, 확인 채널, 승인 리드타임은 RFP에 명시되어 있지 않다.",
+        "response": "착수 단계에서 시설별 공식 확인 담당자·출처·회신 기한을 확정하고, 게시 전 확인 로그와 변경 시 수정 이력을 운영 산출물에 포함한다."
+      },
+      {
+        "requirement_id": "R-206",
+        "gap": "지도·예약 페이지의 추적 방식과 접근 권한, 플랫폼별 데이터 제공 범위가 확인되지 않았다.",
+        "response": "착수 시 채널별 추적 가능 이벤트와 원자료 제공 범위를 협의하고, 추적이 불가능한 지표는 대체 지표와 한계를 명시해 월별 보고서에 반영한다."
       }
     ]
   },
@@ -1265,7 +1455,7 @@
       "metrics": {
         "result_coverage": 1.0,
         "primary_asset_recall": 0.8333,
-        "selected_asset_precision": 0.75,
+        "selected_asset_precision": 0.8571,
         "prohibited_asset_rejection": 1.0,
         "provenance_validity": 1.0,
         "status_accuracy": 0.8333,
@@ -1310,12 +1500,10 @@
           "status_match": false,
           "primary_hit": false,
           "selected_asset_ids": [
-            "PA-PR-002-P012",
-            "PA-EDU-003-P017"
+            "PA-PR-007-P016"
           ],
           "unexpected_asset_ids": [
-            "PA-EDU-003-P017",
-            "PA-PR-002-P012"
+            "PA-PR-007-P016"
           ],
           "prohibited_asset_ids": [],
           "provenance_valid": true,
@@ -1359,8 +1547,8 @@
           "status_match": true,
           "primary_hit": true,
           "selected_asset_ids": [
-            "PA-PR-007-P019",
-            "PA-CAMP-010-P024"
+            "PA-CAMP-010-P024",
+            "PA-PR-007-P019"
           ],
           "unexpected_asset_ids": [],
           "prohibited_asset_ids": [],
@@ -1429,12 +1617,10 @@
         {
           "requirement_id": "R-203",
           "cited_ids": [
-            "EV-R-203-01",
-            "EV-R-203-02"
+            "EV-R-203-01"
           ],
           "resolved_assets": [
-            "PA-EDU-003-P017",
-            "PA-PR-002-P012"
+            "PA-PR-007-P016"
           ],
           "allowed_assets": [
             "PA-VIDEO-004-P021",
@@ -1511,14 +1697,7 @@
         {
           "requirement_id": "R-203",
           "evidence_id": "EV-R-203-01",
-          "asset_id": "PA-PR-002-P012",
-          "strategy_id": "ST-03",
-          "valid": true
-        },
-        {
-          "requirement_id": "R-203",
-          "evidence_id": "EV-R-203-02",
-          "asset_id": "PA-EDU-003-P017",
+          "asset_id": "PA-PR-007-P016",
           "strategy_id": "ST-03",
           "valid": true
         },
@@ -1539,14 +1718,14 @@
         {
           "requirement_id": "R-206",
           "evidence_id": "EV-R-206-01",
-          "asset_id": "PA-PR-007-P019",
+          "asset_id": "PA-CAMP-010-P024",
           "strategy_id": "ST-06",
           "valid": true
         },
         {
           "requirement_id": "R-206",
           "evidence_id": "EV-R-206-02",
-          "asset_id": "PA-CAMP-010-P024",
+          "asset_id": "PA-PR-007-P019",
           "strategy_id": "ST-06",
           "valid": true
         }
@@ -1558,78 +1737,78 @@
   "stage_metadata": {
     "rfp_analyzer": {
       "provider": "openai",
-      "response_id": "resp_0aeacd6c53a5fdaf016abc86d676d887d1a44915a1a662d040",
+      "response_id": "resp_084e76bf48eaaa35016abc87c8e01887d195d4bc38ee099495",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 11.6237,
+      "latency_seconds": 10.4629,
       "retry_count": 0,
       "usage": {
         "input_tokens": 1147,
         "input_tokens_details": {
-          "cache_write_tokens": 1144,
-          "cached_tokens": 0
+          "cache_write_tokens": 0,
+          "cached_tokens": 1144
         },
-        "output_tokens": 1743,
+        "output_tokens": 1748,
         "output_tokens_details": {
-          "reasoning_tokens": 56
+          "reasoning_tokens": 73
         },
-        "total_tokens": 2890
+        "total_tokens": 2895
       }
     },
     "retrieval_planner": {
       "provider": "openai",
-      "response_id": "resp_0209a7bc749d7513016abc86e1780887d1a73f849b7bcc479c",
+      "response_id": "resp_00b01437951c4bbf016abc87d32f9487d1bd6723fb70d6e5f3",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 16.8866,
+      "latency_seconds": 14.6189,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 2040,
+        "input_tokens": 2028,
         "input_tokens_details": {
-          "cache_write_tokens": 2037,
+          "cache_write_tokens": 2025,
           "cached_tokens": 0
         },
-        "output_tokens": 1947,
+        "output_tokens": 1650,
         "output_tokens_details": {
-          "reasoning_tokens": 36
+          "reasoning_tokens": 32
         },
-        "total_tokens": 3987
+        "total_tokens": 3678
       }
     },
     "evidence_builder": {
       "provider": "openai",
-      "response_id": "resp_091cec6b81b8de79016abc871ace7087d189988f7c75ffb331",
+      "response_id": "resp_096126bc1409e3aa016abc8814300c87d18556711896d097b4",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 13.7473,
+      "latency_seconds": 16.287,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 12204,
+        "input_tokens": 14558,
         "input_tokens_details": {
-          "cache_write_tokens": 12201,
+          "cache_write_tokens": 14555,
           "cached_tokens": 0
         },
-        "output_tokens": 1916,
+        "output_tokens": 2012,
         "output_tokens_details": {
-          "reasoning_tokens": 0
+          "reasoning_tokens": 296
         },
-        "total_tokens": 14120
+        "total_tokens": 16570
       }
     },
     "proposal_strategist": {
       "provider": "openai",
-      "response_id": "resp_0e24d8ded7a4f94f016abc87288a8087d19edb308978e5597b",
+      "response_id": "resp_00932f720b2d995a016abc8824584087d1a81d919b958cbb92",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 15.7935,
+      "latency_seconds": 17.1337,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 4807,
+        "input_tokens": 4593,
         "input_tokens_details": {
-          "cache_write_tokens": 4804,
+          "cache_write_tokens": 4590,
           "cached_tokens": 0
         },
-        "output_tokens": 1692,
+        "output_tokens": 1916,
         "output_tokens_details": {
-          "reasoning_tokens": 76
+          "reasoning_tokens": 68
         },
-        "total_tokens": 6499
+        "total_tokens": 6509
       }
     }
   }
