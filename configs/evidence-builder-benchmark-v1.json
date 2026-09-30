@@ -1,0 +1,20 @@
+{
+  "benchmark_version": "1.0",
+  "track": "evidence_builder",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "gold_file": "evals/frozen/v1/dev/evidence-builder/RFP-TEST-002.json",
+  "rfp_analysis_run": "runs/rfp_analyzer/benchmark-v1-gpt56luna/dev/v4_compact_grounded/RFP-TEST-002/run-01.json",
+  "corpus": "exports/dify/benchmark-v1/documents.jsonl",
+  "versions": {
+    "v0_baseline": "prompts/evidence_builder/v0_baseline.md",
+    "v1_grounded": "prompts/evidence_builder/v1_grounded.md"
+  },
+  "output_root": "runs/evidence_builder/benchmark-v1-gpt56luna"
+}
