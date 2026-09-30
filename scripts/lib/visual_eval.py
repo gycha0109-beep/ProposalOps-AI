@@ -135,10 +135,20 @@ def validate_visuals(
                 reason="Phase 4 has no validated reference-image asset channel.",
             )
 
+        visible_diagram_parts = []
+        for node in nodes:
+            if isinstance(node, dict):
+                for key in ("label", "detail", "description", "metric", "text"):
+                    if node.get(key) is not None:
+                        visible_diagram_parts.append(str(node.get(key)))
+        for edge in edges:
+            if isinstance(edge, dict) and edge.get("label") is not None:
+                visible_diagram_parts.append(str(edge.get("label")))
+
         prompt_blob = " ".join([
             str(visual.get("purpose") or ""),
             str(visual.get("image_prompt") or ""),
-            str(diagram),
+            " ".join(visible_diagram_parts),
         ])
         visual_numbers = _numbers(prompt_blob)
         slide_blob = " ".join(
