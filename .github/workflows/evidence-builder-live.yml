@@ -1,0 +1,119 @@
+name: Evidence Builder Live Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      versions:
+        description: "all or comma-separated prompt versions"
+        required: true
+        default: "all"
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/evidence-builder-dev-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: evidence-builder-live-benchmark
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      BENCH_VERSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.versions || 'all' }}
+      BENCH_RUN_NAMESPACE: benchmark-v1-gpt56luna
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Require OpenAI API key
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "Repository secret OPENAI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Validate benchmark plan
+        run: |
+          python scripts/run_evidence_builder_benchmark.py \
+            --versions "$BENCH_VERSIONS" \
+            --plan-only
+
+      - name: Run Evidence Builder benchmark
+        shell: bash
+        run: |
+          set +e
+          python scripts/run_evidence_builder_benchmark.py \
+            --versions "$BENCH_VERSIONS"
+          EXIT_CODE=$?
+          echo "benchmark_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Aggregate results
+        shell: bash
+        run: |
+          if find "runs/evidence_builder/$BENCH_RUN_NAMESPACE/dev" -name "run-*.json" -print -quit 2>/dev/null | grep -q .; then
+            python scripts/aggregate_evidence_runs.py \
+              --root "runs/evidence_builder/$BENCH_RUN_NAMESPACE/dev" \
+              --json-out reports/evidence-builder-dev-v1-gpt56luna.json \
+              --md-out reports/evidence-builder-dev-v1-gpt56luna.md
+          else
+            echo "No completed Evidence Builder runs."
+          fi
+
+      - name: Check grounded candidate acceptance
+        if: env.benchmark_exit_code == '0'
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_benchmark_acceptance.py \
+            --report reports/evidence-builder-dev-v1-gpt56luna.json \
+            --acceptance evals/acceptance/evidence-builder-v1-dev.json \
+            --version v1_grounded \
+            > reports/evidence-builder-v1-acceptance.json
+          ACCEPTANCE_EXIT=$?
+          cat reports/evidence-builder-v1-acceptance.json
+          echo "acceptance_exit_code=$ACCEPTANCE_EXIT" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Freeze accepted Evidence Builder candidate
+        if: env.benchmark_exit_code == '0' && env.acceptance_exit_code == '0'
+        run: |
+          python scripts/freeze_benchmark_candidate.py \
+            --track evidence_builder \
+            --benchmark-version 1.0 \
+            --acceptance reports/evidence-builder-v1-acceptance.json \
+            --state evals/frozen/v1/evidence-builder-candidate.json \
+            --prompt prompts/evidence_builder/v1_grounded.md \
+            --candidate v1_grounded
+
+      - name: Commit raw evidence and reports
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/evidence_builder reports/evidence-builder-* evals/frozen/v1/evidence-builder-candidate.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No Evidence Builder changes to commit."
+          else
+            git commit -m "benchmark: record Evidence Builder dev runs"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Fail workflow if benchmark or acceptance failed
+        shell: bash
+        run: |
+          if [[ "${benchmark_exit_code:-0}" != "0" ]]; then exit "$benchmark_exit_code"; fi
+          if [[ "${acceptance_exit_code:-0}" != "0" ]]; then exit "$acceptance_exit_code"; fi
