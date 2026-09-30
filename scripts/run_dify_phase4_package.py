@@ -104,8 +104,7 @@ Strict batch rules:
 - RFP_FACT and AI_RECOMMENDATION blocks must have evidence_ids=[].
 - Do not broaden evidence wording. Every independently meaningful clause in a reference-backed block must be directly entailed by supported_point, reusable_patterns, or company_facts.
 - If a useful idea is not directly supported by reference evidence, split it into AI_RECOMMENDATION with evidence_ids=[].
-- Do not introduce quantitative values unless they are present in the supplied RFP facts or the cited evidence.
-- AI_RECOMMENDATION numeric targets require client_confirmation_required=true.
+- Do not introduce quantitative values unless they are present in the supplied RFP facts or the cited evidence.\n- If the validated slide contains no actual quantitative values, never choose visual_type=data_chart; use process_diagram, icon_diagram, illustration, photo, or none instead.\n- AI_RECOMMENDATION numeric targets require client_confirmation_required=true.
 '''
 
 
@@ -136,8 +135,7 @@ Strict batch rules:
 - visual_type must exactly match the slide visual_type.
 - data_source may contain only evidence IDs already used by that slide.
 - Do not add stages, actors, metrics, numbers, locations, clients, or operational facts that are absent from the validated slide.
-- Do not invent conversion rates, percentages, chart axes, or quantitative results.
-- data_chart is allowed only when the validated slide contains actual numeric data.
+- Do not invent conversion rates, percentages, chart axes, or quantitative results.\n- Numeric values already present in the supplied Pagination page or validated Slide may be reused exactly.\n- data_chart is allowed only when the validated slide contains actual quantitative data.
 - reference_image is unavailable in this Phase 4 run.
 - process_diagram requires explicit nodes and edges.
 - visual_type=none requires do_not_generate=true and image_prompt=null.
