@@ -259,6 +259,69 @@ Local lexical baseline:
 
 Dify benchmark dataset 역시 동일한 **51 normal + 12 hard negative = 63** corpus를 사용해야 직접 비교한다.
 
+## Live Sandbox result — 2026-09-30
+
+실제 Dify Cloud Sandbox Service API 연결을 완료했다.
+
+### Upload
+
+무료 플랜의 50-document 제한 때문에 원본 export의 **1 Asset = 1 Document** 구조는 보존하되,
+Cloud Sandbox 실행에서는 custom separator를 사용해 다음처럼 packing한다.
+
+- Production: **1 Dify document / 51 asset segments**
+- Benchmark: **1 Dify document / 63 asset segments**
+- 각 segment는 embedded provenance와 `asset_id`를 유지한다.
+- Production/Benchmark upload validation: **PASS**
+- 63 benchmark segment에 12 hard negatives가 포함된 것을 확인했다.
+
+### Semantic retrieval attempt
+
+High Quality + `semantic_search` 실험은 실제 retrieval이 동작했고 DEV의 첫 20 query까지 결과를 반환했다.
+
+그 뒤 Dify hosted OpenAI quota가 소진되어 다음 오류로 중단됐다.
+
+```text
+Model provider langgenius/openai/openai quota exceeded.
+```
+
+따라서 이 partial run은 완성된 benchmark score로 사용하지 않는다.
+
+### Provider-free diagnostics
+
+Sandbox에서 추가 결제 없이 끝까지 실행 가능한 경로도 검증했다.
+
+`full_text_search`는 48 query를 완주했지만 score가 0인 동일 상위 결과를 반복해
+유효한 retrieval candidate로 채택하지 않았다.
+
+Economy indexing + `keyword_search`는 48 query 전체를 완주했다.
+
+| Split | Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---:|---:|---:|---:|
+| DEV 32 | 12.50% | 15.62% | 15.62% | 0.1406 |
+| HOLDOUT 16 | 6.25% | 6.25% | 6.25% | 0.0625 |
+
+Report:
+
+```text
+reports/dify-retrieval-v1-economy.json
+```
+
+비교 대상 local char n-gram TF-IDF baseline:
+
+| Split | Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---:|---:|---:|---:|
+| DEV 32 | 90.62% | 100% | 100% | 0.9531 |
+| HOLDOUT 16 | 93.75% | 100% | 100% | 0.9688 |
+
+Economy 결과는 production candidate가 아니다. 한국어 paraphrase benchmark에 대해 Dify keyword path가
+local char n-gram baseline보다 현저히 낮다는 diagnostic evidence로 보존한다.
+
+### Next semantic step
+
+Dify Sandbox 자체는 계속 무료로 사용할 수 있다. Hosted model credits가 소진된 상태이므로
+의미 검색을 끝까지 검증하려면 Dify workspace의 OpenAI Model Provider에 사용자 API key를 연결한 뒤
+High Quality + `semantic_search` 48-query benchmark를 다시 실행한다.
+
 ## Current status
 
 완료:
@@ -268,14 +331,19 @@ Dify benchmark dataset 역시 동일한 **51 normal + 12 hard negative = 63** co
 - [x] provenance embedded document format
 - [x] native metadata schema
 - [x] Dify create-by-text uploader
-- [x] Dify native metadata sync
 - [x] Dify retrieval benchmark runner
 - [x] local/CI export integrity validation
+- [x] Dify Service API authentication
+- [x] Production/benchmark dataset bootstrap
+- [x] Sandbox document packing
+- [x] Production 51 asset segment upload
+- [x] Benchmark 63 asset segment upload
+- [x] 48-query Economy/keyword diagnostic benchmark
+- [x] live evidence committed to repository
 
-Dify API key가 있어야 가능한 항목:
+남음:
 
-- [ ] Production/benchmark dataset 자동 bootstrap
-- [ ] Production dataset 실제 업로드
-- [ ] Benchmark dataset 실제 업로드
-- [ ] 48 frozen query live retrieval
-- [ ] lexical baseline vs Dify report 확정
+- [ ] Dify workspace에 own OpenAI provider key 연결
+- [ ] High Quality semantic 48-query benchmark 완주
+- [ ] DEV semantic misses 분석
+- [ ] semantic candidate 확정 후 최종 retrieval report
