@@ -122,7 +122,6 @@ def main() -> None:
         ("visual_prompt", "visual_gate", "source"),
         ("visual_gate", "visual_gate_branch", "source"),
         ("visual_gate_branch", "proposal_qa", "true"),
-        ("visual_gate_branch", "gate_failure_end", "false"),
         ("proposal_qa", "qa_parse", "source"),
         ("qa_parse", "qa_branch", "source"),
         ("qa_branch", "final_end", "true"),
