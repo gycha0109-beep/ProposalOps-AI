@@ -1,5 +1,5 @@
-operation: plan
+operation: full-phase1
 phase: knowledge-v1
 bootstrap: automatic
 required_secret: DIFY_API_KEY
-triggered: 2026-09-30T08:24+09:00
+triggered: 2026-09-30T10:38+09:00
