@@ -1,0 +1,211 @@
+{
+  "strategy_repairs": [
+    {
+      "strategy_id": "ST-02",
+      "repaired_pillar": {
+        "strategy_id": "ST-02",
+        "pillar": "발견에서 방문 계획으로 이어지는 콘텐츠 퍼널",
+        "description": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어지는 콘텐츠 구조를 제안한다. 숏폼, 카드형 콘텐츠, 연계 코스 콘텐츠를 각 단계의 역할에 맞게 배치한다.",
+        "requirement_ids": [
+          "R-202"
+        ],
+        "classification": "REFERENCE_PATTERN",
+        "evidence_ids": [
+          "EV-R-202-01"
+        ]
+      }
+    }
+  ],
+  "page_repairs": [
+    {
+      "page_id": "PAGE-002",
+      "repaired_page": {
+        "page_id": "PAGE-002",
+        "page_no": 2,
+        "section": "콘텐츠 전략",
+        "page_type": "funnel",
+        "title": "발견 콘텐츠를 저장 가능한 코스 콘텐츠와 방문 계획으로 연결",
+        "page_goal": "콘텐츠 유형별 역할과 방문 계획으로 이어지는 퍼널을 제시한다.",
+        "key_message": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어간다.",
+        "rfp_requirement_ids": [
+          "R-202"
+        ],
+        "strategy_ids": [
+          "ST-02"
+        ],
+        "evidence_ids": [
+          "EV-R-202-01"
+        ],
+        "content_blocks": [
+          {
+            "role": "discovery",
+            "intent": "짧은 발견 콘텐츠로 관심을 만든다."
+          },
+          {
+            "role": "save_and_explore",
+            "intent": "지도형 정보와 저장 가능한 코스 콘텐츠로 저장과 탐색을 유도한다."
+          },
+          {
+            "role": "visit_planning",
+            "intent": "콘텐츠 구조를 방문 계획 단계까지 연결한다."
+          },
+          {
+            "role": "deliverable_mapping",
+            "intent": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건의 역할을 퍼널 단계에 배치한다."
+          }
+        ],
+        "visual_direction": "Discover → Save → Visit 3단계 퍼널에 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 배치한다.",
+        "fact_risk": "medium"
+      },
+      "repaired_slide": {
+        "page_id": "PAGE-002",
+        "headline": "발견 콘텐츠를 저장 가능한 코스와 방문 계획으로 연결합니다",
+        "subheadline": "Discover → Save → Visit으로 이어지는 콘텐츠 퍼널",
+        "body_blocks": [
+          {
+            "label": "Discover",
+            "text": "짧은 발견 콘텐츠로 관심을 만듭니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-202-01"
+            ],
+            "client_confirmation_required": false
+          },
+          {
+            "label": "Save",
+            "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 탐색과 저장을 유도합니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-202-01"
+            ],
+            "client_confirmation_required": false
+          },
+          {
+            "label": "Visit",
+            "text": "Discover와 Save를 거쳐 방문 계획 단계까지 연결합니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-202-01"
+            ],
+            "client_confirmation_required": false
+          },
+          {
+            "label": "콘텐츠 배치",
+            "text": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별 역할에 배치합니다.",
+            "claim_type": "RFP_FACT",
+            "evidence_ids": [],
+            "client_confirmation_required": false
+          }
+        ],
+        "evidence_ids": [
+          "EV-R-202-01"
+        ],
+        "visual_type": "process_diagram",
+        "speaker_note": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결되는 Discover → Save → Visit 구조를 보여주고, 각 콘텐츠 유형의 역할을 단계별로 배치합니다.",
+        "fact_risk": "medium"
+      },
+      "repaired_visual": {
+        "page_id": "PAGE-002",
+        "visual_type": "process_diagram",
+        "do_not_generate": false,
+        "purpose": "콘텐츠 유형의 역할을 Discover, Save, Visit 단계에 배치해 발견 콘텐츠에서 방문 계획 단계까지 이어지는 퍼널을 보여줍니다.",
+        "image_prompt": "프레젠테이션용 3단계 수평 퍼널 다이어그램. Discover, Save, Visit을 명확히 구분하고 각 단계의 콘텐츠 역할과 제공된 물량을 간결하게 표시합니다. 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건만 정확히 사용하며 긴 설명과 추가 수치는 넣지 않습니다.",
+        "diagram_spec": {
+          "nodes": [
+            {
+              "id": "N1",
+              "label": "Discover"
+            },
+            {
+              "id": "N2",
+              "label": "숏폼 15편"
+            },
+            {
+              "id": "N3",
+              "label": "Save"
+            },
+            {
+              "id": "N4",
+              "label": "카드형 콘텐츠 24건"
+            },
+            {
+              "id": "N5",
+              "label": "연계 코스 콘텐츠 8건"
+            },
+            {
+              "id": "N6",
+              "label": "Visit"
+            },
+            {
+              "id": "N7",
+              "label": "방문 계획 단계"
+            }
+          ],
+          "edges": [
+            {
+              "from": "N1",
+              "to": "N2",
+              "label": "짧은 발견 콘텐츠"
+            },
+            {
+              "from": "N2",
+              "to": "N3",
+              "label": "관심에서 저장으로"
+            },
+            {
+              "from": "N3",
+              "to": "N4",
+              "label": "지도형 정보 연결"
+            },
+            {
+              "from": "N3",
+              "to": "N5",
+              "label": "저장 가능한 코스 콘텐츠 연결"
+            },
+            {
+              "from": "N4",
+              "to": "N6",
+              "label": "방문 계획으로 연결"
+            },
+            {
+              "from": "N5",
+              "to": "N6",
+              "label": "방문 계획으로 연결"
+            },
+            {
+              "from": "N6",
+              "to": "N7",
+              "label": "Visit 단계"
+            }
+          ]
+        },
+        "data_source": [
+          "EV-R-202-01"
+        ],
+        "prohibited_elements": [
+          "방문 전환 성과 또는 전환율",
+          "실제 운영 실적처럼 보이는 표현",
+          "임의의 퍼널 수치와 축",
+          "긴 본문 텍스트"
+        ],
+        "fact_risk": "medium"
+      }
+    }
+  ],
+  "repair_summary": [
+    {
+      "error_type": "INVALID_REFERENCE",
+      "target_id": "ST-02",
+      "change": "EV-R-202-01이 직접 지원하는 Discover → Save → Visit 구조와 콘텐츠 역할 분리 수준으로 전략 설명을 축소하고, 숏폼·방문 동기·확인된 장소 정보 등 evidence가 직접 뒷받침하지 않는 표현을 제거했습니다.",
+      "resolved": true
+    },
+    {
+      "error_type": "INVALID_REFERENCE",
+      "target_id": "PAGE-002",
+      "change": "Discover 문구를 '짧은 발견 콘텐츠로 관심을 만듭니다'로, Visit 문구를 방문 계획 단계까지 연결하는 구조 설명으로 축소했습니다. '방문 동기', '확인된 장소 정보', '페이지 이동'처럼 EV-R-202-01의 직접 지원 범위를 넘는 표현을 제거했습니다.",
+      "resolved": true
+    }
+  ],
+  "escalation_required": false,
+  "escalation_reason": null
+}
