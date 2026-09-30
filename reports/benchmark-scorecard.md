@@ -40,3 +40,18 @@ Evidence:
 
 - `runs/e2e-demo/RFP-TEST-002/final-package-repaired.json`
 - `reports/e2e-demo-summary.md`
+
+
+## Dify live integration
+
+> Synthetic/demo live integration. Frozen prompt benchmark와 구분합니다.
+
+| Phase | Result | Evidence |
+|---|---|---|
+| Phase 1 Knowledge retrieval | 48 frozen queries complete; DEV Hit@1 90.62%, HOLDOUT Hit@1 93.75%, Hit@3/5 100% | `reports/dify-retrieval-v1-semantic.json` |
+| Phase 2 Grounded Strategy Core | PASS; evidence recall/precision/provenance 100%, broken provenance 0 | `reports/dify-phase2-core-rfp-test-002.json` |
+| Phase 3 Pagination | PASS; 6/6 requirements covered, 0 blocking errors | `reports/dify-phase3-pagination-rfp-test-002.json` |
+| Phase 4 Final Package | PASS; 6 pages/slides/visuals, all deterministic gates PASS, QA issues 0 | `reports/dify-phase4-package-rfp-test-002.json` |
+
+Phase 4 latest successful run used 3 normal-path LLM calls and required 0 repair cycles.
+Targeted repair behavior remains evidenced by the legacy E2E and intermediate Phase 4 validation runs.
