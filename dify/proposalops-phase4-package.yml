@@ -1,6 +1,6 @@
 {
   "app": {
-    "description": "ProposalOps AI Phase 4: Slide Draft → provenance gates → Visual Prompt → Proposal QA → one-pass targeted repair/recheck",
+    "description": "ProposalOps AI Phase 4: Slide/Visual provenance gates, automatic visual repair, Proposal QA, targeted repair/recheck",
     "icon": "📦",
     "icon_background": "#E4FBCC",
     "icon_type": "emoji",
@@ -363,21 +363,6 @@
           "data": {
             "isInIteration": false,
             "isInLoop": false,
-            "sourceType": "if-else",
-            "targetType": "end"
-          },
-          "id": "visualbranch-fail",
-          "source": "visual_gate_branch",
-          "sourceHandle": "false",
-          "target": "gate_failure_end",
-          "targetHandle": "target",
-          "type": "custom",
-          "zIndex": 0
-        },
-        {
-          "data": {
-            "isInIteration": false,
-            "isInLoop": false,
             "sourceType": "llm",
             "targetType": "code"
           },
@@ -563,6 +548,141 @@
           },
           "id": "recheckbranch-escalate",
           "source": "qa_recheck_branch",
+          "sourceHandle": "false",
+          "target": "escalation_end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "llm"
+          },
+          "id": "visualbranch-repair",
+          "source": "visual_gate_branch",
+          "sourceHandle": "false",
+          "target": "visual_repair",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "code"
+          },
+          "id": "visualrepair-gate",
+          "source": "visual_repair",
+          "sourceHandle": "source",
+          "target": "visual_repair_gate",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "if-else"
+          },
+          "id": "visualrepairgate-branch",
+          "source": "visual_repair_gate",
+          "sourceHandle": "source",
+          "target": "visual_repair_branch",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "llm"
+          },
+          "id": "visualrepairbranch-qa",
+          "source": "visual_repair_branch",
+          "sourceHandle": "true",
+          "target": "proposal_qa_after_visual_repair",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "visualrepairbranch-fail",
+          "source": "visual_repair_branch",
+          "sourceHandle": "false",
+          "target": "gate_failure_end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "code"
+          },
+          "id": "visualrepairqa-parse",
+          "source": "proposal_qa_after_visual_repair",
+          "sourceHandle": "source",
+          "target": "qa_parse_after_visual_repair",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "if-else"
+          },
+          "id": "visualrepairqaparse-branch",
+          "source": "qa_parse_after_visual_repair",
+          "sourceHandle": "source",
+          "target": "qa_branch_after_visual_repair",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "visualrepairqabranch-final",
+          "source": "qa_branch_after_visual_repair",
+          "sourceHandle": "true",
+          "target": "visual_repaired_final_end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "visualrepairqabranch-escalate",
+          "source": "qa_branch_after_visual_repair",
           "sourceHandle": "false",
           "target": "escalation_end",
           "targetHandle": "target",
@@ -1551,7 +1671,7 @@
             "prompt_template": [
               {
                 "role": "system",
-                "text": "# Production Draft — Visual Prompt Generator\n\nStatus: **DEMO VALIDATED — NOT FROZEN**\n\n\n## Validation status\n\nRFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.\n\n이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.\n\n입력:\n1. Slide Draft\n2. Pagination visual_direction\n3. 사용 가능한 evidence/reference image metadata(있는 경우)\n\n목표는 장표용 시각물 생성 또는 다이어그램 제작 지시를 만드는 것입니다.\n\n## Rules\n\n1. visual_type은 입력 Slide Draft의 허용 enum 안에서 선택합니다.\n2. data_chart는 입력에 실제 수치 데이터가 있을 때만 허용합니다.\n3. 실제 수치가 없으면 차트 숫자·비율·축 값을 생성하지 않습니다.\n4. reference image가 없는데 실제 과거 행사/고객 현장 사진처럼 보이게 지시하지 않습니다.\n5. AI illustration은 실제 수행 증거처럼 오인되지 않도록 표현합니다.\n6. process_diagram은 단계와 연결 관계를 명시합니다.\n7. 시각물이 필요하지 않으면 do_not_generate=true로 반환합니다.\n8. 이미지 안에 긴 본문 텍스트를 넣지 않습니다.\n\n## Output\n\nJSON만 출력합니다.\n\n{\n  \"page_id\": \"PAGE-001\",\n  \"visual_type\": \"process_diagram\",\n  \"do_not_generate\": false,\n  \"purpose\": \"string\",\n  \"image_prompt\": \"string | null\",\n  \"diagram_spec\": {\n    \"nodes\": [],\n    \"edges\": []\n  },\n  \"data_source\": [],\n  \"prohibited_elements\": [],\n  \"fact_risk\": \"low | medium | high\"\n}\n\n\nBatch integration contract:\nReturn JSON only as {\"visuals\":[...]}.\nReturn exactly one visual for every validated slide page_id.\nvisual_type must exactly match the Slide Draft.\ndata_source may contain only evidence IDs already used by that slide.\nDo not add actors, stages, metrics, numbers, places, clients, or operational details absent from the validated slide/page.\nNumeric values already present in Pagination or Slide may be copied exactly; never invent percentages, rates, results, or chart axes.\nreference_image is unavailable.\nprocess_diagram requires nodes and edges.\n"
+                "text": "# Production Draft — Visual Prompt Generator\n\nStatus: **DEMO VALIDATED — NOT FROZEN**\n\n\n## Validation status\n\nRFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.\n\n이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.\n\n입력:\n1. Slide Draft\n2. Pagination visual_direction\n3. 사용 가능한 evidence/reference image metadata(있는 경우)\n\n목표는 장표용 시각물 생성 또는 다이어그램 제작 지시를 만드는 것입니다.\n\n## Rules\n\n1. visual_type은 입력 Slide Draft의 허용 enum 안에서 선택합니다.\n2. data_chart는 입력에 실제 수치 데이터가 있을 때만 허용합니다.\n3. 실제 수치가 없으면 차트 숫자·비율·축 값을 생성하지 않습니다.\n4. reference image가 없는데 실제 과거 행사/고객 현장 사진처럼 보이게 지시하지 않습니다.\n5. AI illustration은 실제 수행 증거처럼 오인되지 않도록 표현합니다.\n6. process_diagram은 단계와 연결 관계를 명시합니다.\n7. 시각물이 필요하지 않으면 do_not_generate=true로 반환합니다.\n8. 이미지 안에 긴 본문 텍스트를 넣지 않습니다.\n\n## Output\n\nJSON만 출력합니다.\n\n{\n  \"page_id\": \"PAGE-001\",\n  \"visual_type\": \"process_diagram\",\n  \"do_not_generate\": false,\n  \"purpose\": \"string\",\n  \"image_prompt\": \"string | null\",\n  \"diagram_spec\": {\n    \"nodes\": [],\n    \"edges\": []\n  },\n  \"data_source\": [],\n  \"prohibited_elements\": [],\n  \"fact_risk\": \"low | medium | high\"\n}\n\n\nBatch integration contract:\nReturn JSON only as {\"visuals\":[...]}.\nReturn exactly one visual for every validated slide page_id.\nvisual_type must exactly match the Slide Draft.\ndata_source may contain only evidence IDs already used by that slide.\nDo not add actors, stages, metrics, numbers, places, clients, or operational details absent from the validated slide/page.\nNumeric values already present in Pagination or Slide may be copied exactly; never invent percentages, rates, results, or chart axes.\nreference_image is unavailable.\nprocess_diagram requires nodes and edges.\n\n\nCross-page numeric isolation:\n- Treat each page independently.\n- A number/quantity may appear in a visual ONLY if the exact value appears in that SAME page's Pagination content or SAME page's validated Slide content.\n- Ignore quantities from other RFP requirements, other pages, or global deliverable lists unless the current page/slide explicitly contains the same value.\n- Example: if 15편 belongs to another requirement and is absent from the current page/slide, do not use 15편 in the visual."
               },
               {
                 "role": "user",
@@ -2405,6 +2525,14 @@
                 ],
                 "value_type": "string",
                 "variable": "escalation_qa_recheck"
+              },
+              {
+                "value_selector": [
+                  "qa_parse_after_visual_repair",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "escalation_visual_repair_qa"
               }
             ]
           },
@@ -2417,6 +2545,413 @@
           "positionAbsolute": {
             "x": 8680,
             "y": 650
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Visual Repair",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "You repair only visual specs that failed the deterministic Visual Provenance Gate.\n\nReturn JSON only as {\"visuals\":[...]} and return the COMPLETE visual list, preserving every unaffected visual exactly.\n\nRules:\n- Use the gate errors to identify affected page_ids.\n- For unaffected page_ids, copy the visual object exactly.\n- For affected page_ids, modify only what is necessary to resolve the reported gate error.\n- A numeric value may appear only if the exact value exists in the SAME Pagination page or SAME validated Slide.\n- Never import a quantity from another requirement/page.\n- data_source may contain only evidence IDs used by the same slide.\n- visual_type must remain equal to the slide visual_type unless the gate error explicitly requires a safer non-data visual and the slide permits it.\n- Do not add unsupported actors, stages, claims, metrics, percentages, results, or operational details.\n- process_diagram requires nodes and edges.\n- reference_image is unavailable."
+              },
+              {
+                "role": "user",
+                "text": "VISUAL GATE ERRORS:\\n{{#visual_gate.validation#}}\\n\\nPAGINATION:\\n{{#pagination_planner.text#}}\\n\\nVALIDATED SLIDES:\\n{{#slide_draft.text#}}\\n\\nCURRENT VISUALS:\\n{{#visual_prompt.text#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "visual_repair",
+          "position": {
+            "x": 5530,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 5530,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Visual Repair Gate",
+            "type": "code",
+            "code": "import json,re\nNUM=re.compile(r\"\\d+(?:[.,]\\d+)?(?:%|명|건|편|원|초|개월|회)\")\ndef arr(v): return v if isinstance(v,list) else []\ndef nums(v): return set(NUM.findall(str(v or \"\")))\ndef main(visuals_json:str,slides_json:str,pagination_json:str)->dict:\n    try:\n        vp=json.loads(visuals_json); sp=json.loads(slides_json); pg=json.loads(pagination_json)\n    except Exception as e:\n        return {\"status\":\"FAIL\",\"validation\":json.dumps({\"error\":\"json_parse\",\"detail\":str(e)},ensure_ascii=False)}\n    visuals=arr(vp.get(\"visuals\")); slides=arr(sp.get(\"slides\")); pages=arr(pg.get(\"pages\"))\n    slide_by={x.get(\"page_id\"):x for x in slides if x.get(\"page_id\")}\n    page_by={x.get(\"page_id\"):x for x in pages if x.get(\"page_id\")}\n    errors=[]; seen=set()\n    for visual in visuals:\n        pid=visual.get(\"page_id\")\n        if not pid or pid in seen or pid not in slide_by or pid not in page_by:\n            errors.append({\"code\":\"INVALID_VISUAL_PAGE\",\"page_id\":pid}); continue\n        seen.add(pid); slide=slide_by[pid]; page=page_by[pid]\n        if visual.get(\"visual_type\")!=slide.get(\"visual_type\"):\n            errors.append({\"code\":\"VISUAL_TYPE_MISMATCH\",\"page_id\":pid})\n        if not set(arr(visual.get(\"data_source\"))).issubset(set(arr(slide.get(\"evidence_ids\")))):\n            errors.append({\"code\":\"VISUAL_OFF_SLIDE_EVIDENCE\",\"page_id\":pid})\n        if visual.get(\"visual_type\")==\"reference_image\":\n            errors.append({\"code\":\"REFERENCE_IMAGE_UNAVAILABLE\",\"page_id\":pid})\n        diagram=visual.get(\"diagram_spec\") or {}; nodes=arr(diagram.get(\"nodes\")); edge_rows=arr(diagram.get(\"edges\"))\n        if visual.get(\"visual_type\")==\"process_diagram\" and (len(nodes)<2 or not edge_rows):\n            errors.append({\"code\":\"INVALID_PROCESS_DIAGRAM\",\"page_id\":pid})\n        slide_blob=\" \".join([str(slide.get(\"headline\") or \"\"),str(slide.get(\"subheadline\") or \"\"),\" \".join(str(b.get(\"text\") or \"\") for b in arr(slide.get(\"body_blocks\")))])\n        page_blob=\" \".join([str(page.get(\"title\") or \"\"),str(page.get(\"page_goal\") or \"\"),str(page.get(\"key_message\") or \"\"),\" \".join(str(b.get(\"intent\") or \"\") for b in arr(page.get(\"content_blocks\")) if isinstance(b,dict))])\n        if visual.get(\"visual_type\")==\"data_chart\" and not nums(slide_blob):\n            errors.append({\"code\":\"DATA_CHART_WITHOUT_NUMERIC_INPUT\",\"page_id\":pid})\n        visible=[str(visual.get(\"purpose\") or \"\"),str(visual.get(\"image_prompt\") or \"\")]\n        for n in nodes:\n            if isinstance(n,dict):\n                for k in (\"label\",\"detail\",\"description\",\"metric\",\"text\"):\n                    if n.get(k) is not None: visible.append(str(n.get(k)))\n        for erow in edge_rows:\n            if isinstance(erow,dict) and erow.get(\"label\") is not None: visible.append(str(erow.get(\"label\")))\n        invented=sorted(nums(\" \".join(visible))-nums(slide_blob+\" \"+page_blob))\n        if invented: errors.append({\"code\":\"VISUAL_INVENTED_NUMBER\",\"page_id\":pid,\"values\":invented})\n    if set(slide_by)!=seen:\n        errors.append({\"code\":\"VISUAL_PAGE_SET_MISMATCH\",\"missing\":sorted(set(slide_by)-seen),\"extra\":sorted(seen-set(slide_by))})\n    status=\"PASS\" if not errors else \"FAIL\"\n    return {\"status\":status,\"validation\":json.dumps({\"status\":status,\"errors\":errors,\"visual_count\":len(visuals)},ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "status": {
+                "children": null,
+                "type": "string"
+              },
+              "validation": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "visual_repair",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visuals_json"
+              },
+              {
+                "value_selector": [
+                  "slide_draft",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "slides_json"
+              },
+              {
+                "value_selector": [
+                  "pagination_planner",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "pagination_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "visual_repair_gate",
+          "position": {
+            "x": 5830,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 5830,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Visual Repair Pass?",
+            "type": "if-else",
+            "_targetBranches": [
+              {
+                "id": "true",
+                "name": "IF"
+              },
+              {
+                "id": "false",
+                "name": "ELSE"
+              }
+            ],
+            "logical_operator": "and",
+            "cases": [
+              {
+                "case_id": "true",
+                "logical_operator": "and",
+                "conditions": [
+                  {
+                    "id": "visual-repair-branch-condition",
+                    "variable_selector": [
+                      "visual_repair_gate",
+                      "status"
+                    ],
+                    "comparison_operator": "is",
+                    "value": "PASS"
+                  }
+                ]
+              }
+            ]
+          },
+          "height": 126,
+          "id": "visual_repair_branch",
+          "position": {
+            "x": 6130,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 6130,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Proposal QA After Visual Repair",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "RFP 요구사항, Evidence Pack, Proposal Strategy, Slide Draft를 검토해 오류를 탐지한다.\n\n허용하는 error type은 아래 7개뿐이다.\n\n- MISSING_REQUIREMENT\n- UNSUPPORTED_CLAIM\n- INVALID_REFERENCE\n- CROSS_PROPOSAL_MERGE\n- STRATEGY_PAGE_MISMATCH\n- DUPLICATE_MESSAGE\n- OVERLONG_SLIDE\n\nSeverity는 아래만 사용한다.\n\n- BLOCK\n- WARN\n- INFO\n\n판정 규칙:\n1. mandatory RFP requirement 누락은 MISSING_REQUIREMENT / BLOCK.\n2. company_facts에 없는 회사 실적·성과·정량 수치는 UNSUPPORTED_CLAIM / BLOCK.\n3. 존재하지 않거나 claim을 실제 지원하지 않는 evidence/reference는 INVALID_REFERENCE / BLOCK.\n4. 서로 다른 proposal의 사실이나 패턴을 하나의 검증된 수행사례처럼 합치면 CROSS_PROPOSAL_MERGE / BLOCK.\n5. page_goal과 실제 메시지가 불일치하면 STRATEGY_PAGE_MISMATCH / WARN.\n6. AI_RECOMMENDATION 자체를 회사 실적으로 오판하지 않는다.\n7. REFERENCE_PATTERN을 패턴으로만 재사용한 경우 오류가 아니다.\n8. 명확한 evidence가 있는 claim은 오류로 표시하지 않는다.\n9. 오류가 없는 항목을 억지로 생성하지 않는다.\n10. 위 taxonomy 밖의 새로운 error type을 만들지 않는다.\n\n각 판정은 제공된 RFP / evidence / company_facts / draft context만 사용한다.\n\n\nFinal package output contract:\nReturn JSON only as {\"status\":\"PASS | FAIL\",\"issues\":[{\"error_type\":\"MISSING_REQUIREMENT | UNSUPPORTED_CLAIM | INVALID_REFERENCE | CROSS_PROPOSAL_MERGE | STRATEGY_PAGE_MISMATCH | DUPLICATE_MESSAGE | OVERLONG_SLIDE\",\"severity\":\"BLOCK | WARN | INFO\",\"page_id\":\"PAGE-001 | null\",\"reason\":\"string\",\"suggested_action\":\"string\"}],\"summary\":\"string\"}.\nReview every meaningful clause for direct evidence entailment. Keyword overlap is not sufficient.\nIf there is no real issue, return PASS with issues=[].\n"
+              },
+              {
+                "role": "user",
+                "text": "RFP ANALYSIS:\\n{{#rfp_analyzer.text#}}\\n\\nEVIDENCE:\\n{{#evidence_builder.text#}}\\n\\nSTRATEGY:\\n{{#proposal_strategist.text#}}\\n\\nPAGINATION:\\n{{#pagination_planner.text#}}\\n\\nSLIDES:\\n{{#slide_draft.text#}}\\n\\nVISUALS:\\n{{#visual_repair.text#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "proposal_qa_after_visual_repair",
+          "position": {
+            "x": 6430,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 6430,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Parse QA After Visual Repair",
+            "type": "code",
+            "code": "import json\ndef main(qa_json:str)->dict:\n    try:\n        q=json.loads(qa_json)\n        status=\"PASS\" if q.get(\"status\")==\"PASS\" and not q.get(\"issues\") else \"FAIL\"\n        return {\"status\":status,\"normalized\":json.dumps(q,ensure_ascii=False)}\n    except Exception as e:\n        return {\"status\":\"FAIL\",\"normalized\":json.dumps({\"status\":\"FAIL\",\"issues\":[],\"parse_error\":str(e)},ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "status": {
+                "children": null,
+                "type": "string"
+              },
+              "normalized": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "proposal_qa_after_visual_repair",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "qa_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "qa_parse_after_visual_repair",
+          "position": {
+            "x": 6730,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 6730,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "QA After Visual Repair Pass?",
+            "type": "if-else",
+            "_targetBranches": [
+              {
+                "id": "true",
+                "name": "IF"
+              },
+              {
+                "id": "false",
+                "name": "ELSE"
+              }
+            ],
+            "logical_operator": "and",
+            "cases": [
+              {
+                "case_id": "true",
+                "logical_operator": "and",
+                "conditions": [
+                  {
+                    "id": "qa-after-visual-repair-condition",
+                    "variable_selector": [
+                      "qa_parse_after_visual_repair",
+                      "status"
+                    ],
+                    "comparison_operator": "is",
+                    "value": "PASS"
+                  }
+                ]
+              }
+            ]
+          },
+          "height": 126,
+          "id": "qa_branch_after_visual_repair",
+          "position": {
+            "x": 7030,
+            "y": 620
+          },
+          "positionAbsolute": {
+            "x": 7030,
+            "y": 620
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Visual-Repaired Final Package",
+            "type": "end",
+            "outputs": [
+              {
+                "value_selector": [
+                  "rfp_analyzer",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_rfp_analysis"
+              },
+              {
+                "value_selector": [
+                  "evidence_builder",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_evidence_packs"
+              },
+              {
+                "value_selector": [
+                  "proposal_strategist",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_proposal_strategy"
+              },
+              {
+                "value_selector": [
+                  "pagination_planner",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_pagination"
+              },
+              {
+                "value_selector": [
+                  "slide_draft",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_slides"
+              },
+              {
+                "value_selector": [
+                  "visual_repair",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_visuals"
+              },
+              {
+                "value_selector": [
+                  "qa_parse_after_visual_repair",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_qa"
+              },
+              {
+                "value_selector": [
+                  "coverage_validator",
+                  "validation"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_coverage_validation"
+              },
+              {
+                "value_selector": [
+                  "slide_gate",
+                  "validation"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_slide_validation"
+              },
+              {
+                "value_selector": [
+                  "visual_repair_gate",
+                  "validation"
+                ],
+                "value_type": "string",
+                "variable": "visual_repaired_visual_validation"
+              }
+            ]
+          },
+          "height": 320,
+          "id": "visual_repaired_final_end",
+          "position": {
+            "x": 7330,
+            "y": 500
+          },
+          "positionAbsolute": {
+            "x": 7330,
+            "y": 500
           },
           "selected": false,
           "sourcePosition": "right",
