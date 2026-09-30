@@ -102,7 +102,7 @@ Strict batch rules:
 - slide.evidence_ids must equal the union of evidence_ids used by its body_blocks.
 - REFERENCE_FACT and REFERENCE_PATTERN blocks require direct supporting evidence_ids.
 - RFP_FACT and AI_RECOMMENDATION blocks must have evidence_ids=[].
-- Do not broaden evidence wording. Every independently meaningful clause in a reference-backed block must be directly entailed by supported_point, reusable_patterns, or company_facts.
+- Do not broaden evidence wording. Every independently meaningful clause in a reference-backed block must be directly entailed by supported_point, reusable_patterns, or company_facts.\n- Evidence scope outranks upstream strategy/page wording: if a strategy or page says more than the cited evidence directly supports, narrow the slide to the evidence-supported wording instead of copying the broader upstream phrase.\n- Do not turn generic evidence such as "one action goal" into specific examples unless those examples are explicitly supported by the same evidence.
 - If a useful idea is not directly supported by reference evidence, split it into AI_RECOMMENDATION with evidence_ids=[].
 - Do not introduce quantitative values unless they are present in the supplied RFP facts or the cited evidence.\n- If the validated slide contains no actual quantitative values, never choose visual_type=data_chart; use process_diagram, icon_diagram, illustration, photo, or none instead.\n- AI_RECOMMENDATION numeric targets require client_confirmation_required=true.
 '''
@@ -201,7 +201,7 @@ Repair only supplied target strategy_ids and page_ids.
 Do not modify any unaffected strategy pillar or page.
 Preserve canonical IDs.
 Do not invent evidence IDs.
-For REFERENCE_FACT / REFERENCE_PATTERN, every meaningful clause must be directly supported by cited evidence.
+For REFERENCE_FACT / REFERENCE_PATTERN, every meaningful clause must be directly supported by cited evidence.\nEvidence scope is authoritative: repair broader strategy/page/slide wording downward to supported_point/reusable_patterns rather than treating upstream wording as proof.
 If wording exceeds evidence, narrow it or move the unsupported idea into AI_RECOMMENDATION with no evidence IDs.
 Return complete replacement objects for every object you choose to repair.
 '''
