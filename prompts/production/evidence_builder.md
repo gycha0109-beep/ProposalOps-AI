@@ -23,7 +23,8 @@ Frozen candidate metadata: `../../evals/frozen/v1/evidence-builder-candidate.jso
 
 ---
 
-# Evidence Builder v1 — Grounded Selection
+## Prompt
+
 
 Convert retrieved Proposal Assets into evidence packs that can safely ground proposal strategy.
 
