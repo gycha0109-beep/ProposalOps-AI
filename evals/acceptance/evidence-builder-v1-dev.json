@@ -1,0 +1,50 @@
+{
+  "benchmark_version": "1.0",
+  "track": "evidence_builder",
+  "split": "dev",
+  "candidate": "v1_grounded",
+  "criteria": {
+    "run_count": {
+      "min": 1
+    },
+    "json_parseable_rate": {
+      "min": 1
+    },
+    "result_coverage": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "primary_asset_recall": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "selected_asset_precision": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "prohibited_asset_rejection": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "provenance_validity": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "status_accuracy": {
+      "mean_min": 1,
+      "min_min": 1
+    },
+    "company_fact_violation_count": {
+      "mean_max": 0,
+      "max_max": 0
+    },
+    "unsupported_numeric_claim_count": {
+      "mean_max": 0,
+      "max_max": 0
+    },
+    "evidence_id_violation_count": {
+      "mean_max": 0,
+      "max_max": 0
+    }
+  }
+}
