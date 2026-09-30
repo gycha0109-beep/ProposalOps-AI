@@ -22,7 +22,8 @@
     "production_dataset_id": "21dcb1f3-270f-4991-bcf8-b2782e6cf814",
     "search_method": "semantic_search",
     "top_k": 5,
-    "delay_seconds": 7
+    "delay_seconds": 7,
+    "queries_per_requirement": 2
   },
   "corpus": "exports/dify/knowledge-v1/documents.jsonl",
   "strategist_gold": "evals/frozen/v1/dev/strategist/RFP-TEST-002.json",
