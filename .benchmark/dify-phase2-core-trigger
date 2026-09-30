@@ -4,7 +4,8 @@ model: gpt-5.6-luna
 knowledge: ProposalOps Production v1 high-quality
 dataset_id: 21dcb1f3-270f-4991-bcf8-b2782e6cf814
 retrieval: semantic_search top5
+candidate_filter: intent->page_type
 expected_openai_calls: 4
 expected_dify_calls: 6
-note: retry after evidence title contract fix
-triggered: 2026-09-30T12:48+09:00
+note: retry after deterministic intent page-type filtering
+triggered: 2026-09-30T12:54+09:00
