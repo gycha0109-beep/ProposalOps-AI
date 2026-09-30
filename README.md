@@ -274,8 +274,14 @@ Evidence:
 - `reports/dify-phase2-core-rfp-test-002.json`
 - `reports/dify-phase2-core-rfp-test-002.md`
 - `docs/dify-phase2-core.md`
+- `dify/proposalops-phase2-core.yml` — current Dify DSL **0.7.0** Studio import candidate
+- `scripts/validate_dify_phase2_dsl.py` — DSL structure / dataset / rate-limit / secret-leak gate
 
 Evidence Builder도 별도 live benchmark에서 frozen candidate `v1_grounded`가 PASS했습니다.
+
+Dify Studio import candidate는 current Dify main의 DSL version `0.7.0` 기준으로 작성했고,
+14 nodes / 12 edges 구조를 CI에서 검증합니다. 실제 사용자의 Studio import/smoke test는
+Account OAuth/console session이 필요한 별도 단계이므로 Service API key만으로 완료했다고 주장하지 않습니다.
 
 ## Remaining Work
 
@@ -302,7 +308,7 @@ Evidence Builder도 별도 live benchmark에서 frozen candidate `v1_grounded`�
 
 남음:
 
-- [ ] current Dify DSL 0.7.0 import candidate
+- [x] current Dify DSL 0.7.0 import candidate + structural CI validation
 - [ ] Dify Studio node UI import / smoke test
 - [ ] Strategy → Pagination → Coverage Validator node wiring
 - [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
