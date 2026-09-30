@@ -1,13 +1,13 @@
 # Production Draft — Targeted Repair
 
-Status: **DEMO VALIDATED — NOT FROZEN**
+Status: **LIVE REPAIR EXERCISED — NOT FROZEN**
 
 
 ## Validation status
 
-RFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.
+RFP-TEST-002 live E2E와 Dify Phase 4 중간 검증 run에서 실제 사용되었습니다. Phase 4에서는 QA issue를 page/strategy scope로 라우팅하고 수정 후 deterministic gates와 QA recheck를 다시 수행했습니다. 최신 최종 성공 run은 강화된 생성 계약 덕분에 repair 0회로 PASS했습니다.
 
-이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.
+repair 동작은 live에서 exercise 되었지만 전용 frozen benchmark/holdout은 없으므로 benchmark-frozen prompt로 표현하지 않습니다. Python authoritative runner는 최대 3회 bounded repair 후에도 BLOCK이 남으면 escalation으로 종료합니다.
 
 입력:
 1. QA error 1개 또는 동일 원인의 error 묶음
