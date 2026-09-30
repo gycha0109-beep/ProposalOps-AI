@@ -176,7 +176,7 @@ Frozen benchmark prompts:
 - `prompts/production/proposal_strategist.md`
 - `prompts/production/proposal_qa.md`
 
-E2E demo-validated, dedicated benchmark는 아직 없는 integration prompts:
+Live integration-validated, dedicated frozen benchmark는 아직 없는 integration prompts:
 
 - `prompts/production/pagination.md`
 - `prompts/production/slide_draft.md`
@@ -313,7 +313,49 @@ Dify Studio candidate:
 - Phase 2: `dify/proposalops-phase2-core.yml` — 14 nodes / 12 edges
 - Phase 3: `dify/proposalops-phase3-pagination.yml` — 16 nodes / 14 edges
 
-둘 다 current Dify DSL version `0.7.0` 기준으로 정적 CI 검증합니다.
+### Phase 4 — Slide / Visual / QA / Repair
+
+Phase 3 PASS 결과를 실제 final-package pipeline으로 확장했습니다.
+
+```text
+Pagination
+→ Slide Draft
+→ deterministic Slide Provenance Gate
+→ Visual Prompt
+→ deterministic Visual Provenance Gate
+→ Proposal QA
+→ targeted repair if needed
+→ Final Package
+```
+
+최종 RFP-TEST-002 live run:
+
+- pages / slides / visuals: **6 / 6 / 6**
+- Coverage Gate: **PASS**
+- Slide Provenance Gate: **PASS**
+- Visual Provenance Gate: **PASS**
+- Proposal QA: **PASS**
+- QA issues: **0**
+- broken provenance chains: **0**
+- repair cycles on final successful run: **0**
+- Phase 4: **PASS**
+
+정상 성공 경로는 Slide Draft / Visual Prompt / Proposal QA의 **3회 LLM 호출**로 끝났습니다.
+Python authoritative runner는 필요한 경우 최대 3회의 targeted repair cycle 후 escalation하도록 제한합니다.
+
+Evidence:
+
+- `reports/dify-phase4-package-rfp-test-002.json`
+- `reports/dify-phase4-package-rfp-test-002.md`
+- `docs/dify-phase4-package.md`
+
+Dify Studio candidate:
+
+- Phase 4: `dify/proposalops-phase4-package.yml` — **35 nodes / 35 edges**
+- validator: `scripts/validate_dify_phase4_dsl.py`
+- import guide: `dify/phase4-import-guide.md`
+
+Phase 2~4 Studio candidates are Dify DSL version `0.7.0` 기준으로 정적 CI 검증합니다.
 실제 사용자의 Studio import/smoke test는 Account OAuth/console session이 필요한 별도 단계이므로
 Service API key만으로 완료했다고 주장하지 않습니다.
 
@@ -339,14 +381,15 @@ Service API key만으로 완료했다고 주장하지 않습니다.
 - [x] Dify benchmark Knowledge upload
 - [x] Dify frozen semantic retrieval 48-query comparison
 - [x] Dify Phase 2 RFP → Retrieval → Evidence → Strategy live PASS
+- [x] Dify Phase 3 Strategy → Pagination → deterministic Coverage Validator live PASS
+- [x] Dify Phase 4 Pagination → Slide → Visual → QA final package live PASS
+- [x] deterministic Slide / Visual provenance gates
+- [x] bounded targeted-repair orchestration
+- [x] Phase 4 DSL 0.7.0 candidate + structural CI validation
 
 남음:
 
-- [x] current Dify DSL 0.7.0 import candidate + structural CI validation
 - [ ] Dify Studio node UI import / smoke test
-- [x] Strategy → Pagination → deterministic Coverage Validator live PASS + Dify DSL wiring
-- [ ] Pagination → Slide Draft → Visual Prompt node wiring
-- [ ] Proposal QA / targeted repair node wiring
 - [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
 
 현재 포트폴리오에서 주장하는 성능은 **synthetic frozen benchmark와 demo/live workflow 결과에 한정**합니다.
