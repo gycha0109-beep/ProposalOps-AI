@@ -124,3 +124,50 @@ A repair branch exists in the Studio candidate, but the latest validated RFP-TES
 
 The Studio graph unrolls one repair/recheck pass for portability.
 The authoritative Python runner supports up to three bounded repair cycles before escalation.
+
+
+## Capture the Studio execution result
+
+After the smoke run, keep the workflow execution JSON or copy the final `outputs` object.
+
+The repository contains a validator that accepts either:
+
+- the full Dify workflow execution response with `data.outputs`
+- an object with `outputs`
+- the outputs object itself
+
+Validation command:
+
+```bash
+python scripts/validate_dify_studio_smoke.py studio-run.json --expect-pages 6
+```
+
+The validator re-runs the repository's deterministic:
+
+- Pagination Coverage Gate
+- Slide Provenance Gate
+- Visual Provenance Gate
+- final QA status / issue count
+- requirement → evidence → strategy → page provenance linkage
+
+Expected result:
+
+```json
+{
+  "status": "PASS",
+  "errors": [],
+  "summary": {
+    "pages": 6,
+    "slides": 6,
+    "visuals": 6,
+    "qa_status": "PASS",
+    "qa_issues": 0,
+    "coverage_gate": "PASS",
+    "slide_gate": "PASS",
+    "visual_gate": "PASS",
+    "broken_provenance_chains": 0
+  }
+}
+```
+
+This means the user-side Studio smoke does not rely only on visually inspecting green nodes.
