@@ -155,6 +155,9 @@ jobs:
       - name: Validate Dify Phase 2 core plan
         run: python scripts/run_dify_phase2_core.py --plan-only
 
+      - name: Validate Dify Phase 2 DSL candidate
+        run: python scripts/validate_dify_phase2_dsl.py
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
