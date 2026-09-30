@@ -620,8 +620,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -667,8 +667,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1071,8 +1071,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1118,8 +1118,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1165,8 +1165,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1386,8 +1386,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1545,8 +1545,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1704,8 +1704,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -1900,8 +1900,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -2099,8 +2099,8 @@
             "model": {
               "completion_params": {},
               "mode": "chat",
-              "name": "",
-              "provider": ""
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
             },
             "prompt_template": [
               {
@@ -2242,7 +2242,7 @@
                   "validation"
                 ],
                 "value_type": "string",
-                "variable": "coverage_validation"
+                "variable": "gate_failure_coverage_validation"
               },
               {
                 "value_selector": [
@@ -2250,7 +2250,7 @@
                   "validation"
                 ],
                 "value_type": "string",
-                "variable": "slide_validation"
+                "variable": "gate_failure_slide_validation"
               },
               {
                 "value_selector": [
@@ -2258,7 +2258,7 @@
                   "validation"
                 ],
                 "value_type": "string",
-                "variable": "visual_validation"
+                "variable": "gate_failure_visual_validation"
               }
             ]
           },
@@ -2291,7 +2291,7 @@
                   "text"
                 ],
                 "value_type": "string",
-                "variable": "rfp_analysis"
+                "variable": "repaired_rfp_analysis"
               },
               {
                 "value_selector": [
@@ -2299,7 +2299,7 @@
                   "text"
                 ],
                 "value_type": "string",
-                "variable": "evidence_packs"
+                "variable": "repaired_evidence_packs"
               },
               {
                 "value_selector": [
@@ -2307,7 +2307,7 @@
                   "strategy"
                 ],
                 "value_type": "string",
-                "variable": "proposal_strategy"
+                "variable": "repaired_proposal_strategy"
               },
               {
                 "value_selector": [
@@ -2315,7 +2315,7 @@
                   "pagination"
                 ],
                 "value_type": "string",
-                "variable": "pagination"
+                "variable": "repaired_pagination"
               },
               {
                 "value_selector": [
@@ -2323,7 +2323,7 @@
                   "slides"
                 ],
                 "value_type": "string",
-                "variable": "slides"
+                "variable": "repaired_slides"
               },
               {
                 "value_selector": [
@@ -2331,7 +2331,7 @@
                   "visuals"
                 ],
                 "value_type": "string",
-                "variable": "visuals"
+                "variable": "repaired_visuals"
               },
               {
                 "value_selector": [
@@ -2339,7 +2339,7 @@
                   "normalized"
                 ],
                 "value_type": "string",
-                "variable": "qa"
+                "variable": "repaired_qa"
               },
               {
                 "value_selector": [
@@ -2347,7 +2347,7 @@
                   "validation"
                 ],
                 "value_type": "string",
-                "variable": "repair_validation"
+                "variable": "repaired_repair_validation"
               }
             ]
           },
@@ -2380,7 +2380,7 @@
                   "normalized"
                 ],
                 "value_type": "string",
-                "variable": "initial_qa"
+                "variable": "escalation_initial_qa"
               },
               {
                 "value_selector": [
@@ -2388,7 +2388,7 @@
                   "route"
                 ],
                 "value_type": "string",
-                "variable": "repair_route"
+                "variable": "escalation_repair_route"
               },
               {
                 "value_selector": [
@@ -2396,7 +2396,7 @@
                   "validation"
                 ],
                 "value_type": "string",
-                "variable": "repair_validation"
+                "variable": "escalation_repair_validation"
               },
               {
                 "value_selector": [
@@ -2404,7 +2404,7 @@
                   "normalized"
                 ],
                 "value_type": "string",
-                "variable": "qa_recheck"
+                "variable": "escalation_qa_recheck"
               }
             ]
           },
