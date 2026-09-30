@@ -152,6 +152,9 @@ jobs:
           python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
 
+      - name: Validate Dify Phase 2 core plan
+        run: python scripts/run_dify_phase2_core.py --plan-only
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
