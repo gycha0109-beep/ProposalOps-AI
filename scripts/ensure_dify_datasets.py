@@ -13,6 +13,8 @@ from pathlib import Path
 DEFAULT_API_BASE = "https://api.dify.ai/v1"
 PRODUCTION_NAME = "ProposalOps Production v1"
 BENCHMARK_NAME = "ProposalOps Benchmark v1"
+ECONOMY_PRODUCTION_NAME = "ProposalOps Production v1 - Sandbox Economy"
+ECONOMY_BENCHMARK_NAME = "ProposalOps Benchmark v1 - Sandbox Economy"
 
 
 class DifyError(RuntimeError):
@@ -70,18 +72,18 @@ def list_datasets(client: DifyClient) -> list[dict]:
     return rows
 
 
-def create_dataset(client: DifyClient, name: str, description: str) -> dict:
+def create_dataset(client: DifyClient, name: str, description: str, indexing_technique: str) -> dict:
     return client.request(
         "POST",
         "/datasets",
         {
             "name": name,
             "description": description,
-            "indexing_technique": "high_quality",
+            "indexing_technique": indexing_technique,
             "permission": "only_me",
             "provider": "vendor",
             "retrieval_model": {
-                "search_method": "semantic_search",
+                "search_method": "keyword_search" if indexing_technique == "economy" else "semantic_search",
                 "reranking_enable": False,
                 "top_k": 5,
                 "score_threshold_enabled": False,
@@ -90,13 +92,13 @@ def create_dataset(client: DifyClient, name: str, description: str) -> dict:
     )
 
 
-def ensure_dataset(client: DifyClient, name: str, description: str, current: list[dict]):
+def ensure_dataset(client: DifyClient, name: str, description: str, current: list[dict], indexing_technique: str):
     matches = [row for row in current if row.get("name") == name]
     if len(matches) > 1:
         raise DifyError(f"Multiple Dify datasets share the name: {name}")
     if matches:
         return matches[0], False
-    created = create_dataset(client, name, description)
+    created = create_dataset(client, name, description, indexing_technique)
     return created, True
 
 
@@ -105,17 +107,22 @@ def main():
     parser.add_argument("--api-base", default=os.environ.get("DIFY_API_BASE") or DEFAULT_API_BASE)
     parser.add_argument("--api-key", default=os.environ.get("DIFY_API_KEY"))
     parser.add_argument("--delay-seconds", type=float, default=7.0)
+    parser.add_argument("--indexing-technique", choices=("high_quality", "economy"), default="high_quality")
     parser.add_argument("--out", default="runs/dify/datasets.json")
     parser.add_argument("--plan-only", action="store_true")
     args = parser.parse_args()
+
+    production_name = ECONOMY_PRODUCTION_NAME if args.indexing_technique == "economy" else PRODUCTION_NAME
+    benchmark_name = ECONOMY_BENCHMARK_NAME if args.indexing_technique == "economy" else BENCHMARK_NAME
 
     plan = {
         "api_base": args.api_base,
         "api_key_configured": bool(args.api_key),
         "delay_seconds": args.delay_seconds,
+        "indexing_technique": args.indexing_technique,
         "datasets": [
-            {"role": "production", "name": PRODUCTION_NAME, "corpus": "51 normal assets"},
-            {"role": "benchmark", "name": BENCHMARK_NAME, "corpus": "51 normal + 12 hard negatives"},
+            {"role": "production", "name": production_name, "corpus": "51 normal assets"},
+            {"role": "benchmark", "name": benchmark_name, "corpus": "51 normal + 12 hard negatives"},
         ],
     }
     if args.plan_only:
@@ -129,28 +136,31 @@ def main():
     current = list_datasets(client)
     production, production_created = ensure_dataset(
         client,
-        PRODUCTION_NAME,
+        production_name,
         "ProposalOps AI production knowledge: 51 synthetic normal Proposal Assets, packed as asset-level chunks for Dify Sandbox.",
         current,
+        args.indexing_technique,
     )
     current.append(production)
     benchmark, benchmark_created = ensure_dataset(
         client,
-        BENCHMARK_NAME,
+        benchmark_name,
         "ProposalOps AI retrieval benchmark: same 51 normal assets + 12 synthetic hard negatives as frozen lexical baseline, packed as asset-level chunks for Dify Sandbox.",
         current,
+        args.indexing_technique,
     )
 
     state = {
         "api_base": args.api_base,
         "sandbox_compact": True,
+        "indexing_technique": args.indexing_technique,
         "production": {
-            "name": PRODUCTION_NAME,
+            "name": production_name,
             "dataset_id": production["id"],
             "created": production_created,
         },
         "benchmark": {
-            "name": BENCHMARK_NAME,
+            "name": benchmark_name,
             "dataset_id": benchmark["id"],
             "created": benchmark_created,
         },
