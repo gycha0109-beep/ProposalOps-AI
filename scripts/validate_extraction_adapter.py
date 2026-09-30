@@ -31,7 +31,7 @@ def make_pptx_fixture(path: Path) -> None:
   </p:cSld>
 </p:sld>
 """
-    notes_2 = """<?xml version="1.0" encoding="UTF-8"?>
+    notes_9 = """<?xml version="1.0" encoding="UTF-8"?>
 <p:notes xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"
          xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
   <p:cSld>
@@ -41,10 +41,39 @@ def make_pptx_fixture(path: Path) -> None:
   </p:cSld>
 </p:notes>
 """
+    presentation = """<?xml version="1.0" encoding="UTF-8"?>
+<p:presentation xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"
+                xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <p:sldIdLst>
+    <p:sldId id="256" r:id="rId2"/>
+    <p:sldId id="257" r:id="rId1"/>
+  </p:sldIdLst>
+</p:presentation>
+"""
+    presentation_rels = """<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1"
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide"
+                Target="slides/slide1.xml"/>
+  <Relationship Id="rId2"
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide"
+                Target="slides/slide2.xml"/>
+</Relationships>
+"""
+    slide_2_rels = """<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rIdNotes"
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide"
+                Target="../notesSlides/notesSlide9.xml"/>
+</Relationships>
+"""
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("ppt/presentation.xml", presentation)
+        archive.writestr("ppt/_rels/presentation.xml.rels", presentation_rels)
         archive.writestr("ppt/slides/slide1.xml", slide_1)
         archive.writestr("ppt/slides/slide2.xml", slide_2)
-        archive.writestr("ppt/notesSlides/notesSlide2.xml", notes_2)
+        archive.writestr("ppt/slides/_rels/slide2.xml.rels", slide_2_rels)
+        archive.writestr("ppt/notesSlides/notesSlide9.xml", notes_9)
 
 
 def make_pdf_fixture(path: Path) -> None:
@@ -119,12 +148,18 @@ def main() -> None:
         assert_records(pptx_records, file_name=pptx_path.name, pages=2)
         assert_records(pdf_records, file_name=pdf_path.name, pages=2)
 
-        if "지역 관광 홍보 전략" not in pptx_records[0]["raw_text"]:
-            raise AssertionError("PPTX slide text was not extracted.")
-        if "Speaker Notes" not in pptx_records[1]["raw_text"]:
+        if "운영정보 검수" not in pptx_records[0]["raw_text"]:
+            raise AssertionError("PPTX presentation order was not respected.")
+        if pptx_records[0]["extraction"].get("native_part") != "ppt/slides/slide2.xml":
+            raise AssertionError("PPTX native slide provenance was not preserved.")
+        if "Speaker Notes" not in pptx_records[0]["raw_text"]:
             raise AssertionError("PPTX speaker notes marker was not extracted.")
-        if "게시 전 변경 가능 정보를 재확인" not in pptx_records[1]["raw_text"]:
-            raise AssertionError("PPTX speaker notes content was not extracted.")
+        if "게시 전 변경 가능 정보를 재확인" not in pptx_records[0]["raw_text"]:
+            raise AssertionError("PPTX relationship-mapped speaker notes were not extracted.")
+        if pptx_records[0]["extraction"].get("notes_part") != "ppt/notesSlides/notesSlide9.xml":
+            raise AssertionError("PPTX notes relationship target was not preserved.")
+        if "지역 관광 홍보 전략" not in pptx_records[1]["raw_text"]:
+            raise AssertionError("PPTX second presentation-order slide was not extracted.")
         if "Proposal PDF Page One" not in pdf_records[0]["raw_text"]:
             raise AssertionError("PDF page 1 text was not extracted.")
         if "Proposal PDF Page Two" not in pdf_records[1]["raw_text"]:
@@ -134,7 +169,8 @@ def main() -> None:
             "status": "PASS",
             "pptx": {
                 "pages": len(pptx_records),
-                "speaker_notes": True,
+                "presentation_order": True,
+                "relationship_mapped_speaker_notes": True,
                 "source_provenance": True,
             },
             "pdf": {
