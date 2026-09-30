@@ -15,6 +15,14 @@ from lib.strategy_eval import evaluate_strategy
 
 DEFAULT_CONFIG = "configs/dify-phase2-core-v1.json"
 
+INTENT_PAGE_TYPES = {
+    "strategy": {"strategy", "target_analysis", "channel_plan"},
+    "content": {"strategy", "content_plan", "channel_plan"},
+    "operation": {"operation_plan", "channel_plan"},
+    "risk": {"operation_plan", "risk", "process"},
+    "kpi": {"kpi"},
+}
+
 
 def load_json(path: str):
     return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -200,7 +208,7 @@ def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method)
             top_k=top_k,
             search_method=search_method,
         )
-        candidates = []
+        raw_candidates = []
         unknown = []
         for rank, record in enumerate(response.get("records", []), start=1):
             asset_id = asset_id_from_record(record)
@@ -214,7 +222,7 @@ def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method)
             doc = corpus[asset_id]
             document_name = doc["name"]
             title = document_name.split("__", 1)[1] if "__" in document_name else document_name
-            candidates.append({
+            raw_candidates.append({
                 "retrieval_rank": rank,
                 "retrieval_score": record.get("score"),
                 "asset_id": asset_id,
@@ -223,10 +231,29 @@ def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method)
                 "text": doc["text"],
                 "metadata": doc["metadata"],
             })
+
+        intent = str(plan.get("intent") or "").strip().lower()
+        allowed_page_types = INTENT_PAGE_TYPES.get(intent)
+        if allowed_page_types:
+            candidates = [
+                item for item in raw_candidates
+                if (item.get("metadata") or {}).get("page_type") in allowed_page_types
+            ]
+        else:
+            candidates = raw_candidates
+
+        selected_ids = {item["asset_id"] for item in candidates}
+        filtered_out = [
+            item["asset_id"] for item in raw_candidates
+            if item["asset_id"] not in selected_ids
+        ]
+
         results.append({
             "requirement_id": plan["requirement_id"],
             "intent": plan.get("intent"),
             "query": query,
+            "allowed_page_types": sorted(allowed_page_types) if allowed_page_types else [],
+            "filtered_out_asset_ids": filtered_out,
             "candidates": candidates,
             "unknown_records": unknown,
         })
