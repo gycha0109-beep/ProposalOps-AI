@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "phase": "dify-phase4-package",
+  "rfp_id": "RFP-TEST-002",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "max_output_tokens": {
+    "slide_draft": 9000,
+    "visual_prompt": 9000,
+    "proposal_qa": 6000,
+    "targeted_repair": 9000
+  },
+  "sources": {
+    "phase2": "reports/dify-phase2-core-rfp-test-002.json",
+    "phase3": "reports/dify-phase3-pagination-rfp-test-002.json"
+  },
+  "prompts": {
+    "slide_draft": "prompts/production/slide_draft.md",
+    "visual_prompt": "prompts/production/visual_prompt.md",
+    "proposal_qa": "prompts/production/proposal_qa.md",
+    "targeted_repair": "prompts/production/targeted_repair.md"
+  },
+  "max_repair_cycles": 2,
+  "output_root": "runs/dify/phase4/RFP-TEST-002",
+  "report_json": "reports/dify-phase4-package-rfp-test-002.json",
+  "report_md": "reports/dify-phase4-package-rfp-test-002.md"
+}
