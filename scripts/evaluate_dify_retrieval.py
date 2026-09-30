@@ -61,12 +61,12 @@ def asset_id_from_record(record: dict) -> str | None:
         return str(metadata["asset_id"])
 
     name = str(document.get("name") or "")
-    match = re.match(r"^(PA-[A-Z]+-\d+-P\d+)", name)
+    match = re.match(r"^(PA-[A-Z]+-(?:\d+-)?P\d+)", name)
     if match:
         return match.group(1)
 
     content = str(segment.get("content") or "")
-    match = re.search(r"asset_id:\s*(PA-[A-Z]+-\d+-P\d+)", content)
+    match = re.search(r"asset_id:\s*(PA-[A-Z]+-(?:\d+-)?P\d+)", content)
     return match.group(1) if match else None
 
 
