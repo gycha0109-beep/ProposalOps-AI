@@ -74,12 +74,12 @@ jobs:
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/knowledge-v1/documents.jsonl \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Production v1 - sandbox-packed-v1" \
+            --compact-document-name "ProposalOps Production v1 - sandbox-economy-v1" \
             --plan-only
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/benchmark-v1/documents.jsonl \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Benchmark v1 - sandbox-packed-v1" \
+            --compact-document-name "ProposalOps Benchmark v1 - sandbox-economy-v1" \
             --plan-only
           python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
@@ -99,6 +99,7 @@ jobs:
         run: |
           python scripts/ensure_dify_datasets.py \
             --delay-seconds 7 \
+            --indexing-technique economy \
             --out runs/dify/datasets.json
           python - <<'PY' >> "$GITHUB_ENV"
           import json
@@ -118,8 +119,9 @@ jobs:
             --manifest exports/dify/knowledge-v1/documents.jsonl \
             --dataset-id "$DATASET_ID" \
             --delay-seconds 7 \
+            --indexing-technique economy \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Production v1 - sandbox-packed-v1" \
+            --compact-document-name "ProposalOps Production v1 - sandbox-economy-v1" \
             --state-out runs/dify/knowledge-v1/upload-state.json
           sleep 7
 
@@ -132,8 +134,9 @@ jobs:
             --manifest exports/dify/benchmark-v1/documents.jsonl \
             --dataset-id "$DATASET_ID" \
             --delay-seconds 7 \
+            --indexing-technique economy \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Benchmark v1 - sandbox-packed-v1" \
+            --compact-document-name "ProposalOps Benchmark v1 - sandbox-economy-v1" \
             --state-out runs/dify/benchmark-v1/upload-state.json
           sleep 7
 
@@ -145,8 +148,8 @@ jobs:
           python scripts/evaluate_dify_retrieval.py \
             --dataset-id "$DATASET_ID" \
             --delay-seconds 7 \
-            --search-method full_text_search \
-            --out reports/dify-retrieval-v1-fulltext.json
+            --search-method keyword_search \
+            --out reports/dify-retrieval-v1-economy.json
 
       - name: Commit live evidence
         if: env.DIFY_OPERATION != 'plan'
