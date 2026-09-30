@@ -1,28 +1,84 @@
 # Production — Evidence Pack Builder
 
-입력:
-1. RFP Analyzer 결과
-2. Retrieval Planner 결과
-3. 검색된 Proposal Assets
+Status: **FROZEN**
 
-목표는 검색 결과를 그대로 쓰는 것이 아니라 **실제 사용 가능한 근거인지 검증**하는 것이다.
+Source candidate: `../evidence_builder/v1_grounded.md`
 
-## Support levels
+Model benchmark:
+- provider: OpenAI Responses API
+- model: `gpt-5.6-luna`
+- reasoning effort: `low`
 
-- direct
-- partial
-- pattern_only
-- irrelevant
+Dev — RFP-TEST-002 / real Dify semantic top-5 retrieval candidates:
+- result coverage: 100%
+- primary asset recall: 100%
+- selected asset precision: 100%
+- prohibited asset rejection: 100%
+- provenance validity: 100%
+- status accuracy: 100%
+- unsupported company facts: 0
+- unsupported numerical claims: 0
 
-## Status
+Frozen candidate metadata: `../../evals/frozen/v1/evidence-builder-candidate.json`
 
-- SUPPORTED
-- PARTIAL_REFERENCE_ONLY
-- NO_REFERENCE_FOUND
+---
 
-## Rules
+# Evidence Builder v1 — Grounded Selection
 
-- company_facts에 없는 회사 실적·고객명·성과 수치는 사실 근거로 사용하지 않는다.
-- 서로 다른 proposal의 사실을 하나의 수행 사례처럼 합치지 않는다.
-- asset_id, proposal_id, source_page를 유지한다.
-- 각 evidence에 supported_point, allowed_use, prohibited_use를 기록한다.
+Convert retrieved Proposal Assets into evidence packs that can safely ground proposal strategy.
+
+## Decision policy
+
+For every RFP requirement, inspect the candidate content itself. Retrieval rank and score are hints, not evidence.
+
+Classify candidate support as:
+
+- direct: the asset directly supports the requirement.
+- partial: the asset supports only part of the requirement.
+- pattern_only: only a reusable structure or operating pattern transfers.
+- irrelevant: it does not materially support the requirement.
+
+## Safety and provenance rules
+
+1. Never select an asset whose metadata has `reuse_level: prohibited`.
+2. Never select a synthetic distractor (`proposal_id: DISTRACTOR-REF`) as usable evidence.
+3. Do not turn a reusable pattern into a company achievement, client fact, performance result, or historical delivery claim.
+4. Company facts may be copied only when they are explicitly present in the selected asset's Company Facts section.
+5. Numerical claims may be copied only when the same number is explicitly present in the selected asset content.
+6. Keep `asset_id`, `proposal_id`, title, source file, source page, and source type faithful to the selected candidate.
+7. Do not merge facts from different proposals into one historical project.
+8. Retrieval rank does not override content fit. A rank-1 hard negative must be rejected.
+9. Use the smallest sufficient evidence set. Do not add a candidate merely because it is in the same domain or shares keywords.
+10. When at least one direct candidate exists, select only candidates that directly support the exact requirement mechanism. Do not pad the pack with generic KPI, channel, audience, safety, or content examples.
+11. A candidate is direct only when its actual summary/strategy materially answers the requirement, not when its tags or nouns merely overlap.
+12. Status is about requirement coverage, not whether the allowed use is a fact or a pattern.
+13. Return `SUPPORTED` when one or more selected candidates materially support the full requirement, even when `allowed_use` is `REFERENCE_PATTERN`.
+14. Return `PARTIAL_REFERENCE_ONLY` only when the selected evidence supports part of the requirement but leaves a material gap.
+15. If nothing is usable, return `NO_REFERENCE_FOUND`.
+
+## Evidence fields
+
+For every selected evidence item provide:
+
+- evidence_id
+- asset_id
+- proposal_id
+- title
+- supported_point
+- reusable_patterns
+- company_facts
+- support_level
+- allowed_use
+- prohibited_use
+- source
+
+`allowed_use` must be one of:
+- REFERENCE_FACT
+- REFERENCE_PATTERN
+
+When the asset has no explicit company fact, use `REFERENCE_PATTERN`.
+
+## Output
+
+Return JSON only using the benchmark output contract supplied by the runner.
+
