@@ -280,9 +280,42 @@ Evidence:
 
 Evidence Builder도 별도 live benchmark에서 frozen candidate `v1_grounded`가 PASS했습니다.
 
-Dify Studio import candidate는 current Dify main의 DSL version `0.7.0` 기준으로 작성했고,
-14 nodes / 12 edges 구조를 CI에서 검증합니다. 실제 사용자의 Studio import/smoke test는
-Account OAuth/console session이 필요한 별도 단계이므로 Service API key만으로 완료했다고 주장하지 않습니다.
+### Phase 3 — Pagination + Coverage Gate
+
+Phase 2의 grounded strategy를 실제 페이지 구조로 변환하는 downstream stage도 live 실행했습니다.
+
+```text
+Proposal Strategist
+→ Pagination Planner
+→ deterministic Coverage Validator
+```
+
+RFP-TEST-002:
+
+- generated pages: **6**
+- page limit: **8**
+- requirements covered: **6 / 6**
+- blocking errors: **0**
+- warnings: **0**
+- invalid requirement / strategy / evidence references: **0**
+- Phase 3: **PASS**
+
+Coverage Validator는 canonical structured IDs를 검사하므로 LLM judge가 아니라 deterministic code gate로 구현했습니다.
+
+Evidence:
+
+- `reports/dify-phase3-pagination-rfp-test-002.json`
+- `reports/dify-phase3-pagination-rfp-test-002.md`
+- `docs/dify-phase3-pagination.md`
+
+Dify Studio candidate:
+
+- Phase 2: `dify/proposalops-phase2-core.yml` — 14 nodes / 12 edges
+- Phase 3: `dify/proposalops-phase3-pagination.yml` — 16 nodes / 14 edges
+
+둘 다 current Dify DSL version `0.7.0` 기준으로 정적 CI 검증합니다.
+실제 사용자의 Studio import/smoke test는 Account OAuth/console session이 필요한 별도 단계이므로
+Service API key만으로 완료했다고 주장하지 않습니다.
 
 ## Remaining Work
 
@@ -311,7 +344,9 @@ Account OAuth/console session이 필요한 별도 단계이므로 Service API ke
 
 - [x] current Dify DSL 0.7.0 import candidate + structural CI validation
 - [ ] Dify Studio node UI import / smoke test
-- [ ] Strategy → Pagination → Coverage Validator node wiring
+- [x] Strategy → Pagination → deterministic Coverage Validator live PASS + Dify DSL wiring
+- [ ] Pagination → Slide Draft → Visual Prompt node wiring
+- [ ] Proposal QA / targeted repair node wiring
 - [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
 
 현재 포트폴리오에서 주장하는 성능은 **synthetic frozen benchmark와 demo/live workflow 결과에 한정**합니다.
