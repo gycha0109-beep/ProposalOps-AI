@@ -1,5 +1,5 @@
-operation: full-phase1
+operation: plan
 phase: knowledge-v1
 bootstrap: automatic
 required_secret: DIFY_API_KEY
-triggered: 2026-09-30T11:04+09:00
+note: live sandbox economy diagnostic completed 2026-09-30
