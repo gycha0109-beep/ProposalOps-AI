@@ -1,13 +1,13 @@
 # Production Draft — Visual Prompt Generator
 
-Status: **DEMO VALIDATED — NOT FROZEN**
+Status: **LIVE INTEGRATION VALIDATED — NOT FROZEN**
 
 
 ## Validation status
 
-RFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.
+RFP-TEST-002 live E2E와 Dify Phase 4 final-package run에서 실제 사용되었습니다. 최신 Phase 4 성공 run은 6개 slide → 6개 visual spec, deterministic Visual Provenance Gate PASS, final Proposal QA PASS / issues 0이었습니다.
 
-이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.
+이 prompt는 live integration에서 검증되었지만 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen prompt로 표현하지 않습니다. Phase 4에서는 slide/page에 존재하는 수치만 재사용하고 data_chart에는 실제 quantitative input이 필요하도록 integration contract를 추가해 사용합니다.
 
 입력:
 1. Slide Draft
