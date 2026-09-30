@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "rfp_id": "RFP-TEST-002",
+  "rfp_file": "data/raw/rfps/RFP-TEST-002.md",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "max_output_tokens": {
+    "rfp_analyzer": 6000,
+    "retrieval_planner": 5000,
+    "evidence_builder": 7000,
+    "proposal_strategist": 8000
+  },
+  "prompts": {
+    "rfp_analyzer": "prompts/production/rfp_analyzer.md",
+    "retrieval_planner": "prompts/production/retrieval_planner.md",
+    "evidence_builder": "prompts/production/evidence_builder.md",
+    "proposal_strategist": "prompts/production/proposal_strategist.md"
+  },
+  "dify": {
+    "api_base": "https://api.dify.ai/v1",
+    "production_dataset_id": "21dcb1f3-270f-4991-bcf8-b2782e6cf814",
+    "search_method": "semantic_search",
+    "top_k": 5,
+    "delay_seconds": 7
+  },
+  "corpus": "exports/dify/knowledge-v1/documents.jsonl",
+  "strategist_gold": "evals/frozen/v1/dev/strategist/RFP-TEST-002.json",
+  "output_root": "runs/dify/phase2/RFP-TEST-002",
+  "report_json": "reports/dify-phase2-core-rfp-test-002.json",
+  "report_md": "reports/dify-phase2-core-rfp-test-002.md"
+}
