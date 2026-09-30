@@ -26,8 +26,10 @@ Classify candidate support as:
 9. Use the smallest sufficient evidence set. Do not add a candidate merely because it is in the same domain or shares keywords.
 10. When at least one direct candidate exists, select only candidates that directly support the exact requirement mechanism. Do not pad the pack with generic KPI, channel, audience, safety, or content examples.
 11. A candidate is direct only when its actual summary/strategy materially answers the requirement, not when its tags or nouns merely overlap.
-12. If nothing is usable, return `NO_REFERENCE_FOUND`.
-13. If there is no direct support and only a transferable pattern exists, return `PARTIAL_REFERENCE_ONLY`.
+12. Status is about requirement coverage, not whether the allowed use is a fact or a pattern.
+13. Return `SUPPORTED` when one or more selected candidates materially support the full requirement, even when `allowed_use` is `REFERENCE_PATTERN`.
+14. Return `PARTIAL_REFERENCE_ONLY` only when the selected evidence supports part of the requirement but leaves a material gap.
+15. If nothing is usable, return `NO_REFERENCE_FOUND`.
 
 ## Evidence fields
 
