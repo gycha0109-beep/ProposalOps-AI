@@ -201,6 +201,7 @@ Logical agent blueprint:
 - RFP benchmark guide: `docs/rfp-analyzer-benchmark-runner.md`
 - QA benchmark guide: `docs/proposal-qa-benchmark-runner.md`
 - Strategist benchmark guide: `docs/proposal-strategist-benchmark-runner.md`
+- PPTX/PDF extraction adapter: `docs/proposal-source-extraction.md`
 
 ## Repository Structure
 
@@ -386,10 +387,11 @@ Service API key만으로 완료했다고 주장하지 않습니다.
 - [x] deterministic Slide / Visual provenance gates
 - [x] bounded targeted-repair orchestration
 - [x] Phase 4 DSL 0.7.0 candidate + structural CI validation
+- [x] text-bearing PPTX/PDF deterministic extraction adapter + CI fixture validation
 
 남음:
 
 - [ ] Dify Studio node UI import / smoke test
-- [ ] 실제 고객 제공 PPT/PDF를 사용할 경우 extraction adapter 교체
+- [ ] scanned/image-only PDF OCR 및 복잡한 layout/table/image reconstruction (실제 소스 필요 시)
 
 현재 포트폴리오에서 주장하는 성능은 **synthetic frozen benchmark와 demo/live workflow 결과에 한정**합니다.
