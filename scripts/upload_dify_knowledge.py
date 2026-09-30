@@ -4,9 +4,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import time
 import urllib.error
-import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -14,6 +14,8 @@ from pathlib import Path
 DEFAULT_API_BASE = "https://api.dify.ai/v1"
 DEFAULT_MANIFEST = "exports/dify/knowledge-v1/documents.jsonl"
 DEFAULT_SCHEMA = "exports/dify/knowledge-v1/metadata-schema.json"
+ASSET_ID_RE = re.compile(r"asset_id:\s*(PA-[A-Z]+-\d+-P\d+)")
+COMPACT_SEED_MARKER = "PROPOSALOPS_SANDBOX_COMPACT_CONTAINER"
 
 
 class DifyError(RuntimeError):
@@ -54,9 +56,11 @@ class DifyClient:
                 self._last_request_at = time.monotonic()
                 return json.loads(raw) if raw else {}
         except urllib.error.HTTPError as exc:
+            self._last_request_at = time.monotonic()
             raw = exc.read().decode("utf-8", errors="replace")
             raise DifyError(f"Dify HTTP {exc.code} {method} {path}: {raw}") from exc
         except urllib.error.URLError as exc:
+            self._last_request_at = time.monotonic()
             raise DifyError(f"Dify request failed {method} {path}: {exc}") from exc
 
 
@@ -79,6 +83,21 @@ def list_all_documents(client: DifyClient, dataset_id: str) -> list[dict]:
         payload = client.request(
             "GET",
             f"/datasets/{dataset_id}/documents?page={page}&limit=100",
+        )
+        result.extend(payload.get("data", []))
+        if not payload.get("has_more"):
+            break
+        page += 1
+    return result
+
+
+def list_all_segments(client: DifyClient, dataset_id: str, document_id: str) -> list[dict]:
+    page = 1
+    result = []
+    while True:
+        payload = client.request(
+            "GET",
+            f"/datasets/{dataset_id}/documents/{document_id}/segments?page={page}&limit=100",
         )
         result.extend(payload.get("data", []))
         if not payload.get("has_more"):
@@ -136,6 +155,168 @@ def create_document(client: DifyClient, dataset_id: str, doc: dict) -> dict:
     )
 
 
+def wait_for_document_ready(
+    client: DifyClient,
+    dataset_id: str,
+    document_id: str,
+    timeout_seconds: int = 600,
+) -> dict:
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        document = client.request("GET", f"/datasets/{dataset_id}/documents/{document_id}")
+        status = str(document.get("indexing_status") or document.get("display_status") or "").lower()
+        if status in {"completed", "available"}:
+            return document
+        if status in {"error", "failed", "paused"} or document.get("error"):
+            raise DifyError(f"Document indexing failed for {document_id}: {document}")
+        if time.monotonic() >= deadline:
+            raise DifyError(f"Timed out waiting for Dify document {document_id}; last status={status!r}")
+
+
+def asset_id_from_segment(segment: dict) -> str | None:
+    content = str(segment.get("content") or "")
+    match = ASSET_ID_RE.search(content)
+    return match.group(1) if match else None
+
+
+def create_segments(
+    client: DifyClient,
+    dataset_id: str,
+    document_id: str,
+    docs: list[dict],
+    batch_size: int = 20,
+) -> list[dict]:
+    created = []
+    for start in range(0, len(docs), batch_size):
+        batch = docs[start : start + batch_size]
+        response = client.request(
+            "POST",
+            f"/datasets/{dataset_id}/documents/{document_id}/segments",
+            {
+                "segments": [
+                    {
+                        "content": doc["text"],
+                    }
+                    for doc in batch
+                ]
+            },
+        )
+        rows = response.get("data", [])
+        if len(rows) != len(batch):
+            raise DifyError(
+                f"Segment create count mismatch: requested={len(batch)} returned={len(rows)} response={response}"
+            )
+        created.extend(rows)
+    return created
+
+
+def upload_compact(
+    client: DifyClient,
+    dataset_id: str,
+    docs: list[dict],
+    document_name: str,
+) -> dict:
+    existing_documents = list_all_documents(client, dataset_id)
+    matches = [row for row in existing_documents if row.get("name") == document_name]
+    if len(matches) > 1:
+        raise DifyError(f"Multiple Dify documents share the compact name: {document_name}")
+
+    created_document = False
+    if matches:
+        container = matches[0]
+        document_id = container["id"]
+    else:
+        response = create_document(
+            client,
+            dataset_id,
+            {
+                "name": document_name,
+                "text": f"{COMPACT_SEED_MARKER}\nThis seed chunk is removed after indexing.",
+            },
+        )
+        container = response.get("document") or {}
+        document_id = container.get("id")
+        if not document_id:
+            raise DifyError(f"Create compact document response missing document.id: {response}")
+        created_document = True
+
+    wait_for_document_ready(client, dataset_id, document_id)
+    segments = list_all_segments(client, dataset_id, document_id)
+
+    seed_ids = [
+        segment.get("id")
+        for segment in segments
+        if COMPACT_SEED_MARKER in str(segment.get("content") or "") and segment.get("id")
+    ]
+    for segment_id in seed_ids:
+        client.request(
+            "DELETE",
+            f"/datasets/{dataset_id}/documents/{document_id}/segments/{segment_id}",
+        )
+
+    if seed_ids:
+        seed_id_set = set(seed_ids)
+        segments = [segment for segment in segments if segment.get("id") not in seed_id_set]
+
+    requested_ids = {doc["asset_id"] for doc in docs}
+    existing_by_asset = {}
+    duplicate_assets = []
+    for segment in segments:
+        asset_id = asset_id_from_segment(segment)
+        if not asset_id:
+            continue
+        if asset_id in existing_by_asset:
+            duplicate_assets.append(asset_id)
+        existing_by_asset[asset_id] = segment
+
+    if duplicate_assets:
+        raise DifyError(f"Duplicate asset chunks already exist: {sorted(set(duplicate_assets))}")
+
+    extra_assets = sorted(set(existing_by_asset) - requested_ids)
+    if extra_assets:
+        raise DifyError(f"Unexpected asset chunks in compact document: {extra_assets}")
+
+    missing_docs = [doc for doc in docs if doc["asset_id"] not in existing_by_asset]
+    created_segments = create_segments(client, dataset_id, document_id, missing_docs) if missing_docs else []
+
+    final_segments = list_all_segments(client, dataset_id, document_id)
+    final_by_asset = {}
+    for segment in final_segments:
+        asset_id = asset_id_from_segment(segment)
+        if asset_id:
+            final_by_asset[asset_id] = segment
+
+    missing_after = sorted(requested_ids - set(final_by_asset))
+    if missing_after:
+        raise DifyError(f"Compact upload incomplete; missing asset chunks: {missing_after}")
+
+    return {
+        "dataset_id": dataset_id,
+        "api_base": client.api_base,
+        "sandbox_compact": True,
+        "compact_document_name": document_name,
+        "compact_document_id": document_id,
+        "compact_document_created": created_document,
+        "requested_documents": len(docs),
+        "available_documents": len(docs),
+        "created_documents": 1 if created_document else 0,
+        "created_segments": len(created_segments),
+        "skipped_existing_segments": len(docs) - len(missing_docs),
+        "failure_count": 0,
+        "native_metadata_enabled": False,
+        "documents": [
+            {
+                "asset_id": doc["asset_id"],
+                "document_name": document_name,
+                "document_id": document_id,
+                "segment_id": final_by_asset[doc["asset_id"]].get("id"),
+            }
+            for doc in docs
+        ],
+        "failures": [],
+    }
+
+
 def sync_metadata(
     client: DifyClient,
     dataset_id: str,
@@ -183,6 +364,8 @@ def main():
     parser.add_argument("--max-documents", type=int)
     parser.add_argument("--skip-native-metadata", action="store_true")
     parser.add_argument("--require-native-metadata", action="store_true")
+    parser.add_argument("--sandbox-compact", action="store_true")
+    parser.add_argument("--compact-document-name")
     parser.add_argument("--plan-only", action="store_true")
     parser.add_argument("--state-out", default="runs/dify/knowledge-v1/upload-state.json")
     args = parser.parse_args()
@@ -195,10 +378,14 @@ def main():
         "dataset_id_configured": bool(args.dataset_id),
         "api_key_configured": bool(args.api_key),
         "api_base": args.api_base,
-        "document_count": len(docs),
-        "one_asset_per_document": True,
-        "native_metadata": not args.skip_native_metadata,
+        "asset_count": len(docs),
+        "sandbox_compact": args.sandbox_compact,
+        "dify_document_count": 1 if args.sandbox_compact else len(docs),
+        "one_asset_per_document": not args.sandbox_compact,
+        "one_asset_per_segment": args.sandbox_compact,
+        "native_metadata": False if args.sandbox_compact else not args.skip_native_metadata,
         "create_endpoint": "/datasets/{dataset_id}/document/create-by-text",
+        "segment_endpoint": "/datasets/{dataset_id}/documents/{document_id}/segments",
         "retrieval_endpoint": "/datasets/{dataset_id}/retrieve",
         "delay_seconds": args.delay_seconds,
     }
@@ -210,12 +397,23 @@ def main():
         raise SystemExit("DIFY_DATASET_ID or --dataset-id is required.")
     if not args.api_key:
         raise SystemExit("DIFY_API_KEY or --api-key is required.")
+    if args.sandbox_compact and not args.compact_document_name:
+        raise SystemExit("--compact-document-name is required with --sandbox-compact.")
 
     client = DifyClient(
         args.api_base,
         args.api_key,
         min_interval_seconds=args.delay_seconds,
     )
+
+    if args.sandbox_compact:
+        state = upload_compact(client, args.dataset_id, docs, args.compact_document_name)
+        state_path = Path(args.state_out)
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps(state, ensure_ascii=False, indent=2))
+        return
+
     existing = list_all_documents(client, args.dataset_id)
     by_name = {item.get("name"): item for item in existing if item.get("name")}
 
@@ -269,6 +467,7 @@ def main():
     state = {
         "dataset_id": args.dataset_id,
         "api_base": args.api_base,
+        "sandbox_compact": False,
         "requested_documents": len(docs),
         "available_documents": len(uploaded),
         "created_documents": len(uploaded) - len(skipped),
