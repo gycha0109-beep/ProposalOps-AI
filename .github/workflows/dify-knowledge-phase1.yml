@@ -74,12 +74,12 @@ jobs:
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/knowledge-v1/documents.jsonl \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Production v1 - compact" \
+            --compact-document-name "ProposalOps Production v1 - sandbox-packed-v1" \
             --plan-only
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/benchmark-v1/documents.jsonl \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Benchmark v1 - compact" \
+            --compact-document-name "ProposalOps Benchmark v1 - sandbox-packed-v1" \
             --plan-only
           python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
@@ -119,7 +119,7 @@ jobs:
             --dataset-id "$DATASET_ID" \
             --delay-seconds 7 \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Production v1 - compact" \
+            --compact-document-name "ProposalOps Production v1 - sandbox-packed-v1" \
             --state-out runs/dify/knowledge-v1/upload-state.json
           sleep 7
 
@@ -133,7 +133,7 @@ jobs:
             --dataset-id "$DATASET_ID" \
             --delay-seconds 7 \
             --sandbox-compact \
-            --compact-document-name "ProposalOps Benchmark v1 - compact" \
+            --compact-document-name "ProposalOps Benchmark v1 - sandbox-packed-v1" \
             --state-out runs/dify/benchmark-v1/upload-state.json
           sleep 7
 
