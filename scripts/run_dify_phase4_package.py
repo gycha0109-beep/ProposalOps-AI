@@ -374,8 +374,15 @@ def merge_repairs(package: dict, repair: dict, route: dict):
             raise ValueError(f"Repair attempted unaffected strategy: {strategy_id}")
         if strategy_id not in strategy_index:
             raise ValueError(f"Unknown repaired strategy: {strategy_id}")
-        if not isinstance(repaired, dict) or repaired.get("strategy_id") != strategy_id:
+        if not isinstance(repaired, dict):
             raise ValueError(f"Invalid strategy repair for {strategy_id}")
+        nested_strategy_id = repaired.get("strategy_id")
+        if nested_strategy_id not in (None, "", strategy_id):
+            raise ValueError(
+                f"Conflicting strategy_id in repair for {strategy_id}: "
+                f"{nested_strategy_id}"
+            )
+        repaired["strategy_id"] = strategy_id
         strategy["strategy_pillars"][strategy_index[strategy_id]] = repaired
 
     for item in repair.get("page_repairs", []):
@@ -388,18 +395,39 @@ def merge_repairs(package: dict, repair: dict, route: dict):
         repaired_visual = item.get("repaired_visual")
 
         if repaired_page is not None:
-            if page_id not in page_index or repaired_page.get("page_id") != page_id:
+            if page_id not in page_index or not isinstance(repaired_page, dict):
                 raise ValueError(f"Invalid pagination repair for {page_id}")
+            nested_page_id = repaired_page.get("page_id")
+            if nested_page_id not in (None, "", page_id):
+                raise ValueError(
+                    f"Conflicting repaired_page.page_id for {page_id}: "
+                    f"{nested_page_id}"
+                )
+            repaired_page["page_id"] = page_id
             pagination["pages"][page_index[page_id]] = repaired_page
 
         if repaired_slide is not None:
-            if page_id not in slide_index or repaired_slide.get("page_id") != page_id:
+            if page_id not in slide_index or not isinstance(repaired_slide, dict):
                 raise ValueError(f"Invalid slide repair for {page_id}")
+            nested_page_id = repaired_slide.get("page_id")
+            if nested_page_id not in (None, "", page_id):
+                raise ValueError(
+                    f"Conflicting repaired_slide.page_id for {page_id}: "
+                    f"{nested_page_id}"
+                )
+            repaired_slide["page_id"] = page_id
             slides["slides"][slide_index[page_id]] = repaired_slide
 
         if repaired_visual is not None:
-            if page_id not in visual_index or repaired_visual.get("page_id") != page_id:
+            if page_id not in visual_index or not isinstance(repaired_visual, dict):
                 raise ValueError(f"Invalid visual repair for {page_id}")
+            nested_page_id = repaired_visual.get("page_id")
+            if nested_page_id not in (None, "", page_id):
+                raise ValueError(
+                    f"Conflicting repaired_visual.page_id for {page_id}: "
+                    f"{nested_page_id}"
+                )
+            repaired_visual["page_id"] = page_id
             visuals["visuals"][visual_index[page_id]] = repaired_visual
 
     return strategy, pagination, slides, visuals
