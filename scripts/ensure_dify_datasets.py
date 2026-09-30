@@ -13,8 +13,8 @@ from pathlib import Path
 DEFAULT_API_BASE = "https://api.dify.ai/v1"
 PRODUCTION_NAME = "ProposalOps Production v1"
 BENCHMARK_NAME = "ProposalOps Benchmark v1"
-ECONOMY_PRODUCTION_NAME = "ProposalOps Production v1 - Sandbox Economy"
-ECONOMY_BENCHMARK_NAME = "ProposalOps Benchmark v1 - Sandbox Economy"
+ECONOMY_PRODUCTION_NAME = "ProposalOps Prod v1 Economy"
+ECONOMY_BENCHMARK_NAME = "ProposalOps Bench v1 Economy"
 
 
 class DifyError(RuntimeError):
