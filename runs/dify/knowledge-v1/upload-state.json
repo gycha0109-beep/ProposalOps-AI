@@ -1,0 +1,325 @@
+{
+  "dataset_id": "21dcb1f3-270f-4991-bcf8-b2782e6cf814",
+  "api_base": "https://api.dify.ai/v1",
+  "sandbox_compact": true,
+  "compact_strategy": "single_document_custom_separator",
+  "compact_document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+  "compact_document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+  "compact_document_created": false,
+  "requested_documents": 51,
+  "available_documents": 51,
+  "dify_document_count": 1,
+  "segment_count": 51,
+  "created_documents": 0,
+  "failure_count": 0,
+  "native_metadata_enabled": false,
+  "documents": [
+    {
+      "asset_id": "PA-CAMP-005-P007",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "fcd20dad-3855-401e-8a8f-d6db781bbe78"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P008",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "2fc63574-212e-4046-bc9a-9b5ebddd2252"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P009",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "415a13dc-1810-4ba4-a6f5-1ae76be5d1ce"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P010",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "bba6e757-fcba-4d41-98b2-2ee198996d58"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P011",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "e95b16ef-8365-44a3-8785-03a5edf7b080"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P020",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "0c1dfd80-ae44-402a-939a-00eab8fb1863"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P021",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "ac2edaa4-ad8d-43c8-bc6d-3076e174c14d"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P022",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "a5fa8583-1a94-4355-b4e6-381767c5c883"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P023",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "06f89948-2a10-4e7a-a1cb-a321074007b5"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P024",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "84044e1b-b6f7-4898-b9e9-555dfe214640"
+    },
+    {
+      "asset_id": "PA-EDU-003-P017",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "cb569a65-db94-4e02-af55-7cb8cbc5199d"
+    },
+    {
+      "asset_id": "PA-EDU-003-P018",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "1d68f1cd-2fba-454d-8ba0-0a978734bc9b"
+    },
+    {
+      "asset_id": "PA-EDU-006-P010",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "9933419a-9179-4615-a137-5d40326116f2"
+    },
+    {
+      "asset_id": "PA-EDU-006-P011",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "13cd1ca8-6c1e-43ca-8051-240d060674a5"
+    },
+    {
+      "asset_id": "PA-EDU-006-P012",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "4140f885-e72d-45f3-a994-164e9b2cf446"
+    },
+    {
+      "asset_id": "PA-EDU-006-P013",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "cd57bba1-8813-4f4d-b2d4-3df018657119"
+    },
+    {
+      "asset_id": "PA-EDU-006-P014",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "aa49e331-9fa4-4002-ac17-3a6cabbcf0b4"
+    },
+    {
+      "asset_id": "PA-EDU-009-P008",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "0810eb39-0585-48c6-a566-f6c544151911"
+    },
+    {
+      "asset_id": "PA-EDU-009-P009",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "471452e5-a056-49c0-8c33-48e3ce6a0088"
+    },
+    {
+      "asset_id": "PA-EDU-009-P010",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "d8a323aa-008d-4b3a-92f4-9c9cd4133688"
+    },
+    {
+      "asset_id": "PA-EDU-009-P011",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "e67c7c1c-862b-4551-ac56-731449de57e2"
+    },
+    {
+      "asset_id": "PA-EDU-009-P012",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "1653fbcd-e4d7-4d68-a09a-3cc5964ab99a"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P012",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "1788d30a-4e20-4130-9226-111b129dfdd7"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P013",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "25a20497-ec53-475e-a5ee-0b231caf5e6d"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P014",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "ed29ca13-4b1e-4a2f-9733-eedcac205042"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P015",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "5f2d613a-a357-4950-b6f7-77a64e44c3f7"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P016",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "433636d7-22fc-4d52-8f03-3e19976c9d97"
+    },
+    {
+      "asset_id": "PA-PR-002-P012",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "0372911b-d0e2-4739-b0ed-370028218c89"
+    },
+    {
+      "asset_id": "PA-PR-002-P013",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "3957aaa5-2895-4b1c-ad9c-5524cfd83666"
+    },
+    {
+      "asset_id": "PA-PR-007-P015",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "46607ef1-9c94-4069-85f1-69095ca196cb"
+    },
+    {
+      "asset_id": "PA-PR-007-P016",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "5fd46e6a-14bf-43cb-9af3-768a1adce73d"
+    },
+    {
+      "asset_id": "PA-PR-007-P017",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "abefacd7-06a3-4a8f-b9d3-f4fd0071ba4d"
+    },
+    {
+      "asset_id": "PA-PR-007-P018",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "cff91e9a-cafc-4b81-98a1-4f28a9a66605"
+    },
+    {
+      "asset_id": "PA-PR-007-P019",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "6ea54c8a-1568-485c-bb6f-b579f70cd7fb"
+    },
+    {
+      "asset_id": "PA-PR-011-P009",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "669e4c26-1a17-4e67-a60d-6ac0bd4affb7"
+    },
+    {
+      "asset_id": "PA-PR-011-P010",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "a79cda5d-9f4e-443c-9ce0-9f4eb7a5755a"
+    },
+    {
+      "asset_id": "PA-PR-011-P011",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "bdee3888-1fed-4bf9-baad-83e5850c6926"
+    },
+    {
+      "asset_id": "PA-PR-011-P012",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "55e3b78b-5c05-4f4c-ad7c-75ca203b9821"
+    },
+    {
+      "asset_id": "PA-PR-011-P013",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "3cc767b4-411d-4925-bd86-acd1b685a438"
+    },
+    {
+      "asset_id": "PA-VIDEO-004-P021",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "c442edaa-a677-44c8-814a-fbb57ba4d051"
+    },
+    {
+      "asset_id": "PA-VIDEO-004-P022",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "9076389d-eca1-460d-9485-a5b82c903ae4"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P006",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "8c79fb39-df42-493c-8f74-7f5ea2ec8f72"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P007",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "5953ebf6-e9b9-4d18-8a04-d4b8c0b0228e"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P008",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "9ddf04cf-aeea-49e8-bd7e-a9b9b78f67f9"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P009",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "d0afe129-1196-4678-9baf-58d3b22c3a31"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P010",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "50923bf9-fed4-42aa-813a-b8bfa515217d"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P014",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "7537eaf3-a035-477a-ac43-59f447e2ae91"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P015",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "a335f09c-8006-4c2a-91e5-02ef9894a427"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P016",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "a92728b9-6d2a-43b5-9735-c343235086c9"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P017",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "3125b44a-b7d2-44de-91c1-603b7a1019f7"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P018",
+      "document_name": "ProposalOps Production v1 - sandbox-packed-v1",
+      "document_id": "fb3b4efb-0381-44d8-b157-07233806db4a",
+      "segment_id": "15d65199-68f5-48ae-98d4-bb8faa8de914"
+    }
+  ],
+  "failures": []
+}

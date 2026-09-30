@@ -1,0 +1,397 @@
+{
+  "dataset_id": "e72cbe16-1eef-4858-9e35-61d5e00326bf",
+  "api_base": "https://api.dify.ai/v1",
+  "sandbox_compact": true,
+  "compact_strategy": "single_document_custom_separator",
+  "compact_document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+  "compact_document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+  "compact_document_created": false,
+  "requested_documents": 63,
+  "available_documents": 63,
+  "dify_document_count": 1,
+  "segment_count": 63,
+  "created_documents": 0,
+  "failure_count": 0,
+  "native_metadata_enabled": false,
+  "documents": [
+    {
+      "asset_id": "PA-CAMP-005-P007",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "b2d401f6-ea1c-451d-bdc4-56aed54d7fde"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P008",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "38208c10-c054-4600-a1c2-64e9cff28f51"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P009",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "3f15f4cc-dc46-4ac2-9b19-ba00bf928e6a"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "2a814977-b753-44fd-b975-2efd1272a68e"
+    },
+    {
+      "asset_id": "PA-CAMP-005-P011",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "e45f2ee2-c6c7-4027-abe3-f5ebd92fe66d"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P020",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "8c6817db-9e3e-41fd-903b-aa92a9f154bd"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P021",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "37f6ab0b-1f05-4778-9b08-46b8fdaf0379"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P022",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "14a6e1bd-4f8d-49f0-ac1d-47e0bfc8907c"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P023",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+    },
+    {
+      "asset_id": "PA-CAMP-010-P024",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+    },
+    {
+      "asset_id": "PA-DIST-P001",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "ef228059-77d1-459c-9494-e3f8e264723d"
+    },
+    {
+      "asset_id": "PA-DIST-P002",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "c8cb56fa-47a5-4b6f-b723-59f11d42a800"
+    },
+    {
+      "asset_id": "PA-DIST-P003",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "61af258d-5288-44d9-b25e-488d8e9108e8"
+    },
+    {
+      "asset_id": "PA-DIST-P004",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "baab07fc-bdb4-4efb-b627-ef182b9411ca"
+    },
+    {
+      "asset_id": "PA-DIST-P005",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+    },
+    {
+      "asset_id": "PA-DIST-P006",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "226e9629-527d-4d34-be14-c707ff785fdf"
+    },
+    {
+      "asset_id": "PA-DIST-P007",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "544b2e36-2a14-4256-8349-26169c0b27c2"
+    },
+    {
+      "asset_id": "PA-DIST-P008",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "e49939ec-d88a-45a0-a265-c73b6f9bf579"
+    },
+    {
+      "asset_id": "PA-DIST-P009",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "5429bd32-af9a-48e5-9df1-96f46b628b2e"
+    },
+    {
+      "asset_id": "PA-DIST-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+    },
+    {
+      "asset_id": "PA-DIST-P011",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "309d8e4b-91c5-4445-b84d-6734c59648e9"
+    },
+    {
+      "asset_id": "PA-DIST-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "da62c559-5bb1-4238-b316-2ece97564ca5"
+    },
+    {
+      "asset_id": "PA-EDU-003-P017",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "6a8ce9fe-46aa-4ead-9225-307596d8573c"
+    },
+    {
+      "asset_id": "PA-EDU-003-P018",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+    },
+    {
+      "asset_id": "PA-EDU-006-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+    },
+    {
+      "asset_id": "PA-EDU-006-P011",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+    },
+    {
+      "asset_id": "PA-EDU-006-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "f0cc9a71-455c-4ece-85ed-13badbf86257"
+    },
+    {
+      "asset_id": "PA-EDU-006-P013",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+    },
+    {
+      "asset_id": "PA-EDU-006-P014",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "8f9e2bab-370c-4f55-8d0a-d57e159bd004"
+    },
+    {
+      "asset_id": "PA-EDU-009-P008",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+    },
+    {
+      "asset_id": "PA-EDU-009-P009",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "7c5e7a0c-e8bc-49c6-b2fb-cb0738653dd7"
+    },
+    {
+      "asset_id": "PA-EDU-009-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "f71c03c1-157a-48b5-9300-17c77e46dbdb"
+    },
+    {
+      "asset_id": "PA-EDU-009-P011",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "2ab31843-1c11-4dba-b2b1-d43a20bfe439"
+    },
+    {
+      "asset_id": "PA-EDU-009-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "3dae9e9a-fe1c-4e85-ad63-824570b5ebb8"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "a1f941f3-5df1-4124-9803-96f6c1ddd03d"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P013",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "e50e90f4-6723-4742-82da-c7e14464a799"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P014",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "ae819d87-3bc2-48f0-a014-cf79fe918c6e"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P015",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+    },
+    {
+      "asset_id": "PA-EVENT-004-P016",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+    },
+    {
+      "asset_id": "PA-PR-002-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "3a5e97b0-29b8-4511-8bed-1777d9555793"
+    },
+    {
+      "asset_id": "PA-PR-002-P013",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "ab245998-409c-499c-b097-f496803d1fc5"
+    },
+    {
+      "asset_id": "PA-PR-007-P015",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "83b93408-8301-4cf3-b579-584bfd83eb9f"
+    },
+    {
+      "asset_id": "PA-PR-007-P016",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+    },
+    {
+      "asset_id": "PA-PR-007-P017",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "6aaa3091-1a2e-44b4-9d74-192ba505c055"
+    },
+    {
+      "asset_id": "PA-PR-007-P018",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+    },
+    {
+      "asset_id": "PA-PR-007-P019",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "add254e5-a6b0-42c9-9c51-0e649e9afcf5"
+    },
+    {
+      "asset_id": "PA-PR-011-P009",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+    },
+    {
+      "asset_id": "PA-PR-011-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "6a27a94e-2f0e-4b10-b7aa-d4adc319f2db"
+    },
+    {
+      "asset_id": "PA-PR-011-P011",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "35b76a9c-5f12-41a6-92c7-6761d4ee4904"
+    },
+    {
+      "asset_id": "PA-PR-011-P012",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+    },
+    {
+      "asset_id": "PA-PR-011-P013",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "3865673b-360a-4cf0-bb72-de12f34a8006"
+    },
+    {
+      "asset_id": "PA-VIDEO-004-P021",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+    },
+    {
+      "asset_id": "PA-VIDEO-004-P022",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P006",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P007",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P008",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "4788c8a3-31ba-4f50-a9d9-ae822e4d5e63"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P009",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+    },
+    {
+      "asset_id": "PA-VIDEO-008-P010",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "31b90cda-a03b-4878-81c3-d25ce649587d"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P014",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "9541bf78-cba2-4145-89cd-242cae45f8ad"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P015",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "d331fcb6-b2b3-4cd6-af40-732bb8b44de2"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P016",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P017",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+    },
+    {
+      "asset_id": "PA-VIDEO-012-P018",
+      "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+      "document_id": "0a34488f-f4f5-4036-b742-9bb6164b3bec",
+      "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+    }
+  ],
+  "failures": []
+}

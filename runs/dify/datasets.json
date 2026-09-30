@@ -1,0 +1,14 @@
+{
+  "api_base": "https://api.dify.ai/v1",
+  "sandbox_compact": true,
+  "production": {
+    "name": "ProposalOps Production v1",
+    "dataset_id": "21dcb1f3-270f-4991-bcf8-b2782e6cf814",
+    "created": false
+  },
+  "benchmark": {
+    "name": "ProposalOps Benchmark v1",
+    "dataset_id": "e72cbe16-1eef-4858-9e35-61d5e00326bf",
+    "created": false
+  }
+}
