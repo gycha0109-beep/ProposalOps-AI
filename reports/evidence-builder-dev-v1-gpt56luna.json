@@ -1,0 +1,165 @@
+{
+  "track": "evidence_builder",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "run_count": 2,
+  "versions": {
+    "v0_baseline": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "pass_rate": 0.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "primary_asset_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "selected_asset_precision": {
+          "mean": 0.8182,
+          "min": 0.8182,
+          "max": 0.8182,
+          "stdev": 0.0
+        },
+        "prohibited_asset_rejection": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "provenance_validity": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "stdev": 0.0
+        },
+        "status_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "company_fact_violation_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "unsupported_numeric_claim_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "evidence_id_violation_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 17536,
+          "mean": 17536
+        },
+        "output_tokens": {
+          "total": 2874,
+          "mean": 2874
+        },
+        "total_tokens": {
+          "total": 20410,
+          "mean": 20410
+        }
+      }
+    },
+    "v1_grounded": {
+      "run_count": 1,
+      "json_parseable_rate": 1.0,
+      "pass_rate": 1.0,
+      "metrics": {
+        "result_coverage": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "primary_asset_recall": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "selected_asset_precision": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "prohibited_asset_rejection": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "provenance_validity": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "status_accuracy": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "stdev": 0.0
+        },
+        "company_fact_violation_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "unsupported_numeric_claim_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        },
+        "evidence_id_violation_count": {
+          "mean": 0,
+          "min": 0,
+          "max": 0,
+          "stdev": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": {
+          "total": 18024,
+          "mean": 18024
+        },
+        "output_tokens": {
+          "total": 1494,
+          "mean": 1494
+        },
+        "total_tokens": {
+          "total": 19518,
+          "mean": 19518
+        }
+      }
+    }
+  }
+}

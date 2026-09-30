@@ -1,0 +1,14 @@
+{
+  "track": "evidence_builder",
+  "benchmark_version": "1.0",
+  "candidate": "v1_grounded",
+  "prompt_file": "prompts/evidence_builder/v1_grounded.md",
+  "prompt_sha256": "5c2d89e6caa008e40ace994bc9f06c8cfe8e15189d076e094676fa0e57d14ae7",
+  "status": "frozen",
+  "acceptance_report": "reports/evidence-builder-v1-acceptance.json",
+  "acceptance_required": true,
+  "holdout_allowed": true,
+  "candidate_commit": "0add25ebb23f5c6d396a10bb59520fd2df969340",
+  "frozen_at": "2026-09-30T03:36:57.107462+00:00",
+  "note": "Frozen only after dev acceptance passed. Do not modify prompt before holdout."
+}

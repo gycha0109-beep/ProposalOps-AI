@@ -1,0 +1,326 @@
+{
+  "run_id": "evidence-builder-1.0-dev-v1_grounded-01",
+  "track": "evidence_builder",
+  "benchmark_version": "1.0",
+  "split": "dev",
+  "prompt_version": "v1_grounded",
+  "prompt_file": "prompts/evidence_builder/v1_grounded.md",
+  "prompt_sha256": "5c2d89e6caa008e40ace994bc9f06c8cfe8e15189d076e094676fa0e57d14ae7",
+  "model": "gpt-5.6-luna",
+  "parameters": {
+    "reasoning_effort": "low",
+    "max_output_tokens": 7000,
+    "max_retries": 2,
+    "retry_delay_seconds": 5
+  },
+  "metadata": {
+    "timestamp_utc": "2026-09-30T03:36:56.798516+00:00",
+    "git_commit": "0add25ebb23f5c6d396a10bb59520fd2df969340",
+    "provider": "openai",
+    "provider_response_id": "resp_058c9de11722ddc2016abc83ce946887d2a71004f2b8f26b50",
+    "latency_seconds": 10.303,
+    "retry_count": 0,
+    "usage": {
+      "input_tokens": 18024,
+      "input_tokens_details": {
+        "cache_write_tokens": 18021,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1494,
+      "output_tokens_details": {
+        "reasoning_tokens": 167
+      },
+      "total_tokens": 19518
+    }
+  },
+  "json_parseable": true,
+  "raw_output": "{\"results\":[{\"requirement_id\":\"R-201\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-201-01\",\"asset_id\":\"PA-PR-007-P015\",\"proposal_id\":\"PROP-PR-007\",\"title\":\"여행 동기 세분화\",\"supported_point\":\"맛집, 휴식, 체험, 사진 촬영 등 서로 다른 방문 동기를 분리해 타깃 세그먼트를 구성하는 전략을 지원한다.\",\"reusable_patterns\":[\"동기 기반 세그먼트\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"해당 세분화가 실제 수행된 특정 프로젝트의 성과나 회사의 실적·고유 역량으로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_pr_proposal_07.md\",\"page\":15,\"source_type\":\"synthetic_demo\"}}]},{\"requirement_id\":\"R-202\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-202-01\",\"asset_id\":\"PA-PR-007-P016\",\"proposal_id\":\"PROP-PR-007\",\"title\":\"발견에서 저장까지\",\"supported_point\":\"짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠를 거쳐 방문으로 이어지는 콘텐츠 구조를 지원한다.\",\"reusable_patterns\":[\"Discover → Save → Visit 구조\",\"콘텐츠 역할 분리\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"해당 구조를 회사가 실제로 운영해 방문 성과를 달성했다는 사실이나 수치로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_pr_proposal_07.md\",\"page\":16,\"source_type\":\"synthetic_demo\"}}]},{\"requirement_id\":\"R-203\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-203-01\",\"asset_id\":\"PA-VIDEO-004-P021\",\"proposal_id\":\"PROP-VIDEO-004\",\"title\":\"30초 정보형 숏폼 포맷\",\"supported_point\":\"모바일 이용자를 대상으로 세로형 30초 숏폼을 첫 3초 훅, 17초 핵심 정보, 마지막 10초 단일 행동 유도로 구성하는 방식을 지원한다.\",\"reusable_patterns\":[\"Hook → Core → Action 영상 구조\",\"Hook 3초 → 핵심 정보 17초 → 행동 유도 10초\",\"영상당 하나의 행동 목표\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"해당 포맷의 실제 제작 실적, 플랫폼 성과, 유지율·완주율 수치를 회사의 실적으로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_video_proposal_04.md\",\"page\":21,\"source_type\":\"synthetic_demo\"}}]},{\"requirement_id\":\"R-204\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-204-01\",\"asset_id\":\"PA-PR-007-P018\",\"proposal_id\":\"PROP-PR-007\",\"title\":\"크리에이터 증폭 구조\",\"supported_point\":\"공식 계정은 정보형 콘텐츠를, 지역 크리에이터는 체험형 콘텐츠를 담당하도록 채널과 역할을 분리하는 협업 운영방안을 지원한다.\",\"reusable_patterns\":[\"공식 정보와 체험 후기의 채널 역할 분리\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"특정 지역 크리에이터와의 실제 협업 이력이나 협업 성과로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_pr_proposal_07.md\",\"page\":18,\"source_type\":\"synthetic_demo\"}}]},{\"requirement_id\":\"R-205\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-205-01\",\"asset_id\":\"PA-CAMP-010-P023\",\"proposal_id\":\"PROP-CAMP-010\",\"title\":\"프로그램 변경 대응\",\"supported_point\":\"휴관, 매진, 일정 변경을 게시 전에 확인하고 변경 발생 시 기존 게시물의 상태까지 함께 갱신하는 운영 절차를 지원한다.\",\"reusable_patterns\":[\"운영정보 변경 모니터링\",\"게시물 상태 갱신\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"해당 절차가 특정 기관에서 실제 운영되었거나 오류를 방지했다는 실적·성과로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_campaign_proposal_10.md\",\"page\":23,\"source_type\":\"synthetic_demo\"}}]},{\"requirement_id\":\"R-206\",\"status\":\"SUPPORTED\",\"evidence\":[{\"evidence_id\":\"EV-R-206-01\",\"asset_id\":\"PA-PR-007-P019\",\"proposal_id\":\"PROP-PR-007\",\"title\":\"저장과 방문 의도 KPI\",\"supported_point\":\"도달·노출을 넘어 저장, 지도 클릭, 코스 페이지 이동과 같은 방문 의도에 가까운 행동을 단계별 KPI로 측정하는 방식을 지원한다.\",\"reusable_patterns\":[\"노출 → 저장 → 상세탐색 단계 KPI\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"제시된 KPI가 실제 캠페인에서 측정되었거나 특정 성과를 달성했다는 수치·실적으로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_pr_proposal_07.md\",\"page\":19,\"source_type\":\"synthetic_demo\"}},{\"evidence_id\":\"EV-R-206-02\",\"asset_id\":\"PA-CAMP-010-P024\",\"proposal_id\":\"PROP-CAMP-010\",\"title\":\"탐색에서 예약까지 KPI\",\"supported_point\":\"콘텐츠 도달에서 프로그램 상세조회, 일정 저장, 예약 페이지 이동까지 방문 의도에 가까운 전환 단계를 측정하는 KPI 구조를 지원한다.\",\"reusable_patterns\":[\"도달 → 상세조회 → 저장 → 예약 이동\"],\"company_facts\":[],\"support_level\":\"direct\",\"allowed_use\":\"REFERENCE_PATTERN\",\"prohibited_use\":\"해당 KPI 구조를 실제 예약 전환 성과나 회사의 과거 실적으로 주장하지 말 것.\",\"source\":{\"file_name\":\"demo_campaign_proposal_10.md\",\"page\":24,\"source_type\":\"synthetic_demo\"}}]}]}",
+  "parsed_output": {
+    "results": [
+      {
+        "requirement_id": "R-201",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-201-01",
+            "asset_id": "PA-PR-007-P015",
+            "proposal_id": "PROP-PR-007",
+            "title": "여행 동기 세분화",
+            "supported_point": "맛집, 휴식, 체험, 사진 촬영 등 서로 다른 방문 동기를 분리해 타깃 세그먼트를 구성하는 전략을 지원한다.",
+            "reusable_patterns": [
+              "동기 기반 세그먼트"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "해당 세분화가 실제 수행된 특정 프로젝트의 성과나 회사의 실적·고유 역량으로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_pr_proposal_07.md",
+              "page": 15,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      },
+      {
+        "requirement_id": "R-202",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-202-01",
+            "asset_id": "PA-PR-007-P016",
+            "proposal_id": "PROP-PR-007",
+            "title": "발견에서 저장까지",
+            "supported_point": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠를 거쳐 방문으로 이어지는 콘텐츠 구조를 지원한다.",
+            "reusable_patterns": [
+              "Discover → Save → Visit 구조",
+              "콘텐츠 역할 분리"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "해당 구조를 회사가 실제로 운영해 방문 성과를 달성했다는 사실이나 수치로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_pr_proposal_07.md",
+              "page": 16,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      },
+      {
+        "requirement_id": "R-203",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-203-01",
+            "asset_id": "PA-VIDEO-004-P021",
+            "proposal_id": "PROP-VIDEO-004",
+            "title": "30초 정보형 숏폼 포맷",
+            "supported_point": "모바일 이용자를 대상으로 세로형 30초 숏폼을 첫 3초 훅, 17초 핵심 정보, 마지막 10초 단일 행동 유도로 구성하는 방식을 지원한다.",
+            "reusable_patterns": [
+              "Hook → Core → Action 영상 구조",
+              "Hook 3초 → 핵심 정보 17초 → 행동 유도 10초",
+              "영상당 하나의 행동 목표"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "해당 포맷의 실제 제작 실적, 플랫폼 성과, 유지율·완주율 수치를 회사의 실적으로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_video_proposal_04.md",
+              "page": 21,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      },
+      {
+        "requirement_id": "R-204",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-204-01",
+            "asset_id": "PA-PR-007-P018",
+            "proposal_id": "PROP-PR-007",
+            "title": "크리에이터 증폭 구조",
+            "supported_point": "공식 계정은 정보형 콘텐츠를, 지역 크리에이터는 체험형 콘텐츠를 담당하도록 채널과 역할을 분리하는 협업 운영방안을 지원한다.",
+            "reusable_patterns": [
+              "공식 정보와 체험 후기의 채널 역할 분리"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "특정 지역 크리에이터와의 실제 협업 이력이나 협업 성과로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_pr_proposal_07.md",
+              "page": 18,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      },
+      {
+        "requirement_id": "R-205",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-205-01",
+            "asset_id": "PA-CAMP-010-P023",
+            "proposal_id": "PROP-CAMP-010",
+            "title": "프로그램 변경 대응",
+            "supported_point": "휴관, 매진, 일정 변경을 게시 전에 확인하고 변경 발생 시 기존 게시물의 상태까지 함께 갱신하는 운영 절차를 지원한다.",
+            "reusable_patterns": [
+              "운영정보 변경 모니터링",
+              "게시물 상태 갱신"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "해당 절차가 특정 기관에서 실제 운영되었거나 오류를 방지했다는 실적·성과로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_campaign_proposal_10.md",
+              "page": 23,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      },
+      {
+        "requirement_id": "R-206",
+        "status": "SUPPORTED",
+        "evidence": [
+          {
+            "evidence_id": "EV-R-206-01",
+            "asset_id": "PA-PR-007-P019",
+            "proposal_id": "PROP-PR-007",
+            "title": "저장과 방문 의도 KPI",
+            "supported_point": "도달·노출을 넘어 저장, 지도 클릭, 코스 페이지 이동과 같은 방문 의도에 가까운 행동을 단계별 KPI로 측정하는 방식을 지원한다.",
+            "reusable_patterns": [
+              "노출 → 저장 → 상세탐색 단계 KPI"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "제시된 KPI가 실제 캠페인에서 측정되었거나 특정 성과를 달성했다는 수치·실적으로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_pr_proposal_07.md",
+              "page": 19,
+              "source_type": "synthetic_demo"
+            }
+          },
+          {
+            "evidence_id": "EV-R-206-02",
+            "asset_id": "PA-CAMP-010-P024",
+            "proposal_id": "PROP-CAMP-010",
+            "title": "탐색에서 예약까지 KPI",
+            "supported_point": "콘텐츠 도달에서 프로그램 상세조회, 일정 저장, 예약 페이지 이동까지 방문 의도에 가까운 전환 단계를 측정하는 KPI 구조를 지원한다.",
+            "reusable_patterns": [
+              "도달 → 상세조회 → 저장 → 예약 이동"
+            ],
+            "company_facts": [],
+            "support_level": "direct",
+            "allowed_use": "REFERENCE_PATTERN",
+            "prohibited_use": "해당 KPI 구조를 실제 예약 전환 성과나 회사의 과거 실적으로 주장하지 말 것.",
+            "source": {
+              "file_name": "demo_campaign_proposal_10.md",
+              "page": 24,
+              "source_type": "synthetic_demo"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "track": "evidence_builder",
+    "evaluator_version": "1.0",
+    "gold_version": "1.0",
+    "split": "dev",
+    "metrics": {
+      "result_coverage": 1.0,
+      "primary_asset_recall": 1.0,
+      "selected_asset_precision": 1.0,
+      "prohibited_asset_rejection": 1.0,
+      "provenance_validity": 1.0,
+      "status_accuracy": 1.0,
+      "company_fact_violation_count": 0,
+      "unsupported_numeric_claim_count": 0,
+      "evidence_id_violation_count": 0
+    },
+    "cases": [
+      {
+        "requirement_id": "R-201",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-PR-007-P015"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      },
+      {
+        "requirement_id": "R-202",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-PR-007-P016"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      },
+      {
+        "requirement_id": "R-203",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-VIDEO-004-P021"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      },
+      {
+        "requirement_id": "R-204",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-PR-007-P018"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      },
+      {
+        "requirement_id": "R-205",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-CAMP-010-P023"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      },
+      {
+        "requirement_id": "R-206",
+        "found": true,
+        "status_match": true,
+        "primary_hit": true,
+        "selected_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-CAMP-010-P024"
+        ],
+        "unexpected_asset_ids": [],
+        "prohibited_asset_ids": [],
+        "provenance_valid": true,
+        "company_fact_violations": [],
+        "unsupported_numbers": [],
+        "evidence_id_violations": []
+      }
+    ],
+    "pass": true
+  }
+}
