@@ -207,6 +207,8 @@ def main() -> None:
         ],
         "repair_merge_gate": [
             "INVALID_STRATEGY_REPAIR",
+            "STRATEGY_ID_CONFLICT",
+            "PAGE_ID_CONFLICT",
             "PAGE_SET_MISMATCH",
         ],
     }
