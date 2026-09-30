@@ -1,14 +1,15 @@
 {
   "api_base": "https://api.dify.ai/v1",
   "sandbox_compact": true,
+  "indexing_technique": "economy",
   "production": {
-    "name": "ProposalOps Production v1",
-    "dataset_id": "21dcb1f3-270f-4991-bcf8-b2782e6cf814",
-    "created": false
+    "name": "ProposalOps Prod v1 Economy",
+    "dataset_id": "32db42a6-a9a7-45e2-aed9-e62ad7d98d97",
+    "created": true
   },
   "benchmark": {
-    "name": "ProposalOps Benchmark v1",
-    "dataset_id": "e72cbe16-1eef-4858-9e35-61d5e00326bf",
-    "created": false
+    "name": "ProposalOps Bench v1 Economy",
+    "dataset_id": "72afd82b-3d7b-4dff-8819-8c560608f659",
+    "created": true
   }
 }

@@ -1,0 +1,985 @@
+{
+  "version": "1.1",
+  "type": "dify_knowledge_retrieval",
+  "dataset_id": "72afd82b-3d7b-4dff-8819-8c560608f659",
+  "search_method": "keyword_search",
+  "top_k": 5,
+  "delay_seconds": 7.0,
+  "corpus": {
+    "assets": 63,
+    "hard_negatives_in_dify": 12,
+    "sandbox_compact": true,
+    "dify_documents": 1,
+    "one_asset_per_segment": true
+  },
+  "dev": {
+    "split": "dev",
+    "source": "evals/frozen/v1/dev/retrieval.json",
+    "metrics": {
+      "cases": 32,
+      "hit_at_1": 0.125,
+      "hit_at_3": 0.1562,
+      "hit_at_5": 0.1562,
+      "mrr": 0.1406,
+      "top1_misses": [
+        {
+          "case_id": "RET-D01",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-003-P017"
+          ]
+        },
+        {
+          "case_id": "RET-D02",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-003-P018"
+          ]
+        },
+        {
+          "case_id": "RET-D03",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-002-P012"
+          ]
+        },
+        {
+          "case_id": "RET-D05",
+          "rank": 2,
+          "wrong_top1": "PA-DIST-P003",
+          "expected": [
+            "PA-VIDEO-004-P021"
+          ]
+        },
+        {
+          "case_id": "RET-D06",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-004-P022"
+          ]
+        },
+        {
+          "case_id": "RET-D07",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-006-P010"
+          ]
+        },
+        {
+          "case_id": "RET-D08",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-006-P011"
+          ]
+        },
+        {
+          "case_id": "RET-D09",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-006-P012"
+          ]
+        },
+        {
+          "case_id": "RET-D10",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-006-P013"
+          ]
+        },
+        {
+          "case_id": "RET-D11",
+          "rank": null,
+          "wrong_top1": "PA-PR-007-P019",
+          "expected": [
+            "PA-EDU-006-P014"
+          ]
+        },
+        {
+          "case_id": "RET-D12",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P015"
+          ]
+        },
+        {
+          "case_id": "RET-D13",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P016"
+          ]
+        },
+        {
+          "case_id": "RET-D14",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P017"
+          ]
+        },
+        {
+          "case_id": "RET-D15",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P018"
+          ]
+        },
+        {
+          "case_id": "RET-D17",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-011-P010"
+          ]
+        },
+        {
+          "case_id": "RET-D18",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-011-P011"
+          ]
+        },
+        {
+          "case_id": "RET-D19",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-011-P012"
+          ]
+        },
+        {
+          "case_id": "RET-D20",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-008-P007"
+          ]
+        },
+        {
+          "case_id": "RET-D23",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-005-P008"
+          ]
+        },
+        {
+          "case_id": "RET-D24",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-005-P011"
+          ]
+        },
+        {
+          "case_id": "RET-D25",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-006-P011"
+          ]
+        },
+        {
+          "case_id": "RET-D26",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P018"
+          ]
+        },
+        {
+          "case_id": "RET-D27",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-011-P010"
+          ]
+        },
+        {
+          "case_id": "RET-D28",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-008-P007"
+          ]
+        },
+        {
+          "case_id": "RET-D29",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EVENT-004-P014"
+          ]
+        },
+        {
+          "case_id": "RET-D30",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-012-P017"
+          ]
+        },
+        {
+          "case_id": "RET-D31",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-010-P023"
+          ]
+        },
+        {
+          "case_id": "RET-D32",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-005-P008"
+          ]
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "RET-D01",
+        "query": "청년층을 숏폼에서 퀴즈와 실제 참여로 연결하는 단계형 전략",
+        "expected_asset_ids": [
+          "PA-EDU-003-P017"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D02",
+        "query": "참여 결과를 후속 콘텐츠로 재활용해 다시 도달을 만드는 구조",
+        "expected_asset_ids": [
+          "PA-EDU-003-P018"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D03",
+        "query": "정책 내용을 상황 질문에서 혜택과 다음 행동으로 연결하는 메시지",
+        "expected_asset_ids": [
+          "PA-PR-002-P012"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D04",
+        "query": "SNS 발견 이후 반응과 공유로 확산시키는 구조",
+        "expected_asset_ids": [
+          "PA-PR-002-P013"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-002-P013",
+          "PA-PR-002-P012",
+          "PA-PR-007-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-002-P013",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "3ffd47d7-dafb-4448-abae-dbe307cd94cb"
+          },
+          {
+            "asset_id": "PA-PR-002-P012",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "54a602a2-97aa-479e-aa8a-0d43fc8bb6ea"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "9e60e751-1f10-40ab-8525-e21f133516c5"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D05",
+        "query": "30초 영상에서 훅 핵심 정보 CTA를 나누는 포맷",
+        "expected_asset_ids": [
+          "PA-VIDEO-004-P021"
+        ],
+        "retrieved_asset_ids": [
+          "PA-DIST-P003",
+          "PA-VIDEO-004-P021"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-DIST-P003",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "23913f1b-1a1d-411f-a6e9-544deba78faf"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "6f241de7-ee25-444a-a4eb-b477a6854d06"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D06",
+        "query": "게시 전 정책 수치 기간 자격조건을 다시 확인하는 검수",
+        "expected_asset_ids": [
+          "PA-VIDEO-004-P022"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D07",
+        "query": "중장년 디지털 교육에서 기기 조작과 용어 이해 장벽 분석",
+        "expected_asset_ids": [
+          "PA-EDU-006-P010"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D08",
+        "query": "설명 시범 따라하기 확인 순서의 마이크로러닝",
+        "expected_asset_ids": [
+          "PA-EDU-006-P011"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D09",
+        "query": "앱 설치 본인인증 같은 생활 과업 중심 교육 콘텐츠",
+        "expected_asset_ids": [
+          "PA-EDU-006-P012"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D10",
+        "query": "강사 설명과 1대1 보조 지원을 분리하는 현장 운영",
+        "expected_asset_ids": [
+          "PA-EDU-006-P013"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D11",
+        "query": "출석이 아니라 과업 완료와 자립 수행을 보는 교육 KPI",
+        "expected_asset_ids": [
+          "PA-EDU-006-P014"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-VIDEO-008-P010",
+          "PA-CAMP-005-P011",
+          "PA-CAMP-010-P024",
+          "PA-EVENT-004-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "c183852f-7cdd-4fa9-a042-ea0d00f9cd6e"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P010",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "13475e7f-a197-4830-9d22-42f41ad4e306"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P011",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "bcb480fe-9aaa-435a-878c-571691526f93"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "395d3757-6197-4df3-8a24-4860f61050df"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "b21b1673-96d0-435c-a00b-34c6d398e65b"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D12",
+        "query": "여행객을 맛집 휴식 체험 사진 촬영 동기로 나누는 타깃 분석",
+        "expected_asset_ids": [
+          "PA-PR-007-P015"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D13",
+        "query": "관광 콘텐츠를 발견 저장 방문으로 이어지게 하는 전략",
+        "expected_asset_ids": [
+          "PA-PR-007-P016"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D14",
+        "query": "관광지를 단일 장소가 아니라 반나절 하루 코스로 묶는 콘텐츠",
+        "expected_asset_ids": [
+          "PA-PR-007-P017"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D15",
+        "query": "공식 계정과 지역 크리에이터의 역할을 분리하는 협업",
+        "expected_asset_ids": [
+          "PA-PR-007-P018"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D16",
+        "query": "관광 홍보에서 저장 지도 클릭 상세 탐색을 측정하는 KPI",
+        "expected_asset_ids": [
+          "PA-PR-007-P019"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-EDU-009-P012",
+          "PA-VIDEO-012-P018",
+          "PA-EDU-006-P014",
+          "PA-CAMP-010-P024"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "c183852f-7cdd-4fa9-a042-ea0d00f9cd6e"
+          },
+          {
+            "asset_id": "PA-EDU-009-P012",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "d2b0eb3b-0ba9-438f-9f07-b4720112057b"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "b9fa7f50-b2fa-4c68-ab58-204033e7cee1"
+          },
+          {
+            "asset_id": "PA-EDU-006-P014",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "50952233-8f31-43af-b21c-1ba09db3b58f"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "395d3757-6197-4df3-8a24-4860f61050df"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D17",
+        "query": "소상공인 지원정책을 내가 대상인지 질문에서 시작하는 메시지",
+        "expected_asset_ids": [
+          "PA-PR-011-P010"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D18",
+        "query": "지원정책 신청 절차를 준비 확인 제출 결과로 단계화한 카드",
+        "expected_asset_ids": [
+          "PA-PR-011-P011"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D19",
+        "query": "지원금액 접수기간 자격조건 변경을 게시 전 확인하는 운영",
+        "expected_asset_ids": [
+          "PA-PR-011-P012"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D20",
+        "query": "공공서비스 안내영상을 문제 화면 행동 순서로 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P007"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D21",
+        "query": "60초 튜토리얼에서 목적 절차 완료 화면을 보여주는 포맷",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P008"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P008"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P008",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "ff42f0b8-2667-48a6-9a75-b3bd4223646e"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D22",
+        "query": "서비스 UI가 바뀔 때 촬영본과 자막 명칭을 재검수하는 프로세스",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P009"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P009"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "8e06510e-80d1-4c4a-861f-1dccfbef5cad"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D23",
+        "query": "환경 실천을 하루 한 행동으로 쪼개 반복 참여시키는 챌린지",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P008"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D24",
+        "query": "환경 캠페인에서 최초 참여 재참여 연속 참여를 측정",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P011"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D25",
+        "query": "성인 디지털 교육에서 설명을 길게 하기보다 하나씩 직접 해보게 하고 확인하는 방식",
+        "expected_asset_ids": [
+          "PA-EDU-006-P011"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D26",
+        "query": "지역 홍보에서 공식 채널은 정확한 정보를, 현지 창작자는 체험담을 맡도록 역할을 나누는 방식",
+        "expected_asset_ids": [
+          "PA-PR-007-P018"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D27",
+        "query": "지원사업 이름을 설명하기 전에 내가 신청 대상인지부터 판단하게 만드는 홍보 메시지",
+        "expected_asset_ids": [
+          "PA-PR-011-P010"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D28",
+        "query": "서비스 사용법 영상은 이용자가 겪는 문제를 먼저 보여주고 실제 화면과 해야 할 일을 이어서 보여주는 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P007"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D29",
+        "query": "행사장에서 줄이 길어질 때 체험에 걸리는 시간과 동시에 받을 수 있는 사람 수로 흐름을 나누는 운영",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P014"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D30",
+        "query": "사람을 촬영하기 전에 얼굴과 영상이 어느 채널에 얼마 동안 쓰이는지 확인하는 절차",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P017"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D31",
+        "query": "문화시설 게시물에서 휴관이나 매진이 바뀌면 예전에 올린 안내까지 상태를 고치는 운영",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P023"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-D32",
+        "query": "환경 참여를 거창한 약속 한 번으로 끝내지 않고 매일 할 수 있는 작은 행동으로 반복시키는 방식",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P008"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      }
+    ]
+  },
+  "holdout": {
+    "split": "holdout",
+    "source": "evals/frozen/v1/holdout/retrieval.json",
+    "metrics": {
+      "cases": 16,
+      "hit_at_1": 0.0625,
+      "hit_at_3": 0.0625,
+      "hit_at_5": 0.0625,
+      "mrr": 0.0625,
+      "top1_misses": [
+        {
+          "case_id": "RET-H01",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-009-P009"
+          ]
+        },
+        {
+          "case_id": "RET-H02",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-009-P010"
+          ]
+        },
+        {
+          "case_id": "RET-H03",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-009-P011"
+          ]
+        },
+        {
+          "case_id": "RET-H04",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-012-P014"
+          ]
+        },
+        {
+          "case_id": "RET-H05",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-012-P015"
+          ]
+        },
+        {
+          "case_id": "RET-H07",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-012-P017"
+          ]
+        },
+        {
+          "case_id": "RET-H08",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-010-P021"
+          ]
+        },
+        {
+          "case_id": "RET-H09",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-CAMP-010-P023"
+          ]
+        },
+        {
+          "case_id": "RET-H10",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EVENT-004-P013"
+          ]
+        },
+        {
+          "case_id": "RET-H11",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EVENT-004-P014"
+          ]
+        },
+        {
+          "case_id": "RET-H12",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EVENT-004-P015"
+          ]
+        },
+        {
+          "case_id": "RET-H13",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EDU-009-P009"
+          ]
+        },
+        {
+          "case_id": "RET-H14",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-VIDEO-012-P016"
+          ]
+        },
+        {
+          "case_id": "RET-H15",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-EVENT-004-P013"
+          ]
+        },
+        {
+          "case_id": "RET-H16",
+          "rank": null,
+          "wrong_top1": null,
+          "expected": [
+            "PA-PR-007-P019",
+            "PA-CAMP-010-P024"
+          ]
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "RET-H01",
+        "query": "학생이 출처 근거 의도를 확인하도록 세 질문을 반복하는 교육",
+        "expected_asset_ids": [
+          "PA-EDU-009-P009"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H02",
+        "query": "두 콘텐츠를 비교해 출처와 근거 차이를 찾는 미디어 수업",
+        "expected_asset_ids": [
+          "PA-EDU-009-P010"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H03",
+        "query": "개인 판단 뒤 소그룹 토론으로 판단 기준을 수정하는 피드백",
+        "expected_asset_ids": [
+          "PA-EDU-009-P011"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H04",
+        "query": "인물 경험을 따라 지역과 장소를 보여주는 인터뷰 다큐 서사",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P014"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H05",
+        "query": "인터뷰 질문을 사실 경험 변화 의미 순서로 깊게 만드는 구조",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P015"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H06",
+        "query": "인터뷰 발화와 현장 장면을 B-roll로 연결하는 방식",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P016"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.0,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-economy-v1",
+            "segment_id": "e4eae4f5-abdd-4da1-9965-a99c929035b0"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H07",
+        "query": "촬영 전 출연 범위 사용 채널 기간을 확인하는 초상권 동의",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P017"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H08",
+        "query": "문화시설 관심 주제에서 맞춤 프로그램과 실제 방문으로 연결",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P021"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H09",
+        "query": "휴관 매진 일정 변경 시 게시물 상태까지 갱신하는 운영",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P023"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H10",
+        "query": "행사 안내 체험 결과 확인 후속 정보 탐색의 방문 동선",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P013"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H11",
+        "query": "체험시간과 동시 수용인원 기준으로 대기열을 분산하는 운영",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P014"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H12",
+        "query": "행사에서 안전 촬영동의 개인정보 수집 범위를 체크리스트로 관리",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P015"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H13",
+        "query": "학생에게 정답을 외우게 하기보다 누가 만들었고 근거가 무엇이며 무엇을 유도하는지 묻게 하는 수업",
+        "expected_asset_ids": [
+          "PA-EDU-009-P009"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H14",
+        "query": "인터뷰에서 말만 보여주지 말고 그 사람이 언급한 현장과 작업 모습을 화면으로 뒷받침하는 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P016"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H15",
+        "query": "정책 체험행사에서 처음 안내받고 직접 해본 뒤 결과를 확인하고 추가 정보를 찾아보게 만드는 흐름",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P013"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      },
+      {
+        "case_id": "RET-H16",
+        "query": "관광 홍보 성과를 단순 조회수가 아니라 저장이나 예약 페이지로 넘어간 행동으로 판단",
+        "expected_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-CAMP-010-P024"
+        ],
+        "retrieved_asset_ids": [],
+        "records": []
+      }
+    ]
+  },
+  "lexical_baseline": {
+    "retriever": "local_char_ngram_tfidf",
+    "corpus": {
+      "assets": 63,
+      "hard_negatives": 12
+    },
+    "dev": {
+      "cases": 32,
+      "hit_at_1": 0.9062,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "mrr": 0.9531
+    },
+    "holdout": {
+      "cases": 16,
+      "hit_at_1": 0.9375,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "mrr": 0.9688
+    }
+  },
+  "comparison_note": "Dify benchmark-v1 uses the same 51 normal assets + 12 hard negatives as the local lexical baseline. Sandbox packing changes only the Dify document container: each Proposal Asset remains one independently retrieved segment with embedded provenance."
+}
