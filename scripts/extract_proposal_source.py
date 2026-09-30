@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import posixpath
 import re
 import sys
 import zipfile
@@ -11,6 +12,9 @@ from xml.etree import ElementTree as ET
 
 
 PPTX_TEXT_TAG = "{http://schemas.openxmlformats.org/drawingml/2006/main}t"
+PPTX_SLIDE_ID_TAG = "{http://schemas.openxmlformats.org/presentationml/2006/main}sldId"
+PPTX_REL_ID_ATTR = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
+OOXML_REL_TAG = "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship"
 SLIDE_RE = re.compile(r"slide(\d+)\.xml$")
 SUPPORTED_EXTENSIONS = {".pptx", ".pdf"}
 
@@ -76,6 +80,86 @@ def _extract_xml_text(payload: bytes) -> list[str]:
     ]
 
 
+def _normalize_ooxml_target(base_dir: str, target: str) -> str:
+    if target.startswith("/"):
+        return posixpath.normpath(target.lstrip("/"))
+    return posixpath.normpath(posixpath.join(base_dir, target))
+
+
+def _relationship_map(
+    archive: zipfile.ZipFile,
+    rel_path: str,
+    *,
+    base_dir: str,
+) -> dict[str, dict]:
+    if rel_path not in archive.namelist():
+        return {}
+    root = ET.fromstring(archive.read(rel_path))
+    result = {}
+    for rel in root.iter(OOXML_REL_TAG):
+        rel_id = rel.attrib.get("Id")
+        target = rel.attrib.get("Target")
+        if not rel_id or not target:
+            continue
+        result[rel_id] = {
+            "target": _normalize_ooxml_target(base_dir, target),
+            "type": rel.attrib.get("Type", ""),
+        }
+    return result
+
+
+def _ordered_slide_names(archive: zipfile.ZipFile) -> list[str]:
+    presentation = "ppt/presentation.xml"
+    rels = "ppt/_rels/presentation.xml.rels"
+    if presentation in archive.namelist() and rels in archive.namelist():
+        relationships = _relationship_map(archive, rels, base_dir="ppt")
+        root = ET.fromstring(archive.read(presentation))
+        ordered = []
+        for slide_id in root.iter(PPTX_SLIDE_ID_TAG):
+            rel_id = slide_id.attrib.get(PPTX_REL_ID_ATTR)
+            target = (relationships.get(rel_id) or {}).get("target")
+            if target and target in archive.namelist():
+                ordered.append(target)
+        if ordered:
+            return ordered
+
+    slide_names = [
+        name
+        for name in archive.namelist()
+        if name.startswith("ppt/slides/") and _slide_number(name) is not None
+    ]
+    slide_names.sort(key=lambda value: _slide_number(value) or 0)
+    return slide_names
+
+
+def _notes_name_for_slide(
+    archive: zipfile.ZipFile,
+    slide_name: str,
+) -> str | None:
+    slide_file = posixpath.basename(slide_name)
+    rel_path = f"{posixpath.dirname(slide_name)}/_rels/{slide_file}.rels"
+    relationships = _relationship_map(
+        archive,
+        rel_path,
+        base_dir=posixpath.dirname(slide_name),
+    )
+    for relation in relationships.values():
+        if relation.get("type", "").endswith("/notesSlide"):
+            target = relation.get("target")
+            if target in archive.namelist():
+                return target
+
+    native_number = _slide_number(slide_name)
+    fallback = (
+        f"ppt/notesSlides/notesSlide{native_number}.xml"
+        if native_number is not None
+        else None
+    )
+    if fallback and fallback in archive.namelist():
+        return fallback
+    return None
+
+
 def extract_pptx(
     path: Path,
     *,
@@ -85,37 +169,32 @@ def extract_pptx(
 ) -> list[dict]:
     records = []
     with zipfile.ZipFile(path) as archive:
-        slide_names = []
-        for name in archive.namelist():
-            if name.startswith("ppt/slides/") and _slide_number(name) is not None:
-                slide_names.append(name)
-        slide_names.sort(key=lambda value: _slide_number(value) or 0)
+        slide_names = _ordered_slide_names(archive)
 
-        for name in slide_names:
-            page = _slide_number(name)
-            if page is None:
-                continue
+        for page, name in enumerate(slide_names, start=1):
             parts = _extract_xml_text(archive.read(name))
 
-            note_name = f"ppt/notesSlides/notesSlide{page}.xml"
-            if note_name in archive.namelist():
+            note_name = _notes_name_for_slide(archive, name)
+            if note_name:
                 note_parts = _extract_xml_text(archive.read(note_name))
                 if note_parts:
                     parts.append("Speaker Notes")
                     parts.extend(note_parts)
 
             raw_text = normalize_text(parts)
-            records.append(
-                make_record(
-                    proposal_id=proposal_id,
-                    file_name=path.name,
-                    page=page,
-                    raw_text=raw_text,
-                    source_type=source_type,
-                    sensitivity=sensitivity,
-                    source_format="pptx",
-                )
+            record = make_record(
+                proposal_id=proposal_id,
+                file_name=path.name,
+                page=page,
+                raw_text=raw_text,
+                source_type=source_type,
+                sensitivity=sensitivity,
+                source_format="pptx",
             )
+            record["extraction"]["native_part"] = name
+            if note_name:
+                record["extraction"]["notes_part"] = note_name
+            records.append(record)
 
     return records
 
