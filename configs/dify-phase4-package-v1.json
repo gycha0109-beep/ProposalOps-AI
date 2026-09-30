@@ -21,7 +21,7 @@
     "proposal_qa": "prompts/production/proposal_qa.md",
     "targeted_repair": "prompts/production/targeted_repair.md"
   },
-  "max_repair_cycles": 2,
+  "max_repair_cycles": 3,
   "output_root": "runs/dify/phase4/RFP-TEST-002",
   "report_json": "reports/dify-phase4-package-rfp-test-002.json",
   "report_md": "reports/dify-phase4-package-rfp-test-002.md"
