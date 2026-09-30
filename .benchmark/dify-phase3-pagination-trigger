@@ -1,0 +1,8 @@
+Dify Phase 3 pagination + coverage gate
+rfp: RFP-TEST-002
+source: reports/dify-phase2-core-rfp-test-002.json
+model: gpt-5.6-luna
+page_limit: 8
+coverage_validator: deterministic_code_gate
+expected_openai_calls: 1
+triggered: 2026-09-30T13:15+09:00
