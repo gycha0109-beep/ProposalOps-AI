@@ -46,27 +46,19 @@ RFP Analyzer
 
 Gate failures before QA terminate through `Gate Failure`.
 
-## Workspace model binding
+## Model binding
 
-The DSL intentionally does not pin plugin-specific provider identifiers.
+The current Phase 4 DSL pins the ten LLM nodes to the configured OpenAI provider:
 
-After import, verify the workspace model is resolved for all ten LLM nodes:
+- provider: `langgenius/openai/openai`
+- model: `gpt-5.6-luna`
+- mode: `chat`
 
-1. RFP Analyzer
-2. Retrieval Planner
-3. Evidence Builder
-4. Proposal Strategist
-5. Pagination Planner
-6. Slide Draft Batch
-7. Visual Prompt Batch
-8. Proposal QA
-9. Targeted Repair
-10. QA Recheck
+The import still depends on that provider/model being available in the target workspace.
 
-Expected workspace defaults used by the live validation:
+Embedding used by the Knowledge dataset remains:
 
-- reasoning model: `gpt-5.6-luna`
-- embedding model: `text-embedding-3-small`
+- `text-embedding-3-small`
 
 ## Knowledge binding
 
@@ -171,3 +163,15 @@ Expected result:
 ```
 
 This means the user-side Studio smoke does not rely only on visually inspecting green nodes.
+
+
+## Dify checklist compatibility
+
+Dify currently validates End-node output variable names globally across branches.
+The Phase 4 DSL therefore keeps normal-path output names unchanged and prefixes non-normal branches:
+
+- `gate_failure_*`
+- `repaired_*`
+- `escalation_*`
+
+This avoids duplicate-output checklist errors after import.
