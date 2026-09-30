@@ -5,6 +5,7 @@ import argparse
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -17,23 +18,38 @@ class DifyError(RuntimeError):
     pass
 
 
-def request(api_base: str, api_key: str, method: str, path: str, payload: dict):
-    req = urllib.request.Request(
-        f"{api_base.rstrip('/')}{path}",
-        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        },
-        method=method,
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=120) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        raise DifyError(f"Dify HTTP {exc.code}: {body}") from exc
+class DifyClient:
+    def __init__(self, api_base: str, api_key: str, timeout: int = 120, min_interval_seconds: float = 7.0):
+        self.api_base = api_base.rstrip("/")
+        self.api_key = api_key
+        self.timeout = timeout
+        self.min_interval_seconds = min_interval_seconds
+        self._last_request_at = 0.0
+
+    def request(self, method: str, path: str, payload: dict):
+        if self.min_interval_seconds > 0 and self._last_request_at:
+            elapsed = time.monotonic() - self._last_request_at
+            if elapsed < self.min_interval_seconds:
+                time.sleep(self.min_interval_seconds - elapsed)
+        req = urllib.request.Request(
+            f"{self.api_base}{path}",
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            method=method,
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as response:
+                raw = response.read().decode("utf-8")
+                self._last_request_at = time.monotonic()
+                return json.loads(raw) if raw else {}
+        except urllib.error.HTTPError as exc:
+            self._last_request_at = time.monotonic()
+            body = exc.read().decode("utf-8", errors="replace")
+            raise DifyError(f"Dify HTTP {exc.code}: {body}") from exc
 
 
 def asset_id_from_record(record: dict) -> str | None:
@@ -53,7 +69,7 @@ def asset_id_from_record(record: dict) -> str | None:
     return match.group(1) if match else None
 
 
-def retrieve(api_base: str, api_key: str, dataset_id: str, query: str, top_k: int, search_method: str):
+def retrieve(client: DifyClient, dataset_id: str, query: str, top_k: int, search_method: str):
     payload = {
         "query": query,
         "retrieval_model": {
@@ -63,7 +79,7 @@ def retrieve(api_base: str, api_key: str, dataset_id: str, query: str, top_k: in
             "score_threshold_enabled": False,
         },
     }
-    return request(api_base, api_key, "POST", f"/datasets/{dataset_id}/retrieve", payload)
+    return client.request("POST", f"/datasets/{dataset_id}/retrieve", payload)
 
 
 def metrics(cases: list[dict]) -> dict:
@@ -104,13 +120,12 @@ def load_cases(path: str) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def run_split(api_base, api_key, dataset_id, path, top_k, search_method):
+def run_split(client, dataset_id, path, top_k, search_method):
     frozen = load_cases(path)
     rows = []
     for case in frozen["cases"]:
         response = retrieve(
-            api_base,
-            api_key,
+            client,
             dataset_id,
             case["query"],
             top_k,
@@ -159,6 +174,7 @@ def main():
         default=os.environ.get("DIFY_BENCHMARK_DATASET_ID") or os.environ.get("DIFY_DATASET_ID"),
     )
     parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--delay-seconds", type=float, default=7.0)
     parser.add_argument(
         "--search-method",
         choices=("semantic_search", "full_text_search", "hybrid_search", "keyword_search"),
@@ -176,6 +192,7 @@ def main():
         "api_key_configured": bool(args.api_key),
         "search_method": args.search_method,
         "top_k": args.top_k,
+        "delay_seconds": args.delay_seconds,
         "dev_cases": len(load_cases(args.dev)["cases"]),
         "holdout_cases": len(load_cases(args.holdout)["cases"]),
         "planned_retrieval_calls": len(load_cases(args.dev)["cases"]) + len(load_cases(args.holdout)["cases"]),
@@ -189,12 +206,9 @@ def main():
     if not args.api_key:
         raise SystemExit("DIFY_API_KEY or --api-key is required.")
 
-    dev = run_split(
-        args.api_base, args.api_key, args.dataset_id, args.dev, args.top_k, args.search_method
-    )
-    holdout = run_split(
-        args.api_base, args.api_key, args.dataset_id, args.holdout, args.top_k, args.search_method
-    )
+    client = DifyClient(args.api_base, args.api_key, min_interval_seconds=args.delay_seconds)
+    dev = run_split(client, args.dataset_id, args.dev, args.top_k, args.search_method)
+    holdout = run_split(client, args.dataset_id, args.holdout, args.top_k, args.search_method)
     baseline = json.loads(Path(args.baseline).read_text(encoding="utf-8"))
 
     result = {
@@ -203,9 +217,13 @@ def main():
         "dataset_id": args.dataset_id,
         "search_method": args.search_method,
         "top_k": args.top_k,
+        "delay_seconds": args.delay_seconds,
         "corpus": {
             "assets": 63,
             "hard_negatives_in_dify": 12,
+            "sandbox_compact": True,
+            "dify_documents": 1,
+            "one_asset_per_segment": True,
         },
         "dev": dev,
         "holdout": holdout,
@@ -217,7 +235,8 @@ def main():
         },
         "comparison_note": (
             "Dify benchmark-v1 uses the same 51 normal assets + 12 hard negatives "
-            "as the local lexical baseline for a like-for-like corpus comparison."
+            "as the local lexical baseline. Sandbox packing changes only the Dify document container: "
+            "each Proposal Asset remains one independently retrieved segment with embedded provenance."
         ),
     }
 
