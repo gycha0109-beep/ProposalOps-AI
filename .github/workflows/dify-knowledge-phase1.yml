@@ -13,6 +13,7 @@ on:
           - upload-production
           - upload-benchmark
           - retrieve-benchmark
+          - semantic-benchmark
           - full-phase1
   push:
     branches: [main]
@@ -94,7 +95,7 @@ jobs:
           fi
 
       - name: Ensure Dify datasets
-        if: env.DIFY_OPERATION != 'plan'
+        if: env.DIFY_OPERATION != 'plan' && env.DIFY_OPERATION != 'semantic-benchmark'
         shell: bash
         run: |
           python scripts/ensure_dify_datasets.py \
@@ -150,6 +151,17 @@ jobs:
             --delay-seconds 7 \
             --search-method keyword_search \
             --out reports/dify-retrieval-v1-economy.json
+
+      - name: Run Dify semantic benchmark
+        if: env.DIFY_OPERATION == 'semantic-benchmark'
+        shell: bash
+        run: |
+          DATASET_ID="e72cbe16-1eef-4858-9e35-61d5e00326bf"
+          python scripts/evaluate_dify_retrieval.py \
+            --dataset-id "$DATASET_ID" \
+            --delay-seconds 7 \
+            --search-method semantic_search \
+            --out reports/dify-retrieval-v1-semantic.json
 
       - name: Commit live evidence
         if: env.DIFY_OPERATION != 'plan'
