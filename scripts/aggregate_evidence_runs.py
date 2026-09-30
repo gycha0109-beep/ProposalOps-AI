@@ -63,8 +63,8 @@ def render(result):
     lines = [
         "# Evidence Builder Benchmark — dev",
         "",
-        f'- benchmark: \`{result["benchmark_version"]}\`',
-        f'- model: \`{result["model"]}\`',
+        f'- benchmark: `{result["benchmark_version"]}`',
+        f'- model: `{result["model"]}`',
         f'- runs: **{result["run_count"]}**',
         "",
         "| Version | JSON | PASS | Primary recall | Precision | Reject prohibited | Provenance | Status | Company violations | Numeric violations |",
