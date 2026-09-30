@@ -1,5 +1,5 @@
-operation: plan
+operation: semantic-benchmark
 phase: knowledge-v1
-bootstrap: automatic
+bootstrap: existing-high-quality-dataset
 required_secret: DIFY_API_KEY
-note: live sandbox economy diagnostic completed 2026-09-30
+triggered: 2026-09-30T11:49+09:00
