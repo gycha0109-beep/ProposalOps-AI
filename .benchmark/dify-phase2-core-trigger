@@ -1,0 +1,9 @@
+Dify Phase 2 grounded strategy core
+rfp: RFP-TEST-002
+model: gpt-5.6-luna
+knowledge: ProposalOps Production v1 high-quality
+dataset_id: 21dcb1f3-270f-4991-bcf8-b2782e6cf814
+retrieval: semantic_search top5
+expected_openai_calls: 4
+expected_dify_calls: 6
+triggered: 2026-09-30T12:42+09:00
