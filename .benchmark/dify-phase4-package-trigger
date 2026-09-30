@@ -1,0 +1,9 @@
+Dify Phase 4 final package
+rfp: RFP-TEST-002
+source_phase2: reports/dify-phase2-core-rfp-test-002.json
+source_phase3: reports/dify-phase3-pagination-rfp-test-002.json
+model: gpt-5.6-luna
+normal_path_openai_calls: 3
+max_repair_cycles: 2
+expected_max_calls: 7
+triggered: 2026-09-30T13:31+09:00
