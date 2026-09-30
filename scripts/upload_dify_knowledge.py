@@ -39,6 +39,7 @@ class DifyClient:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Accept": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 ProposalOps-AI/1.0",
         }
         if payload is not None:
             body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
