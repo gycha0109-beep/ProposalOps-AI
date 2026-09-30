@@ -14,7 +14,7 @@ from pathlib import Path
 DEFAULT_API_BASE = "https://api.dify.ai/v1"
 DEFAULT_MANIFEST = "exports/dify/knowledge-v1/documents.jsonl"
 DEFAULT_SCHEMA = "exports/dify/knowledge-v1/metadata-schema.json"
-ASSET_ID_RE = re.compile(r"asset_id:\s*(PA-[A-Z]+-\d+-P\d+)")
+ASSET_ID_RE = re.compile(r"asset_id:\s*(PA-[A-Z]+-(?:\d+-)?P\d+)")
 COMPACT_SEED_MARKER = "PROPOSALOPS_SANDBOX_COMPACT_CONTAINER"
 PACK_SEPARATOR = "\n<<<PROPOSALOPS_ASSET_BOUNDARY_V1>>>\n"
 
