@@ -275,6 +275,7 @@ Evidence:
 - `reports/dify-phase2-core-rfp-test-002.md`
 - `docs/dify-phase2-core.md`
 - `dify/proposalops-phase2-core.yml` — current Dify DSL **0.7.0** Studio import candidate
+- `dify/phase2-import-guide.md` — Studio import / smoke-test checklist
 - `scripts/validate_dify_phase2_dsl.py` — DSL structure / dataset / rate-limit / secret-leak gate
 
 Evidence Builder도 별도 live benchmark에서 frozen candidate `v1_grounded`가 PASS했습니다.
