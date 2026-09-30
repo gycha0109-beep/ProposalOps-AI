@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "phase": "dify-phase3-pagination",
+  "rfp_id": "RFP-TEST-002",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "low",
+  "max_output_tokens": 6000,
+  "source_report": "reports/dify-phase2-core-rfp-test-002.json",
+  "pagination_prompt": "prompts/production/pagination.md",
+  "page_limit": 8,
+  "output_root": "runs/dify/phase3/RFP-TEST-002",
+  "report_json": "reports/dify-phase3-pagination-rfp-test-002.json",
+  "report_md": "reports/dify-phase3-pagination-rfp-test-002.md"
+}
