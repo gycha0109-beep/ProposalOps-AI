@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 DEFAULT_API_BASE = "https://api.dify.ai/v1"
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 ProposalOps-AI/1.0"
 
 
 class DifyError(RuntimeError):
@@ -31,6 +32,7 @@ class DifyClient:
             elapsed = time.monotonic() - self._last_request_at
             if elapsed < self.min_interval_seconds:
                 time.sleep(self.min_interval_seconds - elapsed)
+
         req = urllib.request.Request(
             f"{self.api_base}{path}",
             data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
@@ -38,7 +40,7 @@ class DifyClient:
                 "Authorization": f"Bearer {self.api_key}",
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 ProposalOps-AI/1.0",
+                "User-Agent": USER_AGENT,
             },
             method=method,
         )
@@ -51,6 +53,9 @@ class DifyClient:
             self._last_request_at = time.monotonic()
             body = exc.read().decode("utf-8", errors="replace")
             raise DifyError(f"Dify HTTP {exc.code}: {body}") from exc
+        except urllib.error.URLError as exc:
+            self._last_request_at = time.monotonic()
+            raise DifyError(f"Dify request failed: {exc}") from exc
 
 
 def asset_id_from_record(record: dict) -> str | None:
@@ -71,16 +76,44 @@ def asset_id_from_record(record: dict) -> str | None:
 
 
 def retrieve(client: DifyClient, dataset_id: str, query: str, top_k: int, search_method: str):
-    payload = {
-        "query": query,
-        "retrieval_model": {
-            "search_method": search_method,
-            "reranking_enable": False,
-            "top_k": top_k,
-            "score_threshold_enabled": False,
+    return client.request(
+        "POST",
+        f"/datasets/{dataset_id}/retrieve",
+        {
+            "query": query,
+            "retrieval_model": {
+                "search_method": search_method,
+                "reranking_enable": False,
+                "top_k": top_k,
+                "score_threshold_enabled": False,
+            },
         },
+    )
+
+
+def parse_case(case: dict, response: dict) -> dict:
+    ranked = []
+    raw = []
+    for record in response.get("records", []):
+        asset_id = asset_id_from_record(record)
+        if asset_id and asset_id not in ranked:
+            ranked.append(asset_id)
+        raw.append(
+            {
+                "asset_id": asset_id,
+                "score": record.get("score"),
+                "document_name": ((record.get("segment") or {}).get("document") or {}).get("name"),
+                "segment_id": (record.get("segment") or {}).get("id"),
+            }
+        )
+
+    return {
+        "case_id": case["id"],
+        "query": case["query"],
+        "expected_asset_ids": case["expected_asset_ids"],
+        "retrieved_asset_ids": ranked,
+        "records": raw,
     }
-    return client.request("POST", f"/datasets/{dataset_id}/retrieve", payload)
 
 
 def metrics(cases: list[dict]) -> dict:
@@ -121,42 +154,60 @@ def load_cases(path: str) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def run_split(client, dataset_id, path, top_k, search_method):
+def load_checkpoint(path: Path, dataset_id: str, search_method: str, top_k: int) -> dict[str, dict]:
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if (
+        data.get("dataset_id") != dataset_id
+        or data.get("search_method") != search_method
+        or data.get("top_k") != top_k
+    ):
+        return {}
+    return {row["case_id"]: row for row in data.get("cases", [])}
+
+
+def save_checkpoint(
+    path: Path,
+    dataset_id: str,
+    search_method: str,
+    top_k: int,
+    rows: dict[str, dict],
+):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "dataset_id": dataset_id,
+        "search_method": search_method,
+        "top_k": top_k,
+        "completed_cases": len(rows),
+        "cases": list(rows.values()),
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def run_split(
+    client: DifyClient,
+    dataset_id: str,
+    path: str,
+    top_k: int,
+    search_method: str,
+    completed: dict[str, dict],
+    checkpoint_path: Path,
+) -> dict:
     frozen = load_cases(path)
     rows = []
+
     for case in frozen["cases"]:
-        response = retrieve(
-            client,
-            dataset_id,
-            case["query"],
-            top_k,
-            search_method,
-        )
-        records = response.get("records", [])
-        ranked = []
-        raw = []
-        for record in records:
-            asset_id = asset_id_from_record(record)
-            if asset_id and asset_id not in ranked:
-                ranked.append(asset_id)
-            raw.append(
-                {
-                    "asset_id": asset_id,
-                    "score": record.get("score"),
-                    "document_name": ((record.get("segment") or {}).get("document") or {}).get("name"),
-                    "segment_id": (record.get("segment") or {}).get("id"),
-                }
-            )
-        rows.append(
-            {
-                "case_id": case["id"],
-                "query": case["query"],
-                "expected_asset_ids": case["expected_asset_ids"],
-                "retrieved_asset_ids": ranked,
-                "records": raw,
-            }
-        )
-        print(f"{case['id']}: {ranked[:5]}")
+        if case["id"] in completed:
+            row = completed[case["id"]]
+            print(f"{case['id']}: checkpoint {row['retrieved_asset_ids'][:5]}")
+        else:
+            response = retrieve(client, dataset_id, case["query"], top_k, search_method)
+            row = parse_case(case, response)
+            completed[case["id"]] = row
+            save_checkpoint(checkpoint_path, dataset_id, search_method, top_k, completed)
+            print(f"{case['id']}: {row['retrieved_asset_ids'][:5]}")
+        rows.append(row)
 
     return {
         "split": frozen["split"],
@@ -185,8 +236,12 @@ def main():
     parser.add_argument("--holdout", default="evals/frozen/v1/holdout/retrieval.json")
     parser.add_argument("--baseline", default="evals/baselines/retrieval-v1.json")
     parser.add_argument("--out", default="reports/dify-retrieval-v1.json")
+    parser.add_argument("--checkpoint")
     parser.add_argument("--plan-only", action="store_true")
     args = parser.parse_args()
+
+    out = Path(args.out)
+    checkpoint_path = Path(args.checkpoint) if args.checkpoint else out.with_suffix(".partial.json")
 
     plan = {
         "dataset_id_configured": bool(args.dataset_id),
@@ -197,6 +252,7 @@ def main():
         "dev_cases": len(load_cases(args.dev)["cases"]),
         "holdout_cases": len(load_cases(args.holdout)["cases"]),
         "planned_retrieval_calls": len(load_cases(args.dev)["cases"]) + len(load_cases(args.holdout)["cases"]),
+        "checkpoint": str(checkpoint_path),
     }
     if args.plan_only:
         print(json.dumps(plan, ensure_ascii=False, indent=2))
@@ -207,13 +263,35 @@ def main():
     if not args.api_key:
         raise SystemExit("DIFY_API_KEY or --api-key is required.")
 
+    completed = load_checkpoint(checkpoint_path, args.dataset_id, args.search_method, args.top_k)
     client = DifyClient(args.api_base, args.api_key, min_interval_seconds=args.delay_seconds)
-    dev = run_split(client, args.dataset_id, args.dev, args.top_k, args.search_method)
-    holdout = run_split(client, args.dataset_id, args.holdout, args.top_k, args.search_method)
-    baseline = json.loads(Path(args.baseline).read_text(encoding="utf-8"))
 
+    try:
+        dev = run_split(
+            client,
+            args.dataset_id,
+            args.dev,
+            args.top_k,
+            args.search_method,
+            completed,
+            checkpoint_path,
+        )
+        holdout = run_split(
+            client,
+            args.dataset_id,
+            args.holdout,
+            args.top_k,
+            args.search_method,
+            completed,
+            checkpoint_path,
+        )
+    except DifyError:
+        save_checkpoint(checkpoint_path, args.dataset_id, args.search_method, args.top_k, completed)
+        raise
+
+    baseline = json.loads(Path(args.baseline).read_text(encoding="utf-8"))
     result = {
-        "version": "1.0",
+        "version": "1.1",
         "type": "dify_knowledge_retrieval",
         "dataset_id": args.dataset_id,
         "search_method": args.search_method,
@@ -241,9 +319,10 @@ def main():
         ),
     }
 
-    out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if checkpoint_path.exists():
+        checkpoint_path.unlink()
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
