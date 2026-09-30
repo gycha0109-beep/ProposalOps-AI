@@ -35,8 +35,8 @@ def main() -> None:
     graph = ((data.get("workflow") or {}).get("graph") or {})
     nodes = graph.get("nodes") or []
     edges = graph.get("edges") or []
-    if len(nodes) != 35 or len(edges) != 35:
-        fail(f"Expected 35 nodes / 35 edges, got {len(nodes)} / {len(edges)}.")
+    if len(nodes) != 42 or len(edges) != 43:
+        fail(f"Expected 42 nodes / 43 edges, got {len(nodes)} / {len(edges)}.")
 
     by_id = {node.get("id"): node for node in nodes}
     if len(by_id) != len(nodes) or None in by_id:
@@ -74,6 +74,13 @@ def main() -> None:
         "qa_recheck",
         "qa_recheck_parse",
         "qa_recheck_branch",
+        "visual_repair",
+        "visual_repair_gate",
+        "visual_repair_branch",
+        "proposal_qa_after_visual_repair",
+        "qa_parse_after_visual_repair",
+        "qa_branch_after_visual_repair",
+        "visual_repaired_final_end",
         "final_end",
         "gate_failure_end",
         "repaired_end",
@@ -89,13 +96,13 @@ def main() -> None:
     node_types = Counter((node.get("data") or {}).get("type") for node in nodes)
     required_counts = {
         "start": 1,
-        "llm": 10,
-        "code": 12,
+        "llm": 12,
+        "code": 14,
         "iteration": 1,
         "iteration-start": 1,
         "knowledge-retrieval": 1,
-        "if-else": 5,
-        "end": 4,
+        "if-else": 7,
+        "end": 5,
     }
     if dict(node_types) != required_counts:
         fail(f"Unexpected node type counts: {dict(node_types)}")
@@ -129,6 +136,15 @@ def main() -> None:
         ("qa_recheck_parse", "qa_recheck_branch", "source"),
         ("qa_recheck_branch", "repaired_end", "true"),
         ("qa_recheck_branch", "escalation_end", "false"),
+        ("visual_gate_branch", "visual_repair", "false"),
+        ("visual_repair", "visual_repair_gate", "source"),
+        ("visual_repair_gate", "visual_repair_branch", "source"),
+        ("visual_repair_branch", "proposal_qa_after_visual_repair", "true"),
+        ("visual_repair_branch", "gate_failure_end", "false"),
+        ("proposal_qa_after_visual_repair", "qa_parse_after_visual_repair", "source"),
+        ("qa_parse_after_visual_repair", "qa_branch_after_visual_repair", "source"),
+        ("qa_branch_after_visual_repair", "visual_repaired_final_end", "true"),
+        ("qa_branch_after_visual_repair", "escalation_end", "false"),
     }
     actual_edges = {
         (edge.get("source"), edge.get("target"), edge.get("sourceHandle"))
@@ -164,6 +180,8 @@ def main() -> None:
         "proposal_qa",
         "targeted_repair",
         "qa_recheck",
+        "visual_repair",
+        "proposal_qa_after_visual_repair",
     }
     for node_id in llm_ids:
         model = by_id[node_id]["data"].get("model") or {}
@@ -180,6 +198,8 @@ def main() -> None:
         "qa_parse": ("proposal_qa", "text"),
         "repair_context": ("qa_parse", "normalized"),
         "qa_recheck_parse": ("qa_recheck", "text"),
+        "visual_repair_gate": ("visual_repair", "text"),
+        "qa_parse_after_visual_repair": ("proposal_qa_after_visual_repair", "text"),
     }.items():
         variables = by_id[node_id]["data"].get("variables") or []
         selectors = {
@@ -228,6 +248,8 @@ def main() -> None:
         "qa_branch",
         "repair_gate_branch",
         "qa_recheck_branch",
+        "visual_repair_branch",
+        "qa_branch_after_visual_repair",
     ):
         branch = by_id[branch_id]["data"]
         targets = {item.get("id") for item in branch.get("_targetBranches") or []}
@@ -282,6 +304,25 @@ def main() -> None:
         item.get("variable")
         for item in by_id["repaired_end"]["data"].get("outputs") or []
     }
+    visual_repaired_vars = {
+        item.get("variable")
+        for item in by_id["visual_repaired_final_end"]["data"].get("outputs") or []
+    }
+    expected_visual_repaired_vars = {
+        "visual_repaired_rfp_analysis",
+        "visual_repaired_evidence_packs",
+        "visual_repaired_proposal_strategy",
+        "visual_repaired_pagination",
+        "visual_repaired_slides",
+        "visual_repaired_visuals",
+        "visual_repaired_qa",
+        "visual_repaired_coverage_validation",
+        "visual_repaired_slide_validation",
+        "visual_repaired_visual_validation",
+    }
+    if visual_repaired_vars != expected_visual_repaired_vars:
+        fail(f"Visual-repaired final output mismatch: {sorted(visual_repaired_vars)}")
+
     expected_repaired_vars = {
         "repaired_rfp_analysis",
         "repaired_evidence_packs",
@@ -321,7 +362,7 @@ def main() -> None:
         fail(f"Escalation output mismatch: {sorted(escalation_vars)}")
 
     all_end_variables = []
-    for end_id in ("final_end", "gate_failure_end", "repaired_end", "escalation_end"):
+    for end_id in ("final_end", "gate_failure_end", "repaired_end", "visual_repaired_final_end", "escalation_end"):
         all_end_variables.extend(
             item.get("variable")
             for item in by_id[end_id]["data"].get("outputs") or []
@@ -352,6 +393,7 @@ def main() -> None:
         "slide_gate": "deterministic",
         "visual_gate": "deterministic",
         "semantic_qa": True,
+        "visual_gate_auto_repair": True,
         "studio_repair_passes": 1,
         "python_max_repair_cycles": 3,
         "model_provider": "langgenius/openai/openai",
