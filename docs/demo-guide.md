@@ -137,6 +137,20 @@ ST-05 / ST-06
 }
 ```
 
+현재 Dify live integration 결과도 함께 보여줍니다.
+
+`reports/dify-phase4-package-rfp-test-002.json`
+
+- 6 pages / 6 slides / 6 visuals
+- Coverage Gate PASS
+- Slide Provenance Gate PASS
+- Visual Provenance Gate PASS
+- Proposal QA PASS / issues 0
+- broken provenance chains 0
+- 최신 성공 run repair 0회
+
+즉 legacy E2E에서는 실제 failure → targeted repair story를, 현재 Dify Phase 4에서는 강화된 generation contract가 정상 경로에서 바로 PASS하는 것을 각각 증명합니다.
+
 마지막으로 세 benchmark track이 모두 dev + holdout까지 끝났음을 보여줍니다.
 
 - RFP Analyzer v4: frozen / holdout PASS
@@ -147,9 +161,9 @@ ST-05 / ST-06
 
 - synthetic benchmark를 실제 고객 성과처럼 표현
 - 이 결과로 실제 제안 수주율이 개선됐다고 주장
-- lexical retrieval baseline을 Dify/embedding retrieval 성능이라고 표현
-- `dify/workflow-spec.yaml`을 import 가능한 공식 Dify DSL이라고 표현
-- Pagination/Slide/Visual prompt가 별도 frozen benchmark까지 통과했다고 표현
+- lexical retrieval baseline과 Dify semantic retrieval의 aggregate metric이 같더라도 서로 다른 시스템의 결과라는 점을 생략
+- `dify/workflow-spec.yaml`을 import 가능한 공식 Dify DSL이라고 표현 (`dify/proposalops-phase4-package.yml`이 실제 import candidate)
+- Pagination/Slide/Visual/Targeted Repair prompt가 별도 frozen benchmark까지 통과했다고 표현
 
 ## 데모 핵심 한 문장
 
