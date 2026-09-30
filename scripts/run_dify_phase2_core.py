@@ -99,7 +99,7 @@ Return JSON only:
           "evidence_id": "EV-R-201-01",
           "asset_id": "PA-...",
           "proposal_id": "PROP-...",
-          "title": "exact candidate title",
+          "title": "exact candidate.title value",
           "supported_point": "what this source actually supports",
           "reusable_patterns": ["..."],
           "company_facts": [],
@@ -119,7 +119,7 @@ Return JSON only:
 
 Return exactly one result per supplied requirement.
 Evidence IDs must be sequential within each requirement.
-Do not select irrelevant candidates merely to fill a quota.
+Do not select irrelevant candidates merely to fill a quota.\nFor title, copy the candidate.title field exactly. Do not use candidate.document_name.
 '''
 
 
@@ -212,11 +212,14 @@ def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method)
                 })
                 continue
             doc = corpus[asset_id]
+            document_name = doc["name"]
+            title = document_name.split("__", 1)[1] if "__" in document_name else document_name
             candidates.append({
                 "retrieval_rank": rank,
                 "retrieval_score": record.get("score"),
                 "asset_id": asset_id,
-                "name": doc["name"],
+                "title": title,
+                "document_name": document_name,
                 "text": doc["text"],
                 "metadata": doc["metadata"],
             })
