@@ -129,11 +129,11 @@ def ensure_metadata_fields(client: DifyClient, dataset_id: str, schema: list[dic
     return {item["name"]: item for item in items if isinstance(item, dict) and item.get("name")}
 
 
-def create_document(client: DifyClient, dataset_id: str, doc: dict) -> dict:
+def create_document(client: DifyClient, dataset_id: str, doc: dict, indexing_technique: str = "high_quality") -> dict:
     payload = {
         "name": doc["name"],
         "text": doc["text"],
-        "indexing_technique": "high_quality",
+        "indexing_technique": indexing_technique,
         "doc_form": "text_model",
         "process_rule": {
             "mode": "custom",
@@ -190,11 +190,12 @@ def create_packed_document(
     dataset_id: str,
     document_name: str,
     docs: list[dict],
+    indexing_technique: str,
 ) -> dict:
     payload = {
         "name": document_name,
         "text": pack_documents(docs),
-        "indexing_technique": "high_quality",
+        "indexing_technique": indexing_technique,
         "doc_form": "text_model",
         "process_rule": {
             "mode": "custom",
@@ -223,6 +224,7 @@ def upload_compact(
     dataset_id: str,
     docs: list[dict],
     document_name: str,
+    indexing_technique: str,
 ) -> dict:
     existing_documents = list_all_documents(client, dataset_id)
     matches = [row for row in existing_documents if row.get("name") == document_name]
@@ -233,7 +235,7 @@ def upload_compact(
     if matches:
         document_id = matches[0]["id"]
     else:
-        response = create_packed_document(client, dataset_id, document_name, docs)
+        response = create_packed_document(client, dataset_id, document_name, docs, indexing_technique)
         document = response.get("document") or {}
         document_id = document.get("id")
         if not document_id:
@@ -285,6 +287,7 @@ def upload_compact(
         "dataset_id": dataset_id,
         "api_base": client.api_base,
         "sandbox_compact": True,
+        "indexing_technique": indexing_technique,
         "compact_strategy": "single_document_custom_separator",
         "compact_document_name": document_name,
         "compact_document_id": document_id,
@@ -353,6 +356,7 @@ def main():
     parser.add_argument("--dataset-id", default=os.environ.get("DIFY_DATASET_ID"))
     parser.add_argument("--api-key", default=os.environ.get("DIFY_API_KEY"))
     parser.add_argument("--delay-seconds", type=float, default=7.0)
+    parser.add_argument("--indexing-technique", choices=("high_quality", "economy"), default="high_quality")
     parser.add_argument("--max-documents", type=int)
     parser.add_argument("--skip-native-metadata", action="store_true")
     parser.add_argument("--require-native-metadata", action="store_true")
@@ -380,6 +384,7 @@ def main():
         "segment_endpoint": "automatic custom-separator segmentation during create-by-text",
         "retrieval_endpoint": "/datasets/{dataset_id}/retrieve",
         "delay_seconds": args.delay_seconds,
+        "indexing_technique": args.indexing_technique,
     }
     if args.plan_only:
         print(json.dumps(plan, ensure_ascii=False, indent=2))
@@ -399,7 +404,7 @@ def main():
     )
 
     if args.sandbox_compact:
-        state = upload_compact(client, args.dataset_id, docs, args.compact_document_name)
+        state = upload_compact(client, args.dataset_id, docs, args.compact_document_name, args.indexing_technique)
         state_path = Path(args.state_out)
         state_path.parent.mkdir(parents=True, exist_ok=True)
         state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -436,7 +441,7 @@ def main():
             continue
 
         try:
-            response = create_document(client, args.dataset_id, doc)
+            response = create_document(client, args.dataset_id, doc, args.indexing_technique)
             document = response.get("document") or {}
             document_id = document.get("id")
             if not document_id:
