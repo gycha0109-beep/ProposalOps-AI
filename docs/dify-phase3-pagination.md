@@ -141,14 +141,23 @@ Expected graph:
 
 The Studio app itself has not been imported/smoke-tested with the user's account session yet. Static structure and live API-side logic are validated separately.
 
-## Next
+## Downstream completion
 
-Next downstream stage:
+The next downstream stage has now been completed in Phase 4:
 
 ```text
 Pagination PASS
 → Slide Draft
+→ Slide Provenance Gate
 → Visual Prompt
+→ Visual Provenance Gate
 → Proposal QA
 → targeted repair if needed
+→ Final Package PASS
 ```
+
+See:
+
+- `docs/dify-phase4-package.md`
+- `reports/dify-phase4-package-rfp-test-002.json`
+- `dify/proposalops-phase4-package.yml`
