@@ -1,0 +1,2308 @@
+{
+  "version": "1.1",
+  "type": "dify_knowledge_retrieval",
+  "dataset_id": "e72cbe16-1eef-4858-9e35-61d5e00326bf",
+  "search_method": "semantic_search",
+  "top_k": 5,
+  "delay_seconds": 7.0,
+  "corpus": {
+    "assets": 63,
+    "hard_negatives_in_dify": 12,
+    "sandbox_compact": true,
+    "dify_documents": 1,
+    "one_asset_per_segment": true
+  },
+  "dev": {
+    "split": "dev",
+    "source": "evals/frozen/v1/dev/retrieval.json",
+    "metrics": {
+      "cases": 32,
+      "hit_at_1": 0.9062,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9531,
+      "top1_misses": [
+        {
+          "case_id": "RET-D06",
+          "rank": 2,
+          "wrong_top1": "PA-DIST-P011",
+          "expected": [
+            "PA-VIDEO-004-P022"
+          ]
+        },
+        {
+          "case_id": "RET-D25",
+          "rank": 2,
+          "wrong_top1": "PA-EDU-006-P010",
+          "expected": [
+            "PA-EDU-006-P011"
+          ]
+        },
+        {
+          "case_id": "RET-D31",
+          "rank": 2,
+          "wrong_top1": "PA-DIST-P005",
+          "expected": [
+            "PA-CAMP-010-P023"
+          ]
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "RET-D01",
+        "query": "청년층을 숏폼에서 퀴즈와 실제 참여로 연결하는 단계형 전략",
+        "expected_asset_ids": [
+          "PA-EDU-003-P017"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-003-P017",
+          "PA-DIST-P001",
+          "PA-EDU-003-P018",
+          "PA-EDU-006-P010",
+          "PA-EDU-006-P011"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-003-P017",
+            "score": 0.46624494,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6a8ce9fe-46aa-4ead-9225-307596d8573c"
+          },
+          {
+            "asset_id": "PA-DIST-P001",
+            "score": 0.3712141,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ef228059-77d1-459c-9494-e3f8e264723d"
+          },
+          {
+            "asset_id": "PA-EDU-003-P018",
+            "score": 0.36455703,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+          },
+          {
+            "asset_id": "PA-EDU-006-P010",
+            "score": 0.3323927,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+          },
+          {
+            "asset_id": "PA-EDU-006-P011",
+            "score": 0.3254316,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D02",
+        "query": "참여 결과를 후속 콘텐츠로 재활용해 다시 도달을 만드는 구조",
+        "expected_asset_ids": [
+          "PA-EDU-003-P018"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-003-P018",
+          "PA-EDU-003-P017",
+          "PA-PR-007-P016",
+          "PA-CAMP-010-P024",
+          "PA-EDU-006-P012"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-003-P018",
+            "score": 0.63067234,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+          },
+          {
+            "asset_id": "PA-EDU-003-P017",
+            "score": 0.51406,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6a8ce9fe-46aa-4ead-9225-307596d8573c"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.46853477,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.46539718,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+          },
+          {
+            "asset_id": "PA-EDU-006-P012",
+            "score": 0.45575166,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f0cc9a71-455c-4ece-85ed-13badbf86257"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D03",
+        "query": "정책 내용을 상황 질문에서 혜택과 다음 행동으로 연결하는 메시지",
+        "expected_asset_ids": [
+          "PA-PR-002-P012"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-002-P012",
+          "PA-PR-011-P009",
+          "PA-DIST-P011",
+          "PA-PR-011-P010",
+          "PA-PR-011-P012"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-002-P012",
+            "score": 0.5972937,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3a5e97b0-29b8-4511-8bed-1777d9555793"
+          },
+          {
+            "asset_id": "PA-PR-011-P009",
+            "score": 0.4675014,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+          },
+          {
+            "asset_id": "PA-DIST-P011",
+            "score": 0.44277245,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "309d8e4b-91c5-4445-b84d-6734c59648e9"
+          },
+          {
+            "asset_id": "PA-PR-011-P010",
+            "score": 0.42933553,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6a27a94e-2f0e-4b10-b7aa-d4adc319f2db"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.41082078,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D04",
+        "query": "SNS 발견 이후 반응과 공유로 확산시키는 구조",
+        "expected_asset_ids": [
+          "PA-PR-002-P013"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-002-P013",
+          "PA-EDU-003-P018",
+          "PA-PR-007-P016",
+          "PA-PR-007-P018",
+          "PA-DIST-P010"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-002-P013",
+            "score": 0.5227837,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ab245998-409c-499c-b097-f496803d1fc5"
+          },
+          {
+            "asset_id": "PA-EDU-003-P018",
+            "score": 0.39467388,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.34484118,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          },
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.33196372,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          },
+          {
+            "asset_id": "PA-DIST-P010",
+            "score": 0.31607258,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D05",
+        "query": "30초 영상에서 훅 핵심 정보 CTA를 나누는 포맷",
+        "expected_asset_ids": [
+          "PA-VIDEO-004-P021"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-004-P021",
+          "PA-VIDEO-008-P008",
+          "PA-DIST-P003",
+          "PA-VIDEO-008-P010",
+          "PA-VIDEO-008-P006"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.5825994,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P008",
+            "score": 0.49766755,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4788c8a3-31ba-4f50-a9d9-ae822e4d5e63"
+          },
+          {
+            "asset_id": "PA-DIST-P003",
+            "score": 0.4568755,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "61af258d-5288-44d9-b25e-488d8e9108e8"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P010",
+            "score": 0.44310415,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "31b90cda-a03b-4878-81c3-d25ce649587d"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.42514706,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D06",
+        "query": "게시 전 정책 수치 기간 자격조건을 다시 확인하는 검수",
+        "expected_asset_ids": [
+          "PA-VIDEO-004-P022"
+        ],
+        "retrieved_asset_ids": [
+          "PA-DIST-P011",
+          "PA-VIDEO-004-P022",
+          "PA-PR-011-P012",
+          "PA-PR-011-P009",
+          "PA-VIDEO-012-P017"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-DIST-P011",
+            "score": 0.46995008,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "309d8e4b-91c5-4445-b84d-6734c59648e9"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P022",
+            "score": 0.42660588,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.36866933,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-PR-011-P009",
+            "score": 0.35218632,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.34835786,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D07",
+        "query": "중장년 디지털 교육에서 기기 조작과 용어 이해 장벽 분석",
+        "expected_asset_ids": [
+          "PA-EDU-006-P010"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P010",
+          "PA-EDU-006-P011",
+          "PA-EDU-006-P013",
+          "PA-EDU-006-P012",
+          "PA-EDU-009-P008"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P010",
+            "score": 0.5642369,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+          },
+          {
+            "asset_id": "PA-EDU-006-P011",
+            "score": 0.42513353,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+          },
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.38855225,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          },
+          {
+            "asset_id": "PA-EDU-006-P012",
+            "score": 0.37814993,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f0cc9a71-455c-4ece-85ed-13badbf86257"
+          },
+          {
+            "asset_id": "PA-EDU-009-P008",
+            "score": 0.3661586,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D08",
+        "query": "설명 시범 따라하기 확인 순서의 마이크로러닝",
+        "expected_asset_ids": [
+          "PA-EDU-006-P011"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P011",
+          "PA-VIDEO-012-P018",
+          "PA-VIDEO-004-P022",
+          "PA-VIDEO-012-P017",
+          "PA-PR-007-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P011",
+            "score": 0.38810194,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.26689214,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P022",
+            "score": 0.26397407,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.25953627,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          },
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.25784928,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D09",
+        "query": "앱 설치 본인인증 같은 생활 과업 중심 교육 콘텐츠",
+        "expected_asset_ids": [
+          "PA-EDU-006-P012"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P012",
+          "PA-EDU-006-P011",
+          "PA-EDU-006-P014",
+          "PA-CAMP-005-P010",
+          "PA-EDU-003-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P012",
+            "score": 0.49388713,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f0cc9a71-455c-4ece-85ed-13badbf86257"
+          },
+          {
+            "asset_id": "PA-EDU-006-P011",
+            "score": 0.3362834,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+          },
+          {
+            "asset_id": "PA-EDU-006-P014",
+            "score": 0.33557743,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8f9e2bab-370c-4f55-8d0a-d57e159bd004"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P010",
+            "score": 0.32034606,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2a814977-b753-44fd-b975-2efd1272a68e"
+          },
+          {
+            "asset_id": "PA-EDU-003-P018",
+            "score": 0.31679618,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D10",
+        "query": "강사 설명과 1대1 보조 지원을 분리하는 현장 운영",
+        "expected_asset_ids": [
+          "PA-EDU-006-P013"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P013",
+          "PA-EVENT-004-P014",
+          "PA-EDU-006-P010",
+          "PA-DIST-P006",
+          "PA-DIST-P009"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.51007724,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P014",
+            "score": 0.36236954,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ae819d87-3bc2-48f0-a014-cf79fe918c6e"
+          },
+          {
+            "asset_id": "PA-EDU-006-P010",
+            "score": 0.31335342,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+          },
+          {
+            "asset_id": "PA-DIST-P006",
+            "score": 0.31120908,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "226e9629-527d-4d34-be14-c707ff785fdf"
+          },
+          {
+            "asset_id": "PA-DIST-P009",
+            "score": 0.30497146,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "5429bd32-af9a-48e5-9df1-96f46b628b2e"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D11",
+        "query": "출석이 아니라 과업 완료와 자립 수행을 보는 교육 KPI",
+        "expected_asset_ids": [
+          "PA-EDU-006-P014"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P014",
+          "PA-VIDEO-008-P010",
+          "PA-EVENT-004-P016",
+          "PA-CAMP-010-P024",
+          "PA-PR-011-P013"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P014",
+            "score": 0.6338596,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8f9e2bab-370c-4f55-8d0a-d57e159bd004"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P010",
+            "score": 0.46840227,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "31b90cda-a03b-4878-81c3-d25ce649587d"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.444804,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.43537128,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+          },
+          {
+            "asset_id": "PA-PR-011-P013",
+            "score": 0.43228984,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3865673b-360a-4cf0-bb72-de12f34a8006"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D12",
+        "query": "여행객을 맛집 휴식 체험 사진 촬영 동기로 나누는 타깃 분석",
+        "expected_asset_ids": [
+          "PA-PR-007-P015"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P015",
+          "PA-VIDEO-012-P016",
+          "PA-DIST-P008",
+          "PA-DIST-P006",
+          "PA-CAMP-010-P021"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P015",
+            "score": 0.44543427,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "83b93408-8301-4cf3-b579-584bfd83eb9f"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.3149913,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-DIST-P008",
+            "score": 0.30700088,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e49939ec-d88a-45a0-a265-c73b6f9bf579"
+          },
+          {
+            "asset_id": "PA-DIST-P006",
+            "score": 0.29557198,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "226e9629-527d-4d34-be14-c707ff785fdf"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P021",
+            "score": 0.2859766,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "37f6ab0b-1f05-4778-9b08-46b8fdaf0379"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D13",
+        "query": "관광 콘텐츠를 발견 저장 방문으로 이어지게 하는 전략",
+        "expected_asset_ids": [
+          "PA-PR-007-P016"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P016",
+          "PA-PR-007-P019",
+          "PA-CAMP-010-P020",
+          "PA-CAMP-010-P021",
+          "PA-CAMP-010-P024"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.5492356,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          },
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.51749456,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "add254e5-a6b0-42c9-9c51-0e649e9afcf5"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P020",
+            "score": 0.46123284,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8c6817db-9e3e-41fd-903b-aa92a9f154bd"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P021",
+            "score": 0.4582653,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "37f6ab0b-1f05-4778-9b08-46b8fdaf0379"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.45608062,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D14",
+        "query": "관광지를 단일 장소가 아니라 반나절 하루 코스로 묶는 콘텐츠",
+        "expected_asset_ids": [
+          "PA-PR-007-P017"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P017",
+          "PA-DIST-P012",
+          "PA-PR-007-P016",
+          "PA-CAMP-010-P020",
+          "PA-PR-007-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P017",
+            "score": 0.53758526,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6aaa3091-1a2e-44b4-9d74-192ba505c055"
+          },
+          {
+            "asset_id": "PA-DIST-P012",
+            "score": 0.3882333,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "da62c559-5bb1-4238-b316-2ece97564ca5"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.38210464,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P020",
+            "score": 0.3810475,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8c6817db-9e3e-41fd-903b-aa92a9f154bd"
+          },
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.36586475,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D15",
+        "query": "공식 계정과 지역 크리에이터의 역할을 분리하는 협업",
+        "expected_asset_ids": [
+          "PA-PR-007-P018"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P018",
+          "PA-CAMP-005-P010",
+          "PA-DIST-P004",
+          "PA-EVENT-004-P015",
+          "PA-VIDEO-012-P017"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.5346539,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P010",
+            "score": 0.42837077,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2a814977-b753-44fd-b975-2efd1272a68e"
+          },
+          {
+            "asset_id": "PA-DIST-P004",
+            "score": 0.41762078,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "baab07fc-bdb4-4efb-b627-ef182b9411ca"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P015",
+            "score": 0.28239405,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.28158498,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D16",
+        "query": "관광 홍보에서 저장 지도 클릭 상세 탐색을 측정하는 KPI",
+        "expected_asset_ids": [
+          "PA-PR-007-P019"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-CAMP-010-P024",
+          "PA-PR-011-P013",
+          "PA-EVENT-004-P016",
+          "PA-PR-007-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.6595042,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "add254e5-a6b0-42c9-9c51-0e649e9afcf5"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.55788976,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+          },
+          {
+            "asset_id": "PA-PR-011-P013",
+            "score": 0.5448537,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3865673b-360a-4cf0-bb72-de12f34a8006"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.5346278,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.5191693,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D17",
+        "query": "소상공인 지원정책을 내가 대상인지 질문에서 시작하는 메시지",
+        "expected_asset_ids": [
+          "PA-PR-011-P010"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-011-P010",
+          "PA-PR-011-P009",
+          "PA-PR-011-P012",
+          "PA-PR-002-P012",
+          "PA-DIST-P010"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-011-P010",
+            "score": 0.53636307,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6a27a94e-2f0e-4b10-b7aa-d4adc319f2db"
+          },
+          {
+            "asset_id": "PA-PR-011-P009",
+            "score": 0.48397744,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.4386809,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-PR-002-P012",
+            "score": 0.4368974,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3a5e97b0-29b8-4511-8bed-1777d9555793"
+          },
+          {
+            "asset_id": "PA-DIST-P010",
+            "score": 0.4087264,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D18",
+        "query": "지원정책 신청 절차를 준비 확인 제출 결과로 단계화한 카드",
+        "expected_asset_ids": [
+          "PA-PR-011-P011"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-011-P011",
+          "PA-DIST-P007",
+          "PA-PR-011-P012",
+          "PA-PR-011-P009",
+          "PA-CAMP-010-P022"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-011-P011",
+            "score": 0.541419,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "35b76a9c-5f12-41a6-92c7-6761d4ee4904"
+          },
+          {
+            "asset_id": "PA-DIST-P007",
+            "score": 0.37263733,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "544b2e36-2a14-4256-8349-26169c0b27c2"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.36000133,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-PR-011-P009",
+            "score": 0.35461855,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P022",
+            "score": 0.35143924,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "14a6e1bd-4f8d-49f0-ac1d-47e0bfc8907c"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D19",
+        "query": "지원금액 접수기간 자격조건 변경을 게시 전 확인하는 운영",
+        "expected_asset_ids": [
+          "PA-PR-011-P012"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-011-P012",
+          "PA-CAMP-010-P023",
+          "PA-VIDEO-008-P009",
+          "PA-PR-011-P013",
+          "PA-DIST-P005"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.40806967,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P023",
+            "score": 0.3595028,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.35193855,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          },
+          {
+            "asset_id": "PA-PR-011-P013",
+            "score": 0.3183264,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3865673b-360a-4cf0-bb72-de12f34a8006"
+          },
+          {
+            "asset_id": "PA-DIST-P005",
+            "score": 0.31679612,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D20",
+        "query": "공공서비스 안내영상을 문제 화면 행동 순서로 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P007"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P007",
+          "PA-VIDEO-008-P009",
+          "PA-VIDEO-008-P006",
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-008-P010"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P007",
+            "score": 0.5065241,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.49461764,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.47990787,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.41558188,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P010",
+            "score": 0.40656048,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "31b90cda-a03b-4878-81c3-d25ce649587d"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D21",
+        "query": "60초 튜토리얼에서 목적 절차 완료 화면을 보여주는 포맷",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P008"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P008",
+          "PA-VIDEO-004-P021",
+          "PA-VIDEO-008-P007",
+          "PA-VIDEO-008-P010",
+          "PA-DIST-P003"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P008",
+            "score": 0.60746825,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4788c8a3-31ba-4f50-a9d9-ae822e4d5e63"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.43362933,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P007",
+            "score": 0.41457945,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P010",
+            "score": 0.3809408,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "31b90cda-a03b-4878-81c3-d25ce649587d"
+          },
+          {
+            "asset_id": "PA-DIST-P003",
+            "score": 0.35825914,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "61af258d-5288-44d9-b25e-488d8e9108e8"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D22",
+        "query": "서비스 UI가 바뀔 때 촬영본과 자막 명칭을 재검수하는 프로세스",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P009"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P009",
+          "PA-VIDEO-012-P018",
+          "PA-VIDEO-004-P022",
+          "PA-VIDEO-012-P017",
+          "PA-VIDEO-012-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.5480598,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.37983453,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P022",
+            "score": 0.36543417,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.3504774,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.3468992,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D23",
+        "query": "환경 실천을 하루 한 행동으로 쪼개 반복 참여시키는 챌린지",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P008"
+        ],
+        "retrieved_asset_ids": [
+          "PA-CAMP-005-P008",
+          "PA-CAMP-005-P011",
+          "PA-CAMP-005-P007",
+          "PA-DIST-P010",
+          "PA-DIST-P006"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-CAMP-005-P008",
+            "score": 0.6490613,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "38208c10-c054-4600-a1c2-64e9cff28f51"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P011",
+            "score": 0.47306263,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e45f2ee2-c6c7-4027-abe3-f5ebd92fe66d"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P007",
+            "score": 0.4402591,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b2d401f6-ea1c-451d-bdc4-56aed54d7fde"
+          },
+          {
+            "asset_id": "PA-DIST-P010",
+            "score": 0.4278043,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+          },
+          {
+            "asset_id": "PA-DIST-P006",
+            "score": 0.38358366,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "226e9629-527d-4d34-be14-c707ff785fdf"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D24",
+        "query": "환경 캠페인에서 최초 참여 재참여 연속 참여를 측정",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P011"
+        ],
+        "retrieved_asset_ids": [
+          "PA-CAMP-005-P011",
+          "PA-DIST-P010",
+          "PA-EDU-003-P018",
+          "PA-DIST-P001",
+          "PA-CAMP-005-P007"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-CAMP-005-P011",
+            "score": 0.53998697,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e45f2ee2-c6c7-4027-abe3-f5ebd92fe66d"
+          },
+          {
+            "asset_id": "PA-DIST-P010",
+            "score": 0.49125916,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+          },
+          {
+            "asset_id": "PA-EDU-003-P018",
+            "score": 0.40485173,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b5b57fc0-148f-4f93-9e14-b7abe17a6991"
+          },
+          {
+            "asset_id": "PA-DIST-P001",
+            "score": 0.39274693,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ef228059-77d1-459c-9494-e3f8e264723d"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P007",
+            "score": 0.38325047,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b2d401f6-ea1c-451d-bdc4-56aed54d7fde"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D25",
+        "query": "성인 디지털 교육에서 설명을 길게 하기보다 하나씩 직접 해보게 하고 확인하는 방식",
+        "expected_asset_ids": [
+          "PA-EDU-006-P011"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-006-P010",
+          "PA-EDU-006-P011",
+          "PA-EDU-006-P014",
+          "PA-EDU-009-P010",
+          "PA-EDU-006-P013"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-006-P010",
+            "score": 0.40893614,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+          },
+          {
+            "asset_id": "PA-EDU-006-P011",
+            "score": 0.33327794,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "eac717da-3ac1-4b16-8a70-caae2b2d077d"
+          },
+          {
+            "asset_id": "PA-EDU-006-P014",
+            "score": 0.3267054,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8f9e2bab-370c-4f55-8d0a-d57e159bd004"
+          },
+          {
+            "asset_id": "PA-EDU-009-P010",
+            "score": 0.3090102,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f71c03c1-157a-48b5-9300-17c77e46dbdb"
+          },
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.30592865,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D26",
+        "query": "지역 홍보에서 공식 채널은 정확한 정보를, 현지 창작자는 체험담을 맡도록 역할을 나누는 방식",
+        "expected_asset_ids": [
+          "PA-PR-007-P018"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P018",
+          "PA-CAMP-005-P010",
+          "PA-VIDEO-012-P016",
+          "PA-EVENT-004-P015",
+          "PA-VIDEO-012-P017"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.41555548,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P010",
+            "score": 0.3825516,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2a814977-b753-44fd-b975-2efd1272a68e"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.36687273,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P015",
+            "score": 0.3257861,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.32043588,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D27",
+        "query": "지원사업 이름을 설명하기 전에 내가 신청 대상인지부터 판단하게 만드는 홍보 메시지",
+        "expected_asset_ids": [
+          "PA-PR-011-P010"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-011-P010",
+          "PA-PR-011-P009",
+          "PA-PR-002-P012",
+          "PA-PR-011-P012",
+          "PA-VIDEO-008-P006"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-011-P010",
+            "score": 0.48357946,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6a27a94e-2f0e-4b10-b7aa-d4adc319f2db"
+          },
+          {
+            "asset_id": "PA-PR-011-P009",
+            "score": 0.41183418,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dea72b6e-59ad-486d-b5c7-3dcde454dc46"
+          },
+          {
+            "asset_id": "PA-PR-002-P012",
+            "score": 0.4115914,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3a5e97b0-29b8-4511-8bed-1777d9555793"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.36630493,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.3661378,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D28",
+        "query": "서비스 사용법 영상은 이용자가 겪는 문제를 먼저 보여주고 실제 화면과 해야 할 일을 이어서 보여주는 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-008-P007"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-008-P007",
+          "PA-VIDEO-008-P006",
+          "PA-VIDEO-008-P009",
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-012-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-008-P007",
+            "score": 0.54544246,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.49755025,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.48109186,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.38044673,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.37143105,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D29",
+        "query": "행사장에서 줄이 길어질 때 체험에 걸리는 시간과 동시에 받을 수 있는 사람 수로 흐름을 나누는 운영",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P014"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EVENT-004-P014",
+          "PA-DIST-P006",
+          "PA-EVENT-004-P012",
+          "PA-EVENT-004-P013",
+          "PA-EVENT-004-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EVENT-004-P014",
+            "score": 0.39639342,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ae819d87-3bc2-48f0-a014-cf79fe918c6e"
+          },
+          {
+            "asset_id": "PA-DIST-P006",
+            "score": 0.36340564,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "226e9629-527d-4d34-be14-c707ff785fdf"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P012",
+            "score": 0.3257532,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "a1f941f3-5df1-4124-9803-96f6c1ddd03d"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P013",
+            "score": 0.3192765,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e50e90f4-6723-4742-82da-c7e14464a799"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.29768145,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D30",
+        "query": "사람을 촬영하기 전에 얼굴과 영상이 어느 채널에 얼마 동안 쓰이는지 확인하는 절차",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P017"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P017",
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-004-P021",
+          "PA-VIDEO-008-P008",
+          "PA-VIDEO-008-P006"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.42071205,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.39729303,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.33649302,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P008",
+            "score": 0.3239048,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4788c8a3-31ba-4f50-a9d9-ae822e4d5e63"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.31758118,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D31",
+        "query": "문화시설 게시물에서 휴관이나 매진이 바뀌면 예전에 올린 안내까지 상태를 고치는 운영",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P023"
+        ],
+        "retrieved_asset_ids": [
+          "PA-DIST-P005",
+          "PA-CAMP-010-P023",
+          "PA-DIST-P012",
+          "PA-PR-011-P012",
+          "PA-CAMP-010-P020"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-DIST-P005",
+            "score": 0.49780583,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P023",
+            "score": 0.4655664,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+          },
+          {
+            "asset_id": "PA-DIST-P012",
+            "score": 0.39991647,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "da62c559-5bb1-4238-b316-2ece97564ca5"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.34091103,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P020",
+            "score": 0.3330726,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8c6817db-9e3e-41fd-903b-aa92a9f154bd"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-D32",
+        "query": "환경 참여를 거창한 약속 한 번으로 끝내지 않고 매일 할 수 있는 작은 행동으로 반복시키는 방식",
+        "expected_asset_ids": [
+          "PA-CAMP-005-P008"
+        ],
+        "retrieved_asset_ids": [
+          "PA-CAMP-005-P008",
+          "PA-DIST-P010",
+          "PA-CAMP-005-P011",
+          "PA-CAMP-005-P007",
+          "PA-CAMP-005-P010"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-CAMP-005-P008",
+            "score": 0.55927384,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "38208c10-c054-4600-a1c2-64e9cff28f51"
+          },
+          {
+            "asset_id": "PA-DIST-P010",
+            "score": 0.4526642,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "71283bf5-ef82-44d3-86dc-6600f0fd4070"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P011",
+            "score": 0.43626046,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e45f2ee2-c6c7-4027-abe3-f5ebd92fe66d"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P007",
+            "score": 0.395805,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "b2d401f6-ea1c-451d-bdc4-56aed54d7fde"
+          },
+          {
+            "asset_id": "PA-CAMP-005-P010",
+            "score": 0.34806144,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2a814977-b753-44fd-b975-2efd1272a68e"
+          }
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "split": "holdout",
+    "source": "evals/frozen/v1/holdout/retrieval.json",
+    "metrics": {
+      "cases": 16,
+      "hit_at_1": 0.9375,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9688,
+      "top1_misses": [
+        {
+          "case_id": "RET-H15",
+          "rank": 2,
+          "wrong_top1": "PA-EVENT-004-P012",
+          "expected": [
+            "PA-EVENT-004-P013"
+          ]
+        }
+      ]
+    },
+    "cases": [
+      {
+        "case_id": "RET-H01",
+        "query": "학생이 출처 근거 의도를 확인하도록 세 질문을 반복하는 교육",
+        "expected_asset_ids": [
+          "PA-EDU-009-P009"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-009-P009",
+          "PA-EDU-009-P010",
+          "PA-EDU-009-P008",
+          "PA-EDU-006-P014",
+          "PA-EDU-006-P013"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-009-P009",
+            "score": 0.40998477,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "7c5e7a0c-e8bc-49c6-b2fb-cb0738653dd7"
+          },
+          {
+            "asset_id": "PA-EDU-009-P010",
+            "score": 0.38400936,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f71c03c1-157a-48b5-9300-17c77e46dbdb"
+          },
+          {
+            "asset_id": "PA-EDU-009-P008",
+            "score": 0.3762679,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+          },
+          {
+            "asset_id": "PA-EDU-006-P014",
+            "score": 0.36251026,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8f9e2bab-370c-4f55-8d0a-d57e159bd004"
+          },
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.34969234,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H02",
+        "query": "두 콘텐츠를 비교해 출처와 근거 차이를 찾는 미디어 수업",
+        "expected_asset_ids": [
+          "PA-EDU-009-P010"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-009-P010",
+          "PA-EDU-009-P008",
+          "PA-EDU-006-P012",
+          "PA-EDU-009-P012",
+          "PA-CAMP-010-P024"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-009-P010",
+            "score": 0.56950676,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f71c03c1-157a-48b5-9300-17c77e46dbdb"
+          },
+          {
+            "asset_id": "PA-EDU-009-P008",
+            "score": 0.49635488,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+          },
+          {
+            "asset_id": "PA-EDU-006-P012",
+            "score": 0.43891305,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f0cc9a71-455c-4ece-85ed-13badbf86257"
+          },
+          {
+            "asset_id": "PA-EDU-009-P012",
+            "score": 0.4122039,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3dae9e9a-fe1c-4e85-ad63-824570b5ebb8"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P024",
+            "score": 0.4114653,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8788b653-c235-4578-86a9-9b8fba51230a"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H03",
+        "query": "개인 판단 뒤 소그룹 토론으로 판단 기준을 수정하는 피드백",
+        "expected_asset_ids": [
+          "PA-EDU-009-P011"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-009-P011",
+          "PA-PR-011-P012",
+          "PA-EDU-009-P012",
+          "PA-EDU-009-P008",
+          "PA-CAMP-010-P023"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-009-P011",
+            "score": 0.54030794,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2ab31843-1c11-4dba-b2b1-d43a20bfe439"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.39463955,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-EDU-009-P012",
+            "score": 0.38947076,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "3dae9e9a-fe1c-4e85-ad63-824570b5ebb8"
+          },
+          {
+            "asset_id": "PA-EDU-009-P008",
+            "score": 0.3739444,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P023",
+            "score": 0.37272084,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H04",
+        "query": "인물 경험을 따라 지역과 장소를 보여주는 인터뷰 다큐 서사",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P014"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P014",
+          "PA-VIDEO-012-P018",
+          "PA-VIDEO-012-P015",
+          "PA-DIST-P008",
+          "PA-VIDEO-012-P016"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P014",
+            "score": 0.6212783,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "9541bf78-cba2-4145-89cd-242cae45f8ad"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.39850634,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P015",
+            "score": 0.38552487,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d331fcb6-b2b3-4cd6-af40-732bb8b44de2"
+          },
+          {
+            "asset_id": "PA-DIST-P008",
+            "score": 0.33747685,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e49939ec-d88a-45a0-a265-c73b6f9bf579"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.32741797,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H05",
+        "query": "인터뷰 질문을 사실 경험 변화 의미 순서로 깊게 만드는 구조",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P015"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P015",
+          "PA-DIST-P008",
+          "PA-VIDEO-012-P014",
+          "PA-EVENT-004-P012",
+          "PA-VIDEO-008-P009"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P015",
+            "score": 0.45655406,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d331fcb6-b2b3-4cd6-af40-732bb8b44de2"
+          },
+          {
+            "asset_id": "PA-DIST-P008",
+            "score": 0.42439532,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e49939ec-d88a-45a0-a265-c73b6f9bf579"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P014",
+            "score": 0.36237103,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "9541bf78-cba2-4145-89cd-242cae45f8ad"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P012",
+            "score": 0.359114,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "a1f941f3-5df1-4124-9803-96f6c1ddd03d"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.34775555,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H06",
+        "query": "인터뷰 발화와 현장 장면을 B-roll로 연결하는 방식",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P016"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-008-P006",
+          "PA-VIDEO-008-P007",
+          "PA-VIDEO-004-P021",
+          "PA-VIDEO-008-P008"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.7173574,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.41783464,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P007",
+            "score": 0.37930942,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.37819105,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P008",
+            "score": 0.3753913,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4788c8a3-31ba-4f50-a9d9-ae822e4d5e63"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H07",
+        "query": "촬영 전 출연 범위 사용 채널 기간을 확인하는 초상권 동의",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P017"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P017",
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-004-P022",
+          "PA-DIST-P004",
+          "PA-VIDEO-012-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.6217388,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.43101645,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P022",
+            "score": 0.3637076,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+          },
+          {
+            "asset_id": "PA-DIST-P004",
+            "score": 0.36362624,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "baab07fc-bdb4-4efb-b627-ef182b9411ca"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P018",
+            "score": 0.35630393,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c52f4549-d3f6-4d3b-9d95-b48c567c16a4"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H08",
+        "query": "문화시설 관심 주제에서 맞춤 프로그램과 실제 방문으로 연결",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P021"
+        ],
+        "retrieved_asset_ids": [
+          "PA-CAMP-010-P021",
+          "PA-DIST-P012",
+          "PA-CAMP-010-P020",
+          "PA-CAMP-010-P023",
+          "PA-DIST-P005"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-CAMP-010-P021",
+            "score": 0.5989604,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "37f6ab0b-1f05-4778-9b08-46b8fdaf0379"
+          },
+          {
+            "asset_id": "PA-DIST-P012",
+            "score": 0.5302793,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "da62c559-5bb1-4238-b316-2ece97564ca5"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P020",
+            "score": 0.50453436,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8c6817db-9e3e-41fd-903b-aa92a9f154bd"
+          },
+          {
+            "asset_id": "PA-CAMP-010-P023",
+            "score": 0.45309168,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+          },
+          {
+            "asset_id": "PA-DIST-P005",
+            "score": 0.43533605,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H09",
+        "query": "휴관 매진 일정 변경 시 게시물 상태까지 갱신하는 운영",
+        "expected_asset_ids": [
+          "PA-CAMP-010-P023"
+        ],
+        "retrieved_asset_ids": [
+          "PA-CAMP-010-P023",
+          "PA-DIST-P005",
+          "PA-PR-011-P012",
+          "PA-VIDEO-008-P009",
+          "PA-EVENT-004-P014"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-CAMP-010-P023",
+            "score": 0.5671991,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "4b5ec1aa-87ee-4a28-bf68-3e9d5776dbe1"
+          },
+          {
+            "asset_id": "PA-DIST-P005",
+            "score": 0.50172687,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+          },
+          {
+            "asset_id": "PA-PR-011-P012",
+            "score": 0.47462273,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "8ee41d70-80f8-4bf7-b628-c54d122ac3c3"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P009",
+            "score": 0.40716535,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "27175f1c-06b2-4d31-a324-b5d2b8064d43"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P014",
+            "score": 0.39068437,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ae819d87-3bc2-48f0-a014-cf79fe918c6e"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H10",
+        "query": "행사 안내 체험 결과 확인 후속 정보 탐색의 방문 동선",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P013"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EVENT-004-P013",
+          "PA-EVENT-004-P016",
+          "PA-EVENT-004-P015",
+          "PA-EVENT-004-P012",
+          "PA-PR-007-P019"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EVENT-004-P013",
+            "score": 0.51902604,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e50e90f4-6723-4742-82da-c7e14464a799"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.41669124,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P015",
+            "score": 0.41506577,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P012",
+            "score": 0.40717638,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "a1f941f3-5df1-4124-9803-96f6c1ddd03d"
+          },
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.39108187,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "add254e5-a6b0-42c9-9c51-0e649e9afcf5"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H11",
+        "query": "체험시간과 동시 수용인원 기준으로 대기열을 분산하는 운영",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P014"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EVENT-004-P014",
+          "PA-DIST-P009",
+          "PA-DIST-P005",
+          "PA-EVENT-004-P016",
+          "PA-EDU-006-P013"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EVENT-004-P014",
+            "score": 0.46661353,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "ae819d87-3bc2-48f0-a014-cf79fe918c6e"
+          },
+          {
+            "asset_id": "PA-DIST-P009",
+            "score": 0.451748,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "5429bd32-af9a-48e5-9df1-96f46b628b2e"
+          },
+          {
+            "asset_id": "PA-DIST-P005",
+            "score": 0.3302669,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "2b8a040d-d96e-4f6f-9636-933170720cc0"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.31985688,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          },
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.31440943,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H12",
+        "query": "행사에서 안전 촬영동의 개인정보 수집 범위를 체크리스트로 관리",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P015"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EVENT-004-P015",
+          "PA-VIDEO-012-P017",
+          "PA-VIDEO-004-P022",
+          "PA-DIST-P002",
+          "PA-PR-007-P018"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EVENT-004-P015",
+            "score": 0.6488264,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P017",
+            "score": 0.4751138,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "1967e578-794c-4bac-a0e2-85115e0d19d7"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P022",
+            "score": 0.4203627,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "be234164-fddc-454a-b2f7-0a56b9b4d417"
+          },
+          {
+            "asset_id": "PA-DIST-P002",
+            "score": 0.4123327,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c8cb56fa-47a5-4b6f-b723-59f11d42a800"
+          },
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.41115654,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H13",
+        "query": "학생에게 정답을 외우게 하기보다 누가 만들었고 근거가 무엇이며 무엇을 유도하는지 묻게 하는 수업",
+        "expected_asset_ids": [
+          "PA-EDU-009-P009"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EDU-009-P009",
+          "PA-EDU-009-P010",
+          "PA-EDU-009-P008",
+          "PA-EDU-006-P010",
+          "PA-EDU-006-P013"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EDU-009-P009",
+            "score": 0.36084086,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "7c5e7a0c-e8bc-49c6-b2fb-cb0738653dd7"
+          },
+          {
+            "asset_id": "PA-EDU-009-P010",
+            "score": 0.36069852,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "f71c03c1-157a-48b5-9300-17c77e46dbdb"
+          },
+          {
+            "asset_id": "PA-EDU-009-P008",
+            "score": 0.326164,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "c01fd7f4-497d-4883-8dac-68b64b97fa5c"
+          },
+          {
+            "asset_id": "PA-EDU-006-P010",
+            "score": 0.29658216,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "168915b7-e813-4f6b-8680-077c2f098929"
+          },
+          {
+            "asset_id": "PA-EDU-006-P013",
+            "score": 0.2934919,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "dfd92ea7-01e0-4501-a46b-472d67a42042"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H14",
+        "query": "인터뷰에서 말만 보여주지 말고 그 사람이 언급한 현장과 작업 모습을 화면으로 뒷받침하는 구성",
+        "expected_asset_ids": [
+          "PA-VIDEO-012-P016"
+        ],
+        "retrieved_asset_ids": [
+          "PA-VIDEO-012-P016",
+          "PA-VIDEO-008-P006",
+          "PA-VIDEO-008-P007",
+          "PA-VIDEO-012-P014",
+          "PA-VIDEO-004-P021"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-VIDEO-012-P016",
+            "score": 0.37787157,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "decea607-45bc-4a78-8a35-414d640dc2e7"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P006",
+            "score": 0.3233145,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e7ae3684-fa6e-40f5-be33-a9cebf96e6ff"
+          },
+          {
+            "asset_id": "PA-VIDEO-008-P007",
+            "score": 0.31148523,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "34ee39ff-4f22-4a39-8154-bb16e8e77662"
+          },
+          {
+            "asset_id": "PA-VIDEO-012-P014",
+            "score": 0.2992258,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "9541bf78-cba2-4145-89cd-242cae45f8ad"
+          },
+          {
+            "asset_id": "PA-VIDEO-004-P021",
+            "score": 0.26883548,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "210972a9-2437-4974-9add-2f624c3ecf99"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H15",
+        "query": "정책 체험행사에서 처음 안내받고 직접 해본 뒤 결과를 확인하고 추가 정보를 찾아보게 만드는 흐름",
+        "expected_asset_ids": [
+          "PA-EVENT-004-P013"
+        ],
+        "retrieved_asset_ids": [
+          "PA-EVENT-004-P012",
+          "PA-EVENT-004-P013",
+          "PA-EVENT-004-P015",
+          "PA-EVENT-004-P016",
+          "PA-DIST-P011"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-EVENT-004-P012",
+            "score": 0.42068428,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "a1f941f3-5df1-4124-9803-96f6c1ddd03d"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P013",
+            "score": 0.39873654,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "e50e90f4-6723-4742-82da-c7e14464a799"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P015",
+            "score": 0.38870162,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "33609558-1617-4912-b9f0-12d8dc20fcec"
+          },
+          {
+            "asset_id": "PA-EVENT-004-P016",
+            "score": 0.37036604,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "db6a3a49-976f-4210-9ed8-56304ee3cb7e"
+          },
+          {
+            "asset_id": "PA-DIST-P011",
+            "score": 0.35190094,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "309d8e4b-91c5-4445-b84d-6734c59648e9"
+          }
+        ]
+      },
+      {
+        "case_id": "RET-H16",
+        "query": "관광 홍보 성과를 단순 조회수가 아니라 저장이나 예약 페이지로 넘어간 행동으로 판단",
+        "expected_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-CAMP-010-P024"
+        ],
+        "retrieved_asset_ids": [
+          "PA-PR-007-P019",
+          "PA-PR-007-P015",
+          "PA-PR-007-P016",
+          "PA-PR-007-P018",
+          "PA-PR-007-P017"
+        ],
+        "records": [
+          {
+            "asset_id": "PA-PR-007-P019",
+            "score": 0.47051233,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "add254e5-a6b0-42c9-9c51-0e649e9afcf5"
+          },
+          {
+            "asset_id": "PA-PR-007-P015",
+            "score": 0.43402374,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "83b93408-8301-4cf3-b579-584bfd83eb9f"
+          },
+          {
+            "asset_id": "PA-PR-007-P016",
+            "score": 0.42144203,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "92fd50eb-199f-468d-9ebe-b88965f920ea"
+          },
+          {
+            "asset_id": "PA-PR-007-P018",
+            "score": 0.40107203,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "d4120c50-e0a6-422b-a2c3-0eef406c9111"
+          },
+          {
+            "asset_id": "PA-PR-007-P017",
+            "score": 0.3992831,
+            "document_name": "ProposalOps Benchmark v1 - sandbox-packed-v1",
+            "segment_id": "6aaa3091-1a2e-44b4-9d74-192ba505c055"
+          }
+        ]
+      }
+    ]
+  },
+  "lexical_baseline": {
+    "retriever": "local_char_ngram_tfidf",
+    "corpus": {
+      "assets": 63,
+      "hard_negatives": 12
+    },
+    "dev": {
+      "cases": 32,
+      "hit_at_1": 0.9062,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "mrr": 0.9531
+    },
+    "holdout": {
+      "cases": 16,
+      "hit_at_1": 0.9375,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "mrr": 0.9688
+    }
+  },
+  "comparison_note": "Dify benchmark-v1 uses the same 51 normal assets + 12 hard negatives as the local lexical baseline. Sandbox packing changes only the Dify document container: each Proposal Asset remains one independently retrieved segment with embedded provenance."
+}
