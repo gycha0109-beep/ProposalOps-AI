@@ -73,9 +73,13 @@ jobs:
         run: |
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/knowledge-v1/documents.jsonl \
+            --sandbox-compact \
+            --compact-document-name "ProposalOps Production v1 - compact" \
             --plan-only
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/benchmark-v1/documents.jsonl \
+            --sandbox-compact \
+            --compact-document-name "ProposalOps Benchmark v1 - compact" \
             --plan-only
           python scripts/ensure_dify_datasets.py --plan-only
           python scripts/evaluate_dify_retrieval.py --plan-only
@@ -94,6 +98,7 @@ jobs:
         shell: bash
         run: |
           python scripts/ensure_dify_datasets.py \
+            --delay-seconds 7 \
             --out runs/dify/datasets.json
           python - <<'PY' >> "$GITHUB_ENV"
           import json
@@ -102,6 +107,7 @@ jobs:
           print("DIFY_PRODUCTION_ID=" + data["production"]["dataset_id"])
           print("DIFY_BENCHMARK_ID=" + data["benchmark"]["dataset_id"])
           PY
+          sleep 7
 
       - name: Upload production knowledge
         if: env.DIFY_OPERATION == 'upload-production' || env.DIFY_OPERATION == 'full-phase1'
@@ -110,9 +116,12 @@ jobs:
           DATASET_ID="${DIFY_DATASET_ID:-$DIFY_PRODUCTION_ID}"
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/knowledge-v1/documents.jsonl \
-            --metadata-schema exports/dify/knowledge-v1/metadata-schema.json \
             --dataset-id "$DATASET_ID" \
+            --delay-seconds 7 \
+            --sandbox-compact \
+            --compact-document-name "ProposalOps Production v1 - compact" \
             --state-out runs/dify/knowledge-v1/upload-state.json
+          sleep 7
 
       - name: Upload benchmark knowledge
         if: env.DIFY_OPERATION == 'upload-benchmark' || env.DIFY_OPERATION == 'full-phase1'
@@ -121,9 +130,12 @@ jobs:
           DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
           python scripts/upload_dify_knowledge.py \
             --manifest exports/dify/benchmark-v1/documents.jsonl \
-            --metadata-schema exports/dify/benchmark-v1/metadata-schema.json \
             --dataset-id "$DATASET_ID" \
+            --delay-seconds 7 \
+            --sandbox-compact \
+            --compact-document-name "ProposalOps Benchmark v1 - compact" \
             --state-out runs/dify/benchmark-v1/upload-state.json
+          sleep 7
 
       - name: Run Dify retrieval benchmark
         if: env.DIFY_OPERATION == 'retrieve-benchmark' || env.DIFY_OPERATION == 'full-phase1'
@@ -132,6 +144,7 @@ jobs:
           DATASET_ID="${DIFY_BENCHMARK_DATASET_ID:-$DIFY_BENCHMARK_ID}"
           python scripts/evaluate_dify_retrieval.py \
             --dataset-id "$DATASET_ID" \
+            --delay-seconds 7 \
             --out reports/dify-retrieval-v1.json
 
       - name: Commit live evidence
