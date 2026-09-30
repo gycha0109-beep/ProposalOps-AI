@@ -1,51 +1,81 @@
-# Production Draft — Coverage Validator
+# Coverage Validator — Deterministic Gate
 
-Status: **INTEGRATION DRAFT**
+Status: **LIVE INTEGRATION VALIDATED**
 
-입력:
+The production path no longer uses an LLM for structural coverage validation.
+
+Implementation:
+
+- reusable validator: `scripts/lib/pagination_eval.py`
+- Dify Phase 3 runner: `scripts/run_dify_phase3_pagination.py`
+- Dify Studio code node: `coverage_validator` in `dify/proposalops-phase3-pagination.yml`
+
+Why deterministic code:
+
+- canonical requirement/strategy/evidence IDs are already structured inputs
+- missing coverage and invalid references are exact structural checks
+- deterministic validation is cheaper, reproducible, and avoids false positives from an LLM judge
+
+## Inputs
+
 1. RFP requirements
-2. Pagination Planner 결과
-3. Proposal Strategy IDs
-4. Evidence Pack IDs
-
-목표는 제안서 페이지 생성 전에 구조적 누락과 잘못된 참조를 차단하는 것입니다.
+2. Pagination Planner output
+3. Proposal Strategy
+4. Evidence Pack
+5. page limit
 
 ## BLOCK
 
-- mandatory requirement가 어느 page에도 연결되지 않음
-- 존재하지 않는 requirement_id
-- 존재하지 않는 strategy_id
-- 존재하지 않는 evidence_id
-- 한 page가 서로 무관한 핵심 목표를 과도하게 혼합
-- factual company claim을 요구하면서 evidence가 없음
+- no pages
+- page limit exceeded
+- duplicate or non-sequential page IDs/numbers
+- mandatory requirement missing from every page
+- invalid requirement_id
+- invalid strategy_id
+- invalid evidence_id
+- strategy attached to unrelated requirement page
+- reference-based strategy without supporting evidence on that page
+- evidence attached to the wrong requirement page
+- evidence attached to a page with no requirement
+- requirement_coverage missing or inconsistent with actual page references
 
 ## WARN
 
-- 하나의 page에 requirement가 과도하게 집중
-- 같은 key_message가 여러 page에 반복
-- 고배점 requirement의 페이지 비중이 지나치게 낮음
-- fact_risk=high인데 evidence가 부족함
+- one page contains too many requirements
+- duplicate key_message
+- fact_risk=high without evidence
 
 ## Output
 
-JSON만 출력합니다.
-
+```json
 {
   "status": "PASS | FAIL",
-  "blocking_errors": [
-    {
-      "code": "string",
-      "page_id": "PAGE-001 | null",
-      "requirement_id": "R-001 | null",
-      "reason": "string",
-      "action": "string"
-    }
-  ],
+  "blocking_errors": [],
   "warnings": [],
   "coverage_summary": {
     "total_requirements": 0,
     "covered": 0,
     "partial": 0,
     "missing": 0
-  }
+  },
+  "requirement_page_map": {}
 }
+```
+
+## Live result
+
+RFP-TEST-002 / Phase 3:
+
+- pages: 6
+- page limit: 8
+- requirements: 6
+- covered: 6
+- missing: 0
+- blocking errors: 0
+- warnings: 0
+- status: PASS
+
+Evidence:
+
+- `reports/dify-phase3-pagination-rfp-test-002.json`
+- `reports/dify-phase3-pagination-rfp-test-002.md`
