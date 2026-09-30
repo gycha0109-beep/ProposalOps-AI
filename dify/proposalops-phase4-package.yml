@@ -1,6 +1,6 @@
 {
   "app": {
-    "description": "ProposalOps AI Phase 4: Slide/Visual provenance gates, automatic visual repair, Proposal QA, targeted repair/recheck",
+    "description": "ProposalOps AI Phase 4: provenance gates, visual auto-repair, semantic QA, two bounded targeted repair/recheck passes",
     "icon": "📦",
     "icon_background": "#E4FBCC",
     "icon_type": "emoji",
@@ -544,21 +544,6 @@
             "isInIteration": false,
             "isInLoop": false,
             "sourceType": "if-else",
-            "targetType": "end"
-          },
-          "id": "recheckbranch-escalate",
-          "source": "qa_recheck_branch",
-          "sourceHandle": "false",
-          "target": "escalation_end",
-          "targetHandle": "target",
-          "type": "custom",
-          "zIndex": 0
-        },
-        {
-          "data": {
-            "isInIteration": false,
-            "isInLoop": false,
-            "sourceType": "if-else",
             "targetType": "llm"
           },
           "id": "visualbranch-repair",
@@ -683,6 +668,156 @@
           },
           "id": "visualrepairqabranch-escalate",
           "source": "qa_branch_after_visual_repair",
+          "sourceHandle": "false",
+          "target": "escalation_end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "code"
+          },
+          "id": "recheck1fail-repairctx2",
+          "source": "qa_recheck_branch",
+          "sourceHandle": "false",
+          "target": "repair_context_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "llm"
+          },
+          "id": "repairctx2-repair2",
+          "source": "repair_context_2",
+          "sourceHandle": "source",
+          "target": "targeted_repair_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "code"
+          },
+          "id": "repair2-merge2",
+          "source": "targeted_repair_2",
+          "sourceHandle": "source",
+          "target": "repair_merge_gate_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "if-else"
+          },
+          "id": "merge2-branch2",
+          "source": "repair_merge_gate_2",
+          "sourceHandle": "source",
+          "target": "repair_gate_branch_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "llm"
+          },
+          "id": "repairbranch2-qa2",
+          "source": "repair_gate_branch_2",
+          "sourceHandle": "true",
+          "target": "qa_recheck_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "repairbranch2-escalate",
+          "source": "repair_gate_branch_2",
+          "sourceHandle": "false",
+          "target": "escalation_end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "code"
+          },
+          "id": "qa2-parse2",
+          "source": "qa_recheck_2",
+          "sourceHandle": "source",
+          "target": "qa_recheck_parse_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "if-else"
+          },
+          "id": "qaparse2-branch2",
+          "source": "qa_recheck_parse_2",
+          "sourceHandle": "source",
+          "target": "qa_recheck_branch_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "qabranch2-final2",
+          "source": "qa_recheck_branch_2",
+          "sourceHandle": "true",
+          "target": "repaired_end_2",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "if-else",
+            "targetType": "end"
+          },
+          "id": "qabranch2-escalate",
+          "source": "qa_recheck_branch_2",
           "sourceHandle": "false",
           "target": "escalation_end",
           "targetHandle": "target",
@@ -2533,6 +2668,30 @@
                 ],
                 "value_type": "string",
                 "variable": "escalation_visual_repair_qa"
+              },
+              {
+                "value_selector": [
+                  "repair_context_2",
+                  "route"
+                ],
+                "value_type": "string",
+                "variable": "escalation_repair_route_2"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "validation"
+                ],
+                "value_type": "string",
+                "variable": "escalation_repair_validation_2"
+              },
+              {
+                "value_selector": [
+                  "qa_recheck_parse_2",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "escalation_qa_recheck_2"
               }
             ]
           },
@@ -2952,6 +3111,490 @@
           "positionAbsolute": {
             "x": 7330,
             "y": 500
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Repair Router 2",
+            "type": "code",
+            "code": "import json\nSTRATEGY={\"UNSUPPORTED_CLAIM\",\"INVALID_REFERENCE\",\"CROSS_PROPOSAL_MERGE\"}\nPAGINATION={\"MISSING_REQUIREMENT\",\"STRATEGY_PAGE_MISMATCH\",\"DUPLICATE_MESSAGE\"}\nSLIDE={\"OVERLONG_SLIDE\"}\ndef arr(v): return v if isinstance(v,list) else []\ndef main(qa_json:str,pagination_json:str)->dict:\n    q=json.loads(qa_json); p=json.loads(pagination_json)\n    page_by={x.get(\"page_id\"):x for x in arr(p.get(\"pages\")) if x.get(\"page_id\")}\n    pages=set(); strategies=set(); scopes=set(); unroutable=[]\n    for issue in arr(q.get(\"issues\")):\n        t=issue.get(\"error_type\"); pid=issue.get(\"page_id\")\n        if pid:\n            pages.add(pid); strategies.update(arr((page_by.get(pid) or {}).get(\"strategy_ids\")))\n        if t in STRATEGY: scopes.add(\"strategy_to_visual\")\n        elif t in PAGINATION: scopes.add(\"pagination_to_visual\")\n        elif t in SLIDE: scopes.add(\"slide_visual\")\n        else: unroutable.append(issue)\n    scope=\"strategy_to_visual\" if \"strategy_to_visual\" in scopes else (\"pagination_to_visual\" if \"pagination_to_visual\" in scopes else (\"slide_visual\" if \"slide_visual\" in scopes else None))\n    route={\"scope\":scope,\"page_ids\":sorted(pages),\"strategy_ids\":sorted(strategies),\"unroutable_issues\":unroutable}\n    status=\"PASS\" if scope and pages and not unroutable else \"FAIL\"\n    return {\"status\":status,\"route\":json.dumps(route,ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "status": {
+                "children": null,
+                "type": "string"
+              },
+              "route": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "qa_recheck_parse",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "qa_json"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate",
+                  "pagination"
+                ],
+                "value_type": "string",
+                "variable": "pagination_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "repair_context_2",
+          "position": {
+            "x": 8680,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 8680,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Targeted Repair 2",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "# Production Draft — Targeted Repair\n\nStatus: **DEMO VALIDATED — NOT FROZEN**\n\n\n## Validation status\n\nRFP-TEST-002 live E2E에서 실제 사용되었습니다. Final provenance-chain repair 이후 package QA는 PASS / issues 0이었습니다.\n\n이 prompt는 전용 frozen benchmark/holdout을 별도로 수행하지 않았으므로 benchmark-frozen production prompt로 표현하지 않습니다.\n\n입력:\n1. QA error 1개 또는 동일 원인의 error 묶음\n2. 오류가 발생한 stage의 현재 output\n3. 관련 RFP / Evidence / Strategy context\n\n목표는 실패한 부분만 수정하고 이미 통과한 결과는 보존하는 것입니다.\n\n## Routing\n\n- strategy requirement/evidence 오류 → Proposal Strategist\n- page coverage/structure 오류 → Pagination Planner\n- slide factual claim/body 오류 → 해당 Slide Draft만\n- visual factual/data 오류 → 해당 Visual Prompt만\n\n## Rules\n\n1. QA가 지적하지 않은 다른 page/stage를 다시 생성하지 않습니다.\n2. 기존 ID를 가능한 한 유지합니다.\n3. BLOCK 원인을 제거했는지 repair_summary에 명시합니다.\n4. 새로운 factual claim을 추가할 때는 evidence가 필요합니다.\n5. 근거가 없으면 삭제하거나 AI_RECOMMENDATION / client confirmation으로 전환합니다.\n6. 수정 범위를 넓혀야만 해결 가능한 경우 escalation_required=true로 반환합니다.\n\n## Output\n\nJSON만 출력합니다.\n\n{\n  \"target_stage\": \"strategy | pagination | slide | visual\",\n  \"target_ids\": [\"PAGE-001\"],\n  \"repaired_output\": {},\n  \"repair_summary\": [\n    {\n      \"error_code\": \"string\",\n      \"change\": \"string\",\n      \"resolved\": true\n    }\n  ],\n  \"escalation_required\": false,\n  \"escalation_reason\": null\n}\n\n\nStudio repair contract:\nReturn JSON only:\n{\n  \"strategy_repairs\":[{\"strategy_id\":\"ST-01\",\"repaired_pillar\":{}}],\n  \"page_repairs\":[{\"page_id\":\"PAGE-001\",\"repaired_page\":null,\"repaired_slide\":{},\"repaired_visual\":{}}],\n  \"repair_summary\":[{\"error_type\":\"INVALID_REFERENCE\",\"target_id\":\"PAGE-001\",\"change\":\"string\",\"resolved\":true}],\n  \"escalation_required\":false,\n  \"escalation_reason\":null\n}\nRepair only IDs listed in REPAIR ROUTE.\nDo not modify unaffected IDs.\nEvidence scope is authoritative; narrow unsupported wording or move it to AI_RECOMMENDATION with no evidence IDs.\n\n\nID normalization rule:\n- page_repairs[].page_id is the canonical target page ID.\n- repaired_page, repaired_slide, and repaired_visual SHOULD repeat the same page_id, but if omitted the merge gate will inherit the outer page_id.\n- They MUST NOT contain a different page_id.\n- strategy_repairs[].strategy_id is the canonical target strategy ID; repaired_pillar SHOULD repeat it, but if omitted the merge gate will inherit the outer strategy_id.\n- It MUST NOT contain a different strategy_id.\n\nSECOND-PASS STRICTNESS:\n- This is a second bounded repair because semantic QA still found INVALID_REFERENCE after the first repair.\n- Do not preserve unsupported specificity for style or completeness.\n- For every remaining INVALID_REFERENCE, reduce the reference-backed sentence to the MINIMUM wording directly entailed by the cited evidence.\n- If any concrete example, actor, channel, field, metric, location, action, process step, or responsibility is not explicitly supported by the cited evidence, REMOVE it from the reference-backed clause.\n- If that unsupported detail is still useful as a proposal idea, put it in a separate AI_RECOMMENDATION block with evidence_ids=[].\n- Never keep a mixed sentence where one supported clause and one unsupported clause share the same REFERENCE_PATTERN/REFERENCE_FACT citation.\n- Prefer shorter safe wording over richer but weakly grounded wording.\n- The goal is QA PASS, not preserving the original prose."
+              },
+              {
+                "role": "user",
+                "text": "REPAIR ROUTE:\\n{{#repair_context_2.route#}}\\n\\nLATEST QA:\\n{{#qa_recheck_parse.normalized#}}\\n\\nRFP:\\n{{#rfp_analyzer.text#}}\\n\\nEVIDENCE:\\n{{#evidence_builder.text#}}\\n\\nCURRENT REPAIRED STRATEGY:\\n{{#repair_merge_gate.strategy#}}\\n\\nCURRENT REPAIRED PAGINATION:\\n{{#repair_merge_gate.pagination#}}\\n\\nCURRENT REPAIRED SLIDES:\\n{{#repair_merge_gate.slides#}}\\n\\nCURRENT REPAIRED VISUALS:\\n{{#repair_merge_gate.visuals#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "targeted_repair_2",
+          "position": {
+            "x": 8980,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 8980,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Merge + Repair Gate 2",
+            "type": "code",
+            "code": "import json\ndef arr(v): return v if isinstance(v,list) else []\ndef main(strategy_json:str,pagination_json:str,slides_json:str,visuals_json:str,repair_json:str,route_json:str)->dict:\n    try:\n        strategy=json.loads(strategy_json); pagination=json.loads(pagination_json); slides=json.loads(slides_json); visuals=json.loads(visuals_json); repair=json.loads(repair_json); route=json.loads(route_json)\n    except Exception as e:\n        return {\"status\":\"FAIL\",\"strategy\":strategy_json,\"pagination\":pagination_json,\"slides\":slides_json,\"visuals\":visuals_json,\"validation\":json.dumps({\"error\":\"json_parse\",\"detail\":str(e)},ensure_ascii=False)}\n    if repair.get(\"escalation_required\"):\n        return {\"status\":\"FAIL\",\"strategy\":strategy_json,\"pagination\":pagination_json,\"slides\":slides_json,\"visuals\":visuals_json,\"validation\":json.dumps({\"error\":\"repair_escalation\",\"reason\":repair.get(\"escalation_reason\")},ensure_ascii=False)}\n    allowed_s=set(arr(route.get(\"strategy_ids\"))); allowed_p=set(arr(route.get(\"page_ids\"))); errors=[]\n    sidx={x.get(\"strategy_id\"):i for i,x in enumerate(arr(strategy.get(\"strategy_pillars\"))) if x.get(\"strategy_id\")}\n    pidx={x.get(\"page_id\"):i for i,x in enumerate(arr(pagination.get(\"pages\"))) if x.get(\"page_id\")}\n    slidx={x.get(\"page_id\"):i for i,x in enumerate(arr(slides.get(\"slides\"))) if x.get(\"page_id\")}\n    vidx={x.get(\"page_id\"):i for i,x in enumerate(arr(visuals.get(\"visuals\"))) if x.get(\"page_id\")}\n    for item in arr(repair.get(\"strategy_repairs\")):\n        sid=item.get(\"strategy_id\"); obj=item.get(\"repaired_pillar\")\n        if sid not in allowed_s or sid not in sidx or not isinstance(obj,dict):\n            errors.append({\"code\":\"INVALID_STRATEGY_REPAIR\",\"id\":sid})\n            continue\n        nested_sid=obj.get(\"strategy_id\")\n        if nested_sid not in (None,\"\",sid):\n            errors.append({\"code\":\"STRATEGY_ID_CONFLICT\",\"id\":sid,\"nested_id\":nested_sid})\n            continue\n        obj[\"strategy_id\"]=sid\n        strategy[\"strategy_pillars\"][sidx[sid]]=obj\n    for item in arr(repair.get(\"page_repairs\")):\n        pid=item.get(\"page_id\")\n        if pid not in allowed_p: errors.append({\"code\":\"UNEXPECTED_PAGE_REPAIR\",\"id\":pid}); continue\n        for key,index,container in ((\"repaired_page\",pidx,pagination.get(\"pages\")),(\"repaired_slide\",slidx,slides.get(\"slides\")),(\"repaired_visual\",vidx,visuals.get(\"visuals\"))):\n            obj=item.get(key)\n            if obj is None: continue\n            if pid not in index or not isinstance(obj,dict):\n                errors.append({\"code\":\"INVALID_\"+key.upper(),\"id\":pid})\n                continue\n            nested_pid=obj.get(\"page_id\")\n            if nested_pid not in (None,\"\",pid):\n                errors.append({\"code\":\"PAGE_ID_CONFLICT\",\"field\":key,\"id\":pid,\"nested_id\":nested_pid})\n                continue\n            obj[\"page_id\"]=pid\n            container[index[pid]]=obj\n    page_ids={x.get(\"page_id\") for x in arr(pagination.get(\"pages\"))}\n    slide_ids={x.get(\"page_id\") for x in arr(slides.get(\"slides\"))}\n    visual_ids={x.get(\"page_id\") for x in arr(visuals.get(\"visuals\"))}\n    if page_ids!=slide_ids or page_ids!=visual_ids: errors.append({\"code\":\"PAGE_SET_MISMATCH\"})\n    status=\"PASS\" if not errors else \"FAIL\"\n    return {\"status\":status,\"strategy\":json.dumps(strategy,ensure_ascii=False),\"pagination\":json.dumps(pagination,ensure_ascii=False),\"slides\":json.dumps(slides,ensure_ascii=False),\"visuals\":json.dumps(visuals,ensure_ascii=False),\"validation\":json.dumps({\"status\":status,\"errors\":errors},ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "status": {
+                "children": null,
+                "type": "string"
+              },
+              "strategy": {
+                "children": null,
+                "type": "string"
+              },
+              "pagination": {
+                "children": null,
+                "type": "string"
+              },
+              "slides": {
+                "children": null,
+                "type": "string"
+              },
+              "visuals": {
+                "children": null,
+                "type": "string"
+              },
+              "validation": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "repair_merge_gate",
+                  "strategy"
+                ],
+                "value_type": "string",
+                "variable": "strategy_json"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate",
+                  "pagination"
+                ],
+                "value_type": "string",
+                "variable": "pagination_json"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate",
+                  "slides"
+                ],
+                "value_type": "string",
+                "variable": "slides_json"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate",
+                  "visuals"
+                ],
+                "value_type": "string",
+                "variable": "visuals_json"
+              },
+              {
+                "value_selector": [
+                  "targeted_repair_2",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "repair_json"
+              },
+              {
+                "value_selector": [
+                  "repair_context_2",
+                  "route"
+                ],
+                "value_type": "string",
+                "variable": "route_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "repair_merge_gate_2",
+          "position": {
+            "x": 9280,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 9280,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Repair Gate 2?",
+            "type": "if-else",
+            "_targetBranches": [
+              {
+                "id": "true",
+                "name": "IF"
+              },
+              {
+                "id": "false",
+                "name": "ELSE"
+              }
+            ],
+            "logical_operator": "and",
+            "cases": [
+              {
+                "case_id": "true",
+                "logical_operator": "and",
+                "conditions": [
+                  {
+                    "id": "repair-gate-2-condition",
+                    "variable_selector": [
+                      "repair_merge_gate_2",
+                      "status"
+                    ],
+                    "comparison_operator": "is",
+                    "value": "PASS"
+                  }
+                ]
+              }
+            ]
+          },
+          "height": 126,
+          "id": "repair_gate_branch_2",
+          "position": {
+            "x": 9580,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 9580,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "QA Recheck 2",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "gpt-5.6-luna",
+              "provider": "langgenius/openai/openai"
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "RFP 요구사항, Evidence Pack, Proposal Strategy, Slide Draft를 검토해 오류를 탐지한다.\n\n허용하는 error type은 아래 7개뿐이다.\n\n- MISSING_REQUIREMENT\n- UNSUPPORTED_CLAIM\n- INVALID_REFERENCE\n- CROSS_PROPOSAL_MERGE\n- STRATEGY_PAGE_MISMATCH\n- DUPLICATE_MESSAGE\n- OVERLONG_SLIDE\n\nSeverity는 아래만 사용한다.\n\n- BLOCK\n- WARN\n- INFO\n\n판정 규칙:\n1. mandatory RFP requirement 누락은 MISSING_REQUIREMENT / BLOCK.\n2. company_facts에 없는 회사 실적·성과·정량 수치는 UNSUPPORTED_CLAIM / BLOCK.\n3. 존재하지 않거나 claim을 실제 지원하지 않는 evidence/reference는 INVALID_REFERENCE / BLOCK.\n4. 서로 다른 proposal의 사실이나 패턴을 하나의 검증된 수행사례처럼 합치면 CROSS_PROPOSAL_MERGE / BLOCK.\n5. page_goal과 실제 메시지가 불일치하면 STRATEGY_PAGE_MISMATCH / WARN.\n6. AI_RECOMMENDATION 자체를 회사 실적으로 오판하지 않는다.\n7. REFERENCE_PATTERN을 패턴으로만 재사용한 경우 오류가 아니다.\n8. 명확한 evidence가 있는 claim은 오류로 표시하지 않는다.\n9. 오류가 없는 항목을 억지로 생성하지 않는다.\n10. 위 taxonomy 밖의 새로운 error type을 만들지 않는다.\n\n각 판정은 제공된 RFP / evidence / company_facts / draft context만 사용한다.\n\n\nFinal package output contract:\nReturn JSON only as {\"status\":\"PASS | FAIL\",\"issues\":[{\"error_type\":\"MISSING_REQUIREMENT | UNSUPPORTED_CLAIM | INVALID_REFERENCE | CROSS_PROPOSAL_MERGE | STRATEGY_PAGE_MISMATCH | DUPLICATE_MESSAGE | OVERLONG_SLIDE\",\"severity\":\"BLOCK | WARN | INFO\",\"page_id\":\"PAGE-001 | null\",\"reason\":\"string\",\"suggested_action\":\"string\"}],\"summary\":\"string\"}.\nReview every meaningful clause for direct evidence entailment. Keyword overlap is not sufficient.\nIf there is no real issue, return PASS with issues=[].\n"
+              },
+              {
+                "role": "user",
+                "text": "RFP ANALYSIS:\\n{{#rfp_analyzer.text#}}\\n\\nEVIDENCE:\\n{{#evidence_builder.text#}}\\n\\nREPAIRED STRATEGY:\\n{{#repair_merge_gate_2.strategy#}}\\n\\nREPAIRED PAGINATION:\\n{{#repair_merge_gate_2.pagination#}}\\n\\nREPAIRED SLIDES:\\n{{#repair_merge_gate_2.slides#}}\\n\\nREPAIRED VISUALS:\\n{{#repair_merge_gate_2.visuals#}}\\n\\nPREVIOUS QA:\\n{{#qa_recheck_parse.normalized#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "qa_recheck_2",
+          "position": {
+            "x": 9880,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 9880,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Parse QA Recheck 2",
+            "type": "code",
+            "code": "import json\ndef main(qa_json:str)->dict:\n    try:\n        q=json.loads(qa_json)\n        status=\"PASS\" if q.get(\"status\")==\"PASS\" and not q.get(\"issues\") else \"FAIL\"\n        return {\"status\":status,\"normalized\":json.dumps(q,ensure_ascii=False)}\n    except Exception as e:\n        return {\"status\":\"FAIL\",\"normalized\":json.dumps({\"status\":\"FAIL\",\"issues\":[],\"parse_error\":str(e)},ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "status": {
+                "children": null,
+                "type": "string"
+              },
+              "normalized": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "qa_recheck_2",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "qa_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "qa_recheck_parse_2",
+          "position": {
+            "x": 10180,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 10180,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Recheck 2 Pass?",
+            "type": "if-else",
+            "_targetBranches": [
+              {
+                "id": "true",
+                "name": "IF"
+              },
+              {
+                "id": "false",
+                "name": "ELSE"
+              }
+            ],
+            "logical_operator": "and",
+            "cases": [
+              {
+                "case_id": "true",
+                "logical_operator": "and",
+                "conditions": [
+                  {
+                    "id": "qa-recheck-2-condition",
+                    "variable_selector": [
+                      "qa_recheck_parse_2",
+                      "status"
+                    ],
+                    "comparison_operator": "is",
+                    "value": "PASS"
+                  }
+                ]
+              }
+            ]
+          },
+          "height": 126,
+          "id": "qa_recheck_branch_2",
+          "position": {
+            "x": 10480,
+            "y": 260
+          },
+          "positionAbsolute": {
+            "x": 10480,
+            "y": 260
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Repaired Final Package 2",
+            "type": "end",
+            "outputs": [
+              {
+                "value_selector": [
+                  "rfp_analyzer",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_rfp_analysis"
+              },
+              {
+                "value_selector": [
+                  "evidence_builder",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_evidence_packs"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "strategy"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_proposal_strategy"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "pagination"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_pagination"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "slides"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_slides"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "visuals"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_visuals"
+              },
+              {
+                "value_selector": [
+                  "qa_recheck_parse_2",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_qa"
+              },
+              {
+                "value_selector": [
+                  "repair_merge_gate_2",
+                  "validation"
+                ],
+                "value_type": "string",
+                "variable": "repaired2_repair_validation"
+              }
+            ]
+          },
+          "height": 272,
+          "id": "repaired_end_2",
+          "position": {
+            "x": 10780,
+            "y": 140
+          },
+          "positionAbsolute": {
+            "x": 10780,
+            "y": 140
           },
           "selected": false,
           "sourcePosition": "right",
