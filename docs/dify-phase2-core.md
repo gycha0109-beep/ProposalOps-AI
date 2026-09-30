@@ -156,5 +156,15 @@ Dify Studio의 **App/Workflow DSL import는 Knowledge Service API key로 수행�
 현재 Dify main 기준 App DSL import API는 workspace write 권한의 Account OAuth subject를 요구한다.
 따라서 repository의 Service API secret만으로 사용자의 Studio에 앱을 생성했다고 주장하지 않는다.
 
-다음 작업은 current Dify DSL 0.7.0 기준 import candidate를 만들고 구조 검증한 뒤,
-사용자 Dify Studio에서 import하여 실제 node UI smoke test를 수행하는 것이다.
+Current Dify DSL `0.7.0` 기준 Studio import candidate와 정적 검증까지 완료했다.
+
+- import candidate: `dify/proposalops-phase2-core.yml`
+- import/smoke guide: `dify/phase2-import-guide.md`
+- structural validator: `scripts/validate_dify_phase2_dsl.py`
+- CI: **PASS**
+- graph: **14 nodes / 12 edges**
+- production Knowledge dataset만 연결
+- Sandbox rate-limit 보호를 위해 query iteration은 serial
+- secret literal: **0**
+
+남은 단계는 사용자 Dify Studio에서 DSL을 import하고 실제 node binding/UI/runtime smoke test를 수행하는 것이다.
