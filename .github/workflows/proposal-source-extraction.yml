@@ -1,0 +1,42 @@
+name: Proposal Source Extraction
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/extract_proposal_source.py"
+      - "scripts/validate_extraction_adapter.py"
+      - "requirements-extraction.txt"
+      - ".github/workflows/proposal-source-extraction.yml"
+  pull_request:
+    paths:
+      - "scripts/extract_proposal_source.py"
+      - "scripts/validate_extraction_adapter.py"
+      - "requirements-extraction.txt"
+      - ".github/workflows/proposal-source-extraction.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Install extraction dependency
+        run: python -m pip install -r requirements-extraction.txt
+
+      - name: Compile extraction scripts
+        run: |
+          python -m py_compile scripts/extract_proposal_source.py
+          python -m py_compile scripts/validate_extraction_adapter.py
+
+      - name: Validate PPTX and PDF extraction
+        working-directory: scripts
+        run: python validate_extraction_adapter.py
