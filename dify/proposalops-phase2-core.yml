@@ -1,0 +1,884 @@
+{
+  "app": {
+    "description": "ProposalOps AI Phase 2: RFP → dual-query Knowledge retrieval → Evidence → Strategy",
+    "icon": "🧩",
+    "icon_background": "#E4FBCC",
+    "icon_type": "emoji",
+    "mode": "workflow",
+    "name": "ProposalOps AI — Phase 2 Core",
+    "use_icon_as_answer_icon": false
+  },
+  "dependencies": [],
+  "kind": "app",
+  "version": "0.7.0",
+  "workflow": {
+    "conversation_variables": [],
+    "environment_variables": [],
+    "features": {
+      "file_upload": {
+        "enabled": false
+      },
+      "opening_statement": "",
+      "retriever_resource": {
+        "enabled": true
+      },
+      "sensitive_word_avoidance": {
+        "enabled": false
+      },
+      "speech_to_text": {
+        "enabled": false
+      },
+      "suggested_questions": [],
+      "suggested_questions_after_answer": {
+        "enabled": false
+      },
+      "text_to_speech": {
+        "enabled": false,
+        "language": "",
+        "voice": ""
+      }
+    },
+    "graph": {
+      "edges": [
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "start",
+            "targetType": "llm"
+          },
+          "id": "start-rfp",
+          "source": "start",
+          "sourceHandle": "source",
+          "target": "rfp_analyzer",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "llm"
+          },
+          "id": "rfp-planner",
+          "source": "rfp_analyzer",
+          "sourceHandle": "source",
+          "target": "retrieval_planner",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "code"
+          },
+          "id": "planner-parse",
+          "source": "retrieval_planner",
+          "sourceHandle": "source",
+          "target": "parse_plans",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "iteration"
+          },
+          "id": "parse-iteration",
+          "source": "parse_plans",
+          "sourceHandle": "source",
+          "target": "query_iteration",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": true,
+            "isInLoop": false,
+            "iteration_id": "query_iteration",
+            "sourceType": "iteration-start",
+            "targetType": "code"
+          },
+          "id": "iteration-start-parse-item",
+          "source": "query_iteration_start",
+          "sourceHandle": "source",
+          "target": "parse_item",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "isInIteration": true,
+            "isInLoop": false,
+            "iteration_id": "query_iteration",
+            "sourceType": "code",
+            "targetType": "code"
+          },
+          "id": "parse-item-delay",
+          "source": "parse_item",
+          "sourceHandle": "source",
+          "target": "rate_limit_delay",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "isInIteration": true,
+            "isInLoop": false,
+            "iteration_id": "query_iteration",
+            "sourceType": "code",
+            "targetType": "knowledge-retrieval"
+          },
+          "id": "delay-knowledge",
+          "source": "rate_limit_delay",
+          "sourceHandle": "source",
+          "target": "knowledge_retrieval",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "isInIteration": true,
+            "isInLoop": false,
+            "iteration_id": "query_iteration",
+            "sourceType": "knowledge-retrieval",
+            "targetType": "code"
+          },
+          "id": "knowledge-pack",
+          "source": "knowledge_retrieval",
+          "sourceHandle": "source",
+          "target": "pack_retrieval",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "iteration",
+            "targetType": "code"
+          },
+          "id": "iteration-normalize",
+          "source": "query_iteration",
+          "sourceHandle": "source",
+          "target": "normalize_retrieval",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "code",
+            "targetType": "llm"
+          },
+          "id": "normalize-evidence",
+          "source": "normalize_retrieval",
+          "sourceHandle": "source",
+          "target": "evidence_builder",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "llm"
+          },
+          "id": "evidence-strategy",
+          "source": "evidence_builder",
+          "sourceHandle": "source",
+          "target": "proposal_strategist",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        },
+        {
+          "data": {
+            "isInIteration": false,
+            "isInLoop": false,
+            "sourceType": "llm",
+            "targetType": "end"
+          },
+          "id": "strategy-end",
+          "source": "proposal_strategist",
+          "sourceHandle": "source",
+          "target": "end",
+          "targetHandle": "target",
+          "type": "custom",
+          "zIndex": 0
+        }
+      ],
+      "nodes": [
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "User Input",
+            "type": "start",
+            "variables": [
+              {
+                "default": "",
+                "hint": "Paste raw RFP text",
+                "label": "RFP text",
+                "max_length": 100000,
+                "options": [],
+                "placeholder": "Paste the RFP text here",
+                "required": true,
+                "type": "paragraph",
+                "variable": "rfp_text"
+              }
+            ]
+          },
+          "height": 110,
+          "id": "start",
+          "position": {
+            "x": 80,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 80,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "RFP Analyzer",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "",
+              "provider": ""
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "당신은 공공기관 RFP 정보 추출 전용 에이전트다. 전략이나 제안 내용을 작성하지 않는다.\n\n반드시 JSON 하나만 출력한다. Markdown code fence와 설명문은 출력하지 않는다.\n\n다음 top-level key만 사용하고 이름을 바꾸거나 추가하지 않는다.\n\n{\n  \"project\": {\n    \"name\": \"string\",\n    \"purpose\": [\"string\"],\n    \"target_audience\": [\"string\"],\n    \"duration\": \"string | unknown\",\n    \"budget\": \"string | unknown\"\n  },\n  \"scope\": [\n    {\n      \"task\": \"string\",\n      \"source_quote\": \"string\"\n    }\n  ],\n  \"deliverables\": [\n    {\n      \"name\": \"string\",\n      \"quantity\": \"string | unknown\",\n      \"frequency\": \"string | unknown\",\n      \"source_quote\": \"string\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"id\": \"R-001\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"source_quote\": \"string\"\n    }\n  ],\n  \"evaluation\": [\n    {\n      \"category\": \"string\",\n      \"score\": 0,\n      \"source_quote\": \"string\"\n    }\n  ],\n  \"constraints\": [\n    {\n      \"description\": \"string\",\n      \"source_quote\": \"string\"\n    }\n  ]\n}\n\n규칙:\n1. RFP에 명시된 정보만 추출한다. 추정하거나 보완하지 않는다.\n2. 문서에 없는 값은 정확히 \"unknown\"으로 출력한다. null, 빈 문자열, N/A를 사용하지 않는다.\n3. 기간, 예산, 수량, 배점은 원문의 값을 그대로 보존한다.\n4. scope, deliverables, requirements, evaluation, constraints의 모든 항목에 source_quote를 넣는다.\n5. source_quote는 해당 항목을 직접 뒷받침하는 원문의 최소 문장 또는 구절만 그대로 복사한다.\n6. requirements의 id는 원문에 ID가 있으면 그대로 보존하고, 없으면 R-001부터 순서대로 부여한다.\n7. 정의된 key 이름을 바꾸지 않는다. project_overview, evaluations 같은 대체 key를 만들지 않는다.\n8. 정의되지 않은 top-level key와 interpretation_note를 추가하지 않는다.\n9. 출력은 완결된 JSON이어야 한다."
+              },
+              {
+                "role": "user",
+                "text": "RFP TEXT:\\n{{#start.rfp_text#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "rfp_analyzer",
+          "position": {
+            "x": 380,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 380,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Retrieval Planner",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "",
+              "provider": ""
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "# Production — Retrieval Planner\n\n입력은 구조화된 RFP 분석 결과다. 각 RFP requirement마다 Proposal Asset 검색 계획을 만든다.\n\n## Intent enum\n\n각 requirement는 다음 중 정확히 하나의 intent를 사용한다.\n\n- strategy\n- content\n- operation\n- kpi\n- risk\n\n## Query policy\n\n각 requirement마다 **서로 다른 search query를 정확히 2개** 만든다.\n\n1. **semantic query**: 요구사항이 필요로 하는 재사용 메커니즘을 자연어로 짧게 표현한다.\n2. **anchor query**: RFP 원문에 실제 등장한 핵심 명사, 콘텐츠 포맷, 행동·운영 용어를 보존해 검색한다.\n\n예를 들어 영상 요구사항이라면 두 query 모두 \"영상/숏폼\"이라는 대상 자체를 잃지 않아야 한다.\n운영정보 검수 요구사항이라면 \"운영정보/변경/게시 전 확인\" 같은 핵심 메커니즘을 유지한다.\n\n두 query는 표현만 바꾼 복제문이 아니라 서로 다른 검색 관점을 가져야 한다.\n\n## Rules\n\n1. requirement마다 독립적인 retrieval intent를 만든다.\n2. 검색 질의에 너무 많은 개념을 섞지 않는다.\n3. category, client_type, page_type 등은 query 문장에 억지로 넣지 말고 가능한 경우 filter로 분리한다.\n4. 필터 값이 현재 taxonomy에서 확실하지 않으면 임의 enum을 만들지 말고 빈 값으로 둔다.\n5. 검색되지 않은 회사 실적이나 수치를 상상하지 않는다.\n6. 전략, 콘텐츠, 운영, KPI, 리스크 요구사항을 서로 다른 검색 의도로 취급한다.\n7. 검색 결과가 없으면 이후 Evidence Builder가 NO_REFERENCE_FOUND를 판단할 수 있게 한다.\n8. query는 현재 RFP에 필요한 \"재사용 가능한 방식\"을 찾기 위한 문장이어야 하며 특정 과거 프로젝트명을 가정하지 않는다.\n9. query마다 핵심 주제/포맷 명사를 최소 하나 유지한다. 예: 숏폼, 크리에이터, 운영정보, KPI, 타깃 세분화.\n10. 동일 requirement의 두 query가 완전히 같은 명사와 어순을 반복하지 않게 한다.\n\n## Output\n\nJSON만 출력하며 각 plan은 다음을 포함한다.\n\n- requirement_id\n- intent\n- search_queries[] — 정확히 2개\n- filters\n- must_find[]\n- nice_to_have[]\n- exclude[]\n- desired_evidence_count\n\nOutput contract:\nReturn JSON only with top-level {\"plans\":[...]}. Return exactly one plan per RFP requirement. Every plan must contain exactly two distinct, non-empty search_queries."
+              },
+              {
+                "role": "user",
+                "text": "RFP ANALYSIS:\\n{{#rfp_analyzer.text#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "retrieval_planner",
+          "position": {
+            "x": 680,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 680,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Parse Dual Queries",
+            "type": "code",
+            "code": "import json\n\ndef main(planner_json: str) -> dict:\n    data = json.loads(planner_json)\n    plans = data.get(\"plans\", [])\n    items = []\n    for plan in plans:\n        requirement_id = str(plan.get(\"requirement_id\") or \"\").strip()\n        intent = str(plan.get(\"intent\") or \"\").strip()\n        queries = [str(q).strip() for q in plan.get(\"search_queries\", []) if str(q).strip()]\n        if not requirement_id:\n            raise ValueError(\"requirement_id is required\")\n        if len(queries) != 2 or len(set(queries)) != 2:\n            raise ValueError(f\"{requirement_id}: exactly two distinct search_queries are required\")\n        for query in queries:\n            items.append(json.dumps({\n                \"requirement_id\": requirement_id,\n                \"intent\": intent,\n                \"query\": query,\n            }, ensure_ascii=False))\n    return {\"items\": items}\n",
+            "code_language": "python3",
+            "outputs": {
+              "items": {
+                "children": null,
+                "type": "array[string]"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "retrieval_planner",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "planner_json"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "parse_plans",
+          "position": {
+            "x": 980,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 980,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Retrieve Queries",
+            "type": "iteration",
+            "error_handle_mode": "terminated",
+            "height": 430,
+            "is_parallel": false,
+            "iterator_input_type": "array[string]",
+            "iterator_selector": [
+              "parse_plans",
+              "items"
+            ],
+            "output_selector": [
+              "pack_retrieval",
+              "bundle"
+            ],
+            "output_type": "array[string]",
+            "parallel_nums": 1,
+            "start_node_id": "query_iteration_start"
+          },
+          "height": 430,
+          "id": "query_iteration",
+          "position": {
+            "x": 1280,
+            "y": 210
+          },
+          "positionAbsolute": {
+            "x": 1280,
+            "y": 210
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 1040,
+          "zIndex": 1
+        },
+        {
+          "data": {
+            "desc": "",
+            "isInIteration": true,
+            "selected": false,
+            "title": "",
+            "type": "iteration-start"
+          },
+          "draggable": false,
+          "height": 48,
+          "id": "query_iteration_start",
+          "parentId": "query_iteration",
+          "position": {
+            "x": 24,
+            "y": 78
+          },
+          "positionAbsolute": {
+            "x": 1304,
+            "y": 288
+          },
+          "selectable": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom-iteration-start",
+          "width": 44,
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Parse Query Item",
+            "type": "code",
+            "code": "import json\n\ndef main(item: str) -> dict:\n    data = json.loads(item)\n    return {\n        \"requirement_id\": str(data[\"requirement_id\"]),\n        \"intent\": str(data.get(\"intent\") or \"\"),\n        \"query\": str(data[\"query\"]),\n    }\n",
+            "code_language": "python3",
+            "isInIteration": true,
+            "iteration_id": "query_iteration",
+            "outputs": {
+              "requirement_id": {
+                "children": null,
+                "type": "string"
+              },
+              "intent": {
+                "children": null,
+                "type": "string"
+              },
+              "query": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "query_iteration",
+                  "item"
+                ],
+                "value_type": "string",
+                "variable": "item"
+              }
+            ]
+          },
+          "height": 110,
+          "id": "parse_item",
+          "position": {
+            "x": 1385,
+            "y": 285
+          },
+          "positionAbsolute": {
+            "x": 1385,
+            "y": 285
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244,
+          "parentId": "query_iteration",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Sandbox Rate Limit",
+            "type": "code",
+            "code": "import time\n\ndef main(query: str) -> dict:\n    time.sleep(7)\n    return {\"query\": query}\n",
+            "code_language": "python3",
+            "isInIteration": true,
+            "iteration_id": "query_iteration",
+            "outputs": {
+              "query": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "parse_item",
+                  "query"
+                ],
+                "value_type": "string",
+                "variable": "query"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "rate_limit_delay",
+          "position": {
+            "x": 1665,
+            "y": 285
+          },
+          "positionAbsolute": {
+            "x": 1665,
+            "y": 285
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244,
+          "parentId": "query_iteration",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Production Knowledge",
+            "type": "knowledge-retrieval",
+            "dataset_ids": [
+              "21dcb1f3-270f-4991-bcf8-b2782e6cf814"
+            ],
+            "isInIteration": true,
+            "iteration_id": "query_iteration",
+            "metadata_filtering_mode": "disabled",
+            "multiple_retrieval_config": {
+              "reranking_enable": false,
+              "score_threshold": null,
+              "top_k": 5
+            },
+            "query_attachment_selector": [],
+            "query_variable_selector": [
+              "rate_limit_delay",
+              "query"
+            ],
+            "retrieval_mode": "multiple"
+          },
+          "height": 120,
+          "id": "knowledge_retrieval",
+          "position": {
+            "x": 1945,
+            "y": 285
+          },
+          "positionAbsolute": {
+            "x": 1945,
+            "y": 285
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244,
+          "parentId": "query_iteration",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Pack Retrieval",
+            "type": "code",
+            "code": "import json\n\ndef main(requirement_id: str, intent: str, query: str, records: list) -> dict:\n    return {\n        \"bundle\": json.dumps({\n            \"requirement_id\": requirement_id,\n            \"intent\": intent,\n            \"query\": query,\n            \"records\": records,\n        }, ensure_ascii=False)\n    }\n",
+            "code_language": "python3",
+            "isInIteration": true,
+            "iteration_id": "query_iteration",
+            "outputs": {
+              "bundle": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "parse_item",
+                  "requirement_id"
+                ],
+                "value_type": "string",
+                "variable": "requirement_id"
+              },
+              {
+                "value_selector": [
+                  "parse_item",
+                  "intent"
+                ],
+                "value_type": "string",
+                "variable": "intent"
+              },
+              {
+                "value_selector": [
+                  "rate_limit_delay",
+                  "query"
+                ],
+                "value_type": "string",
+                "variable": "query"
+              },
+              {
+                "value_selector": [
+                  "knowledge_retrieval",
+                  "result"
+                ],
+                "value_type": "array[object]",
+                "variable": "records"
+              }
+            ]
+          },
+          "height": 140,
+          "id": "pack_retrieval",
+          "position": {
+            "x": 2225,
+            "y": 285
+          },
+          "positionAbsolute": {
+            "x": 2225,
+            "y": 285
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244,
+          "parentId": "query_iteration",
+          "zIndex": 1002
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Merge / Filter Retrieval",
+            "type": "code",
+            "code": "import json\nimport re\n\nASSET_ID_RE = re.compile(r\"asset_id:\\s*(PA-[A-Z]+-(?:\\d+-)?P\\d+)\")\nFIELD_RE = lambda name: re.compile(r\"- \" + re.escape(name) + r\":\\s*(.+)\")\nTITLE_RE = re.compile(r\"^#\\s+(.+)$\", re.MULTILINE)\n\nINTENT_PAGE_TYPES = {\n    \"strategy\": {\"strategy\", \"target_analysis\", \"channel_plan\"},\n    \"content\": {\"strategy\", \"content_plan\", \"channel_plan\"},\n    \"operation\": {\"operation_plan\", \"channel_plan\"},\n    \"risk\": {\"operation_plan\", \"risk\", \"process\"},\n    \"kpi\": {\"kpi\"},\n}\n\ndef field(content: str, name: str):\n    match = FIELD_RE(name).search(content)\n    return match.group(1).strip() if match else None\n\ndef number_or_text(value):\n    if value is None:\n        return None\n    try:\n        return int(value)\n    except Exception:\n        return value\n\ndef main(bundles: list) -> dict:\n    groups = {}\n\n    for raw_bundle in bundles:\n        bundle = json.loads(raw_bundle)\n        rid = str(bundle.get(\"requirement_id\") or \"\")\n        intent = str(bundle.get(\"intent\") or \"\").lower()\n        allowed = INTENT_PAGE_TYPES.get(intent)\n        group = groups.setdefault(rid, {\n            \"requirement_id\": rid,\n            \"intent\": intent,\n            \"queries\": [],\n            \"by_asset\": {},\n        })\n        group[\"queries\"].append(bundle.get(\"query\"))\n\n        for record in bundle.get(\"records\", []):\n            content = str(record.get(\"content\") or record.get(\"page_content\") or \"\")\n            metadata = record.get(\"metadata\") or {}\n            asset_id = metadata.get(\"asset_id\")\n            if not asset_id:\n                match = ASSET_ID_RE.search(content)\n                asset_id = match.group(1) if match else None\n            if not asset_id:\n                continue\n\n            page_type = metadata.get(\"page_type\") or field(content, \"page_type\")\n            if allowed and page_type not in allowed:\n                continue\n\n            title_match = TITLE_RE.search(content)\n            title = title_match.group(1).strip() if title_match else str(record.get(\"title\") or asset_id)\n            proposal_id = metadata.get(\"proposal_id\") or field(content, \"proposal_id\")\n            source_file = metadata.get(\"source_file\") or field(content, \"source_file\")\n            source_page = metadata.get(\"source_page\") or field(content, \"source_page\")\n            source_type = metadata.get(\"source_type\") or field(content, \"source_type\")\n            reuse_level = metadata.get(\"reuse_level\") or field(content, \"reuse_level\")\n            score = record.get(\"score\")\n            if score is None:\n                score = metadata.get(\"score\", 0)\n            try:\n                score = float(score or 0)\n            except Exception:\n                score = 0.0\n\n            candidate = {\n                \"asset_id\": asset_id,\n                \"title\": title,\n                \"text\": content,\n                \"metadata\": {\n                    \"asset_id\": asset_id,\n                    \"proposal_id\": proposal_id,\n                    \"page_type\": page_type,\n                    \"reuse_level\": reuse_level,\n                    \"source_file\": source_file,\n                    \"source_page\": number_or_text(source_page),\n                    \"source_type\": source_type,\n                },\n                \"retrieval_score\": score,\n            }\n\n            current = group[\"by_asset\"].get(asset_id)\n            if current is None or score > current.get(\"retrieval_score\", 0):\n                group[\"by_asset\"][asset_id] = candidate\n\n    results = []\n    for rid, group in groups.items():\n        candidates = list(group[\"by_asset\"].values())\n        candidates.sort(key=lambda item: (-float(item.get(\"retrieval_score\") or 0), item[\"asset_id\"]))\n        results.append({\n            \"requirement_id\": rid,\n            \"intent\": group[\"intent\"],\n            \"queries\": group[\"queries\"],\n            \"candidates\": candidates[:5],\n        })\n\n    results.sort(key=lambda item: item[\"requirement_id\"])\n    return {\"normalized\": json.dumps({\"results\": results}, ensure_ascii=False)}\n",
+            "code_language": "python3",
+            "outputs": {
+              "normalized": {
+                "children": null,
+                "type": "string"
+              }
+            },
+            "variables": [
+              {
+                "value_selector": [
+                  "query_iteration",
+                  "output"
+                ],
+                "value_type": "array[string]",
+                "variable": "bundles"
+              }
+            ]
+          },
+          "height": 90,
+          "id": "normalize_retrieval",
+          "position": {
+            "x": 2380,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 2380,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Evidence Builder",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "",
+              "provider": ""
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "Convert retrieved Proposal Assets into evidence packs that can safely ground proposal strategy.\n\n## Decision policy\n\nFor every RFP requirement, inspect the candidate content itself. Retrieval rank and score are hints, not evidence.\n\nClassify candidate support as:\n\n- direct: the asset directly supports the requirement.\n- partial: the asset supports only part of the requirement.\n- pattern_only: only a reusable structure or operating pattern transfers.\n- irrelevant: it does not materially support the requirement.\n\n## Safety and provenance rules\n\n1. Never select an asset whose metadata has `reuse_level: prohibited`.\n2. Never select a synthetic distractor (`proposal_id: DISTRACTOR-REF`) as usable evidence.\n3. Do not turn a reusable pattern into a company achievement, client fact, performance result, or historical delivery claim.\n4. Company facts may be copied only when they are explicitly present in the selected asset's Company Facts section.\n5. Numerical claims may be copied only when the same number is explicitly present in the selected asset content.\n6. Keep `asset_id`, `proposal_id`, title, source file, source page, and source type faithful to the selected candidate.\n7. Do not merge facts from different proposals into one historical project.\n8. Retrieval rank does not override content fit. A rank-1 hard negative must be rejected.\n9. Use the smallest sufficient evidence set. Do not add a candidate merely because it is in the same domain or shares keywords.\n10. When at least one direct candidate exists, select only candidates that directly support the exact requirement mechanism. Do not pad the pack with generic KPI, channel, audience, safety, or content examples.\n11. A candidate is direct only when its actual summary/strategy materially answers the requirement, not when its tags or nouns merely overlap.\n12. Status is about requirement coverage, not whether the allowed use is a fact or a pattern.\n13. Return `SUPPORTED` when one or more selected candidates materially support the full requirement, even when `allowed_use` is `REFERENCE_PATTERN`.\n14. Return `PARTIAL_REFERENCE_ONLY` only when the selected evidence supports part of the requirement but leaves a material gap.\n15. If nothing is usable, return `NO_REFERENCE_FOUND`.\n\n## Evidence fields\n\nFor every selected evidence item provide:\n\n- evidence_id\n- asset_id\n- proposal_id\n- title\n- supported_point\n- reusable_patterns\n- company_facts\n- support_level\n- allowed_use\n- prohibited_use\n- source\n\n`allowed_use` must be one of:\n- REFERENCE_FACT\n- REFERENCE_PATTERN\n\nWhen the asset has no explicit company fact, use `REFERENCE_PATTERN`.\n\n## Output\n\nReturn JSON only using the benchmark output contract supplied by the runner.\n\nOutput contract:\nReturn JSON only with top-level {\"results\":[...]}. Each result must contain requirement_id, status, evidence. For every evidence item preserve evidence_id, asset_id, proposal_id, title, supported_point, reusable_patterns, company_facts, support_level, allowed_use, prohibited_use, and source. Copy candidate.title exactly."
+              },
+              {
+                "role": "user",
+                "text": "RFP ANALYSIS:\\n{{#rfp_analyzer.text#}}\\n\\nNORMALIZED RETRIEVAL:\\n{{#normalize_retrieval.normalized#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "evidence_builder",
+          "position": {
+            "x": 2680,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 2680,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Proposal Strategist",
+            "type": "llm",
+            "context": {
+              "enabled": false,
+              "variable_selector": []
+            },
+            "model": {
+              "completion_params": {},
+              "mode": "chat",
+              "name": "",
+              "provider": ""
+            },
+            "prompt_template": [
+              {
+                "role": "system",
+                "text": "RFP와 Evidence Pack을 사용해 제안 전략을 작성한다.\n\n모든 전략은 최소 하나의 requirement_id와 연결하고, 과거 자산을 사용하면 evidence_id를 남긴다.\n\n허용 information class:\n- RFP_FACT\n- REFERENCE_FACT\n- REFERENCE_PATTERN\n- AI_RECOMMENDATION\n\n규칙:\n1. 현재 RFP에 직접 명시된 사실은 RFP_FACT.\n2. Evidence Pack의 검증된 회사 사실만 REFERENCE_FACT.\n3. 재사용 가능한 구조·운영 방식·퍼널·포맷은 REFERENCE_PATTERN.\n4. 이번 사업을 위해 새로 만든 전략·메시지·운영 제안은 AI_RECOMMENDATION.\n5. Evidence가 없는 내용을 REFERENCE_FACT 또는 과거 실적으로 표현하지 않는다.\n6. 회사 실적, 고객명, 성과 수치, 계약금액을 Evidence Pack 없이 생성하지 않는다.\n7. 서로 다른 proposal의 사실을 하나의 수행사례처럼 합치지 않는다.\n8. 높은 배점 requirement가 전략 구조에서 충분히 다뤄지도록 한다.\n9. 직접 근거가 부족하면 reference_gaps에 남긴다.\n10. strategy_pillars의 각 항목에는 classification을 정확히 하나 넣는다.\n\n반드시 strategy 안에 아래 summary를 포함한다. 값이 없으면 빈 배열을 사용한다.\n\n\"information_classes\": {\n  \"RFP_FACT\": [],\n  \"REFERENCE_FACT\": [],\n  \"REFERENCE_PATTERN\": [],\n  \"AI_RECOMMENDATION\": []\n}\n\n각 배열에는 해당 전략에서 실제 사용한 핵심 문장 또는 요약만 넣는다.\nJSON만 출력한다.\n\nOutput contract:\nReturn JSON only with proposal_thesis, concept, strategy_pillars, information_classes, reference_gaps. Every strategy pillar must include strategy_id, requirement_ids, classification, and evidence_ids."
+              },
+              {
+                "role": "user",
+                "text": "RFP ANALYSIS:\\n{{#rfp_analyzer.text#}}\\n\\nEVIDENCE PACKS:\\n{{#evidence_builder.text#}}"
+              }
+            ],
+            "variables": [],
+            "vision": {
+              "enabled": false
+            }
+          },
+          "height": 90,
+          "id": "proposal_strategist",
+          "position": {
+            "x": 2980,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 2980,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        },
+        {
+          "data": {
+            "desc": "",
+            "selected": false,
+            "title": "Grounded Strategy Output",
+            "type": "end",
+            "outputs": [
+              {
+                "value_selector": [
+                  "rfp_analyzer",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "rfp_analysis"
+              },
+              {
+                "value_selector": [
+                  "retrieval_planner",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "retrieval_plan"
+              },
+              {
+                "value_selector": [
+                  "normalize_retrieval",
+                  "normalized"
+                ],
+                "value_type": "string",
+                "variable": "retrieval_trace"
+              },
+              {
+                "value_selector": [
+                  "evidence_builder",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "evidence_packs"
+              },
+              {
+                "value_selector": [
+                  "proposal_strategist",
+                  "text"
+                ],
+                "value_type": "string",
+                "variable": "proposal_strategy"
+              }
+            ]
+          },
+          "height": 180,
+          "id": "end",
+          "position": {
+            "x": 3280,
+            "y": 280
+          },
+          "positionAbsolute": {
+            "x": 3280,
+            "y": 280
+          },
+          "selected": false,
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "type": "custom",
+          "width": 244
+        }
+      ],
+      "viewport": {
+        "x": -20,
+        "y": 20,
+        "zoom": 0.55
+      }
+    },
+    "rag_pipeline_variables": []
+  }
+}
