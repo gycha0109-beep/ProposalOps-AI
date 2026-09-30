@@ -167,8 +167,12 @@ def main() -> None:
     }
     for node_id in llm_ids:
         model = by_id[node_id]["data"].get("model") or {}
-        if model.get("provider") not in ("", None) or model.get("name") not in ("", None):
-            fail(f"{node_id} must use workspace default model binding.")
+        if model.get("provider") != "langgenius/openai/openai":
+            fail(f"{node_id} must use the OpenAI provider binding.")
+        if model.get("name") != "gpt-5.6-luna":
+            fail(f"{node_id} must use gpt-5.6-luna.")
+        if model.get("mode") != "chat":
+            fail(f"{node_id} must use chat mode.")
 
     for node_id, selector in {
         "slide_gate": ("slide_draft", "text"),
@@ -277,17 +281,56 @@ def main() -> None:
         for item in by_id["repaired_end"]["data"].get("outputs") or []
     }
     expected_repaired_vars = {
-        "rfp_analysis",
-        "evidence_packs",
-        "proposal_strategy",
-        "pagination",
-        "slides",
-        "visuals",
-        "qa",
-        "repair_validation",
+        "repaired_rfp_analysis",
+        "repaired_evidence_packs",
+        "repaired_proposal_strategy",
+        "repaired_pagination",
+        "repaired_slides",
+        "repaired_visuals",
+        "repaired_qa",
+        "repaired_repair_validation",
     }
     if repaired_vars != expected_repaired_vars:
         fail(f"Repaired final output mismatch: {sorted(repaired_vars)}")
+
+    gate_failure_vars = {
+        item.get("variable")
+        for item in by_id["gate_failure_end"]["data"].get("outputs") or []
+    }
+    expected_gate_failure_vars = {
+        "gate_failure_coverage_validation",
+        "gate_failure_slide_validation",
+        "gate_failure_visual_validation",
+    }
+    if gate_failure_vars != expected_gate_failure_vars:
+        fail(f"Gate failure output mismatch: {sorted(gate_failure_vars)}")
+
+    escalation_vars = {
+        item.get("variable")
+        for item in by_id["escalation_end"]["data"].get("outputs") or []
+    }
+    expected_escalation_vars = {
+        "escalation_initial_qa",
+        "escalation_repair_route",
+        "escalation_repair_validation",
+        "escalation_qa_recheck",
+    }
+    if escalation_vars != expected_escalation_vars:
+        fail(f"Escalation output mismatch: {sorted(escalation_vars)}")
+
+    all_end_variables = []
+    for end_id in ("final_end", "gate_failure_end", "repaired_end", "escalation_end"):
+        all_end_variables.extend(
+            item.get("variable")
+            for item in by_id[end_id]["data"].get("outputs") or []
+        )
+    duplicates = sorted({
+        variable
+        for variable in all_end_variables
+        if all_end_variables.count(variable) > 1
+    })
+    if duplicates:
+        fail(f"End output variables must be globally unique: {duplicates}")
 
     serialized = path.read_text(encoding="utf-8")
     forbidden_literals = ["DIFY_API_KEY", "OPENAI_API_KEY", "sk-proj-", "Bearer "]
@@ -309,7 +352,8 @@ def main() -> None:
         "semantic_qa": True,
         "studio_repair_passes": 1,
         "python_max_repair_cycles": 3,
-        "default_model_binding": True,
+        "model_provider": "langgenius/openai/openai",
+        "model": "gpt-5.6-luna",
         "secret_leaks": 0,
     }, ensure_ascii=False, indent=2))
 
