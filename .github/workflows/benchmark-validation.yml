@@ -167,6 +167,9 @@ jobs:
       - name: Validate Dify Phase 3 DSL candidate
         run: python scripts/validate_dify_phase3_dsl.py
 
+      - name: Validate Dify Phase 4 DSL candidate
+        run: python scripts/validate_dify_phase4_dsl.py
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
