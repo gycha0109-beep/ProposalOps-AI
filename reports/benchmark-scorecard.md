@@ -55,3 +55,22 @@ Evidence:
 
 Phase 4 latest successful run used 3 normal-path LLM calls and required 0 repair cycles.
 Targeted repair behavior remains evidenced by the legacy E2E and intermediate Phase 4 validation runs.
+
+
+## Source extraction validation
+
+> Synthetic runtime fixtures. 실제 고객 문서가 아닙니다.
+
+| Adapter | Fixture | Result | LLM calls |
+|---|---|---|---:|
+| PPTX | 2 slides + speaker notes | PASS | 0 |
+| PDF | 2 text pages | PASS | 0 |
+
+Evidence:
+
+- `scripts/extract_proposal_source.py`
+- `scripts/validate_extraction_adapter.py`
+- `.github/workflows/proposal-source-extraction.yml`
+- `docs/proposal-source-extraction.md`
+
+Scanned/image-only PDF OCR는 현재 지원 범위가 아닙니다.
