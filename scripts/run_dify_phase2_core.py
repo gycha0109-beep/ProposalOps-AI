@@ -193,55 +193,93 @@ def validate_plans(rfp_analysis: dict, planner: dict):
     }
 
 
-def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method):
+def retrieve_candidates(
+    client,
+    dataset_id,
+    plans,
+    corpus,
+    top_k,
+    search_method,
+    queries_per_requirement,
+):
     results = []
     for plan in plans:
-        queries = [
+        all_queries = [
             query.strip()
             for query in plan.get("search_queries", [])
             if isinstance(query, str) and query.strip()
         ]
-        query = queries[0]
-        response = client.retrieve(
-            dataset_id,
-            query,
-            top_k=top_k,
-            search_method=search_method,
-        )
-        raw_candidates = []
+        queries = all_queries[:queries_per_requirement]
+        merged = {}
         unknown = []
-        for rank, record in enumerate(response.get("records", []), start=1):
-            asset_id = asset_id_from_record(record)
-            if not asset_id or asset_id not in corpus:
-                unknown.append({
+
+        for query_index, query in enumerate(queries, start=1):
+            response = client.retrieve(
+                dataset_id,
+                query,
+                top_k=top_k,
+                search_method=search_method,
+            )
+            for rank, record in enumerate(response.get("records", []), start=1):
+                asset_id = asset_id_from_record(record)
+                if not asset_id or asset_id not in corpus:
+                    unknown.append({
+                        "query_index": query_index,
+                        "query": query,
+                        "rank": rank,
+                        "asset_id": asset_id,
+                        "segment_id": (record.get("segment") or {}).get("id"),
+                    })
+                    continue
+
+                score = float(record.get("score") or 0.0)
+                row = merged.get(asset_id)
+                if row is None:
+                    doc = corpus[asset_id]
+                    document_name = doc["name"]
+                    title = (
+                        document_name.split("__", 1)[1]
+                        if "__" in document_name
+                        else document_name
+                    )
+                    row = {
+                        "retrieval_rank": rank,
+                        "retrieval_score": score,
+                        "asset_id": asset_id,
+                        "title": title,
+                        "document_name": document_name,
+                        "text": doc["text"],
+                        "metadata": doc["metadata"],
+                        "matched_queries": [],
+                    }
+                    merged[asset_id] = row
+                elif score > float(row.get("retrieval_score") or 0.0):
+                    row["retrieval_score"] = score
+                    row["retrieval_rank"] = rank
+
+                row["matched_queries"].append({
+                    "query_index": query_index,
+                    "query": query,
                     "rank": rank,
-                    "asset_id": asset_id,
-                    "segment_id": (record.get("segment") or {}).get("id"),
+                    "score": score,
                 })
-                continue
-            doc = corpus[asset_id]
-            document_name = doc["name"]
-            title = document_name.split("__", 1)[1] if "__" in document_name else document_name
-            raw_candidates.append({
-                "retrieval_rank": rank,
-                "retrieval_score": record.get("score"),
-                "asset_id": asset_id,
-                "title": title,
-                "document_name": document_name,
-                "text": doc["text"],
-                "metadata": doc["metadata"],
-            })
+
+        raw_candidates = sorted(
+            merged.values(),
+            key=lambda item: (-float(item.get("retrieval_score") or 0.0), item["asset_id"]),
+        )
 
         intent = str(plan.get("intent") or "").strip().lower()
         allowed_page_types = INTENT_PAGE_TYPES.get(intent)
         if allowed_page_types:
-            candidates = [
+            eligible = [
                 item for item in raw_candidates
                 if (item.get("metadata") or {}).get("page_type") in allowed_page_types
             ]
         else:
-            candidates = raw_candidates
+            eligible = raw_candidates
 
+        candidates = eligible[:top_k]
         selected_ids = {item["asset_id"] for item in candidates}
         filtered_out = [
             item["asset_id"] for item in raw_candidates
@@ -251,7 +289,8 @@ def retrieve_candidates(client, dataset_id, plans, corpus, top_k, search_method)
         results.append({
             "requirement_id": plan["requirement_id"],
             "intent": plan.get("intent"),
-            "query": query,
+            "query": " || ".join(queries),
+            "queries": queries,
             "allowed_page_types": sorted(allowed_page_types) if allowed_page_types else [],
             "filtered_out_asset_ids": filtered_out,
             "candidates": candidates,
@@ -403,7 +442,7 @@ def main():
         "rfp_id": config["rfp_id"],
         "model": config["model"],
         "openai_calls": 4,
-        "dify_retrieval_calls": 6,
+        "dify_retrieval_calls": 6 * int(config["dify"].get("queries_per_requirement", 1)),
         "dataset_id": config["dify"]["production_dataset_id"],
         "search_method": config["dify"]["search_method"],
         "top_k": config["dify"]["top_k"],
@@ -456,6 +495,7 @@ def main():
         corpus,
         int(config["dify"]["top_k"]),
         config["dify"]["search_method"],
+        int(config["dify"].get("queries_per_requirement", 1)),
     )
     if any(row["unknown_records"] for row in retrieval_results):
         raise SystemExit("Dify retrieval returned unknown assets.")
