@@ -3,18 +3,11 @@
     {
       "page_id": "PAGE-001",
       "headline": "방문 동기별로 콘텐츠 메시지와 행동을 차별화합니다",
-      "subheadline": "온라인 탐색을 방문 계획으로 연결하는 동기 기반 타깃 전략",
+      "subheadline": "온라인 탐색을 방문 계획으로 연결하는 타깃 세분화 전략",
       "body_blocks": [
         {
           "label": "방문 동기 세분화",
-          "text": "맛집·휴식·체험·문화관람 등 서로 다른 방문 동기를 기준으로 탐색 맥락을 구분합니다.",
-          "claim_type": "RFP_FACT",
-          "evidence_ids": [],
-          "client_confirmation_required": false
-        },
-        {
-          "label": "메시지 매핑",
-          "text": "동기별 관심 자원에 맞춰 콘텐츠 메시지와 추천 행동을 차별화합니다.",
+          "text": "맛집·휴식·체험·사진 촬영 등 방문 동기를 기준으로 콘텐츠 탐색 맥락을 구분합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-201-01"
@@ -22,8 +15,15 @@
           "client_confirmation_required": false
         },
         {
-          "label": "운영 최적화",
-          "text": "세그먼트별 콘텐츠 반응과 다음 행동을 비교해 월별 운영에 반영합니다.",
+          "label": "메시지와 행동 연결",
+          "text": "동기별 관심 자원과 콘텐츠 메시지를 연결하고, 다음 방문 행동으로 이어지도록 설계합니다.",
+          "claim_type": "AI_RECOMMENDATION",
+          "evidence_ids": [],
+          "client_confirmation_required": false
+        },
+        {
+          "label": "운영 적용",
+          "text": "콘텐츠 반응과 다음 행동을 비교해 월별 운영에 반영합니다.",
           "claim_type": "AI_RECOMMENDATION",
           "evidence_ids": [],
           "client_confirmation_required": false
@@ -32,18 +32,18 @@
       "evidence_ids": [
         "EV-R-201-01"
       ],
-      "visual_type": "icon_diagram",
-      "speaker_note": "방문 동기를 기준으로 타깃을 나누고, 각 동기에 맞는 메시지와 행동 유도를 설계하는 접근입니다.",
+      "visual_type": "process_diagram",
+      "speaker_note": "제안 사례의 동기 기반 세분화 패턴을 참고하되, 실제 운영 세그먼트와 메시지는 발주처 보유 자원 및 타깃 데이터 확인 후 확정합니다.",
       "fact_risk": "medium"
     },
     {
       "page_id": "PAGE-002",
-      "headline": "발견한 지역 콘텐츠를 저장 가능한 주말 계획으로 전환합니다",
-      "subheadline": "Discover → Save → Visit으로 이어지는 콘텐츠 퍼널",
+      "headline": "발견한 지역 콘텐츠를 저장 가능한 방문 계획으로 전환합니다",
+      "subheadline": "Discover → Save → Visit 퍼널로 콘텐츠 역할을 분리합니다",
       "body_blocks": [
         {
           "label": "Discover",
-          "text": "숏폼으로 방문 동기와 지역 자원을 짧고 직관적으로 노출해 관심을 만듭니다.",
+          "text": "짧은 발견 콘텐츠로 지역 자원과 방문 동기에 대한 관심을 유도합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-202-01"
@@ -52,7 +52,7 @@
         },
         {
           "label": "Save",
-          "text": "지도형 정보와 저장 가능한 주말 추천·연계 코스로 상세 탐색을 유도합니다.",
+          "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 상세 탐색과 저장을 유도합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-202-01"
@@ -61,7 +61,7 @@
         },
         {
           "label": "Visit",
-          "text": "확인된 장소 정보에서 지도 또는 예약 페이지 이동으로 방문 계획을 연결합니다.",
+          "text": "저장한 콘텐츠에서 방문 행동으로 이어질 수 있도록 지도 또는 예약 페이지 이동을 설계합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-202-01"
@@ -69,7 +69,7 @@
           "client_confirmation_required": false
         },
         {
-          "label": "콘텐츠 배치",
+          "label": "제공 물량 배치",
           "text": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별 역할에 배치합니다.",
           "claim_type": "RFP_FACT",
           "evidence_ids": [],
@@ -80,24 +80,26 @@
         "EV-R-202-01"
       ],
       "visual_type": "process_diagram",
-      "speaker_note": "각 콘텐츠 유형의 역할을 발견, 저장, 방문 계획 단계에 맞춰 배치해 콘텐츠 간 연결성을 보여줍니다.",
+      "speaker_note": "콘텐츠별 세부 주제와 지도·예약 페이지 연결 방식은 실제 제공 정보와 채널 환경을 확인해 확정합니다.",
       "fact_risk": "medium"
     },
     {
       "page_id": "PAGE-003",
-      "headline": "세로형 숏폼은 Hook·Core·Action으로 설계합니다",
-      "subheadline": "방문 동기 제시부터 영상당 하나의 행동 유도까지",
+      "headline": "세로형 숏폼을 Hook·Core·Action으로 설계합니다",
+      "subheadline": "첫 장면의 방문 동기를 하나의 명확한 행동으로 연결합니다",
       "body_blocks": [
         {
           "label": "Hook",
-          "text": "첫 장면에서 맛집·휴식·체험·문화관람 등 방문 동기를 제시합니다.",
-          "claim_type": "RFP_FACT",
-          "evidence_ids": [],
+          "text": "첫 장면에서 시청자의 방문 동기를 제시합니다.",
+          "claim_type": "REFERENCE_PATTERN",
+          "evidence_ids": [
+            "EV-R-203-01"
+          ],
           "client_confirmation_required": false
         },
         {
           "label": "Core",
-          "text": "핵심 정보로 장소와 콘텐츠의 매력을 모바일 시청 흐름에 맞게 전달합니다.",
+          "text": "핵심 정보로 장소와 콘텐츠의 매력을 전달합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-203-01"
@@ -106,7 +108,7 @@
         },
         {
           "label": "Action",
-          "text": "저장·상세 탐색·지도 이동 등 영상마다 하나의 행동 목표를 제시합니다.",
+          "text": "영상당 하나의 행동 목표를 제시해 저장·상세 탐색·지도 이동 등 다음 행동으로 연결합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-203-01"
@@ -114,8 +116,8 @@
           "client_confirmation_required": false
         },
         {
-          "label": "운영 기준",
-          "text": "세로형 숏폼 15편을 설계하고, 실제 장소 및 운영정보는 게시 전 확인된 내용만 반영합니다.",
+          "label": "제작 물량",
+          "text": "세로형 숏폼 15편에 동일한 메시지 구조를 적용합니다.",
           "claim_type": "RFP_FACT",
           "evidence_ids": [],
           "client_confirmation_required": false
@@ -125,17 +127,17 @@
         "EV-R-203-01"
       ],
       "visual_type": "process_diagram",
-      "speaker_note": "모든 영상에 동일한 기본 구조를 적용하되, 영상별 CTA는 하나로 명확하게 설정합니다.",
+      "speaker_note": "30초 및 3초·17초·10초 구간은 참고 사례의 운영 실적이나 확정 조건으로 제시하지 않고, 실제 제작 가이드 확정 시 별도 협의합니다.",
       "fact_risk": "medium"
     },
     {
       "page_id": "PAGE-004",
-      "headline": "공식 채널과 지역 크리에이터의 역할을 분리합니다",
-      "subheadline": "신뢰성 있는 방문 정보와 실제 이용 맥락을 연결하는 협업 운영",
+      "headline": "공식 채널과 지역 크리에이터의 역할을 분리해 협업합니다",
+      "subheadline": "정보의 신뢰성과 실제 이용 맥락을 서로 다른 역할로 연결합니다",
       "body_blocks": [
         {
           "label": "공식 채널",
-          "text": "운영시간·위치·이용방법·연계 코스 등 정보형 콘텐츠를 담당합니다.",
+          "text": "공식 계정은 정보형 콘텐츠를 담당합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-204-01"
@@ -144,7 +146,7 @@
         },
         {
           "label": "지역 크리에이터",
-          "text": "실제 이용 맥락과 체험 관점의 콘텐츠를 담당합니다.",
+          "text": "지역 크리에이터는 체험형 콘텐츠를 담당합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-204-01"
@@ -152,16 +154,16 @@
           "client_confirmation_required": false
         },
         {
-          "label": "운영 단계",
-          "text": "사전 브리프부터 필수 정보 확인, 제작·검수, 게시 후 회고까지 단계별로 운영합니다.",
-          "claim_type": "AI_RECOMMENDATION",
+          "label": "협업 운영",
+          "text": "지역 크리에이터 협업 콘텐츠 6건을 역할별 운영안에 배치합니다.",
+          "claim_type": "RFP_FACT",
           "evidence_ids": [],
           "client_confirmation_required": false
         },
         {
-          "label": "협업 물량",
-          "text": "지역 크리에이터 협업 콘텐츠 6건을 역할별 운영 단계에 연결합니다.",
-          "claim_type": "RFP_FACT",
+          "label": "운영 단계",
+          "text": "브리프, 정보 확인, 제작·검수, 게시 후 회고의 운영 단계를 적용합니다.",
+          "claim_type": "AI_RECOMMENDATION",
           "evidence_ids": [],
           "client_confirmation_required": false
         }
@@ -170,42 +172,33 @@
         "EV-R-204-01"
       ],
       "visual_type": "process_diagram",
-      "speaker_note": "공식 채널은 정보의 신뢰성을, 크리에이터는 체험의 생생함을 담당하도록 역할을 분리합니다.",
+      "speaker_note": "특정 크리에이터와의 실제 협업이나 운영 성과를 전제로 하지 않으며, 협업 대상과 검수 기준은 발주처 확인 후 확정합니다.",
       "fact_risk": "medium"
     },
     {
       "page_id": "PAGE-005",
       "headline": "변경 가능한 방문 정보는 게시 전 확인하고 변경 시 갱신합니다",
-      "subheadline": "운영정보의 최신성을 확보하는 게시 전 검수 체계",
+      "subheadline": "운영정보의 변동을 게시 보류와 상태 업데이트로 관리합니다",
       "body_blocks": [
         {
           "label": "검수 대상",
-          "text": "휴관·매진·운영시간·행사 일정 등 변경 가능한 운영정보를 검수합니다.",
-          "claim_type": "RFP_FACT",
-          "evidence_ids": [],
+          "text": "휴관, 매진, 일정 변경 등 변경 가능한 운영정보를 게시 전에 확인합니다.",
+          "claim_type": "REFERENCE_PATTERN",
+          "evidence_ids": [
+            "EV-R-205-01"
+          ],
           "client_confirmation_required": false
         },
         {
           "label": "게시 전 확인",
-          "text": "기획·제작·게시 직전에 공식 확인원을 기준으로 정보를 확인합니다.",
-          "claim_type": "REFERENCE_PATTERN",
-          "evidence_ids": [
-            "EV-R-205-01"
-          ],
+          "text": "기획·제작·게시 단계에서 공식 확인원을 기준으로 정보를 검수합니다.",
+          "claim_type": "AI_RECOMMENDATION",
+          "evidence_ids": [],
           "client_confirmation_required": false
         },
         {
           "label": "변경 대응",
-          "text": "변경사항이 발견되면 게시를 보류하거나 수정 후 게시합니다.",
-          "claim_type": "REFERENCE_PATTERN",
-          "evidence_ids": [
-            "EV-R-205-01"
-          ],
-          "client_confirmation_required": false
-        },
-        {
-          "label": "기존 콘텐츠 갱신",
-          "text": "이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신합니다.",
+          "text": "변경사항이 발생하면 게시를 보류하거나 수정하고, 기존 게시물의 상태도 함께 갱신합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-205-01"
@@ -217,17 +210,17 @@
         "EV-R-205-01"
       ],
       "visual_type": "process_diagram",
-      "speaker_note": "변경 가능성이 있는 정보는 게시 직전까지 확인하고, 변경 발생 시 신규·기존 콘텐츠를 함께 관리합니다.",
+      "speaker_note": "공식 확인원의 범위와 정보 확인 책임 주체는 운영 협의 시 확정합니다.",
       "fact_risk": "low"
     },
     {
       "page_id": "PAGE-006",
-      "headline": "도달을 넘어 방문 의도를 단계별로 측정합니다",
-      "subheadline": "상세조회·저장·지도·예약 페이지 이동까지 연결하는 성과관리",
+      "headline": "도달 이후의 방문 의도를 단계별로 측정합니다",
+      "subheadline": "상세조회·저장·예약 이동까지 퍼널별 KPI로 관리합니다",
       "body_blocks": [
         {
-          "label": "단계별 KPI",
-          "text": "도달 이후 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정합니다.",
+          "label": "방문 의도 퍼널",
+          "text": "도달 이후 프로그램 상세조회, 일정 저장, 예약 페이지 이동을 단계별로 측정합니다.",
           "claim_type": "REFERENCE_PATTERN",
           "evidence_ids": [
             "EV-R-206-01"
@@ -235,22 +228,15 @@
           "client_confirmation_required": false
         },
         {
-          "label": "분석 기준",
-          "text": "콘텐츠 유형별·방문 동기별 KPI를 비교해 방문 의도 흐름을 확인합니다.",
+          "label": "비교 기준",
+          "text": "콘텐츠 유형별·방문 동기별 성과를 비교해 운영 개선에 활용합니다.",
           "claim_type": "AI_RECOMMENDATION",
           "evidence_ids": [],
           "client_confirmation_required": false
         },
         {
-          "label": "월별 운영",
-          "text": "5개월 사업 기간 동안 월별 성과 보고와 운영 개선에 연결합니다.",
-          "claim_type": "RFP_FACT",
-          "evidence_ids": [],
-          "client_confirmation_required": false
-        },
-        {
-          "label": "최종 제출",
-          "text": "최종 결과 보고에 콘텐츠 목록과 성과지표 원자료를 포함합니다.",
+          "label": "보고 체계",
+          "text": "월별 보고와 최종 결과 보고에 콘텐츠 목록 및 성과지표 원자료를 포함합니다.",
           "claim_type": "RFP_FACT",
           "evidence_ids": [],
           "client_confirmation_required": false
@@ -260,7 +246,7 @@
         "EV-R-206-01"
       ],
       "visual_type": "process_diagram",
-      "speaker_note": "단순 노출량이 아니라 상세 탐색과 저장, 지도·예약 페이지 이동까지 퍼널별로 관리해 방문 의도에 가까운 성과를 확인합니다.",
+      "speaker_note": "실제 측정 가능 지표와 원자료 제출 형식은 채널별 분석 도구 및 발주처 보고 기준을 확인해 확정합니다.",
       "fact_risk": "medium"
     }
   ]

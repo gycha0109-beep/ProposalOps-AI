@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "phase": "dify-phase4-package",
-  "status": "ESCALATION_REQUIRED",
-  "generated_at": "2026-09-30T04:40:09.387866+00:00",
+  "status": "PASS",
+  "generated_at": "2026-09-30T04:43:53.076815+00:00",
   "rfp_id": "RFP-TEST-002",
   "model": "gpt-5.6-luna",
   "rfp_analysis": {
@@ -353,7 +353,7 @@
       {
         "strategy_id": "ST-02",
         "pillar": "발견에서 방문 계획으로 이어지는 콘텐츠 퍼널",
-        "description": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어지는 콘텐츠 구조를 제안한다. 숏폼, 카드형 콘텐츠, 연계 코스 콘텐츠를 각 단계의 역할에 맞게 배치한다.",
+        "description": "짧고 직관적인 발견 콘텐츠로 관심을 유도한 뒤, 저장 가능한 코스·주말 추천·상세 정보로 연결하고, 최종적으로 지도 또는 예약 페이지 이동을 유도한다. 숏폼, 카드형 콘텐츠, 연계 코스를 각각 발견·저장·방문 계획 단계의 역할에 맞게 배치한다.",
         "requirement_ids": [
           "R-202"
         ],
@@ -389,7 +389,7 @@
       {
         "strategy_id": "ST-05",
         "pillar": "게시 전 운영정보 검수와 변경 대응",
-        "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 운영정보를 게시 전에 확인하고, 변경사항이 발견되면 대응하며 기존 게시물의 상태 정보도 함께 갱신한다.",
+        "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 정보는 콘텐츠 기획·제작·게시 직전에 공식 확인원을 기준으로 검수한다. 변경사항이 발견되면 게시 보류 또는 수정 후 게시하고, 이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신한다.",
         "requirement_ids": [
           "R-205"
         ],
@@ -401,7 +401,7 @@
       {
         "strategy_id": "ST-06",
         "pillar": "방문 의도 중심의 단계별 성과관리",
-        "description": "월별 보고와 최종 결과 보고에서 도달 이후 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정한다. 콘텐츠 유형별·방문 동기별 KPI 비교와 원자료 제출은 사업 적용을 위한 제안 운영안으로 별도 설계한다.",
+        "description": "월별 보고와 최종 결과 보고에서 단순 도달을 넘어 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정한다. 콘텐츠별·세그먼트별 KPI를 비교하고, 최종 제출물에는 콘텐츠 목록과 성과지표 원자료를 포함해 산출 근거를 확인할 수 있도록 한다.",
         "requirement_ids": [
           "R-206"
         ],
@@ -477,9 +477,9 @@
         "page_no": 2,
         "section": "콘텐츠 전략",
         "page_type": "funnel",
-        "title": "발견 콘텐츠를 저장 가능한 코스 콘텐츠와 방문 계획으로 연결",
+        "title": "발견한 지역 콘텐츠를 저장 가능한 주말 계획으로 전환",
         "page_goal": "콘텐츠 유형별 역할과 방문 계획으로 이어지는 퍼널을 제시한다.",
-        "key_message": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어간다.",
+        "key_message": "숏폼으로 발견을 만들고, 카드형 콘텐츠와 연계 코스로 저장·상세 탐색을 유도한 뒤 지도 또는 예약 페이지 이동으로 연결한다.",
         "rfp_requirement_ids": [
           "R-202"
         ],
@@ -492,22 +492,22 @@
         "content_blocks": [
           {
             "role": "discovery",
-            "intent": "짧은 발견 콘텐츠로 관심을 만든다."
+            "intent": "세로형 숏폼으로 방문 동기와 지역 자원을 짧고 직관적으로 노출한다."
           },
           {
             "role": "save_and_explore",
-            "intent": "지도형 정보와 저장 가능한 코스 콘텐츠로 저장과 탐색을 유도한다."
+            "intent": "주말 추천 카드형 콘텐츠와 문화시설·관광지 연계 코스로 저장과 상세 탐색을 유도한다."
           },
           {
             "role": "visit_planning",
-            "intent": "콘텐츠 구조를 방문 계획 단계까지 연결한다."
+            "intent": "확인된 장소 정보와 연결 경로를 바탕으로 지도·예약 페이지 이동을 유도한다."
           },
           {
             "role": "deliverable_mapping",
             "intent": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건의 역할을 퍼널 단계에 배치한다."
           }
         ],
-        "visual_direction": "Discover → Save → Visit 3단계 퍼널에 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 배치한다.",
+        "visual_direction": "Discover → Save → Visit 3단계 퍼널에 숏폼 15편, 카드형 24건, 연계 코스 8건을 배치한다.",
         "fact_risk": "medium"
       },
       {
@@ -593,7 +593,7 @@
         "page_type": "quality_control",
         "title": "변경 가능한 방문 정보의 게시 전 검수 체계",
         "page_goal": "휴관·매진·운영시간·행사 일정 등 운영정보의 확인과 변경 대응 절차를 제시한다.",
-        "key_message": "변경 가능한 방문 정보는 게시 전에 확인하고, 변경 시 게시 대응과 기존 게시물 상태 정보 갱신을 수행한다.",
+        "key_message": "변경 가능한 방문 정보는 기획·제작·게시 직전에 공식 확인원을 기준으로 검수하고, 변경 시 게시 보류 또는 기존 게시물까지 갱신한다.",
         "rfp_requirement_ids": [
           "R-205"
         ],
@@ -610,18 +610,18 @@
           },
           {
             "role": "pre_publish_check",
-            "intent": "변경 가능한 운영정보를 게시 전에 확인한다."
+            "intent": "기획·제작·게시 직전에 공식 확인원을 기준으로 정보를 확인한다."
           },
           {
             "role": "change_response",
-            "intent": "변경사항 발생 시 게시 대응을 수행한다."
+            "intent": "변경사항 발생 시 게시를 보류하거나 수정 후 게시한다."
           },
           {
             "role": "content_update",
             "intent": "이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신한다."
           }
         ],
-        "visual_direction": "정보 수집 → 게시 전 확인 → 게시·모니터링 → 변경 시 대응 및 기존 게시물 상태 갱신의 플로우를 사용한다.",
+        "visual_direction": "정보 수집 → 제작 반영 → 게시 직전 확인 → 게시·모니터링 → 변경 시 갱신의 체크포인트 플로우를 사용한다.",
         "fact_risk": "low"
       },
       {
@@ -631,7 +631,7 @@
         "page_type": "measurement",
         "title": "도달을 넘어 방문 의도를 측정하는 성과관리",
         "page_goal": "월별·최종 보고에 적용할 단계별 KPI와 원자료 제출 체계를 제시한다.",
-        "key_message": "도달 이후 상세조회·저장·지도·예약 페이지 이동을 단계별로 측정해 콘텐츠가 방문 의도로 이어지는 과정을 관리한다.",
+        "key_message": "도달뿐 아니라 상세조회·저장·지도·예약 페이지 이동을 단계별로 측정해 콘텐츠가 방문 의도로 이어지는 과정을 관리한다.",
         "rfp_requirement_ids": [
           "R-206"
         ],
@@ -648,7 +648,7 @@
           },
           {
             "role": "breakdown",
-            "intent": "콘텐츠 유형별·방문 동기별 KPI 비교는 사업 적용을 위한 AI_RECOMMENDATION으로 제안한다."
+            "intent": "콘텐츠 유형별·방문 동기별 KPI를 비교한다."
           },
           {
             "role": "monthly_reporting",
@@ -659,7 +659,7 @@
             "intent": "최종 결과 보고에 콘텐츠 목록과 성과지표 원자료를 포함한다."
           }
         ],
-        "visual_direction": "단계별 KPI 퍼널과 월별 보고·최종 원자료 제출 구조를 표현하고, 콘텐츠 유형별·방문 동기별 비교는 별도 제안 영역으로 구분한다.",
+        "visual_direction": "방문 의도 퍼널별 KPI 대시보드와 월별 보고·최종 원자료 제출 구조를 함께 표현한다.",
         "fact_risk": "medium"
       }
     ],
@@ -714,18 +714,11 @@
       {
         "page_id": "PAGE-001",
         "headline": "방문 동기별로 콘텐츠 메시지와 행동을 차별화합니다",
-        "subheadline": "온라인 탐색을 방문 계획으로 연결하는 동기 기반 타깃 전략",
+        "subheadline": "온라인 탐색을 방문 계획으로 연결하는 타깃 세분화 전략",
         "body_blocks": [
           {
             "label": "방문 동기 세분화",
-            "text": "맛집·휴식·체험·문화관람 등 서로 다른 방문 동기를 기준으로 탐색 맥락을 구분합니다.",
-            "claim_type": "RFP_FACT",
-            "evidence_ids": [],
-            "client_confirmation_required": false
-          },
-          {
-            "label": "메시지 매핑",
-            "text": "동기별 관심 자원에 맞춰 콘텐츠 메시지와 추천 행동을 차별화합니다.",
+            "text": "맛집·휴식·체험·사진 촬영 등 방문 동기를 기준으로 콘텐츠 탐색 맥락을 구분합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-201-01"
@@ -733,8 +726,15 @@
             "client_confirmation_required": false
           },
           {
-            "label": "운영 최적화",
-            "text": "세그먼트별 콘텐츠 반응과 다음 행동을 비교해 월별 운영에 반영합니다.",
+            "label": "메시지와 행동 연결",
+            "text": "동기별 관심 자원과 콘텐츠 메시지를 연결하고, 다음 방문 행동으로 이어지도록 설계합니다.",
+            "claim_type": "AI_RECOMMENDATION",
+            "evidence_ids": [],
+            "client_confirmation_required": false
+          },
+          {
+            "label": "운영 적용",
+            "text": "콘텐츠 반응과 다음 행동을 비교해 월별 운영에 반영합니다.",
             "claim_type": "AI_RECOMMENDATION",
             "evidence_ids": [],
             "client_confirmation_required": false
@@ -743,18 +743,18 @@
         "evidence_ids": [
           "EV-R-201-01"
         ],
-        "visual_type": "icon_diagram",
-        "speaker_note": "방문 동기를 기준으로 타깃을 나누고, 각 동기에 맞는 메시지와 행동 유도를 설계하는 접근입니다.",
+        "visual_type": "process_diagram",
+        "speaker_note": "제안 사례의 동기 기반 세분화 패턴을 참고하되, 실제 운영 세그먼트와 메시지는 발주처 보유 자원 및 타깃 데이터 확인 후 확정합니다.",
         "fact_risk": "medium"
       },
       {
         "page_id": "PAGE-002",
-        "headline": "발견 콘텐츠를 저장 가능한 코스와 방문 계획으로 연결합니다",
-        "subheadline": "Discover → Save → Visit으로 이어지는 콘텐츠 퍼널",
+        "headline": "발견한 지역 콘텐츠를 저장 가능한 방문 계획으로 전환합니다",
+        "subheadline": "Discover → Save → Visit 퍼널로 콘텐츠 역할을 분리합니다",
         "body_blocks": [
           {
             "label": "Discover",
-            "text": "짧은 발견 콘텐츠로 관심을 만듭니다.",
+            "text": "짧은 발견 콘텐츠로 지역 자원과 방문 동기에 대한 관심을 유도합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-202-01"
@@ -763,7 +763,7 @@
           },
           {
             "label": "Save",
-            "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 탐색과 저장을 유도합니다.",
+            "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 상세 탐색과 저장을 유도합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-202-01"
@@ -772,7 +772,7 @@
           },
           {
             "label": "Visit",
-            "text": "Discover와 Save를 거쳐 방문 계획 단계까지 연결합니다.",
+            "text": "저장한 콘텐츠에서 방문 행동으로 이어질 수 있도록 지도 또는 예약 페이지 이동을 설계합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-202-01"
@@ -780,7 +780,7 @@
             "client_confirmation_required": false
           },
           {
-            "label": "콘텐츠 배치",
+            "label": "제공 물량 배치",
             "text": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별 역할에 배치합니다.",
             "claim_type": "RFP_FACT",
             "evidence_ids": [],
@@ -791,24 +791,26 @@
           "EV-R-202-01"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결되는 Discover → Save → Visit 구조를 보여주고, 각 콘텐츠 유형의 역할을 단계별로 배치합니다.",
+        "speaker_note": "콘텐츠별 세부 주제와 지도·예약 페이지 연결 방식은 실제 제공 정보와 채널 환경을 확인해 확정합니다.",
         "fact_risk": "medium"
       },
       {
         "page_id": "PAGE-003",
-        "headline": "세로형 숏폼은 Hook·Core·Action으로 설계합니다",
-        "subheadline": "방문 동기 제시부터 영상당 하나의 행동 유도까지",
+        "headline": "세로형 숏폼을 Hook·Core·Action으로 설계합니다",
+        "subheadline": "첫 장면의 방문 동기를 하나의 명확한 행동으로 연결합니다",
         "body_blocks": [
           {
             "label": "Hook",
-            "text": "첫 장면에서 맛집·휴식·체험·문화관람 등 방문 동기를 제시합니다.",
-            "claim_type": "RFP_FACT",
-            "evidence_ids": [],
+            "text": "첫 장면에서 시청자의 방문 동기를 제시합니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-203-01"
+            ],
             "client_confirmation_required": false
           },
           {
             "label": "Core",
-            "text": "핵심 정보로 장소와 콘텐츠의 매력을 모바일 시청 흐름에 맞게 전달합니다.",
+            "text": "핵심 정보로 장소와 콘텐츠의 매력을 전달합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-203-01"
@@ -817,7 +819,7 @@
           },
           {
             "label": "Action",
-            "text": "저장·상세 탐색·지도 이동 등 영상마다 하나의 행동 목표를 제시합니다.",
+            "text": "영상당 하나의 행동 목표를 제시해 저장·상세 탐색·지도 이동 등 다음 행동으로 연결합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-203-01"
@@ -825,8 +827,8 @@
             "client_confirmation_required": false
           },
           {
-            "label": "운영 기준",
-            "text": "세로형 숏폼 15편을 설계하고, 실제 장소 및 운영정보는 게시 전 확인된 내용만 반영합니다.",
+            "label": "제작 물량",
+            "text": "세로형 숏폼 15편에 동일한 메시지 구조를 적용합니다.",
             "claim_type": "RFP_FACT",
             "evidence_ids": [],
             "client_confirmation_required": false
@@ -836,17 +838,17 @@
           "EV-R-203-01"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "모든 영상에 동일한 기본 구조를 적용하되, 영상별 CTA는 하나로 명확하게 설정합니다.",
+        "speaker_note": "30초 및 3초·17초·10초 구간은 참고 사례의 운영 실적이나 확정 조건으로 제시하지 않고, 실제 제작 가이드 확정 시 별도 협의합니다.",
         "fact_risk": "medium"
       },
       {
         "page_id": "PAGE-004",
-        "headline": "공식 채널과 지역 크리에이터의 역할을 분리합니다",
-        "subheadline": "신뢰성 있는 방문 정보와 실제 이용 맥락을 연결하는 협업 운영",
+        "headline": "공식 채널과 지역 크리에이터의 역할을 분리해 협업합니다",
+        "subheadline": "정보의 신뢰성과 실제 이용 맥락을 서로 다른 역할로 연결합니다",
         "body_blocks": [
           {
             "label": "공식 채널",
-            "text": "운영시간·위치·이용방법·연계 코스 등 정보형 콘텐츠를 담당합니다.",
+            "text": "공식 계정은 정보형 콘텐츠를 담당합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-204-01"
@@ -855,7 +857,7 @@
           },
           {
             "label": "지역 크리에이터",
-            "text": "실제 이용 맥락과 체험 관점의 콘텐츠를 담당합니다.",
+            "text": "지역 크리에이터는 체험형 콘텐츠를 담당합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-204-01"
@@ -863,16 +865,16 @@
             "client_confirmation_required": false
           },
           {
-            "label": "운영 단계",
-            "text": "사전 브리프부터 필수 정보 확인, 제작·검수, 게시 후 회고까지 단계별로 운영합니다.",
-            "claim_type": "AI_RECOMMENDATION",
+            "label": "협업 운영",
+            "text": "지역 크리에이터 협업 콘텐츠 6건을 역할별 운영안에 배치합니다.",
+            "claim_type": "RFP_FACT",
             "evidence_ids": [],
             "client_confirmation_required": false
           },
           {
-            "label": "협업 물량",
-            "text": "지역 크리에이터 협업 콘텐츠 6건을 역할별 운영 단계에 연결합니다.",
-            "claim_type": "RFP_FACT",
+            "label": "운영 단계",
+            "text": "브리프, 정보 확인, 제작·검수, 게시 후 회고의 운영 단계를 적용합니다.",
+            "claim_type": "AI_RECOMMENDATION",
             "evidence_ids": [],
             "client_confirmation_required": false
           }
@@ -881,42 +883,33 @@
           "EV-R-204-01"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "공식 채널은 정보의 신뢰성을, 크리에이터는 체험의 생생함을 담당하도록 역할을 분리합니다.",
+        "speaker_note": "특정 크리에이터와의 실제 협업이나 운영 성과를 전제로 하지 않으며, 협업 대상과 검수 기준은 발주처 확인 후 확정합니다.",
         "fact_risk": "medium"
       },
       {
         "page_id": "PAGE-005",
         "headline": "변경 가능한 방문 정보는 게시 전 확인하고 변경 시 갱신합니다",
-        "subheadline": "운영정보의 최신성을 관리하는 게시 전 검수 체계",
+        "subheadline": "운영정보의 변동을 게시 보류와 상태 업데이트로 관리합니다",
         "body_blocks": [
           {
             "label": "검수 대상",
-            "text": "휴관·매진·운영시간·행사 일정 등 변경 가능한 운영정보를 검수합니다.",
-            "claim_type": "RFP_FACT",
-            "evidence_ids": [],
+            "text": "휴관, 매진, 일정 변경 등 변경 가능한 운영정보를 게시 전에 확인합니다.",
+            "claim_type": "REFERENCE_PATTERN",
+            "evidence_ids": [
+              "EV-R-205-01"
+            ],
             "client_confirmation_required": false
           },
           {
             "label": "게시 전 확인",
-            "text": "변경 가능한 운영정보를 게시 전에 확인합니다.",
-            "claim_type": "REFERENCE_PATTERN",
-            "evidence_ids": [
-              "EV-R-205-01"
-            ],
+            "text": "기획·제작·게시 단계에서 공식 확인원을 기준으로 정보를 검수합니다.",
+            "claim_type": "AI_RECOMMENDATION",
+            "evidence_ids": [],
             "client_confirmation_required": false
           },
           {
             "label": "변경 대응",
-            "text": "변경사항이 발견되면 게시 대응을 수행합니다.",
-            "claim_type": "REFERENCE_PATTERN",
-            "evidence_ids": [
-              "EV-R-205-01"
-            ],
-            "client_confirmation_required": false
-          },
-          {
-            "label": "기존 콘텐츠 갱신",
-            "text": "이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신합니다.",
+            "text": "변경사항이 발생하면 게시를 보류하거나 수정하고, 기존 게시물의 상태도 함께 갱신합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-205-01"
@@ -928,17 +921,17 @@
           "EV-R-205-01"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "변경 가능한 운영정보를 게시 전에 확인하고, 변경 발생 시 신규 게시 대응과 기존 게시물 상태 갱신을 함께 수행합니다.",
+        "speaker_note": "공식 확인원의 범위와 정보 확인 책임 주체는 운영 협의 시 확정합니다.",
         "fact_risk": "low"
       },
       {
         "page_id": "PAGE-006",
-        "headline": "도달을 넘어 방문 의도를 단계별로 측정합니다",
-        "subheadline": "상세조회·저장·지도·예약 페이지 이동까지 연결하는 성과관리",
+        "headline": "도달 이후의 방문 의도를 단계별로 측정합니다",
+        "subheadline": "상세조회·저장·예약 이동까지 퍼널별 KPI로 관리합니다",
         "body_blocks": [
           {
-            "label": "단계별 KPI",
-            "text": "도달 이후 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정합니다.",
+            "label": "방문 의도 퍼널",
+            "text": "도달 이후 프로그램 상세조회, 일정 저장, 예약 페이지 이동을 단계별로 측정합니다.",
             "claim_type": "REFERENCE_PATTERN",
             "evidence_ids": [
               "EV-R-206-01"
@@ -946,22 +939,15 @@
             "client_confirmation_required": false
           },
           {
-            "label": "분석 기준",
-            "text": "콘텐츠 유형별·방문 동기별 KPI 비교는 사업 적용을 위한 분석 기준으로 제안합니다.",
+            "label": "비교 기준",
+            "text": "콘텐츠 유형별·방문 동기별 성과를 비교해 운영 개선에 활용합니다.",
             "claim_type": "AI_RECOMMENDATION",
             "evidence_ids": [],
             "client_confirmation_required": false
           },
           {
-            "label": "월별 운영",
-            "text": "5개월 사업 기간 동안 월별 성과 보고와 운영 개선에 연결합니다.",
-            "claim_type": "RFP_FACT",
-            "evidence_ids": [],
-            "client_confirmation_required": false
-          },
-          {
-            "label": "최종 제출",
-            "text": "최종 결과 보고에 콘텐츠 목록과 성과지표 원자료를 포함합니다.",
+            "label": "보고 체계",
+            "text": "월별 보고와 최종 결과 보고에 콘텐츠 목록 및 성과지표 원자료를 포함합니다.",
             "claim_type": "RFP_FACT",
             "evidence_ids": [],
             "client_confirmation_required": false
@@ -971,7 +957,7 @@
           "EV-R-206-01"
         ],
         "visual_type": "process_diagram",
-        "speaker_note": "단계별 KPI 측정은 인용 근거의 범위로 제시하고, 콘텐츠 유형별·방문 동기별 비교는 별도 제안 운영안으로 구분합니다.",
+        "speaker_note": "실제 측정 가능 지표와 원자료 제출 형식은 채널별 분석 도구 및 발주처 보고 기준을 확인해 확정합니다.",
         "fact_risk": "medium"
       }
     ]
@@ -980,10 +966,10 @@
     "visuals": [
       {
         "page_id": "PAGE-001",
-        "visual_type": "icon_diagram",
+        "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "방문 동기별로 관심 자원, 콘텐츠 메시지, 추천 행동을 연결해 타깃 전략을 시각화합니다.",
-        "image_prompt": "깔끔한 프레젠테이션용 4분할 아이콘 다이어그램. 방문 동기별 영역을 구분하고, 각 영역에서 관심 자원, 콘텐츠 메시지, 추천 행동으로 이어지는 연결 구조를 표현합니다. 긴 본문 텍스트와 수치 없이 간결한 라벨과 일관된 아이콘을 사용합니다.",
+        "purpose": "방문 동기별 관심 자원, 메시지, 다음 행동을 연결하고 월별 운영 반영 흐름을 보여줍니다.",
+        "image_prompt": "깔끔한 프레젠테이션용 4분할 매트릭스와 연결 흐름 다이어그램. 방문 동기 4개를 중심으로 관심 자원, 콘텐츠 메시지, 다음 행동을 연결하고 마지막에 콘텐츠 반응과 다음 행동을 월별 운영에 반영하는 구조. 긴 본문 텍스트와 실제 장소 사진은 사용하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
@@ -1000,7 +986,7 @@
             },
             {
               "id": "N4",
-              "label": "문화관람"
+              "label": "사진 촬영"
             },
             {
               "id": "N5",
@@ -1012,48 +998,49 @@
             },
             {
               "id": "N7",
-              "label": "추천 행동"
+              "label": "다음 방문 행동"
             },
             {
               "id": "N8",
+              "label": "콘텐츠 반응·다음 행동 비교"
+            },
+            {
+              "id": "N9",
               "label": "월별 운영 반영"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N5",
-              "label": "동기별 탐색"
+              "to": "N5"
             },
             {
               "from": "N2",
-              "to": "N5",
-              "label": "동기별 탐색"
+              "to": "N5"
             },
             {
               "from": "N3",
-              "to": "N5",
-              "label": "동기별 탐색"
+              "to": "N5"
             },
             {
               "from": "N4",
-              "to": "N5",
-              "label": "동기별 탐색"
+              "to": "N5"
             },
             {
               "from": "N5",
-              "to": "N6",
-              "label": "관심사 기반 매핑"
+              "to": "N6"
             },
             {
               "from": "N6",
-              "to": "N7",
-              "label": "행동 유도"
+              "to": "N7"
             },
             {
               "from": "N7",
-              "to": "N8",
-              "label": "반응과 다음 행동 반영"
+              "to": "N8"
+            },
+            {
+              "from": "N8",
+              "to": "N9"
             }
           ]
         },
@@ -1061,11 +1048,10 @@
           "EV-R-201-01"
         ],
         "prohibited_elements": [
-          "실제 캠페인 수행 실적처럼 보이는 표현",
-          "특정 고객 성과 또는 전환 결과",
-          "문화관람 세그먼트가 과거 제안서의 실제 구성이라는 표현",
-          "임의의 수치와 비율",
-          "긴 본문 텍스트"
+          "실제 수행 실적처럼 보이는 표현",
+          "특정 고객 또는 실제 현장 사진",
+          "문화관람 세그먼트가 포함되었다는 표현",
+          "성과 수치와 전환율"
         ],
         "fact_risk": "medium"
       },
@@ -1073,8 +1059,8 @@
         "page_id": "PAGE-002",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "콘텐츠 유형의 역할을 Discover, Save, Visit 단계에 배치해 발견 콘텐츠에서 방문 계획 단계까지 이어지는 퍼널을 보여줍니다.",
-        "image_prompt": "프레젠테이션용 3단계 수평 퍼널 다이어그램. Discover, Save, Visit을 명확히 구분하고 각 단계의 콘텐츠 역할과 제공된 물량을 간결하게 표시합니다. 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건만 정확히 사용하며 긴 설명과 추가 수치는 넣지 않습니다.",
+        "purpose": "콘텐츠 유형별 역할을 Discover, Save, Visit 퍼널에 배치하고 방문 행동으로 이어지는 흐름을 보여줍니다.",
+        "image_prompt": "프레젠테이션용 3단계 수평 퍼널 다이어그램. Discover에서 Save를 거쳐 Visit으로 이어지는 구조를 사용하고, 숏폼 15편은 Discover, 카드형 콘텐츠 24건은 Save, 연계 코스 콘텐츠 8건은 Save와 Visit 연결 역할로 표시. 지도 또는 예약 페이지 이동을 마지막 행동으로 표현. 긴 본문 텍스트와 실제 성과 수치는 추가하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
@@ -1103,44 +1089,33 @@
             },
             {
               "id": "N7",
-              "label": "방문 계획 단계"
+              "label": "지도 또는 예약 페이지 이동"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N2",
-              "label": "짧은 발견 콘텐츠"
+              "to": "N2"
             },
             {
               "from": "N2",
-              "to": "N3",
-              "label": "관심에서 저장으로"
+              "to": "N3"
             },
             {
               "from": "N3",
-              "to": "N4",
-              "label": "지도형 정보 연결"
-            },
-            {
-              "from": "N3",
-              "to": "N5",
-              "label": "저장 가능한 코스 콘텐츠 연결"
+              "to": "N4"
             },
             {
               "from": "N4",
-              "to": "N6",
-              "label": "방문 계획으로 연결"
+              "to": "N5"
             },
             {
               "from": "N5",
-              "to": "N6",
-              "label": "방문 계획으로 연결"
+              "to": "N6"
             },
             {
               "from": "N6",
-              "to": "N7",
-              "label": "Visit 단계"
+              "to": "N7"
             }
           ]
         },
@@ -1148,10 +1123,10 @@
           "EV-R-202-01"
         ],
         "prohibited_elements": [
-          "방문 전환 성과 또는 전환율",
-          "실제 운영 실적처럼 보이는 표현",
-          "임의의 퍼널 수치와 축",
-          "긴 본문 텍스트"
+          "방문 전환율",
+          "실제 운영 성과",
+          "특정 장소 또는 예약 결과",
+          "확정되지 않은 채널명"
         ],
         "fact_risk": "medium"
       },
@@ -1159,69 +1134,47 @@
         "page_id": "PAGE-003",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "세로형 숏폼의 Hook, Core, Action 구조와 영상별 단일 행동 목표를 시각화합니다.",
-        "image_prompt": "모바일 세로 화면 목업을 중심으로 한 3단계 프로세스 다이어그램. Hook, Core, Action을 순서대로 표현하고, Action에는 저장, 상세 탐색, 지도 이동 중 하나의 행동 목표가 들어갈 수 있음을 간결하게 표시합니다. 실제 장소 사진이나 확정된 촬영 장면처럼 보이는 이미지는 사용하지 않습니다.",
+        "purpose": "세로형 숏폼의 Hook, Core, Action 구조와 영상당 하나의 행동 목표를 보여줍니다.",
+        "image_prompt": "모바일 세로 화면 목업을 활용한 3단계 프로세스 다이어그램. Hook에서 방문 동기를 제시하고 Core에서 장소와 콘텐츠의 핵심 정보를 전달한 뒤 Action에서 저장, 상세 탐색, 지도 이동 중 하나의 행동으로 연결. 세로형 숏폼 15편 적용을 보조 라벨로 표시. 실제 촬영 장소나 운영 실적처럼 보이는 이미지는 사용하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
               "id": "N1",
-              "label": "Hook"
+              "label": "Hook: 방문 동기 제시"
             },
             {
               "id": "N2",
-              "label": "방문 동기 제시"
+              "label": "Core: 장소·콘텐츠 핵심 정보"
             },
             {
               "id": "N3",
-              "label": "Core"
+              "label": "Action: 하나의 행동 목표"
             },
             {
               "id": "N4",
-              "label": "핵심 정보 전달"
+              "label": "저장·상세 탐색·지도 이동 중 하나"
             },
             {
               "id": "N5",
-              "label": "Action"
-            },
-            {
-              "id": "N6",
-              "label": "영상당 하나의 행동 목표"
-            },
-            {
-              "id": "N7",
-              "label": "게시 전 확인된 장소·운영정보"
+              "label": "세로형 숏폼 15편"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N2",
-              "label": "첫 장면"
+              "to": "N2"
             },
             {
               "from": "N2",
-              "to": "N3",
-              "label": "관심 연결"
+              "to": "N3"
             },
             {
               "from": "N3",
-              "to": "N4",
-              "label": "모바일 시청 흐름"
-            },
-            {
-              "from": "N4",
-              "to": "N5",
-              "label": "행동 유도"
+              "to": "N4"
             },
             {
               "from": "N5",
-              "to": "N6",
-              "label": "단일 CTA"
-            },
-            {
-              "from": "N7",
-              "to": "N4",
-              "label": "정보 확인 후 반영"
+              "to": "N1"
             }
           ]
         },
@@ -1229,11 +1182,10 @@
           "EV-R-203-01"
         ],
         "prohibited_elements": [
-          "30초 또는 3초·17초·10초 구간을 확정 조건처럼 표현",
+          "30초 또는 3초·17초·10초 구간",
           "특정 채널 운영 실적",
-          "실제 촬영·게시 완료를 암시하는 장면",
-          "임의의 성과 수치",
-          "긴 본문 텍스트"
+          "실제 장소 촬영물처럼 보이는 이미지",
+          "전환율과 성과 수치"
         ],
         "fact_risk": "medium"
       },
@@ -1241,77 +1193,63 @@
         "page_id": "PAGE-004",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "공식 채널과 지역 크리에이터의 역할을 분리하고 협업 운영 단계를 연결합니다.",
-        "image_prompt": "두 개의 수평 레인으로 구성된 협업 운영 프로세스 다이어그램. 공식 채널과 지역 크리에이터의 역할을 분리하고, 브리프, 필수 정보 확인, 제작·검수, 게시 후 회고 단계를 순서대로 연결합니다. 지역 크리에이터 협업 콘텐츠 6건을 정확히 표시하며 실제 협업 현장 사진처럼 보이는 이미지는 사용하지 않습니다.",
+        "purpose": "공식 채널과 지역 크리에이터의 역할을 분리하고 협업 운영 단계를 보여줍니다.",
+        "image_prompt": "두 개의 병렬 레인으로 구성된 협업 운영 플로우. 왼쪽 레인은 공식 채널의 정보형 콘텐츠, 오른쪽 레인은 지역 크리에이터의 체험형 콘텐츠를 표현. 브리프 → 정보 확인 → 제작·검수 → 게시 후 회고의 공통 단계를 연결하고 지역 크리에이터 협업 콘텐츠 6건을 보조 라벨로 표시. 특정 인물이나 실제 협업 사례처럼 보이는 이미지는 사용하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
               "id": "N1",
-              "label": "공식 채널"
+              "label": "공식 채널: 정보형 콘텐츠"
             },
             {
               "id": "N2",
-              "label": "운영시간·위치·이용방법·연계 코스"
+              "label": "지역 크리에이터: 체험형 콘텐츠"
             },
             {
               "id": "N3",
-              "label": "지역 크리에이터"
+              "label": "브리프"
             },
             {
               "id": "N4",
-              "label": "실제 이용 맥락·체험 관점"
+              "label": "정보 확인"
             },
             {
               "id": "N5",
-              "label": "사전 브리프"
-            },
-            {
-              "id": "N6",
-              "label": "필수 정보 확인"
-            },
-            {
-              "id": "N7",
               "label": "제작·검수"
             },
             {
-              "id": "N8",
+              "id": "N6",
               "label": "게시 후 회고"
             },
             {
-              "id": "N9",
-              "label": "지역 크리에이터 협업 콘텐츠 6건"
+              "id": "N7",
+              "label": "협업 콘텐츠 6건"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N2",
-              "label": "정보형 콘텐츠"
+              "to": "N3"
+            },
+            {
+              "from": "N2",
+              "to": "N3"
             },
             {
               "from": "N3",
-              "to": "N4",
-              "label": "체험형 콘텐츠"
+              "to": "N4"
+            },
+            {
+              "from": "N4",
+              "to": "N5"
             },
             {
               "from": "N5",
-              "to": "N6",
-              "label": "운영 단계"
-            },
-            {
-              "from": "N6",
-              "to": "N7",
-              "label": "확인 후 제작"
+              "to": "N6"
             },
             {
               "from": "N7",
-              "to": "N8",
-              "label": "게시 및 회고"
-            },
-            {
-              "from": "N9",
-              "to": "N7",
-              "label": "역할별 콘텐츠 연결"
+              "to": "N3"
             }
           ]
         },
@@ -1319,11 +1257,10 @@
           "EV-R-204-01"
         ],
         "prohibited_elements": [
-          "특정 크리에이터 또는 고객명",
-          "실제 협업 수행 실적",
-          "확산 성과와 임의의 수치",
-          "실제 현장 사진처럼 보이는 이미지",
-          "긴 본문 텍스트"
+          "특정 크리에이터",
+          "실제 협업 실적",
+          "확산 성과",
+          "실제 인물 사진"
         ],
         "fact_risk": "medium"
       },
@@ -1331,21 +1268,21 @@
         "page_id": "PAGE-005",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "변경 가능한 방문 정보를 게시 전에 확인하고 변경 시 기존 게시물의 상태 정보를 갱신하는 검수 흐름을 보여줍니다.",
-        "image_prompt": "체크포인트가 명확한 수평 운영 플로우 다이어그램. 정보 수집, 게시 전 확인, 게시·모니터링, 변경 시 대응 및 기존 게시물 상태 갱신 단계를 연결합니다. 휴관, 매진, 운영시간, 행사 일정 등 검수 대상을 간결한 아이콘으로 표현하고 긴 본문은 넣지 않습니다.",
+        "purpose": "변경 가능한 운영정보를 게시 전 확인하고 변경 시 게시물 상태를 갱신하는 검수 절차를 보여줍니다.",
+        "image_prompt": "체크포인트 중심의 수평 운영 플로우 다이어그램. 정보 수집 → 제작 반영 → 게시 직전 확인 → 게시·모니터링으로 이어지고, 변경사항 발생 시 게시 보류 또는 수정 후 기존 게시물 상태 갱신으로 분기. 휴관, 매진, 운영시간, 행사 일정 등 변동 가능한 정보 범위를 짧은 라벨로 표시. 실제 운영 시스템 화면은 사용하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
               "id": "N1",
-              "label": "정보 수집"
+              "label": "변경 가능한 운영정보 수집"
             },
             {
               "id": "N2",
-              "label": "변경 가능한 운영정보"
+              "label": "제작 반영"
             },
             {
               "id": "N3",
-              "label": "게시 전 확인"
+              "label": "게시 직전 공식 확인"
             },
             {
               "id": "N4",
@@ -1353,47 +1290,45 @@
             },
             {
               "id": "N5",
-              "label": "변경 발생"
+              "label": "변경사항 발생"
             },
             {
               "id": "N6",
-              "label": "게시 대응"
+              "label": "게시 보류 또는 수정"
             },
             {
               "id": "N7",
-              "label": "기존 게시물 상태 정보 갱신"
+              "label": "기존 게시물 상태 갱신"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N2",
-              "label": "검수 대상 정의"
+              "to": "N2"
             },
             {
               "from": "N2",
-              "to": "N3",
-              "label": "게시 전 확인"
+              "to": "N3"
             },
             {
               "from": "N3",
-              "to": "N4",
-              "label": "확인 후 게시·모니터링"
+              "to": "N4"
             },
             {
               "from": "N4",
-              "to": "N5",
-              "label": "변경 모니터링"
+              "to": "N5"
             },
             {
               "from": "N5",
-              "to": "N6",
-              "label": "게시 대응"
+              "to": "N6"
             },
             {
-              "from": "N5",
-              "to": "N7",
-              "label": "기존 게시물 갱신"
+              "from": "N6",
+              "to": "N7"
+            },
+            {
+              "from": "N7",
+              "to": "N4"
             }
           ]
         },
@@ -1401,11 +1336,10 @@
           "EV-R-205-01"
         ],
         "prohibited_elements": [
-          "모든 정보가 항상 최신이라는 성과 주장",
-          "실제 운영 실적",
-          "임의의 검수 기한과 수치",
-          "확인되지 않은 공식 기관명",
-          "긴 본문 텍스트"
+          "항상 최신 상태라는 보장 표현",
+          "확정되지 않은 책임 주체",
+          "실제 운영 시스템 또는 성과 화면",
+          "검수 완료를 나타내는 허위 인증 표시"
         ],
         "fact_risk": "low"
       },
@@ -1413,8 +1347,8 @@
         "page_id": "PAGE-006",
         "visual_type": "process_diagram",
         "do_not_generate": false,
-        "purpose": "도달부터 상세조회, 저장, 지도·예약 페이지 이동까지 단계별 KPI와 월별 운영·최종 제출 연결을 시각화합니다.",
-        "image_prompt": "방문 의도 측정 퍼널과 보고 체계를 결합한 프레젠테이션용 다이어그램. 도달, 상세조회, 저장, 지도·예약 페이지 이동을 순서대로 연결하고, 월별 성과 보고와 최종 결과 보고의 원자료 제출을 별도 보조 흐름으로 표현합니다. 콘텐츠 유형별·방문 동기별 비교는 ‘제안 분석 기준’으로 별도 표시합니다. 실제 성과값, 차트 축, 비율은 넣지 않습니다.",
+        "purpose": "도달 이후 방문 의도 퍼널과 콘텐츠 비교 및 월별·최종 보고 흐름을 보여줍니다.",
+        "image_prompt": "프레젠테이션용 방문 의도 측정 프로세스 다이어그램. 도달 → 프로그램 상세조회 → 일정 저장 → 예약 페이지 이동의 퍼널을 중심에 배치하고, 콘텐츠 유형별·방문 동기별 비교를 운영 개선으로 연결. 월별 보고와 최종 결과 보고에는 콘텐츠 목록 및 성과지표 원자료가 포함되는 구조를 보조 영역에 표시. 실제 수치, 전환율, 축이 있는 차트는 생성하지 않음.",
         "diagram_spec": {
           "nodes": [
             {
@@ -1423,92 +1357,61 @@
             },
             {
               "id": "N2",
-              "label": "상세조회"
+              "label": "프로그램 상세조회"
             },
             {
               "id": "N3",
-              "label": "저장"
+              "label": "일정 저장"
             },
             {
               "id": "N4",
-              "label": "지도·예약 페이지 이동"
+              "label": "예약 페이지 이동"
             },
             {
               "id": "N5",
-              "label": "제안 분석 기준: 콘텐츠 유형별·방문 동기별 비교"
+              "label": "콘텐츠 유형별·방문 동기별 비교"
             },
             {
               "id": "N6",
-              "label": "5개월 월별 성과 보고"
-            },
-            {
-              "id": "N7",
               "label": "운영 개선"
             },
             {
-              "id": "N8",
-              "label": "최종 결과 보고"
+              "id": "N7",
+              "label": "월별 보고"
             },
             {
-              "id": "N9",
-              "label": "콘텐츠 목록·성과지표 원자료"
+              "id": "N8",
+              "label": "최종 결과 보고: 콘텐츠 목록·성과지표 원자료"
             }
           ],
           "edges": [
             {
               "from": "N1",
-              "to": "N2",
-              "label": "상세 탐색"
+              "to": "N2"
             },
             {
               "from": "N2",
-              "to": "N3",
-              "label": "저장"
+              "to": "N3"
             },
             {
               "from": "N3",
-              "to": "N4",
-              "label": "방문 의도 연결"
-            },
-            {
-              "from": "N1",
-              "to": "N5",
-              "label": "제안 분석 기준"
-            },
-            {
-              "from": "N2",
-              "to": "N5",
-              "label": "제안 분석 기준"
-            },
-            {
-              "from": "N3",
-              "to": "N5",
-              "label": "제안 분석 기준"
+              "to": "N4"
             },
             {
               "from": "N4",
-              "to": "N5",
-              "label": "제안 분석 기준"
+              "to": "N5"
             },
             {
-              "from": "N1",
-              "to": "N6",
-              "label": "월별 보고"
-            },
-            {
-              "from": "N6",
-              "to": "N7",
-              "label": "운영 개선"
+              "from": "N5",
+              "to": "N6"
             },
             {
               "from": "N6",
-              "to": "N8",
-              "label": "최종 보고"
+              "to": "N7"
             },
             {
-              "from": "N8",
-              "to": "N9",
-              "label": "원자료 제출"
+              "from": "N7",
+              "to": "N8"
             }
           ]
         },
@@ -1518,1144 +1421,19 @@
         "prohibited_elements": [
           "실제 달성 수치",
           "전환율과 백분율",
-          "차트 축과 임의의 KPI 목표값",
-          "과거 캠페인 측정 결과",
-          "콘텐츠 유형별·방문 동기별 비교를 evidence-supported fact로 표현하는 연결",
-          "긴 본문 텍스트"
+          "차트 축 값",
+          "측정 가능성이 확인되지 않은 지표",
+          "과거 캠페인 성과처럼 보이는 대시보드"
         ],
         "fact_risk": "medium"
       }
     ]
   },
-  "repair_history": [
-    {
-      "cycle": 1,
-      "route": {
-        "scope": "strategy_to_visual",
-        "page_ids": [
-          "PAGE-002",
-          "PAGE-005",
-          "PAGE-006"
-        ],
-        "strategy_ids": [
-          "ST-02",
-          "ST-05",
-          "ST-06"
-        ],
-        "unroutable_issues": [],
-        "escalation_required": false,
-        "escalation_reason": null
-      },
-      "repair_output": {
-        "strategy_repairs": [
-          {
-            "strategy_id": "ST-02",
-            "repaired_pillar": {
-              "strategy_id": "ST-02",
-              "pillar": "발견에서 방문 계획으로 이어지는 콘텐츠 퍼널",
-              "description": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, 최종적으로 지도 또는 예약 페이지 이동을 유도한다. 숏폼, 카드형 콘텐츠, 연계 코스를 발견·저장·방문 계획 단계의 역할에 맞게 배치한다.",
-              "requirement_ids": [
-                "R-202"
-              ],
-              "classification": "REFERENCE_PATTERN",
-              "evidence_ids": [
-                "EV-R-202-01"
-              ]
-            }
-          },
-          {
-            "strategy_id": "ST-05",
-            "repaired_pillar": {
-              "strategy_id": "ST-05",
-              "pillar": "게시 전 운영정보 검수와 변경 대응",
-              "description": "휴관, 매진, 운영시간, 행사 일정 등 변경 가능한 운영정보를 게시 전에 확인하고, 변경사항이 발견되면 대응하며 기존 게시물의 상태 정보도 함께 갱신한다.",
-              "requirement_ids": [
-                "R-205"
-              ],
-              "classification": "REFERENCE_PATTERN",
-              "evidence_ids": [
-                "EV-R-205-01"
-              ]
-            }
-          },
-          {
-            "strategy_id": "ST-06",
-            "repaired_pillar": {
-              "strategy_id": "ST-06",
-              "pillar": "방문 의도 중심의 단계별 성과관리",
-              "description": "월별 보고와 최종 결과 보고에서 도달 이후 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정한다. 콘텐츠 유형별·방문 동기별 KPI 비교와 원자료 제출은 사업 적용을 위한 제안 운영안으로 별도 설계한다.",
-              "requirement_ids": [
-                "R-206"
-              ],
-              "classification": "REFERENCE_PATTERN",
-              "evidence_ids": [
-                "EV-R-206-01"
-              ]
-            }
-          }
-        ],
-        "page_repairs": [
-          {
-            "page_id": "PAGE-002",
-            "repaired_page": {
-              "page_id": "PAGE-002",
-              "page_no": 2,
-              "section": "콘텐츠 전략",
-              "page_type": "funnel",
-              "title": "발견 콘텐츠를 저장 가능한 코스 콘텐츠와 방문 계획으로 연결",
-              "page_goal": "콘텐츠 유형별 역할과 방문 계획으로 이어지는 퍼널을 제시한다.",
-              "key_message": "숏폼으로 발견을 만들고, 지도형 정보와 저장 가능한 코스 콘텐츠로 연결한 뒤 지도 또는 예약 페이지 이동을 유도한다.",
-              "rfp_requirement_ids": [
-                "R-202"
-              ],
-              "strategy_ids": [
-                "ST-02"
-              ],
-              "evidence_ids": [
-                "EV-R-202-01"
-              ],
-              "content_blocks": [
-                {
-                  "role": "discovery",
-                  "intent": "세로형 숏폼으로 방문 동기와 지역 자원을 짧고 직관적으로 노출한다."
-                },
-                {
-                  "role": "save_and_explore",
-                  "intent": "지도형 정보와 저장 가능한 코스 콘텐츠로 저장과 탐색을 유도한다."
-                },
-                {
-                  "role": "visit_planning",
-                  "intent": "확인된 장소 정보와 연결 경로를 바탕으로 지도·예약 페이지 이동을 유도한다."
-                },
-                {
-                  "role": "deliverable_mapping",
-                  "intent": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건의 역할을 퍼널 단계에 배치한다."
-                }
-              ],
-              "visual_direction": "Discover → Save → Visit 3단계 퍼널에 숏폼 15편, 카드형 24건, 연계 코스 8건을 배치한다.",
-              "fact_risk": "medium"
-            },
-            "repaired_slide": {
-              "page_id": "PAGE-002",
-              "headline": "발견한 지역 콘텐츠를 저장 가능한 코스와 방문 계획으로 전환합니다",
-              "subheadline": "Discover → Save → Visit으로 이어지는 콘텐츠 퍼널",
-              "body_blocks": [
-                {
-                  "label": "Discover",
-                  "text": "숏폼으로 방문 동기와 지역 자원을 짧고 직관적으로 노출해 관심을 만듭니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "Save",
-                  "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 탐색과 저장을 유도합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "Visit",
-                  "text": "확인된 장소 정보에서 지도 또는 예약 페이지 이동으로 방문 계획을 연결합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "콘텐츠 배치",
-                  "text": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별 역할에 배치합니다.",
-                  "claim_type": "RFP_FACT",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                }
-              ],
-              "evidence_ids": [
-                "EV-R-202-01"
-              ],
-              "visual_type": "process_diagram",
-              "speaker_note": "각 콘텐츠 유형의 역할을 발견, 저장, 방문 계획 단계에 맞춰 배치해 콘텐츠 간 연결성을 보여줍니다.",
-              "fact_risk": "medium"
-            },
-            "repaired_visual": {
-              "page_id": "PAGE-002",
-              "visual_type": "process_diagram",
-              "do_not_generate": false,
-              "purpose": "콘텐츠 유형의 역할을 Discover, Save, Visit 단계에 배치해 발견에서 방문 계획까지의 퍼널을 보여줍니다.",
-              "image_prompt": "프레젠테이션용 3단계 수평 퍼널 다이어그램. Discover, Save, Visit을 명확히 구분하고 각 단계의 콘텐츠 역할과 제공된 물량을 간결하게 표시합니다. 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건만 정확히 사용하며 긴 설명과 추가 수치는 넣지 않습니다.",
-              "diagram_spec": {
-                "nodes": [
-                  {
-                    "id": "N1",
-                    "label": "Discover"
-                  },
-                  {
-                    "id": "N2",
-                    "label": "숏폼 15편"
-                  },
-                  {
-                    "id": "N3",
-                    "label": "Save"
-                  },
-                  {
-                    "id": "N4",
-                    "label": "카드형 콘텐츠 24건"
-                  },
-                  {
-                    "id": "N5",
-                    "label": "연계 코스 콘텐츠 8건"
-                  },
-                  {
-                    "id": "N6",
-                    "label": "Visit"
-                  },
-                  {
-                    "id": "N7",
-                    "label": "지도 또는 예약 페이지 이동"
-                  }
-                ],
-                "edges": [
-                  {
-                    "from": "N1",
-                    "to": "N2",
-                    "label": "방문 동기와 지역 자원 노출"
-                  },
-                  {
-                    "from": "N2",
-                    "to": "N3",
-                    "label": "관심에서 저장으로"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N4",
-                    "label": "지도형 정보와 코스 콘텐츠 연결"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N5",
-                    "label": "저장 가능한 코스 콘텐츠 연결"
-                  },
-                  {
-                    "from": "N4",
-                    "to": "N6",
-                    "label": "방문 계획 연결"
-                  },
-                  {
-                    "from": "N5",
-                    "to": "N6",
-                    "label": "방문 계획 연결"
-                  },
-                  {
-                    "from": "N6",
-                    "to": "N7",
-                    "label": "페이지 이동"
-                  }
-                ]
-              },
-              "data_source": [
-                "EV-R-202-01"
-              ],
-              "prohibited_elements": [
-                "방문 전환 성과 또는 전환율",
-                "실제 운영 실적처럼 보이는 표현",
-                "임의의 퍼널 수치와 축",
-                "긴 본문 텍스트"
-              ],
-              "fact_risk": "medium"
-            }
-          },
-          {
-            "page_id": "PAGE-005",
-            "repaired_page": {
-              "page_id": "PAGE-005",
-              "page_no": 5,
-              "section": "운영 및 검수",
-              "page_type": "quality_control",
-              "title": "변경 가능한 방문 정보의 게시 전 검수 체계",
-              "page_goal": "휴관·매진·운영시간·행사 일정 등 운영정보의 확인과 변경 대응 절차를 제시한다.",
-              "key_message": "변경 가능한 방문 정보는 게시 전에 확인하고, 변경 시 게시 대응과 기존 게시물 상태 정보 갱신을 수행한다.",
-              "rfp_requirement_ids": [
-                "R-205"
-              ],
-              "strategy_ids": [
-                "ST-05"
-              ],
-              "evidence_ids": [
-                "EV-R-205-01"
-              ],
-              "content_blocks": [
-                {
-                  "role": "verification_scope",
-                  "intent": "휴관, 매진, 운영시간, 행사 일정 등 변동 가능 정보의 검수 대상을 정의한다."
-                },
-                {
-                  "role": "pre_publish_check",
-                  "intent": "변경 가능한 운영정보를 게시 전에 확인한다."
-                },
-                {
-                  "role": "change_response",
-                  "intent": "변경사항 발생 시 게시 대응을 수행한다."
-                },
-                {
-                  "role": "content_update",
-                  "intent": "이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신한다."
-                }
-              ],
-              "visual_direction": "정보 수집 → 게시 전 확인 → 게시·모니터링 → 변경 시 대응 및 기존 게시물 상태 갱신의 플로우를 사용한다.",
-              "fact_risk": "low"
-            },
-            "repaired_slide": {
-              "page_id": "PAGE-005",
-              "headline": "변경 가능한 방문 정보는 게시 전 확인하고 변경 시 갱신합니다",
-              "subheadline": "운영정보의 최신성을 관리하는 게시 전 검수 체계",
-              "body_blocks": [
-                {
-                  "label": "검수 대상",
-                  "text": "휴관·매진·운영시간·행사 일정 등 변경 가능한 운영정보를 검수합니다.",
-                  "claim_type": "RFP_FACT",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "게시 전 확인",
-                  "text": "변경 가능한 운영정보를 게시 전에 확인합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-205-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "변경 대응",
-                  "text": "변경사항이 발견되면 게시 대응을 수행합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-205-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "기존 콘텐츠 갱신",
-                  "text": "이미 게시된 콘텐츠와 연결된 상태 정보도 함께 갱신합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-205-01"
-                  ],
-                  "client_confirmation_required": false
-                }
-              ],
-              "evidence_ids": [
-                "EV-R-205-01"
-              ],
-              "visual_type": "process_diagram",
-              "speaker_note": "변경 가능한 운영정보를 게시 전에 확인하고, 변경 발생 시 신규 게시 대응과 기존 게시물 상태 갱신을 함께 수행합니다.",
-              "fact_risk": "low"
-            },
-            "repaired_visual": {
-              "page_id": "PAGE-005",
-              "visual_type": "process_diagram",
-              "do_not_generate": false,
-              "purpose": "변경 가능한 방문 정보를 게시 전에 확인하고 변경 시 기존 게시물의 상태 정보를 갱신하는 검수 흐름을 보여줍니다.",
-              "image_prompt": "체크포인트가 명확한 수평 운영 플로우 다이어그램. 정보 수집, 게시 전 확인, 게시·모니터링, 변경 시 대응 및 기존 게시물 상태 갱신 단계를 연결합니다. 휴관, 매진, 운영시간, 행사 일정 등 검수 대상을 간결한 아이콘으로 표현하고 긴 본문은 넣지 않습니다.",
-              "diagram_spec": {
-                "nodes": [
-                  {
-                    "id": "N1",
-                    "label": "정보 수집"
-                  },
-                  {
-                    "id": "N2",
-                    "label": "변경 가능한 운영정보"
-                  },
-                  {
-                    "id": "N3",
-                    "label": "게시 전 확인"
-                  },
-                  {
-                    "id": "N4",
-                    "label": "게시·모니터링"
-                  },
-                  {
-                    "id": "N5",
-                    "label": "변경 발생"
-                  },
-                  {
-                    "id": "N6",
-                    "label": "게시 대응"
-                  },
-                  {
-                    "id": "N7",
-                    "label": "기존 게시물 상태 정보 갱신"
-                  }
-                ],
-                "edges": [
-                  {
-                    "from": "N1",
-                    "to": "N2",
-                    "label": "검수 대상 정의"
-                  },
-                  {
-                    "from": "N2",
-                    "to": "N3",
-                    "label": "게시 전 확인"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N4",
-                    "label": "확인 후 게시·모니터링"
-                  },
-                  {
-                    "from": "N4",
-                    "to": "N5",
-                    "label": "변경 모니터링"
-                  },
-                  {
-                    "from": "N5",
-                    "to": "N6",
-                    "label": "게시 대응"
-                  },
-                  {
-                    "from": "N5",
-                    "to": "N7",
-                    "label": "기존 게시물 갱신"
-                  }
-                ]
-              },
-              "data_source": [
-                "EV-R-205-01"
-              ],
-              "prohibited_elements": [
-                "모든 정보가 항상 최신이라는 성과 주장",
-                "실제 운영 실적",
-                "임의의 검수 기한과 수치",
-                "확인되지 않은 공식 기관명",
-                "긴 본문 텍스트"
-              ],
-              "fact_risk": "low"
-            }
-          },
-          {
-            "page_id": "PAGE-006",
-            "repaired_page": {
-              "page_id": "PAGE-006",
-              "page_no": 6,
-              "section": "성과관리",
-              "page_type": "measurement",
-              "title": "도달을 넘어 방문 의도를 측정하는 성과관리",
-              "page_goal": "월별·최종 보고에 적용할 단계별 KPI와 원자료 제출 체계를 제시한다.",
-              "key_message": "도달 이후 상세조회·저장·지도·예약 페이지 이동을 단계별로 측정해 콘텐츠가 방문 의도로 이어지는 과정을 관리한다.",
-              "rfp_requirement_ids": [
-                "R-206"
-              ],
-              "strategy_ids": [
-                "ST-06"
-              ],
-              "evidence_ids": [
-                "EV-R-206-01"
-              ],
-              "content_blocks": [
-                {
-                  "role": "funnel_kpi",
-                  "intent": "도달 → 상세조회 → 저장 → 지도·예약 페이지 이동의 단계별 지표를 설정한다."
-                },
-                {
-                  "role": "breakdown",
-                  "intent": "콘텐츠 유형별·방문 동기별 KPI 비교는 사업 적용을 위한 AI_RECOMMENDATION으로 제안한다."
-                },
-                {
-                  "role": "monthly_reporting",
-                  "intent": "5개월 사업 기간 동안 월별 성과 보고와 운영 개선에 연결한다."
-                },
-                {
-                  "role": "final_submission",
-                  "intent": "최종 결과 보고에 콘텐츠 목록과 성과지표 원자료를 포함한다."
-                }
-              ],
-              "visual_direction": "단계별 KPI 퍼널과 월별 보고·최종 원자료 제출 구조를 표현하고, 콘텐츠 유형별·방문 동기별 비교는 별도 제안 영역으로 구분한다.",
-              "fact_risk": "medium"
-            },
-            "repaired_slide": {
-              "page_id": "PAGE-006",
-              "headline": "도달을 넘어 방문 의도를 단계별로 측정합니다",
-              "subheadline": "상세조회·저장·지도·예약 페이지 이동까지 연결하는 성과관리",
-              "body_blocks": [
-                {
-                  "label": "단계별 KPI",
-                  "text": "도달 이후 상세조회, 저장, 지도·예약 페이지 이동을 단계별로 측정합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-206-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "분석 기준",
-                  "text": "콘텐츠 유형별·방문 동기별 KPI 비교는 사업 적용을 위한 분석 기준으로 제안합니다.",
-                  "claim_type": "AI_RECOMMENDATION",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "월별 운영",
-                  "text": "5개월 사업 기간 동안 월별 성과 보고와 운영 개선에 연결합니다.",
-                  "claim_type": "RFP_FACT",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "최종 제출",
-                  "text": "최종 결과 보고에 콘텐츠 목록과 성과지표 원자료를 포함합니다.",
-                  "claim_type": "RFP_FACT",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                }
-              ],
-              "evidence_ids": [
-                "EV-R-206-01"
-              ],
-              "visual_type": "process_diagram",
-              "speaker_note": "단계별 KPI 측정은 인용 근거의 범위로 제시하고, 콘텐츠 유형별·방문 동기별 비교는 별도 제안 운영안으로 구분합니다.",
-              "fact_risk": "medium"
-            },
-            "repaired_visual": {
-              "page_id": "PAGE-006",
-              "visual_type": "process_diagram",
-              "do_not_generate": false,
-              "purpose": "도달부터 상세조회, 저장, 지도·예약 페이지 이동까지 단계별 KPI와 월별 운영·최종 제출 연결을 시각화합니다.",
-              "image_prompt": "방문 의도 측정 퍼널과 보고 체계를 결합한 프레젠테이션용 다이어그램. 도달, 상세조회, 저장, 지도·예약 페이지 이동을 순서대로 연결하고, 월별 성과 보고와 최종 결과 보고의 원자료 제출을 별도 보조 흐름으로 표현합니다. 콘텐츠 유형별·방문 동기별 비교는 ‘제안 분석 기준’으로 별도 표시합니다. 실제 성과값, 차트 축, 비율은 넣지 않습니다.",
-              "diagram_spec": {
-                "nodes": [
-                  {
-                    "id": "N1",
-                    "label": "도달"
-                  },
-                  {
-                    "id": "N2",
-                    "label": "상세조회"
-                  },
-                  {
-                    "id": "N3",
-                    "label": "저장"
-                  },
-                  {
-                    "id": "N4",
-                    "label": "지도·예약 페이지 이동"
-                  },
-                  {
-                    "id": "N5",
-                    "label": "제안 분석 기준: 콘텐츠 유형별·방문 동기별 비교"
-                  },
-                  {
-                    "id": "N6",
-                    "label": "5개월 월별 성과 보고"
-                  },
-                  {
-                    "id": "N7",
-                    "label": "운영 개선"
-                  },
-                  {
-                    "id": "N8",
-                    "label": "최종 결과 보고"
-                  },
-                  {
-                    "id": "N9",
-                    "label": "콘텐츠 목록·성과지표 원자료"
-                  }
-                ],
-                "edges": [
-                  {
-                    "from": "N1",
-                    "to": "N2",
-                    "label": "상세 탐색"
-                  },
-                  {
-                    "from": "N2",
-                    "to": "N3",
-                    "label": "저장"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N4",
-                    "label": "방문 의도 연결"
-                  },
-                  {
-                    "from": "N1",
-                    "to": "N5",
-                    "label": "제안 분석 기준"
-                  },
-                  {
-                    "from": "N2",
-                    "to": "N5",
-                    "label": "제안 분석 기준"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N5",
-                    "label": "제안 분석 기준"
-                  },
-                  {
-                    "from": "N4",
-                    "to": "N5",
-                    "label": "제안 분석 기준"
-                  },
-                  {
-                    "from": "N1",
-                    "to": "N6",
-                    "label": "월별 보고"
-                  },
-                  {
-                    "from": "N6",
-                    "to": "N7",
-                    "label": "운영 개선"
-                  },
-                  {
-                    "from": "N6",
-                    "to": "N8",
-                    "label": "최종 보고"
-                  },
-                  {
-                    "from": "N8",
-                    "to": "N9",
-                    "label": "원자료 제출"
-                  }
-                ]
-              },
-              "data_source": [
-                "EV-R-206-01"
-              ],
-              "prohibited_elements": [
-                "실제 달성 수치",
-                "전환율과 백분율",
-                "차트 축과 임의의 KPI 목표값",
-                "과거 캠페인 측정 결과",
-                "콘텐츠 유형별·방문 동기별 비교를 evidence-supported fact로 표현하는 연결",
-                "긴 본문 텍스트"
-              ],
-              "fact_risk": "medium"
-            }
-          }
-        ],
-        "repair_summary": [
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "ST-02",
-            "change": "EV-R-202-01이 직접 지원하는 지도형 정보와 저장 가능한 코스 콘텐츠 연결 수준으로 전략 문구를 축소하고, 구체적인 주말 추천·상세 탐색 표현을 제거했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "PAGE-002",
-            "change": "슬라이드와 시각 자료에서 evidence가 지원하지 않는 주말 추천·상세 탐색 표현을 제거하고, 지도형 정보와 저장 가능한 코스 콘텐츠 연결로 수정했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "ST-05",
-            "change": "게시 전 운영정보 확인 및 변경 시 기존 게시물 상태 갱신이라는 evidence-supported 범위로 전략 문구를 축소했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "PAGE-005",
-            "change": "기획·제작·게시 직전 및 공식 확인원 기준 표현을 제거하고 게시 전 확인, 변경 대응, 기존 게시물 상태 갱신으로 수정했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "ST-06",
-            "change": "EV-R-206-01의 적용 범위를 단계별 KPI 측정으로 한정하고 콘텐츠 유형별·방문 동기별 비교를 별도 제안 운영안으로 분리했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "PAGE-006",
-            "change": "단계별 KPI에만 EV-R-206-01을 연결하고 콘텐츠 유형별·방문 동기별 비교를 AI_RECOMMENDATION 및 제안 분석 기준으로 명시했습니다.",
-            "resolved": true
-          }
-        ],
-        "escalation_required": false,
-        "escalation_reason": null
-      },
-      "gates": {
-        "coverage": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "coverage_summary": {
-            "total_requirements": 6,
-            "covered": 6,
-            "partial": 0,
-            "missing": 0
-          },
-          "page_count": 6,
-          "page_limit": 8,
-          "valid_strategy_ids": [
-            "ST-01",
-            "ST-02",
-            "ST-03",
-            "ST-04",
-            "ST-05",
-            "ST-06"
-          ],
-          "valid_evidence_ids": [
-            "EV-R-201-01",
-            "EV-R-202-01",
-            "EV-R-203-01",
-            "EV-R-204-01",
-            "EV-R-205-01",
-            "EV-R-206-01"
-          ],
-          "requirement_page_map": {
-            "R-201": [
-              "PAGE-001"
-            ],
-            "R-202": [
-              "PAGE-002"
-            ],
-            "R-203": [
-              "PAGE-003"
-            ],
-            "R-204": [
-              "PAGE-004"
-            ],
-            "R-205": [
-              "PAGE-005"
-            ],
-            "R-206": [
-              "PAGE-006"
-            ]
-          }
-        },
-        "slide": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "page_count": 6,
-          "slide_count": 6,
-          "valid_evidence_ids": [
-            "EV-R-201-01",
-            "EV-R-202-01",
-            "EV-R-203-01",
-            "EV-R-204-01",
-            "EV-R-205-01",
-            "EV-R-206-01"
-          ]
-        },
-        "visual": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "slide_count": 6,
-          "visual_count": 6
-        },
-        "pass": true
-      },
-      "stage_metadata": {
-        "repair": {
-          "provider": "openai",
-          "response_id": "resp_032f7f30676d668b016abc92b6259887d285c1be54ae1f3c60",
-          "model": "gpt-5.6-luna",
-          "latency_seconds": 38.7122,
-          "retry_count": 0,
-          "usage": {
-            "input_tokens": 8918,
-            "input_tokens_details": {
-              "cache_write_tokens": 8915,
-              "cached_tokens": 0
-            },
-            "output_tokens": 5710,
-            "output_tokens_details": {
-              "reasoning_tokens": 176
-            },
-            "total_tokens": 14628
-          }
-        },
-        "qa_recheck": {
-          "provider": "openai",
-          "response_id": "resp_0a8f2c8502d61191016abc92dcd94887d28dfac075adfa0805",
-          "model": "gpt-5.6-luna",
-          "latency_seconds": 8.9227,
-          "retry_count": 0,
-          "usage": {
-            "input_tokens": 20863,
-            "input_tokens_details": {
-              "cache_write_tokens": 20860,
-              "cached_tokens": 0
-            },
-            "output_tokens": 762,
-            "output_tokens_details": {
-              "reasoning_tokens": 433
-            },
-            "total_tokens": 21625
-          }
-        }
-      }
-    },
-    {
-      "cycle": 2,
-      "route": {
-        "scope": "strategy_to_visual",
-        "page_ids": [
-          "PAGE-002"
-        ],
-        "strategy_ids": [
-          "ST-02"
-        ],
-        "unroutable_issues": [],
-        "escalation_required": false,
-        "escalation_reason": null
-      },
-      "repair_output": {
-        "strategy_repairs": [
-          {
-            "strategy_id": "ST-02",
-            "repaired_pillar": {
-              "strategy_id": "ST-02",
-              "pillar": "발견에서 방문 계획으로 이어지는 콘텐츠 퍼널",
-              "description": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어지는 콘텐츠 구조를 제안한다. 숏폼, 카드형 콘텐츠, 연계 코스 콘텐츠를 각 단계의 역할에 맞게 배치한다.",
-              "requirement_ids": [
-                "R-202"
-              ],
-              "classification": "REFERENCE_PATTERN",
-              "evidence_ids": [
-                "EV-R-202-01"
-              ]
-            }
-          }
-        ],
-        "page_repairs": [
-          {
-            "page_id": "PAGE-002",
-            "repaired_page": {
-              "page_id": "PAGE-002",
-              "page_no": 2,
-              "section": "콘텐츠 전략",
-              "page_type": "funnel",
-              "title": "발견 콘텐츠를 저장 가능한 코스 콘텐츠와 방문 계획으로 연결",
-              "page_goal": "콘텐츠 유형별 역할과 방문 계획으로 이어지는 퍼널을 제시한다.",
-              "key_message": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결하고, Discover → Save → Visit 구조를 통해 방문 계획 단계까지 이어간다.",
-              "rfp_requirement_ids": [
-                "R-202"
-              ],
-              "strategy_ids": [
-                "ST-02"
-              ],
-              "evidence_ids": [
-                "EV-R-202-01"
-              ],
-              "content_blocks": [
-                {
-                  "role": "discovery",
-                  "intent": "짧은 발견 콘텐츠로 관심을 만든다."
-                },
-                {
-                  "role": "save_and_explore",
-                  "intent": "지도형 정보와 저장 가능한 코스 콘텐츠로 저장과 탐색을 유도한다."
-                },
-                {
-                  "role": "visit_planning",
-                  "intent": "콘텐츠 구조를 방문 계획 단계까지 연결한다."
-                },
-                {
-                  "role": "deliverable_mapping",
-                  "intent": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건의 역할을 퍼널 단계에 배치한다."
-                }
-              ],
-              "visual_direction": "Discover → Save → Visit 3단계 퍼널에 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 배치한다.",
-              "fact_risk": "medium"
-            },
-            "repaired_slide": {
-              "page_id": "PAGE-002",
-              "headline": "발견 콘텐츠를 저장 가능한 코스와 방문 계획으로 연결합니다",
-              "subheadline": "Discover → Save → Visit으로 이어지는 콘텐츠 퍼널",
-              "body_blocks": [
-                {
-                  "label": "Discover",
-                  "text": "짧은 발견 콘텐츠로 관심을 만듭니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "Save",
-                  "text": "지도형 정보와 저장 가능한 코스 콘텐츠로 탐색과 저장을 유도합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "Visit",
-                  "text": "Discover와 Save를 거쳐 방문 계획 단계까지 연결합니다.",
-                  "claim_type": "REFERENCE_PATTERN",
-                  "evidence_ids": [
-                    "EV-R-202-01"
-                  ],
-                  "client_confirmation_required": false
-                },
-                {
-                  "label": "콘텐츠 배치",
-                  "text": "숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건을 퍼널 단계별 역할에 배치합니다.",
-                  "claim_type": "RFP_FACT",
-                  "evidence_ids": [],
-                  "client_confirmation_required": false
-                }
-              ],
-              "evidence_ids": [
-                "EV-R-202-01"
-              ],
-              "visual_type": "process_diagram",
-              "speaker_note": "짧은 발견 콘텐츠에서 지도형 정보와 저장 가능한 코스 콘텐츠로 연결되는 Discover → Save → Visit 구조를 보여주고, 각 콘텐츠 유형의 역할을 단계별로 배치합니다.",
-              "fact_risk": "medium"
-            },
-            "repaired_visual": {
-              "page_id": "PAGE-002",
-              "visual_type": "process_diagram",
-              "do_not_generate": false,
-              "purpose": "콘텐츠 유형의 역할을 Discover, Save, Visit 단계에 배치해 발견 콘텐츠에서 방문 계획 단계까지 이어지는 퍼널을 보여줍니다.",
-              "image_prompt": "프레젠테이션용 3단계 수평 퍼널 다이어그램. Discover, Save, Visit을 명확히 구분하고 각 단계의 콘텐츠 역할과 제공된 물량을 간결하게 표시합니다. 숏폼 15편, 카드형 콘텐츠 24건, 연계 코스 콘텐츠 8건만 정확히 사용하며 긴 설명과 추가 수치는 넣지 않습니다.",
-              "diagram_spec": {
-                "nodes": [
-                  {
-                    "id": "N1",
-                    "label": "Discover"
-                  },
-                  {
-                    "id": "N2",
-                    "label": "숏폼 15편"
-                  },
-                  {
-                    "id": "N3",
-                    "label": "Save"
-                  },
-                  {
-                    "id": "N4",
-                    "label": "카드형 콘텐츠 24건"
-                  },
-                  {
-                    "id": "N5",
-                    "label": "연계 코스 콘텐츠 8건"
-                  },
-                  {
-                    "id": "N6",
-                    "label": "Visit"
-                  },
-                  {
-                    "id": "N7",
-                    "label": "방문 계획 단계"
-                  }
-                ],
-                "edges": [
-                  {
-                    "from": "N1",
-                    "to": "N2",
-                    "label": "짧은 발견 콘텐츠"
-                  },
-                  {
-                    "from": "N2",
-                    "to": "N3",
-                    "label": "관심에서 저장으로"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N4",
-                    "label": "지도형 정보 연결"
-                  },
-                  {
-                    "from": "N3",
-                    "to": "N5",
-                    "label": "저장 가능한 코스 콘텐츠 연결"
-                  },
-                  {
-                    "from": "N4",
-                    "to": "N6",
-                    "label": "방문 계획으로 연결"
-                  },
-                  {
-                    "from": "N5",
-                    "to": "N6",
-                    "label": "방문 계획으로 연결"
-                  },
-                  {
-                    "from": "N6",
-                    "to": "N7",
-                    "label": "Visit 단계"
-                  }
-                ]
-              },
-              "data_source": [
-                "EV-R-202-01"
-              ],
-              "prohibited_elements": [
-                "방문 전환 성과 또는 전환율",
-                "실제 운영 실적처럼 보이는 표현",
-                "임의의 퍼널 수치와 축",
-                "긴 본문 텍스트"
-              ],
-              "fact_risk": "medium"
-            }
-          }
-        ],
-        "repair_summary": [
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "ST-02",
-            "change": "EV-R-202-01이 직접 지원하는 Discover → Save → Visit 구조와 콘텐츠 역할 분리 수준으로 전략 설명을 축소하고, 숏폼·방문 동기·확인된 장소 정보 등 evidence가 직접 뒷받침하지 않는 표현을 제거했습니다.",
-            "resolved": true
-          },
-          {
-            "error_type": "INVALID_REFERENCE",
-            "target_id": "PAGE-002",
-            "change": "Discover 문구를 '짧은 발견 콘텐츠로 관심을 만듭니다'로, Visit 문구를 방문 계획 단계까지 연결하는 구조 설명으로 축소했습니다. '방문 동기', '확인된 장소 정보', '페이지 이동'처럼 EV-R-202-01의 직접 지원 범위를 넘는 표현을 제거했습니다.",
-            "resolved": true
-          }
-        ],
-        "escalation_required": false,
-        "escalation_reason": null
-      },
-      "gates": {
-        "coverage": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "coverage_summary": {
-            "total_requirements": 6,
-            "covered": 6,
-            "partial": 0,
-            "missing": 0
-          },
-          "page_count": 6,
-          "page_limit": 8,
-          "valid_strategy_ids": [
-            "ST-01",
-            "ST-02",
-            "ST-03",
-            "ST-04",
-            "ST-05",
-            "ST-06"
-          ],
-          "valid_evidence_ids": [
-            "EV-R-201-01",
-            "EV-R-202-01",
-            "EV-R-203-01",
-            "EV-R-204-01",
-            "EV-R-205-01",
-            "EV-R-206-01"
-          ],
-          "requirement_page_map": {
-            "R-201": [
-              "PAGE-001"
-            ],
-            "R-202": [
-              "PAGE-002"
-            ],
-            "R-203": [
-              "PAGE-003"
-            ],
-            "R-204": [
-              "PAGE-004"
-            ],
-            "R-205": [
-              "PAGE-005"
-            ],
-            "R-206": [
-              "PAGE-006"
-            ]
-          }
-        },
-        "slide": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "page_count": 6,
-          "slide_count": 6,
-          "valid_evidence_ids": [
-            "EV-R-201-01",
-            "EV-R-202-01",
-            "EV-R-203-01",
-            "EV-R-204-01",
-            "EV-R-205-01",
-            "EV-R-206-01"
-          ]
-        },
-        "visual": {
-          "status": "PASS",
-          "blocking_errors": [],
-          "warnings": [],
-          "slide_count": 6,
-          "visual_count": 6
-        },
-        "pass": true
-      },
-      "stage_metadata": {
-        "repair": {
-          "provider": "openai",
-          "response_id": "resp_01bfd5a661d80f7f016abc92e5c05c87d2a39b60d2206b451d",
-          "model": "gpt-5.6-luna",
-          "latency_seconds": 14.9767,
-          "retry_count": 0,
-          "usage": {
-            "input_tokens": 4613,
-            "input_tokens_details": {
-              "cache_write_tokens": 4610,
-              "cached_tokens": 0
-            },
-            "output_tokens": 2068,
-            "output_tokens_details": {
-              "reasoning_tokens": 191
-            },
-            "total_tokens": 6681
-          }
-        },
-        "qa_recheck": {
-          "provider": "openai",
-          "response_id": "resp_0581022d06fce7b4016abc92f4c87887d2b0895cd3fd764281",
-          "model": "gpt-5.6-luna",
-          "latency_seconds": 12.233,
-          "retry_count": 0,
-          "usage": {
-            "input_tokens": 16855,
-            "input_tokens_details": {
-              "cache_write_tokens": 16852,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1182,
-            "output_tokens_details": {
-              "reasoning_tokens": 763
-            },
-            "total_tokens": 18037
-          }
-        }
-      }
-    }
-  ],
+  "repair_history": [],
   "qa": {
-    "status": "FAIL",
-    "issues": [
-      {
-        "error_type": "INVALID_REFERENCE",
-        "severity": "BLOCK",
-        "page_id": "PAGE-003",
-        "reason": "PAGE-003의 Core 문구는 '핵심 정보로 장소와 콘텐츠의 매력을 모바일 시청 흐름에 맞게 전달한다'고 주장하지만, EV-R-203-01은 모바일 이용자를 위한 세로형 숏폼의 Hook·핵심 정보·단일 CTA 구조를 지원할 뿐 장소·콘텐츠의 매력 전달까지 직접 뒷받침하지 않는다.",
-        "suggested_action": "Core 문구를 '핵심 정보를 모바일 시청 흐름에 맞게 전달합니다' 수준으로 축소하거나, 장소·콘텐츠의 매력 전달을 별도 제안 운영안으로 표시해 EV-R-203-01의 인용 범위에서 분리한다."
-      },
-      {
-        "error_type": "INVALID_REFERENCE",
-        "severity": "BLOCK",
-        "page_id": "PAGE-003",
-        "reason": "PAGE-003의 Action 문구는 '저장·상세 탐색·지도 이동 등' 구체적인 행동 목표를 제시하지만, EV-R-203-01은 영상당 하나의 행동 목표와 CTA 구조만 지원하며 해당 행동 유형을 직접 지원하지 않는다.",
-        "suggested_action": "Action 문구를 '영상마다 하나의 명확한 행동 목표를 제시합니다'로 축소하거나, 저장·상세 탐색·지도 이동의 근거로 R-202 또는 관련 별도 제안 근거를 연결한다."
-      }
-    ],
-    "summary": "필수 요구사항과 수량·보고 산출물 커버리지는 충족하지만, PAGE-003에서 EV-R-203-01이 직접 지원하지 않는 표현이 reference claim으로 확장되어 인용 범위를 초과한다."
+    "status": "PASS",
+    "issues": [],
+    "summary": "모든 mandatory RFP 요구사항이 전략과 슬라이드에 반영되어 있으며, 회사 실적·성과·정량 수치에 대한 unsupported claim이 없습니다. Evidence는 각 메시지를 직접 지원하거나 reference pattern으로 적절히 사용되었고, 서로 다른 proposal의 사실을 실제 수행사례로 결합한 내용도 확인되지 않았습니다."
   },
   "validation": {
     "gates": {
@@ -2802,59 +1580,59 @@
   "stage_metadata": {
     "slide_draft": {
       "provider": "openai",
-      "response_id": "resp_050ec0a5536d3d82016abc927d86ac87d2b4e63754745016b8",
+      "response_id": "resp_02fb18d8186fbde0016abc9361e1c487d1a4601a2842c05a8a",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 16.3365,
+      "latency_seconds": 17.3199,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 6369,
+        "input_tokens": 6438,
         "input_tokens_details": {
-          "cache_write_tokens": 6366,
+          "cache_write_tokens": 6435,
           "cached_tokens": 0
         },
-        "output_tokens": 2554,
+        "output_tokens": 2485,
         "output_tokens_details": {
-          "reasoning_tokens": 81
+          "reasoning_tokens": 132
         },
         "total_tokens": 8923
       }
     },
     "visual_prompt": {
       "provider": "openai",
-      "response_id": "resp_0b7f8e6e35de4d25016abc928dc0cc87d2951414235d6eb8e9",
+      "response_id": "resp_0b3be6c4f874d55a016abc9372ab7487d1b11806a85469cd5e",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 27.7662,
+      "latency_seconds": 22.5182,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 7091,
+        "input_tokens": 6971,
         "input_tokens_details": {
-          "cache_write_tokens": 7088,
+          "cache_write_tokens": 6968,
           "cached_tokens": 0
         },
-        "output_tokens": 4227,
+        "output_tokens": 3438,
         "output_tokens_details": {
-          "reasoning_tokens": 106
+          "reasoning_tokens": 51
         },
-        "total_tokens": 11318
+        "total_tokens": 10409
       }
     },
     "proposal_qa": {
       "provider": "openai",
-      "response_id": "resp_050c929e5bbac65c016abc92a9844c87d2a249e026fcde4861",
+      "response_id": "resp_00900d6fe3377e26016abc9389264487d19da5784c035892b0",
       "model": "gpt-5.6-luna",
-      "latency_seconds": 12.6402,
+      "latency_seconds": 7.843,
       "retry_count": 0,
       "usage": {
-        "input_tokens": 14885,
+        "input_tokens": 14031,
         "input_tokens_details": {
-          "cache_write_tokens": 14882,
+          "cache_write_tokens": 14028,
           "cached_tokens": 0
         },
-        "output_tokens": 1181,
+        "output_tokens": 581,
         "output_tokens_details": {
-          "reasoning_tokens": 516
+          "reasoning_tokens": 480
         },
-        "total_tokens": 16066
+        "total_tokens": 14612
       }
     }
   }
