@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "split": "dev",
+  "track": "evidence_builder",
+  "rfp_id": "RFP-TEST-002",
+  "source_retrieval_report": "reports/dify-retrieval-v1-semantic.json",
+  "note": "Six RFP-TEST-002 requirements use real Dify semantic top-5 results. Primary assets are frozen before Evidence Builder live runs.",
+  "forbidden_claims": [
+    "방문객 100만",
+    "관광객 30% 증가",
+    "기존 캠페인 ROI",
+    "수상 실적"
+  ],
+  "cases": [
+    {
+      "requirement_id": "R-201",
+      "retrieval_case_id": "RET-D12",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-PR-007-P015"
+      ],
+      "accepted_asset_ids": [
+        "PA-PR-007-P015"
+      ],
+      "forbidden_asset_ids": [
+        "PA-DIST-P008",
+        "PA-DIST-P006"
+      ]
+    },
+    {
+      "requirement_id": "R-202",
+      "retrieval_case_id": "RET-D13",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-PR-007-P016"
+      ],
+      "accepted_asset_ids": [
+        "PA-PR-007-P016",
+        "PA-CAMP-010-P021"
+      ],
+      "forbidden_asset_ids": []
+    },
+    {
+      "requirement_id": "R-203",
+      "retrieval_case_id": "RET-D05",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-VIDEO-004-P021"
+      ],
+      "accepted_asset_ids": [
+        "PA-VIDEO-004-P021",
+        "PA-VIDEO-008-P008"
+      ],
+      "forbidden_asset_ids": [
+        "PA-DIST-P003"
+      ]
+    },
+    {
+      "requirement_id": "R-204",
+      "retrieval_case_id": "RET-D26",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-PR-007-P018"
+      ],
+      "accepted_asset_ids": [
+        "PA-PR-007-P018",
+        "PA-CAMP-005-P010"
+      ],
+      "forbidden_asset_ids": []
+    },
+    {
+      "requirement_id": "R-205",
+      "retrieval_case_id": "RET-D31",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-CAMP-010-P023"
+      ],
+      "accepted_asset_ids": [
+        "PA-CAMP-010-P023",
+        "PA-PR-011-P012"
+      ],
+      "forbidden_asset_ids": [
+        "PA-DIST-P005",
+        "PA-DIST-P012"
+      ]
+    },
+    {
+      "requirement_id": "R-206",
+      "retrieval_case_id": "RET-D16",
+      "expected_status": "SUPPORTED",
+      "primary_asset_ids": [
+        "PA-PR-007-P019"
+      ],
+      "accepted_asset_ids": [
+        "PA-PR-007-P019",
+        "PA-CAMP-010-P024",
+        "PA-EVENT-004-P016"
+      ],
+      "forbidden_asset_ids": []
+    }
+  ],
+  "acceptance": {
+    "result_coverage": 1,
+    "primary_asset_recall": 1,
+    "selected_asset_precision": 1,
+    "prohibited_asset_rejection": 1,
+    "provenance_validity": 1,
+    "status_accuracy": 1,
+    "company_fact_violation_count": 0,
+    "unsupported_numeric_claim_count": 0
+  }
+}
