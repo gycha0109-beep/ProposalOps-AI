@@ -1,5 +1,5 @@
-operation: semantic-benchmark
+operation: plan
 phase: knowledge-v1
-bootstrap: existing-high-quality-dataset
+bootstrap: complete
 required_secret: DIFY_API_KEY
-triggered: 2026-09-30T11:49+09:00
+note: semantic benchmark completed 2026-09-30
