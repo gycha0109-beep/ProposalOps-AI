@@ -316,11 +316,52 @@ reports/dify-retrieval-v1-economy.json
 Economy 결과는 production candidate가 아니다. 한국어 paraphrase benchmark에 대해 Dify keyword path가
 local char n-gram baseline보다 현저히 낮다는 diagnostic evidence로 보존한다.
 
-### Next semantic step
+### Final semantic benchmark
 
-Dify Sandbox 자체는 계속 무료로 사용할 수 있다. Hosted model credits가 소진된 상태이므로
-의미 검색을 끝까지 검증하려면 Dify workspace의 OpenAI Model Provider에 사용자 API key를 연결한 뒤
-High Quality + `semantic_search` 48-query benchmark를 다시 실행한다.
+Dify workspace에 사용자 OpenAI Model Provider와 `text-embedding-3-small`을 연결한 뒤
+기존 High Quality benchmark dataset에서 `semantic_search` 48-query 전체를 재실행했다.
+
+Report:
+
+```text
+reports/dify-retrieval-v1-semantic.json
+```
+
+결과:
+
+| Split | Dify Semantic Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---:|---:|---:|---:|
+| DEV 32 | 90.62% | 100% | 100% | 0.9531 |
+| HOLDOUT 16 | 93.75% | 100% | 100% | 0.9688 |
+
+Local char n-gram TF-IDF baseline과 aggregate metric이 정확히 동일하다.
+
+| Split | Local Baseline Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---:|---:|---:|---:|
+| DEV 32 | 90.62% | 100% | 100% | 0.9531 |
+| HOLDOUT 16 | 93.75% | 100% | 100% | 0.9688 |
+
+Semantic top-1 miss:
+
+- DEV `RET-D06`: `PA-DIST-P011`이 top-1, expected `PA-VIDEO-004-P022`는 rank 2
+- DEV `RET-D25`: `PA-EDU-006-P010`이 top-1, expected `PA-EDU-006-P011`은 rank 2
+- DEV `RET-D31`: `PA-DIST-P005`가 top-1, expected `PA-CAMP-010-P023`은 rank 2
+- HOLDOUT `RET-H15`: `PA-EVENT-004-P012`가 top-1, expected `PA-EVENT-004-P013`은 rank 2
+
+모든 miss에서도 정답 asset은 top-2 안에 있었고, 따라서 Hit@3/Hit@5는 DEV/HOLDOUT 모두 100%다.
+
+### Decision
+
+Dify High Quality semantic retrieval은 **유효한 production candidate**다.
+다만 현재 frozen corpus에서는 local char n-gram TF-IDF baseline을 aggregate metric 기준으로 능가하지는 않았다.
+
+따라서 Phase 1 결론은:
+
+- Dify integration / Knowledge workflow 검증: **PASS**
+- Dify semantic retrieval quality: **PASS**
+- local baseline 대비 검색 품질 우위: **동률**
+- Economy keyword retrieval: production candidate에서 제외
+- 다음 단계에서는 retrieval 자체보다 Evidence Builder / workflow orchestration 연결을 우선한다.
 
 ## Current status
 
@@ -339,11 +380,10 @@ High Quality + `semantic_search` 48-query benchmark를 다시 실행한다.
 - [x] Production 51 asset segment upload
 - [x] Benchmark 63 asset segment upload
 - [x] 48-query Economy/keyword diagnostic benchmark
+- [x] Dify workspace own OpenAI provider 연결
+- [x] High Quality semantic 48-query benchmark 완주
+- [x] semantic miss 분석
+- [x] 최종 semantic retrieval report 저장
 - [x] live evidence committed to repository
 
-남음:
-
-- [ ] Dify workspace에 own OpenAI provider key 연결
-- [ ] High Quality semantic 48-query benchmark 완주
-- [ ] DEV semantic misses 분석
-- [ ] semantic candidate 확정 후 최종 retrieval report
+Phase 1: **COMPLETE**
