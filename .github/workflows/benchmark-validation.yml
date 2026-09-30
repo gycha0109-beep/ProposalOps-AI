@@ -170,6 +170,9 @@ jobs:
       - name: Validate Dify Phase 4 DSL candidate
         run: python scripts/validate_dify_phase4_dsl.py
 
+      - name: Validate Dify Studio smoke-result validator
+        run: python scripts/validate_dify_studio_smoke.py reports/dify-phase4-package-rfp-test-002.json --expect-pages 6
+
       - name: Run retrieval baseline on dev split
         run: |
           python scripts/evaluate_retrieval.py \
