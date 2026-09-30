@@ -1,0 +1,70 @@
+name: Dify Phase 4 Package
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".benchmark/dify-phase4-package-trigger"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dify-phase4-package
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Require OpenAI API key
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "OPENAI_API_KEY is not configured."
+            exit 1
+          fi
+
+      - name: Validate Phase 4 plan
+        run: python scripts/run_dify_phase4_package.py --plan-only
+
+      - name: Run Phase 4 package pipeline
+        shell: bash
+        run: |
+          set +e
+          python scripts/run_dify_phase4_package.py
+          EXIT_CODE=$?
+          echo "phase4_exit_code=$EXIT_CODE" >> "$GITHUB_ENV"
+          exit 0
+
+      - name: Commit Phase 4 evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f runs/dify/phase4 reports/dify-phase4-package-* 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No Phase 4 evidence changes to commit."
+          else
+            git commit -m "dify: record phase4 final package evidence"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Enforce Phase 4 gate
+        shell: bash
+        run: |
+          if [[ "${phase4_exit_code:-0}" != "0" ]]; then
+            exit "$phase4_exit_code"
+          fi
