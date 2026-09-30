@@ -158,6 +158,9 @@ jobs:
       - name: Validate Dify Phase 3 pagination plan
         run: python scripts/run_dify_phase3_pagination.py --plan-only
 
+      - name: Validate Dify Phase 4 package plan
+        run: python scripts/run_dify_phase4_package.py --plan-only
+
       - name: Validate Dify Phase 2 DSL candidate
         run: python scripts/validate_dify_phase2_dsl.py
 
