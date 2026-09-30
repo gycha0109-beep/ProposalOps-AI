@@ -8,7 +8,7 @@
 
 | 공고 요구 | ProposalOps AI 구현 | 검증 증거 |
 |---|---|---|
-| 기존 PPT/PDF 제안서 데이터 자산화 | Proposal Asset schema, taxonomy, provenance metadata | `data/processed/proposals/`, `data/taxonomy/` |
+| 기존 PPT/PDF 제안서 데이터 자산화 | PPTX/PDF page extraction adapter + Proposal Asset schema/taxonomy/provenance | `scripts/extract_proposal_source.py`, `docs/proposal-source-extraction.md`, `data/taxonomy/` |
 | RFP 분석 | requirement/deliverable/numeric/source quote 추출 | `reports/rfp-analyzer-dev-v1-gpt56luna.json`, `reports/rfp-analyzer-holdout-v1-gpt56luna.json` |
 | 기존 제안서 검색 | 51 normal assets + 12 hard negatives | `evals/frozen/v1/*/retrieval.json`, `docs/retrieval-baseline.md` |
 | Reference 반영 검증 | requirement별 Evidence Pack + allowed use | `evals/strategist/inputs-v1.json` |
@@ -99,7 +99,7 @@ Strategy
 
 남은 범위:
 
-- 실제 고객 PPT/PDF extraction adapter
+- 스캔/image-only PDF OCR 및 복잡한 layout/table/image reconstruction
 - 사용자 Dify Studio authenticated session에서 실제 DSL import / node UI smoke test
 
 따라서 이 포트폴리오는 **prompt engineering + evidence/provenance workflow + synthetic Dify live integration 검증**을 증명하며, 특정 고객사의 실제 운영성과를 주장하지 않습니다.
