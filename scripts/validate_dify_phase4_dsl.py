@@ -35,8 +35,8 @@ def main() -> None:
     graph = ((data.get("workflow") or {}).get("graph") or {})
     nodes = graph.get("nodes") or []
     edges = graph.get("edges") or []
-    if len(nodes) != 42 or len(edges) != 43:
-        fail(f"Expected 42 nodes / 43 edges, got {len(nodes)} / {len(edges)}.")
+    if len(nodes) != 50 or len(edges) != 52:
+        fail(f"Expected 50 nodes / 52 edges, got {len(nodes)} / {len(edges)}.")
 
     by_id = {node.get("id"): node for node in nodes}
     if len(by_id) != len(nodes) or None in by_id:
@@ -81,6 +81,14 @@ def main() -> None:
         "qa_parse_after_visual_repair",
         "qa_branch_after_visual_repair",
         "visual_repaired_final_end",
+        "repair_context_2",
+        "targeted_repair_2",
+        "repair_merge_gate_2",
+        "repair_gate_branch_2",
+        "qa_recheck_2",
+        "qa_recheck_parse_2",
+        "qa_recheck_branch_2",
+        "repaired_end_2",
         "final_end",
         "gate_failure_end",
         "repaired_end",
@@ -96,13 +104,13 @@ def main() -> None:
     node_types = Counter((node.get("data") or {}).get("type") for node in nodes)
     required_counts = {
         "start": 1,
-        "llm": 12,
-        "code": 14,
+        "llm": 14,
+        "code": 17,
         "iteration": 1,
         "iteration-start": 1,
         "knowledge-retrieval": 1,
-        "if-else": 7,
-        "end": 5,
+        "if-else": 9,
+        "end": 6,
     }
     if dict(node_types) != required_counts:
         fail(f"Unexpected node type counts: {dict(node_types)}")
@@ -134,7 +142,7 @@ def main() -> None:
         ("qa_recheck", "qa_recheck_parse", "source"),
         ("qa_recheck_parse", "qa_recheck_branch", "source"),
         ("qa_recheck_branch", "repaired_end", "true"),
-        ("qa_recheck_branch", "escalation_end", "false"),
+        ("qa_recheck_branch", "repair_context_2", "false"),
         ("visual_gate_branch", "visual_repair", "false"),
         ("visual_repair", "visual_repair_gate", "source"),
         ("visual_repair_gate", "visual_repair_branch", "source"),
@@ -144,6 +152,15 @@ def main() -> None:
         ("qa_parse_after_visual_repair", "qa_branch_after_visual_repair", "source"),
         ("qa_branch_after_visual_repair", "visual_repaired_final_end", "true"),
         ("qa_branch_after_visual_repair", "escalation_end", "false"),
+        ("repair_context_2", "targeted_repair_2", "source"),
+        ("targeted_repair_2", "repair_merge_gate_2", "source"),
+        ("repair_merge_gate_2", "repair_gate_branch_2", "source"),
+        ("repair_gate_branch_2", "qa_recheck_2", "true"),
+        ("repair_gate_branch_2", "escalation_end", "false"),
+        ("qa_recheck_2", "qa_recheck_parse_2", "source"),
+        ("qa_recheck_parse_2", "qa_recheck_branch_2", "source"),
+        ("qa_recheck_branch_2", "repaired_end_2", "true"),
+        ("qa_recheck_branch_2", "escalation_end", "false"),
     }
     actual_edges = {
         (edge.get("source"), edge.get("target"), edge.get("sourceHandle"))
@@ -181,6 +198,8 @@ def main() -> None:
         "qa_recheck",
         "visual_repair",
         "proposal_qa_after_visual_repair",
+        "targeted_repair_2",
+        "qa_recheck_2",
     }
     for node_id in llm_ids:
         model = by_id[node_id]["data"].get("model") or {}
@@ -199,6 +218,8 @@ def main() -> None:
         "qa_recheck_parse": ("qa_recheck", "text"),
         "visual_repair_gate": ("visual_repair", "text"),
         "qa_parse_after_visual_repair": ("proposal_qa_after_visual_repair", "text"),
+        "repair_context_2": ("qa_recheck_parse", "normalized"),
+        "qa_recheck_parse_2": ("qa_recheck_2", "text"),
     }.items():
         variables = by_id[node_id]["data"].get("variables") or []
         selectors = {
@@ -230,6 +251,12 @@ def main() -> None:
             "PAGE_ID_CONFLICT",
             "PAGE_SET_MISMATCH",
         ],
+        "repair_merge_gate_2": [
+            "INVALID_STRATEGY_REPAIR",
+            "STRATEGY_ID_CONFLICT",
+            "PAGE_ID_CONFLICT",
+            "PAGE_SET_MISMATCH",
+        ],
     }
     for node_id, markers in code_markers.items():
         code = by_id[node_id]["data"].get("code", "")
@@ -249,6 +276,8 @@ def main() -> None:
         "qa_recheck_branch",
         "visual_repair_branch",
         "qa_branch_after_visual_repair",
+        "repair_gate_branch_2",
+        "qa_recheck_branch_2",
     ):
         branch = by_id[branch_id]["data"]
         targets = {item.get("id") for item in branch.get("_targetBranches") or []}
@@ -279,6 +308,19 @@ def main() -> None:
     for marker in ("Evidence scope is authoritative", "REFERENCE_PATTERN", "data_chart"):
         if marker not in slide_prompt:
             fail(f"Slide Draft prompt is missing marker: {marker}")
+
+    repair2_prompt = json.dumps(
+        by_id["targeted_repair_2"]["data"].get("prompt_template") or [],
+        ensure_ascii=False,
+    )
+    for marker in (
+        "SECOND-PASS STRICTNESS",
+        "MINIMUM wording directly entailed",
+        "AI_RECOMMENDATION",
+        "The goal is QA PASS",
+    ):
+        if marker not in repair2_prompt:
+            fail(f"Second repair prompt is missing marker: {marker}")
 
     final_vars = {
         item.get("variable")
@@ -335,6 +377,23 @@ def main() -> None:
     if repaired_vars != expected_repaired_vars:
         fail(f"Repaired final output mismatch: {sorted(repaired_vars)}")
 
+    repaired2_vars = {
+        item.get("variable")
+        for item in by_id["repaired_end_2"]["data"].get("outputs") or []
+    }
+    expected_repaired2_vars = {
+        "repaired2_rfp_analysis",
+        "repaired2_evidence_packs",
+        "repaired2_proposal_strategy",
+        "repaired2_pagination",
+        "repaired2_slides",
+        "repaired2_visuals",
+        "repaired2_qa",
+        "repaired2_repair_validation",
+    }
+    if repaired2_vars != expected_repaired2_vars:
+        fail(f"Second repaired final output mismatch: {sorted(repaired2_vars)}")
+
     gate_failure_vars = {
         item.get("variable")
         for item in by_id["gate_failure_end"]["data"].get("outputs") or []
@@ -356,12 +415,16 @@ def main() -> None:
         "escalation_repair_route",
         "escalation_repair_validation",
         "escalation_qa_recheck",
+        "escalation_visual_repair_qa",
+        "escalation_repair_route_2",
+        "escalation_repair_validation_2",
+        "escalation_qa_recheck_2",
     }
     if escalation_vars != expected_escalation_vars:
         fail(f"Escalation output mismatch: {sorted(escalation_vars)}")
 
     all_end_variables = []
-    for end_id in ("final_end", "gate_failure_end", "repaired_end", "visual_repaired_final_end", "escalation_end"):
+    for end_id in ("final_end", "gate_failure_end", "repaired_end", "repaired_end_2", "visual_repaired_final_end", "escalation_end"):
         all_end_variables.extend(
             item.get("variable")
             for item in by_id[end_id]["data"].get("outputs") or []
@@ -393,7 +456,7 @@ def main() -> None:
         "visual_gate": "deterministic",
         "semantic_qa": True,
         "visual_gate_auto_repair": True,
-        "studio_repair_passes": 1,
+        "studio_repair_passes": 2,
         "python_max_repair_cycles": 3,
         "model_provider": "langgenius/openai/openai",
         "model": "gpt-5.6-luna",
