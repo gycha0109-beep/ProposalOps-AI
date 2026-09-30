@@ -12,7 +12,7 @@ ALLOWED_VISUAL_TYPES = {
     "data_chart",
     "reference_image",
 }
-NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)?(?:%|명|건|편|원|초|개월|회|개)?")
+NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)?(?:%|명|건|편|원|초|개월|회)")
 
 
 def _list(value):
@@ -113,20 +113,32 @@ def validate_visuals(
                     reason="process_diagram requires at least two nodes and one edge.",
                 )
 
-        if visual_type == "data_chart":
-            slide_blob = " ".join(
-                [
-                    str(slide.get("headline") or ""),
-                    str(slide.get("subheadline") or ""),
-                    " ".join(str(block.get("text") or "") for block in _list(slide.get("body_blocks"))),
-                ]
+        slide_blob = " ".join(
+            [
+                str(slide.get("headline") or ""),
+                str(slide.get("subheadline") or ""),
+                " ".join(str(block.get("text") or "") for block in _list(slide.get("body_blocks"))),
+            ]
+        )
+        page_blob = " ".join(
+            [
+                str(page.get("title") or ""),
+                str(page.get("page_goal") or ""),
+                str(page.get("key_message") or ""),
+                " ".join(
+                    str(block.get("intent") or "")
+                    for block in _list(page.get("content_blocks"))
+                    if isinstance(block, dict)
+                ),
+            ]
+        )
+
+        if visual_type == "data_chart" and not _numbers(slide_blob):
+            block(
+                "DATA_CHART_WITHOUT_NUMERIC_INPUT",
+                page_id=page_id,
+                reason="data_chart selected but validated slide contains no quantitative data.",
             )
-            if not _numbers(slide_blob):
-                block(
-                    "DATA_CHART_WITHOUT_NUMERIC_INPUT",
-                    page_id=page_id,
-                    reason="data_chart selected but validated slide contains no numeric data.",
-                )
 
         if visual_type == "reference_image":
             block(
@@ -151,15 +163,8 @@ def validate_visuals(
             " ".join(visible_diagram_parts),
         ])
         visual_numbers = _numbers(prompt_blob)
-        slide_blob = " ".join(
-            [
-                str(slide.get("headline") or ""),
-                str(slide.get("subheadline") or ""),
-                " ".join(str(block.get("text") or "") for block in _list(slide.get("body_blocks"))),
-            ]
-        )
-        slide_numbers = _numbers(slide_blob)
-        invented = sorted(visual_numbers - slide_numbers)
+        allowed_numbers = _numbers(slide_blob + " " + page_blob)
+        invented = sorted(visual_numbers - allowed_numbers)
         if invented:
             block(
                 "VISUAL_INVENTED_NUMBER",
